@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQazaq — AI Кеңесші</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    :root {
+      --ai-purple: #7c3aed;
+      --ai-pink: #d946ef;
+      --ai-glow: rgba(124,58,237,0.25);
+      --ai-border: rgba(168,85,247,0.2);
+      --ai-surface: rgba(15,10,30,0.95);
+      --ai-card: rgba(20,14,40,0.9);
+      --score-good: #22c55e;
+      --score-great: #a855f7;
+      --score-ok: #f59e0b;
+      --score-bad: #ef4444;
+    }
+
+    * { box-sizing: border-box; }
+
+    body { font-family: 'Space Grotesk', sans-serif; }
+
+    /* ══ HERO ═══════════════════════════════════════════════════════════════ */
+    .ai-hero {
+      text-align: center;
+      padding: 56px 20px 36px;
+      position: relative;
+    }
+    .ai-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(124,58,237,0.15), transparent);
+      pointer-events: none;
+    }
+    .ai-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 999px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      color: #a78bfa; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .ai-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #a855f7;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity:1; transform: scale(1); }
+      50% { opacity:0.4; transform: scale(0.7); }
+    }
+    .ai-hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .ai-hero h1 span {
+      background: linear-gradient(135deg, #fff 30%, #c084fc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .ai-hero p { color: #6b7280; font-size: 17px; max-width: 520px; margin: 0 auto; }
+
+    /* ══ CHIPS ════════════════════════════════════════════════════════════════ */
+    .chips-row {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center;
+      padding: 0 20px 28px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .chip {
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 999px;
+      font-size: 13px; font-weight: 500; color: #9ca3af;
+      cursor: pointer; transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .chip:hover {
+      background: rgba(124,58,237,0.15);
+      border-color: rgba(168,85,247,0.4);
+      color: #c084fc;
+      transform: translateY(-2px);
+    }
+
+    /* ══ INPUT ════════════════════════════════════════════════════════════════ */
+    .ai-input-wrap {
+      max-width: 820px; margin: 0 auto 36px; padding: 0 20px; width: 100%;
+    }
+    .ai-input-shell {
+      background: rgba(20,14,40,0.9);
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 24px;
+      padding: 6px 6px 6px 20px;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: 0 0 48px rgba(124,58,237,0.12), inset 0 1px 0 rgba(255,255,255,0.04);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .ai-input-shell:focus-within {
+      border-color: rgba(168,85,247,0.55);
+      box-shadow: 0 0 60px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .budget-field {
+      display: flex; align-items: center; gap: 8px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      padding-right: 16px; flex-shrink: 0;
+    }
+    .budget-field label { font-size: 11px; color: #4b5563; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+    .budget-field input {
+      background: transparent; border: none; outline: none;
+      color: #c084fc; font-size: 15px; font-weight: 700;
+      width: 110px; font-family: 'JetBrains Mono', monospace;
+    }
+    .budget-field input::placeholder { color: #374151; }
+    .msg-field {
+      flex: 1; background: transparent; border: none; outline: none;
+      color: white; font-size: 15px; font-family: 'Space Grotesk', sans-serif;
+    }
+    .msg-field::placeholder { color: #374151; }
+    .send-btn {
+      width: 52px; height: 52px; flex-shrink: 0;
+      background: linear-gradient(135deg, #7c3aed, #d946ef);
+      border: none; border-radius: 18px;
+      color: white; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.25s;
+      box-shadow: 0 0 20px rgba(124,58,237,0.35);
+    }
+    .send-btn:hover { transform: scale(1.06); box-shadow: 0 0 32px rgba(217,70,239,0.5); }
+    .send-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+    /* ══ CHAT AREA ════════════════════════════════════════════════════════════ */
+    .chat-area {
+      max-width: 820px; margin: 0 auto;
+      padding: 0 20px 80px;
+      width: 100%;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+
+    .msg-user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, rgba(124,58,237,0.8), rgba(109,40,217,0.8));
+      border-radius: 20px 20px 6px 20px;
+      padding: 14px 20px;
+      max-width: 68%;
+      font-weight: 500; font-size: 15px; line-height: 1.5;
+      box-shadow: 0 4px 24px rgba(124,58,237,0.3);
+      animation: fadeSlideIn 0.3s ease;
+    }
+    @keyframes fadeSlideIn {
+      from { opacity:0; transform: translateY(12px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    .msg-ai { align-self: flex-start; width: 100%; animation: fadeSlideIn 0.4s ease; }
+
+    .typing-indicator {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 22px;
+      background: rgba(20,14,40,0.9);
+      border: 1px solid rgba(168,85,247,0.15);
+      border-radius: 20px 20px 20px 6px;
+      width: fit-content;
+    }
+    .typing-text { font-size: 13px; color: #6b7280; }
+    .typing-dots { display: flex; gap: 5px; }
+    .typing-dots span {
+      width: 7px; height: 7px; border-radius: 50%; background: #7c3aed;
+      animation: bounce-dot 1.2s infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce-dot {
+      0%,60%,100% { transform: translateY(0); opacity:0.4; }
+      30% { transform: translateY(-7px); opacity:1; }
+    }
+
+    /* ══ AI RESPONSE CARD ══════════════════════════════════════════════════════ */
+    .ai-card {
+      background: rgba(20,14,40,0.92);
+      border: 1px solid rgba(168,85,247,0.18);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(124,58,237,0.1);
+    }
+    .ai-card-header {
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(217,70,239,0.06));
+    }
+    .ai-card-header .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #7c3aed; margin-bottom: 8px;
+    }
+    .ai-card-header h2 {
+      font-size: 22px; font-weight: 700; margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+    .ai-card-header .sub { font-size: 14px; color: #6b7280; }
+
+    /* score bar */
+    .score-section { padding: 20px 28px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .score-title { font-size: 12px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #4b5563; margin-bottom: 14px; }
+    .score-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+    .score-row:last-child { margin-bottom: 0; }
+    .score-lbl { font-size: 13px; color: #9ca3af; width: 120px; flex-shrink: 0; }
+    .score-track { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
+    .score-fill { height: 100%; border-radius: 99px; transition: width 1s cubic-bezier(0.34,1.56,0.64,1); }
+    .score-val { font-size: 13px; font-weight: 700; font-family: 'JetBrains Mono', monospace; width: 36px; text-align: right; }
+
+    /* verdict pill */
+    .verdict {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 12px;
+      font-size: 13px; font-weight: 700; margin-top: 4px;
+    }
+    .verdict.excellent { background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: #c084fc; }
+    .verdict.good      { background: rgba(34,197,94,0.1);   border: 1px solid rgba(34,197,94,0.25); color: #4ade80; }
+    .verdict.fair      { background: rgba(245,158,11,0.1);  border: 1px solid rgba(245,158,11,0.25); color: #fbbf24; }
+    .verdict.skip      { background: rgba(239,68,68,0.1);   border: 1px solid rgba(239,68,68,0.25); color: #f87171; }
+
+    /* analysis text */
+    .analysis-section { padding: 20px 28px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .analysis-text { font-size: 14px; color: #d1d5db; line-height: 1.75; }
+    .analysis-text strong { color: #e9d5ff; }
+
+    /* pros / cons */
+    .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 20px 28px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .pros, .cons { padding: 16px; border-radius: 16px; }
+    .pros { background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15); }
+    .cons { background: rgba(239,68,68,0.06);  border: 1px solid rgba(239,68,68,0.15); }
+    .pros h4 { color: #4ade80; font-size: 12px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 10px; }
+    .cons h4 { color: #f87171; font-size: 12px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 10px; }
+    .pros li, .cons li { font-size: 13px; color: #d1d5db; line-height: 1.5; margin-bottom: 6px; list-style: none; padding-left: 0; display: flex; gap: 7px; }
+    .pros li::before { content: '✓'; color: #4ade80; flex-shrink: 0; font-weight: 700; }
+    .cons li::before { content: '✗'; color: #f87171; flex-shrink: 0; font-weight: 700; }
+
+    /* use-case badges */
+    .usecase-section { padding: 16px 28px; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .usecase-label { font-size: 12px; color: #4b5563; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-right: 4px; }
+    .uc-badge {
+      padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 600;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #9ca3af;
+    }
+    .uc-badge.fit { background: rgba(124,58,237,0.15); border-color: rgba(168,85,247,0.3); color: #c084fc; }
+    .uc-badge.great-fit { background: rgba(34,197,94,0.12); border-color: rgba(34,197,94,0.25); color: #4ade80; }
+
+    /* alternatives */
+    .alts-section { padding: 20px 28px; }
+    .alts-title { font-size: 12px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #4b5563; margin-bottom: 14px; }
+    .alt-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px; border-radius: 16px;
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 8px; cursor: pointer; transition: all 0.2s;
+    }
+    .alt-row:last-child { margin-bottom: 0; }
+    .alt-row:hover { background: rgba(124,58,237,0.08); border-color: rgba(168,85,247,0.3); transform: translateX(4px); }
+    .alt-row-info { flex: 1; }
+    .alt-row-name { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .alt-row-desc { font-size: 12px; color: #6b7280; }
+    .alt-row-price { font-size: 15px; font-weight: 700; color: #d8b4fe; white-space: nowrap; }
+    .alt-tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; margin-left: 8px; }
+    .tag-cheaper { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .tag-upgrade { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .tag-best    { background: rgba(168,85,247,0.15); color: #c084fc; }
+
+    /* setup card */
+    .setup-spec-grid { padding: 4px 28px 8px; }
+    .setup-spec-row {
+      display: grid; grid-template-columns: 130px 1fr auto;
+      gap: 12px; align-items: start;
+      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .setup-spec-row:last-child { border-bottom: none; }
+    .setup-spec-label { font-size: 12px; color: #4b5563; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; display: flex; align-items: center; gap: 6px; padding-top: 2px; }
+    .setup-spec-name { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+    .setup-spec-desc { font-size: 12px; color: #6b7280; line-height: 1.5; }
+    .setup-spec-price { font-size: 13px; font-weight: 700; color: #7c3aed; white-space: nowrap; font-family: 'JetBrains Mono', monospace; }
+
+    /* price banner */
+    .price-banner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 28px;
+      background: linear-gradient(90deg, rgba(124,58,237,0.1), rgba(217,70,239,0.06));
+      border-top: 1px solid rgba(168,85,247,0.15);
+    }
+    .price-banner .total-lbl { font-size: 13px; color: #6b7280; font-weight: 600; }
+    .price-banner .total-val { font-size: 28px; font-weight: 700; color: #d8b4fe; letter-spacing: -0.02em; font-family: 'JetBrains Mono', monospace; }
+
+    /* CTA */
+    .cta-row { display: flex; gap: 10px; flex-wrap: wrap; padding: 16px 28px 24px; }
+    .btn-primary {
+      padding: 13px 22px; border: none; border-radius: 14px;
+      background: linear-gradient(90deg, #7c3aed, #d946ef);
+      color: white; font-weight: 700; font-size: 14px; cursor: pointer;
+      text-decoration: none; transition: all 0.25s;
+      box-shadow: 0 0 20px rgba(124,58,237,0.3);
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(217,70,239,0.45); }
+    .btn-secondary {
+      padding: 13px 22px; border-radius: 14px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      color: #9ca3af; font-weight: 600; font-size: 14px; cursor: pointer;
+      text-decoration: none; transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); color: white; }
+
+    /* empty state */
+    .ai-empty {
+      text-align: center; padding: 72px 24px; color: #374151;
+    }
+    .ai-empty .glyph {
+      font-size: 72px; margin-bottom: 20px; display: block;
+      filter: grayscale(0.3) opacity(0.6);
+    }
+    .ai-empty h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; color: #4b5563; }
+    .ai-empty p { font-size: 15px; max-width: 380px; margin: 0 auto; }
+
+    /* error */
+    .error-card {
+      padding: 20px 24px; border-radius: 20px;
+      background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25);
+      color: #f87171; font-size: 14px;
+    }
+
+
+    /* verdict banner */
+    .verdict-banner {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 20px; border-radius: 16px; margin-top: 14px;
+      font-weight: 700; font-size: 15px;
+    }
+    .verdict-banner.buy    { background:rgba(34,197,94,0.1);   border:1px solid rgba(34,197,94,0.25);  color:#4ade80; }
+    .verdict-banner.skip   { background:rgba(239,68,68,0.08);  border:1px solid rgba(239,68,68,0.2);   color:#f87171; }
+    .verdict-banner.wait   { background:rgba(245,158,11,0.1);  border:1px solid rgba(245,158,11,0.25); color:#fbbf24; }
+    .verdict-banner.best_value { background:rgba(168,85,247,0.12); border:1px solid rgba(168,85,247,0.3); color:#c084fc; }
+    .verdict-sub { font-size:13px; font-weight:400; opacity:0.85; margin-top:3px; }
+
+    /* fps note in use-case */
+    .uc-fps { font-size:10px; color:#7c3aed; font-weight:600; margin-top:2px; font-family:'JetBrains Mono',monospace; }
+
+    /* technical specs grid */
+    .tech-specs { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:8px; padding:16px 28px; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .tech-spec-item { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:10px 12px; }
+    .tech-spec-key { font-size:10px; color:#4b5563; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; margin-bottom:4px; }
+    .tech-spec-val { font-size:13px; font-weight:700; color:#e9d5ff; font-family:'JetBrains Mono',monospace; }
+
+    /* vs comparison */
+    .vs-section { padding:20px 28px; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .vs-title { font-size:12px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#4b5563; margin-bottom:16px; }
+    .vs-grid { display:grid; grid-template-columns:1fr auto 1fr; gap:12px; align-items:center; margin-bottom:16px; }
+    .vs-col { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:18px; padding:16px; }
+    .vs-col.winner { border-color:rgba(168,85,247,0.4); background:rgba(124,58,237,0.1); }
+    .vs-col-name { font-size:14px; font-weight:700; margin-bottom:6px; }
+    .vs-col-price { font-size:12px; color:#6b7280; margin-bottom:4px; }
+    .vs-col-tag { display:inline-block; padding:3px 10px; border-radius:999px; font-size:11px; font-weight:700; }
+    .vs-vs { font-size:24px; font-weight:900; color:#4b5563; text-align:center; }
+    .vs-stat-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:13px; }
+    .vs-stat-row:last-child { border-bottom:none; }
+    .vs-stat-label { color:#6b7280; }
+    .vs-stat-winner { color:#c084fc; font-weight:700; }
+    .vs-verdict { margin-top:14px; padding:14px 16px; background:rgba(124,58,237,0.1); border:1px solid rgba(168,85,247,0.25); border-radius:14px; font-size:14px; color:#d1d5db; line-height:1.65; }
+
+    /* top-3 ranking */
+    .top3-section { padding:20px 28px; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .top3-row { display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius:16px; margin-bottom:8px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); transition:all 0.2s; cursor:pointer; }
+    .top3-row:hover { background:rgba(124,58,237,0.08); border-color:rgba(168,85,247,0.3); transform:translateX(4px); }
+    .top3-rank { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:14px; flex-shrink:0; }
+    .rank-1 { background:linear-gradient(135deg,#7c3aed,#d946ef); color:white; }
+    .rank-2 { background:rgba(168,85,247,0.2); color:#c084fc; }
+    .rank-3 { background:rgba(255,255,255,0.07); color:#9ca3af; }
+    .top3-info { flex:1; }
+    .top3-name { font-size:14px; font-weight:700; margin-bottom:3px; }
+    .top3-reason { font-size:12px; color:#6b7280; line-height:1.5; }
+    .top3-tag { display:inline-block; padding:2px 8px; border-radius:999px; font-size:10px; font-weight:700; background:rgba(124,58,237,0.15); color:#c084fc; margin-left:6px; }
+    .top3-price { font-size:14px; font-weight:700; color:#d8b4fe; font-family:'JetBrains Mono',monospace; white-space:nowrap; }
+
+    /* performance summary strip */
+    .perf-strip { display:flex; flex-wrap:wrap; gap:8px; padding:14px 28px; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .perf-chip { padding:6px 12px; border-radius:10px; background:rgba(124,58,237,0.12); border:1px solid rgba(168,85,247,0.2); font-size:12px; font-weight:700; color:#c084fc; font-family:'JetBrains Mono',monospace; }
+
+    /* notes (bottleneck / upgrade path) */
+    .note-row { display:flex; gap:8px; align-items:flex-start; padding:6px 0; font-size:13px; color:#9ca3af; }
+    .note-icon { flex-shrink:0; }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .ai-hero h1 { font-size: 36px; }
+    }
+    @media (max-width: 640px) {
+      .ai-hero h1 { font-size: 28px; }
+      .ai-hero p { font-size: 14px; }
+      .ai-input-shell { flex-wrap: wrap; padding: 12px 16px; border-radius: 20px; }
+      .budget-field { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding-right: 0; padding-bottom: 12px; width: 100%; }
+      .budget-field input { width: 100%; }
+      .pros-cons { grid-template-columns: 1fr; }
+      .setup-spec-row { grid-template-columns: 1fr; }
+      .setup-spec-price { display: none; }
+    }
+  
+    /* ══ SETUP ALTERNATIVES ═════════════════════════════════════════════════ */
+    .setup-alts-section { padding: 24px 28px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .setup-alts-title { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4b5563; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+    .setup-alts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .setup-alt-card { border-radius: 20px; padding: 20px; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden; }
+    .setup-alt-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity 0.25s; }
+    .setup-alt-card:hover { transform: translateY(-3px); }
+    .setup-alt-card:hover::before { opacity: 1; }
+    .setup-alt-card.cheaper { border-color: rgba(34,197,94,0.2); }
+    .setup-alt-card.cheaper::before { background: linear-gradient(90deg,#16a34a,#22c55e); }
+    .setup-alt-card.cheaper:hover { background: rgba(34,197,94,0.05); border-color: rgba(34,197,94,0.4); }
+    .setup-alt-card.upgrade { border-color: rgba(168,85,247,0.2); }
+    .setup-alt-card.upgrade::before { background: linear-gradient(90deg,#7c3aed,#d946ef); }
+    .setup-alt-card.upgrade:hover { background: rgba(124,58,237,0.07); border-color: rgba(168,85,247,0.4); }
+    .setup-alt-card.value { border-color: rgba(245,158,11,0.2); }
+    .setup-alt-card.value::before { background: linear-gradient(90deg,#d97706,#f59e0b); }
+    .setup-alt-card.value:hover { background: rgba(245,158,11,0.05); border-color: rgba(245,158,11,0.4); }
+    .alt-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 10px; }
+    .cheaper .alt-card-label { color: #4ade80; } .upgrade .alt-card-label { color: #c084fc; } .value .alt-card-label { color: #fbbf24; }
+    .alt-card-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
+    .alt-card-price { font-size: 20px; font-weight: 900; margin-bottom: 10px; font-family: 'JetBrains Mono',monospace; }
+    .cheaper .alt-card-price { color: #4ade80; } .upgrade .alt-card-price { color: #c084fc; } .value .alt-card-price { color: #fbbf24; }
+    .alt-card-delta { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+    .cheaper .alt-card-delta { background: rgba(34,197,94,0.12); color: #86efac; }
+    .upgrade .alt-card-delta { background: rgba(168,85,247,0.12); color: #d8b4fe; }
+    .value .alt-card-delta { background: rgba(245,158,11,0.12); color: #fde68a; }
+    .alt-card-keydiff { font-size: 12px; color: #9ca3af; line-height: 1.55; margin-bottom: 10px; padding: 8px 10px; background: rgba(255,255,255,0.03); border-radius: 10px; }
+    .alt-card-bestfor { font-size: 11px; font-style: italic; color: #6b7280; margin-bottom: 14px; }
+    .alt-card-specs { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+    .alt-card-spec-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .alt-card-spec-row:last-child { border-bottom: none; }
+    .alt-spec-label { color: #4b5563; } .alt-spec-val { color: #d1d5db; font-weight: 600; }
+    .alt-spec-price { color: #6b7280; font-family: 'JetBrains Mono',monospace; font-size: 10px; }
+    .alt-card-ask-btn { width: 100%; padding: 10px; border-radius: 12px; border: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; transition: all 0.2s; margin-top: 2px; }
+    .cheaper .alt-card-ask-btn { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .cheaper .alt-card-ask-btn:hover { background: rgba(34,197,94,0.22); }
+    .upgrade .alt-card-ask-btn { background: rgba(168,85,247,0.12); color: #c084fc; }
+    .upgrade .alt-card-ask-btn:hover { background: rgba(168,85,247,0.22); }
+    .value .alt-card-ask-btn { background: rgba(245,158,11,0.12); color: #fbbf24; }
+    .value .alt-card-ask-btn:hover { background: rgba(245,158,11,0.22); }
+    .alt-savings-badge { position: absolute; top: 14px; right: 14px; padding: 3px 8px; border-radius: 999px; font-size: 10px; font-weight: 700; }
+    .cheaper .alt-savings-badge { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .upgrade .alt-savings-badge { background: rgba(168,85,247,0.15); color: #c084fc; }
+    .value .alt-savings-badge { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    @media (max-width: 640px) { .setup-alts-grid { grid-template-columns: 1fr; } }
+
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header class="site-header">
+    <div class="brand">
+      <a class="city" href="https://2gis.kz/zhezkazgan/geo/70030076462480403" target="_blank">📍 Сатпаев</a>
+      <div class="logo">CyberQazaq</div>
+    </div>
+    <nav class="top-nav">
+      <a href="/">Басты бет</a>
+      <a href="/products">Тауарлар</a>
+      <a href="/about">Біз туралы</a>
+      <a href="/contact">Байланыс</a>
+      <a href="/cart">Себет</a>
+      <a href="/admin/direct" style="color:#a78bfa;font-weight:700;">⚙️ Админ</a>
+    </nav>
+    <div class="header-actions">
+      <a class="contact-btn" href="https://wa.me/77765007502" target="_blank">💬 Бізге жазу</a>
+      <a class="phone-link" href="tel:+77765007502">+7 (776) 500-75-02</a>
+    </div>
+    <!-- Hamburger (mobile only) -->
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Mobile nav drawer -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="/">🏠 Басты бет</a>
+      <a href="/products">🛒 Тауарлар</a>
+      <a href="/about">🏢 Біз туралы</a>
+      <a href="/contact">📞 Байланыс</a>
+      <a href="/cart">🛒 Себет</a>
+      <a href="/favorites">❤️ Таңдаулылар</a>
+      <a href="/ai-builder">🤖 AI конфигуратор</a>
+      <a href="https://wa.me/77765007502" target="_blank" style="color:#c084fc;">💬 WhatsApp жазу</a>
+      <a href="tel:+77765007502" style="color:#9ca3af;">📞 +7 (776) 500-75-02</a>
+    </nav>
+  </header>
+
+  <div class="ai-hero">
+    <div class="ai-badge"><span class="dot"></span> Claude AI · Powered</div>
+    <h1><span>AI Кеңесші</span><br>CyberQazaq дүкені</h1>
+    <p>Тауардың сапасын бағалаймыз, баға-сапа балансын талдаймыз, сізге тамаша конфигурация ұсынамыз</p>
+  </div>
+
+  <div class="chips-row">
+    <button class="chip" onclick="chip('CS2 Valorant үшін 700 мың бюджетпен gaming компьютер ұсын', 700000)">🎯 CS2 — 700к</button>
+    <button class="chip" onclick="chip('RTX 5090 сапасын бағала, нақты FPS деректерімен', 1500000)">🔍 RTX 5090 бағала</button>
+    <button class="chip" onclick="chip('RTX 5080 vs RTX 4090 — қайсысы тиімді, нақты айырмашылығы?', 900000)">⚔️ 5080 vs 4090</button>
+    <button class="chip" onclick="chip('Стриминг пен gaming үшін 1.5 млн толық конфигурация', 1500000)">📡 Стриминг — 1.5млн</button>
+    <button class="chip" onclick="chip('4K gaming үшін ең жақсы конфигурация 3 млн бюджетпен', 3000000)">🖥 4K gaming — 3млн</button>
+    <button class="chip" onclick="chip('RTX 5070 Ti vs RTX 4090 — қайсысын алу керек?', 800000)">⚔️ 5070 Ti vs 4090</button>
+    <button class="chip" onclick="chip('Ең жақсы gaming монитор ұсын — ТОП 3 нұсқа', 200000)">🖥 Монитор ТОП 3</button>
+    <button class="chip" onclick="chip('Ryzen 7 9800X3D немесе i7-14700F — қайсысы gaming үшін артық?', 400000)">💻 CPU салыстыру</button>
+    <button class="chip" onclick="chip('Ең тиімді бюджет конфигурация 500 мың — CS2 үшін', 500000)">💰 Бюджет 500к</button>
+    <button class="chip" onclick="chip('Wooting 60HE пернетақтасының сапасын бағала', 150000)">⌨️ Wooting 60HE</button>
+    <button class="chip" onclick="chip('Ең жақсы gaming mouse ұсын — ТОП 3 нұсқа', 80000)">🖱 Mouse ТОП 3</button>
+    <button class="chip" onclick="chip('RTX 5060 Ti 16GB vs RTX 5060 Ti 8GB — қайсысын алу керек?', 300000)">🔄 5060 Ti 8 vs 16GB</button>
+  </div>
+
+  <div class="ai-input-wrap">
+    <div class="ai-input-shell">
+      <div class="budget-field">
+        <label>Бюджет ₸</label>
+        <input type="number" id="budget" placeholder="0" min="0">
+      </div>
+      <input class="msg-field" type="text" id="request"
+        placeholder="Тауар туралы сұраңыз немесе конфигурация сұраңыз..."
+        onkeydown="if(event.key==='Enter') send()">
+      <button class="send-btn" id="sendBtn" onclick="send()">➤</button>
+    </div>
+  </div>
+
+  <div class="chat-area" id="chatArea">
+    <div class="ai-empty">
+      <span class="glyph">🤖</span>
+      <h3>AI Кеңесші дайын</h3>
+      <p>Тауардың сапасын бағалау, балама ұсыну немесе толық конфигурация құру — бәрін жасаймыз</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const chatArea = document.getElementById('chatArea');
+const sendBtn  = document.getElementById('sendBtn');
+
+function chip(text, budget) {
+  document.getElementById('request').value = text;
+  document.getElementById('budget').value  = budget || '';
+  send();
+}
+
+async function send() {
+  const budget  = parseInt(document.getElementById('budget').value) || 0;
+  const request = document.getElementById('request').value.trim();
+  if (!request) return;
+
+  chatArea.querySelector('.ai-empty')?.remove();
+  addUserBubble(request + (budget ? ` — ${budget.toLocaleString()} ₸` : ''));
+  const typing = addTyping();
+  sendBtn.disabled = true;
+  document.getElementById('request').value = '';
+
+  try {
+    const res  = await fetch('/ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ budget, request })
+    });
+    const data = await res.json();
+    typing.remove();
+    renderResponse(data);
+  } catch(e) {
+    typing.remove();
+    addError();
+  } finally {
+    sendBtn.disabled = false;
+  }
+}
+
+function addUserBubble(text) {
+  const el = document.createElement('div');
+  el.className = 'msg-user';
+  el.textContent = text;
+  chatArea.appendChild(el);
+  el.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function addTyping() {
+  const el = document.createElement('div');
+  el.className = 'msg-ai';
+  el.innerHTML = `<div class="typing-indicator">
+    <div class="typing-dots"><span></span><span></span><span></span></div>
+    <span class="typing-text">AI талдап жатыр...</span>
+  </div>`;
+  chatArea.appendChild(el);
+  el.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  return el;
+}
+
+function addError() {
+  const el = document.createElement('div');
+  el.className = 'msg-ai';
+  el.innerHTML = `<div class="error-card">⚠️ Қате пайда болды. Қайта көріңіз немесе менеджерге жазыңыз.</div>`;
+  chatArea.appendChild(el);
+}
+
+// ══ SCORE COLOR ═══════════════════════════════════════════════════════════════
+function scoreColor(v) {
+  if (v >= 85) return '#a855f7';
+  if (v >= 70) return '#22c55e';
+  if (v >= 50) return '#f59e0b';
+  return '#ef4444';
+}
+
+function verdictClass(v) {
+  if (v >= 85) return 'excellent';
+  if (v >= 70) return 'good';
+  if (v >= 50) return 'fair';
+  return 'skip';
+}
+
+function verdictText(v) {
+  if (v >= 85) return '⭐ Тамаша таңдау';
+  if (v >= 70) return '✅ Жақсы таңдау';
+  if (v >= 50) return '⚠️ Орташа таңдау';
+  return '❌ Жақсырақ балама бар';
+}
+
+// ══ MAIN RENDER ═══════════════════════════════════════════════════════════════
+function renderResponse(data) {
+  const wrap = document.createElement('div');
+  wrap.className = 'msg-ai';
+
+  if (data.mode === 'analysis') {
+    wrap.innerHTML = renderAnalysis(data);
+  } else if (data.mode === 'single_product') {
+    wrap.innerHTML = renderSingleProduct(data);
+  } else {
+    wrap.innerHTML = renderFullSetup(data);
+  }
+
+  chatArea.appendChild(wrap);
+  wrap.scrollIntoView({ behavior:'smooth', block:'nearest' });
+
+  // animate score bars
+  setTimeout(() => {
+    wrap.querySelectorAll('.score-fill[data-score]').forEach(bar => {
+      bar.style.width = bar.dataset.score + '%';
+    });
+  }, 100);
+}
+
+// ══ PRODUCT ANALYSIS ══════════════════════════════════════════════════════════
+function renderAnalysis(data) {
+  const s = data.scores || {};
+  const overall = s.overall || 75;
+
+  const scoreRows = [
+    { label: 'Баға / Сапа', key: 'value_for_money' },
+    { label: 'Өнімділік',   key: 'performance' },
+    { label: 'Болашаққа',   key: 'future_proof' },
+    { label: 'Сенімділік',  key: 'reliability' },
+  ].map(r => {
+    const v = s[r.key] || 70;
+    const c = scoreColor(v);
+    return `<div class="score-row">
+      <span class="score-lbl">${r.label}</span>
+      <div class="score-track">
+        <div class="score-fill" data-score="${v}" style="width:0%;background:${c}"></div>
+      </div>
+      <span class="score-val" style="color:${c}">${v}</span>
+    </div>`;
+  }).join('');
+
+  // Verdict banner
+  const vMap = {
+    buy:        { icon:'✅', text:'Сатып алу ұсынылады',   cls:'buy' },
+    best_value: { icon:'⭐', text:'Ең тиімді таңдау',       cls:'best_value' },
+    skip:       { icon:'❌', text:'Жақсырақ балама бар',    cls:'skip' },
+    wait:       { icon:'⏳', text:'Күту ұсынылады',         cls:'wait' },
+  };
+  const vInfo = vMap[data.verdict] || { icon:'✅', text:'Ұсынылады', cls:'buy' };
+  const verdictHtml = `<div class="verdict-banner ${vInfo.cls}">
+    <span style="font-size:20px">${vInfo.icon}</span>
+    <div><div>${vInfo.text}</div>${data.verdict_reason ? `<div class="verdict-sub">${data.verdict_reason}</div>` : ''}</div>
+  </div>`;
+
+  // Technical specs
+  const techSpecs = data.technical_specs || {};
+  const techHtml = Object.keys(techSpecs).length ? `
+    <div class="tech-specs">
+      ${Object.entries(techSpecs).map(([k,v]) => `
+        <div class="tech-spec-item">
+          <div class="tech-spec-key">${k}</div>
+          <div class="tech-spec-val">${v}</div>
+        </div>`).join('')}
+    </div>` : '';
+
+  const prosHtml = (data.pros || []).map(p => `<li>${p}</li>`).join('');
+  const consHtml = (data.cons || []).map(c => `<li>${c}</li>`).join('');
+
+  const usecases = (data.use_cases || []).map(uc => {
+    const cls = uc.fit === 'great' ? 'great-fit' : uc.fit === 'good' ? 'fit' : '';
+    const fpsNote = uc.fps_note ? `<div class="uc-fps">${uc.fps_note}</div>` : '';
+    return `<div style="display:inline-block;margin:3px"><span class="uc-badge ${cls}">${uc.label}</span>${fpsNote}</div>`;
+  }).join('');
+
+  // vs comparison block
+  let vsHtml = '';
+  const vs = data.vs_comparison;
+  if (vs) {
+    const aWin = vs.winner_overall === 'product_a';
+    vsHtml = `<div class="vs-section">
+      <div class="vs-title">⚔️ Тікелей салыстыру</div>
+      <div class="vs-grid">
+        <div class="vs-col ${aWin ? 'winner' : ''}">
+          <div class="vs-col-name">${vs.product_a}</div>
+          ${aWin ? '<span class="vs-col-tag" style="background:rgba(168,85,247,0.2);color:#c084fc">👑 Жеңімпаз</span>' : ''}
+        </div>
+        <div class="vs-vs">VS</div>
+        <div class="vs-col ${!aWin ? 'winner' : ''}">
+          <div class="vs-col-name">${vs.product_b}</div>
+          ${!aWin ? '<span class="vs-col-tag" style="background:rgba(168,85,247,0.2);color:#c084fc">👑 Жеңімпаз</span>' : ''}
+        </div>
+      </div>
+      <div>
+        ${vs.price_diff ? `<div class="vs-stat-row"><span class="vs-stat-label">Баға айырмасы</span><span class="vs-stat-winner">${vs.price_diff.toLocaleString()} ₸</span></div>` : ''}
+        ${vs.performance_diff_pct ? `<div class="vs-stat-row"><span class="vs-stat-label">Өнімділік айырмасы</span><span class="vs-stat-winner">+${vs.performance_diff_pct}%</span></div>` : ''}
+        <div class="vs-stat-row"><span class="vs-stat-label">Баға-тиімділік жеңімпазы</span><span class="vs-stat-winner">${vs.winner_value === 'product_a' ? vs.product_a : vs.product_b}</span></div>
+        <div class="vs-stat-row"><span class="vs-stat-label">Gaming жеңімпазы</span><span class="vs-stat-winner">${vs.winner_gaming === 'product_a' ? vs.product_a : vs.product_b}</span></div>
+      </div>
+      ${vs.verdict ? `<div class="vs-verdict">${vs.verdict}</div>` : ''}
+    </div>`;
+  }
+
+  const altsHtml = (data.alternatives || []).map(a => {
+    const tag = a.verdict === 'best_budget'
+      ? `<span class="alt-tag tag-cheaper">бюджет ең жақсы</span>`
+      : a.cheaper
+        ? `<span class="alt-tag tag-cheaper">арзанырақ</span>`
+        : `<span class="alt-tag tag-upgrade">апгрейд</span>`;
+    return `<div class="alt-row">
+      <div class="alt-row-info">
+        <div class="alt-row-name">${a.name}${tag}</div>
+        <div class="alt-row-desc">${a.reason}</div>
+      </div>
+      <div class="alt-row-price">${(a.price||0).toLocaleString()} ₸</div>
+    </div>`;
+  }).join('');
+
+  return `<div class="ai-card">
+    <div class="ai-card-header">
+      <div class="label">🔍 Тауар талдауы · Claude AI</div>
+      <h2>${data.product_name}</h2>
+      <div class="sub">${(data.price||0).toLocaleString()} ₸ · ${data.category_label || ''}</div>
+    </div>
+
+    <div class="score-section">
+      <div class="score-title">Бағалау</div>
+      ${scoreRows}
+      <div style="margin-top:14px">
+        <div class="score-row">
+          <span class="score-lbl" style="font-weight:700;color:#d1d5db">Жалпы балл</span>
+          <div class="score-track" style="height:8px">
+            <div class="score-fill" data-score="${overall}" style="width:0%;background:${scoreColor(overall)}"></div>
+          </div>
+          <span class="score-val" style="color:${scoreColor(overall)};font-size:15px">${overall}</span>
+        </div>
+        ${verdictHtml}
+      </div>
+    </div>
+
+    ${techHtml}
+
+    <div class="analysis-section">
+      <div class="score-title">AI Пікірі</div>
+      <div class="analysis-text">${data.analysis}</div>
+    </div>
+
+    ${(prosHtml || consHtml) ? `
+    <div class="pros-cons">
+      <div class="pros"><h4>Артықшылықтары</h4><ul>${prosHtml}</ul></div>
+      <div class="cons"><h4>Кемшіліктері</h4><ul>${consHtml}</ul></div>
+    </div>` : ''}
+
+    ${usecases ? `
+    <div class="usecase-section">
+      <span class="usecase-label">Қолданыс:</span>
+      ${usecases}
+    </div>` : ''}
+
+    ${vsHtml}
+
+    ${altsHtml ? `
+    <div class="alts-section">
+      <div class="alts-title">🔄 Балама нұсқалар</div>
+      ${altsHtml}
+    </div>` : ''}
+
+    <div class="cta-row">
+      <a href="/products" class="btn-primary">🛒 Тауарларға өту</a>
+      <a href="https://wa.me/77765007502" class="btn-secondary" target="_blank">💬 Менеджерге жазу</a>
+    </div>
+  </div>`;
+}
+
+// ══ SINGLE PRODUCT ════════════════════════════════════════════════════════════
+function renderSingleProduct(data) {
+  const ucLabel = {
+    esports:'🎯 Esports', streaming:'📡 Стриминг',
+    creative:'🎨 Креатив', aaa:'🎮 AAA', general:'⚙️ Жалпы'
+  }[data.use_case] || '';
+
+  // Query summary
+  const querySummary = data.query_summary
+    ? `<div style="padding:14px 28px;border-bottom:1px solid rgba(255,255,255,0.04)"><div style="font-size:13px;color:#6b7280;font-style:italic">"${data.query_summary}"</div></div>`
+    : '';
+
+  // Mentioned product analysis
+  const mentionedHtml = data.mentioned ? `
+    <div class="analysis-section">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <div class="score-title" style="margin:0">Сіз айтқан тауар</div>
+        ${data.mentioned.score ? `<span style="font-size:20px;font-weight:900;color:${scoreColor(data.mentioned.score)};font-family:'JetBrains Mono',monospace">${data.mentioned.score}/100</span>` : ''}
+      </div>
+      <div class="analysis-text">${data.mentioned.reason}</div>
+    </div>` : '';
+
+  // TOP-3 ranking
+  const top3 = data.top_3 || [];
+  const top3Html = top3.length ? `
+    <div class="top3-section">
+      <div class="score-title">🏆 Бюджетке сай ТОП-3</div>
+      ${top3.map(item => `
+        <div class="top3-row">
+          <div class="top3-rank rank-${item.rank}">${item.rank}</div>
+          <div class="top3-info">
+            <div class="top3-name">${item.name}<span class="top3-tag">${item.tag || ''}</span></div>
+            <div class="top3-reason">${item.reason}</div>
+          </div>
+          <div class="top3-price">${(item.price||0).toLocaleString()} ₸</div>
+        </div>`).join('')}
+    </div>` : '';
+
+  // Best match (if different from mentioned)
+  let bestHtml = '';
+  if (data.best_match && data.best_match.name !== data.mentioned?.name) {
+    bestHtml = `<div style="padding:0 28px 16px">
+      <div style="padding:18px;background:rgba(34,197,94,0.07);border:1px solid rgba(34,197,94,0.2);border-radius:18px">
+        <div style="font-size:11px;color:#4ade80;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">✅ Бюджетке сай ең жақсы</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <div style="font-size:17px;font-weight:700">${data.best_match.name}</div>
+          ${data.best_match.score ? `<span style="font-size:18px;font-weight:900;color:#4ade80">${data.best_match.score}/100</span>` : ''}
+        </div>
+        <div style="font-size:15px;font-weight:700;color:#86efac;margin-bottom:8px">${(data.best_match.price||0).toLocaleString()} ₸</div>
+        <div style="font-size:13px;color:#9ca3af;line-height:1.6">${data.best_match.reason}</div>
+      </div>
+    </div>`;
+  }
+
+  const altsHtml = (data.alternatives || []).map(a => {
+    const tag = a.cheaper
+      ? `<span class="alt-tag tag-cheaper">арзанырақ</span>`
+      : `<span class="alt-tag tag-upgrade">апгрейд</span>`;
+    return `<div class="alt-row">
+      <div class="alt-row-info">
+        <div class="alt-row-name">${a.name}${tag}</div>
+        <div class="alt-row-desc">${a.reason}</div>
+      </div>
+      <div class="alt-row-price">${(a.price||0).toLocaleString()} ₸</div>
+    </div>`;
+  }).join('');
+
+  return `<div class="ai-card">
+    <div class="ai-card-header">
+      <div class="label">🔍 Тауар · ${ucLabel}</div>
+      <h2>${data.mentioned?.name || 'Тауар ұсынысы'}</h2>
+      <div class="sub">${(data.mentioned?.price||0).toLocaleString()} ₸</div>
+    </div>
+
+    ${querySummary}
+    ${mentionedHtml}
+    ${top3Html}
+    ${bestHtml}
+
+    ${altsHtml ? `
+    <div class="alts-section">
+      <div class="alts-title">🔄 Балама нұсқалар</div>
+      ${altsHtml}
+    </div>` : ''}
+
+    <div class="cta-row">
+      <a href="/products" class="btn-primary">🛒 Тауарларға өту</a>
+      <a href="https://wa.me/77765007502" class="btn-secondary" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>`;
+}
+
+// ══ FULL SETUP ════════════════════════════════════════════════════════════════
+function renderFullSetup(data) {
+  const ucLabel = {
+    esports:'🎯 Esports / FPS', streaming:'📡 Стриминг',
+    creative:'🎨 4K / Монтаж', aaa:'🎮 AAA ойындар', general:'⚙️ Универсал'
+  }[data.use_case] || '';
+
+  const specs = [
+    { icon:'🎮', label:'Видеокарта', name: data.gpu,      desc: data.gpu_reason,      price: data.gpu_price },
+    { icon:'💻', label:'Процессор',  name: data.cpu,      desc: data.cpu_reason,      price: data.cpu_price },
+    { icon:'🧠', label:'RAM',        name: data.ram,      desc: data.ram_reason,      price: data.ram_price },
+    { icon:'💾', label:'SSD',        name: data.ssd,      desc: data.ssd_reason,      price: data.ssd_price },
+    { icon:'🖥',  label:'Монитор',   name: data.monitor,  desc: data.monitor_reason,  price: data.monitor_price },
+    { icon:'🖱',  label:'Тышқан',    name: data.mouse,    desc: data.mouse_reason,    price: data.mouse_price },
+    { icon:'⌨️', label:'Пернетақта', name: data.keyboard, desc: data.keyboard_reason, price: data.keyboard_price },
+    { icon:'🎧', label:'Құлаққап',  name: data.headset,  desc: data.headset_reason,  price: data.headset_price },
+  ].filter(s => s.name && s.name !== '-');
+
+  const specRows = specs.map(s => `
+    <div class="setup-spec-row">
+      <div class="setup-spec-label">${s.icon} ${s.label}</div>
+      <div>
+        <div class="setup-spec-name">${s.name}</div>
+        <div class="setup-spec-desc">${s.desc || ''}</div>
+      </div>
+      ${s.price ? `<div class="setup-spec-price">${s.price.toLocaleString()} ₸</div>` : '<div></div>'}
+    </div>`).join('');
+
+  const gpuAlts = (data.gpu_alternatives || []).map(a => {
+    const cheaper = a.price < (data.gpu_price || 999999);
+    return `<div class="alt-row">
+      <div class="alt-row-info">
+        <div class="alt-row-name">${a.name}<span class="alt-tag ${cheaper?'tag-cheaper':'tag-upgrade'}">${cheaper?'арзанырақ':'апгрейд'}</span></div>
+        <div class="alt-row-desc">${a.reason}</div>
+      </div>
+      <div class="alt-row-price">${(a.price||0).toLocaleString()} ₸</div>
+    </div>`;
+  }).join('');
+
+  return `<div class="ai-card">
+    <div class="ai-card-header">
+      <div class="label">🖥 Конфигурация · ${ucLabel}</div>
+      <h2>${data.name}</h2>
+      <div class="sub">${data.reason}</div>
+    </div>
+
+    <div class="setup-spec-grid">${specRows}</div>
+
+    <div class="price-banner">
+      <span class="total-lbl">Жалпы құны</span>
+      <span class="total-val">${(data.price||0).toLocaleString()} ₸</span>
+    </div>
+
+    ${data.performance_summary ? `
+    <div style="padding:14px 28px;border-top:1px solid rgba(255,255,255,0.04)">
+      <div class="score-title">🎮 Өнімділік болжамы</div>
+      <div class="perf-strip">
+        ${data.performance_summary.split(',').map(s => s.trim()).filter(Boolean).map(s =>
+          `<div class="perf-chip">${s}</div>`).join('')}
+      </div>
+    </div>` : ''}
+
+    ${(data.bottleneck_note || data.upgrade_path) ? `
+    <div style="padding:12px 28px;border-top:1px solid rgba(255,255,255,0.04)">
+      ${data.bottleneck_note ? `<div class="note-row"><span class="note-icon">⚠️</span><span>${data.bottleneck_note}</span></div>` : ''}
+      ${data.upgrade_path ? `<div class="note-row"><span class="note-icon">🔧</span><span>${data.upgrade_path}</span></div>` : ''}
+    </div>` : ''}
+
+    ${gpuAlts ? `
+    <div class="alts-section" style="border-top:1px solid rgba(255,255,255,0.04)">
+      <div class="alts-title">🔄 GPU балама нұсқалар</div>
+      ${gpuAlts}
+    </div>` : ''}
+
+    ${renderSetupAlternatives(data.setup_alternatives, data.price)}
+
+    <div class="cta-row">
+      <a href="https://wa.me/77765007502" class="btn-primary" target="_blank">💬 WhatsApp тапсырыс</a>
+      <a href="/products" class="btn-secondary">📦 Барлық тауарлар</a>
+    </div>
+  </div>`;
+}
+
+// ══ SETUP ALTERNATIVES RENDERER ══════════════════════════════════════════════
+function renderSetupAlternatives(alts, mainPrice) {
+  if (!alts || !alts.length) return '';
+  const cards = alts.map(alt => {
+    const tag = alt.tag || 'value';
+    const savings = alt.savings
+      ? (tag === 'cheaper'
+          ? `<span class="alt-savings-badge">-${alt.savings.toLocaleString()} ₸</span>`
+          : `<span class="alt-savings-badge">+${Math.abs(alt.savings).toLocaleString()} ₸</span>`)
+      : '';
+    const specs = [
+      { label: '🎮 GPU', val: alt.gpu, price: alt.gpu_price },
+      { label: '💻 CPU', val: alt.cpu, price: alt.cpu_price },
+      { label: '🧠 RAM', val: alt.ram, price: alt.ram_price },
+      { label: '💾 SSD', val: alt.ssd, price: alt.ssd_price },
+      { label: '🖥 Монитор', val: alt.monitor, price: alt.monitor_price },
+      { label: '🖱 Тышқан', val: alt.mouse, price: alt.mouse_price },
+      { label: '⌨️ Keyboard', val: alt.keyboard, price: alt.keyboard_price },
+      { label: '🎧 Headset', val: alt.headset, price: alt.headset_price },
+    ].filter(s => s.val);
+    const specRows = specs.map(s => `
+      <div class="alt-card-spec-row">
+        <span class="alt-spec-label">${s.label}</span>
+        <span class="alt-spec-val">${s.val}</span>
+        ${s.price ? `<span class="alt-spec-price">${s.price.toLocaleString()} ₸</span>` : ''}
+      </div>`).join('');
+    const askQuery = `${alt.name || 'Балама нұсқа'} конфигурациясын толық бағала`;
+    return `<div class="setup-alt-card ${tag}">
+      ${savings}
+      <div class="alt-card-label">${alt.label || tag}</div>
+      <div class="alt-card-name">${alt.name || 'Балама нұсқа'}</div>
+      <div class="alt-card-price">${(alt.price||0).toLocaleString()} ₸</div>
+      ${alt.performance_delta ? `<div class="alt-card-delta">${alt.performance_delta}</div>` : ''}
+      ${alt.key_diff ? `<div class="alt-card-keydiff">🔑 ${alt.key_diff}</div>` : ''}
+      ${alt.best_for ? `<div class="alt-card-bestfor">✦ ${alt.best_for}</div>` : ''}
+      <div class="alt-card-specs">${specRows}</div>
+      <button class="alt-card-ask-btn" onclick="chip('${askQuery}', ${alt.price||0})">🤖 Осы нұсқаны бағала →</button>
+    </div>`;
+  }).join('');
+  return `<div class="setup-alts-section">
+    <div class="setup-alts-title">🔄 Балама конфигурациялар</div>
+    <div class="setup-alts-grid">${cards}</div>
+  </div>`;
+}
+
+</script>
+  <!-- Mobile WhatsApp sticky button -->
+  <a class="mobile-wa-btn" href="https://wa.me/77765007502" target="_blank">💬</a>
+</body>
+</html>

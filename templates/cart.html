@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQazaq — Себет</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    .cart-page { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+    .cart-title {
+      font-size: 42px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #fff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 36px;
+    }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ── ITEMS ── */
+    .cart-items-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .cart-item-row {
+      background: rgba(17,24,39,0.72);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: 0.3s;
+    }
+    .cart-item-row:hover { border-color: rgba(168,85,247,0.3); }
+
+    .cart-item-name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .cart-item-price { color: #c084fc; font-weight: 800; font-size: 18px; }
+
+    .cart-remove {
+      width: 36px; height: 36px;
+      border: none; border-radius: 10px;
+      background: rgba(239,68,68,0.15);
+      color: #f87171;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      flex-shrink: 0;
+    }
+    .cart-remove:hover { background: rgba(239,68,68,0.3); transform: scale(1.1); }
+
+    .cart-empty {
+      text-align: center;
+      padding: 80px 0;
+      color: #6b7280;
+    }
+    .cart-empty .empty-icon { font-size: 64px; margin-bottom: 16px; }
+    .cart-empty p { font-size: 20px; margin-bottom: 24px; }
+    .cart-empty a {
+      padding: 14px 28px;
+      background: linear-gradient(90deg,#7c3aed,#d946ef);
+      border-radius: 14px;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .cart-empty a:hover { transform: translateY(-3px); box-shadow: 0 0 24px rgba(168,85,247,0.35); }
+
+    /* ── ORDER PANEL ── */
+    .order-panel {
+      background: rgba(17,24,39,0.82);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 28px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .order-panel h3 { font-size: 22px; font-weight: 800; margin-bottom: 24px; }
+
+    /* ── SUMMARY ── */
+    .order-summary { margin-bottom: 28px; }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      color: #9ca3af;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    .summary-row.total {
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+    .summary-row.total span:last-child { color: #d8b4fe; }
+
+    /* ── PAYMENT METHODS ── */
+    .payment-section { margin-bottom: 24px; }
+    .payment-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .payment-options { display: flex; flex-direction: column; gap: 10px; }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 2px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+      cursor: pointer;
+      transition: 0.25s;
+      user-select: none;
+    }
+    .payment-option:hover { border-color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.06); }
+    .payment-option.selected {
+      border-color: #a855f7;
+      background: rgba(168,85,247,0.12);
+      box-shadow: 0 0 18px rgba(168,85,247,0.15);
+    }
+
+    .payment-option input[type="radio"] { display: none; }
+
+    .payment-radio {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: 0.25s;
+    }
+    .payment-option.selected .payment-radio {
+      border-color: #a855f7;
+      background: #a855f7;
+    }
+    .payment-option.selected .payment-radio::after {
+      content: "";
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    .payment-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .icon-kaspi   { background: #ef4444; color: white; }
+    .icon-halyk   { background: #16a34a; color: white; }
+    .icon-cash    { background: #ca8a04; color: white; font-size: 18px; }
+    .icon-install { background: linear-gradient(135deg,#7c3aed,#d946ef); color: white; font-size: 14px; }
+
+    .payment-info { flex: 1; }
+    .payment-info strong { font-size: 15px; font-weight: 700; display: block; }
+    .payment-info span { font-size: 12px; color: #6b7280; }
+    .payment-option.selected .payment-info span { color: #a78bfa; }
+
+    /* ── INSTALLMENT SUB-OPTIONS ── */
+    .inst-pill {
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .inst-months { color: #a855f7; font-size: 11px; font-weight: 700; }
+    .inst-amount { color: #f9fafb; font-size: 13px; font-weight: 800; }
+    .installment-months {
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+      padding: 12px;
+      background: rgba(168,85,247,0.06);
+      border-radius: 12px;
+    }
+    .installment-months.visible { display: grid; }
+    .month-btn {
+      padding: 8px 4px;
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 10px;
+      background: transparent;
+      color: #d1d5db;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      text-align: center;
+    }
+    .month-btn:hover, .month-btn.active {
+      background: #7c3aed;
+      border-color: #7c3aed;
+      color: white;
+    }
+
+    /* ── CONTACT FIELDS ── */
+    .contact-section { margin-bottom: 24px; }
+    .field-group { display: flex; flex-direction: column; gap: 10px; }
+    .field-group input {
+      height: 48px;
+      padding: 0 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.05);
+      color: white;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+    .field-group input:focus {
+      border-color: #a855f7;
+      box-shadow: 0 0 14px rgba(168,85,247,0.2);
+    }
+    .field-group input::placeholder { color: #4b5563; }
+    .field-group input.error { border-color: #ef4444; }
+
+    /* ── ERROR MSG ── */
+    .error-msg {
+      display: none;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: #f87171;
+      font-size: 14px;
+      margin-bottom: 16px;
+      animation: shake 0.3s ease;
+    }
+    .error-msg.visible { display: flex; align-items: center; gap: 8px; }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-6px); }
+      75%      { transform: translateX(6px); }
+    }
+
+    /* ── ORDER BUTTON ── */
+    .order-btn {
+      width: 100%;
+      height: 54px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(90deg,#7c3aed,#d946ef);
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 24px rgba(168,85,247,0.25);
+    }
+    .order-btn:hover { transform: translateY(-3px); box-shadow: 0 0 36px rgba(217,70,239,0.4); }
+    .order-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    /* ── SUCCESS MODAL ── */
+    .success-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-overlay.visible { display: flex; }
+    .success-modal {
+      background: #111827;
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 32px;
+      padding: 48px 40px;
+      text-align: center;
+      max-width: 440px;
+      width: 90%;
+      animation: popIn 0.4s cubic-bezier(.175,.885,.32,1.275);
+    }
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .success-icon { font-size: 72px; margin-bottom: 20px; }
+    .success-modal h2 { font-size: 28px; font-weight: 900; margin-bottom: 12px; }
+    .success-modal p { color: #9ca3af; line-height: 1.7; margin-bottom: 8px; }
+    .success-modal .order-num {
+      display: inline-block;
+      margin: 16px 0;
+      padding: 10px 20px;
+      background: rgba(168,85,247,0.15);
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 12px;
+      color: #d8b4fe;
+      font-weight: 800;
+      font-size: 18px;
+    }
+    .success-back {
+      margin-top: 24px;
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(90deg,#7c3aed,#d946ef);
+      border-radius: 14px;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .success-back:hover { transform: translateY(-3px); }
+
+
+    /* ── GIFT SECTION ── */
+    .gift-section {
+      margin-bottom: 24px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(251,191,36,0.3);
+    }
+    .gift-header {
+      background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(245,158,11,0.1));
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(251,191,36,0.15);
+    }
+    .gift-header span {
+      font-size: 20px;
+    }
+    .gift-header strong {
+      font-size: 15px;
+      color: #fbbf24;
+      font-weight: 800;
+    }
+    .gift-header p {
+      font-size: 12px;
+      color: #78716c;
+      margin-top: 2px;
+    }
+    .gift-list {
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(251,191,36,0.04);
+    }
+    .gift-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: rgba(251,191,36,0.06);
+      border: 1px solid rgba(251,191,36,0.2);
+      border-radius: 12px;
+    }
+    .gift-item-icon { font-size: 24px; flex-shrink: 0; }
+    .gift-item-info { flex: 1; }
+    .gift-item-info strong { font-size: 14px; color: white; display: block; margin-bottom: 2px; }
+    .gift-item-info span  { font-size: 12px; color: #9ca3af; }
+    .gift-free {
+      padding: 3px 10px;
+      background: rgba(34,197,94,0.15);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 999px;
+      color: #4ade80;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .gift-tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-left: auto;
+    }
+    .tier-silver { background: rgba(148,163,184,0.15); color: #94a3b8; border: 1px solid rgba(148,163,184,0.3); }
+    .tier-gold   { background: rgba(251,191,36,0.15);  color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+    .tier-vip    { background: rgba(168,85,247,0.15);  color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+    .no-gift-msg {
+      padding: 14px 18px;
+      color: #6b7280;
+      font-size: 13px;
+      text-align: center;
+      background: rgba(255,255,255,0.02);
+    }
+
+    @media (max-width: 860px) {
+      .cart-layout { grid-template-columns: 1fr; }
+      .order-panel { position: static; }
+    }
+    @media (max-width: 600px) {
+      .cart-page { padding: 20px 12px; }
+      .cart-title { font-size: 28px; margin-bottom: 20px; }
+      .cart-item-row { flex-wrap: wrap; padding: 14px 16px; gap: 10px; }
+      .cart-item-name { font-size: 14px; }
+      .cart-item-price { font-size: 15px; }
+      .order-panel { padding: 20px; border-radius: 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand">
+      <a class="city" href="https://2gis.kz/zhezkazgan/geo/70030076462480403" target="_blank">📍 Сатпаев</a>
+      <div class="logo">CyberQazaq</div>
+    </div>
+    <nav class="top-nav">
+      <a href="/">Басты бет</a>
+      <a href="/products">Тауарлар</a>
+      <a href="/about">Біз туралы</a>
+      <a href="/contact">Байланыс</a>
+      <a href="/cart">Себет</a>
+      <a href="/admin/direct" style="color:#a78bfa;font-weight:700;">⚙️ Админ</a>
+    </nav>
+    <div class="header-actions">
+      <a class="contact-btn" href="https://wa.me/77765007502" target="_blank">💬 Бізге жазу</a>
+      <a class="phone-link" href="tel:+77765007502">+7 (776) 500-75-02</a>
+    </div>
+    <!-- Hamburger (mobile only) -->
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Mobile nav drawer -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="/">🏠 Басты бет</a>
+      <a href="/products">🛒 Тауарлар</a>
+      <a href="/about">🏢 Біз туралы</a>
+      <a href="/contact">📞 Байланыс</a>
+      <a href="/cart">🛒 Себет</a>
+      <a href="/favorites">❤️ Таңдаулылар</a>
+      <a href="/ai-builder">🤖 AI конфигуратор</a>
+      <a href="https://wa.me/77765007502" target="_blank" style="color:#c084fc;">💬 WhatsApp жазу</a>
+      <a href="tel:+77765007502" style="color:#9ca3af;">📞 +7 (776) 500-75-02</a>
+    </nav>
+  </header>
+
+  <div class="cart-page">
+    <h1 class="cart-title">🛒 Себет</h1>
+
+    <!-- Empty state (shown when cart is empty) -->
+    <div class="cart-empty" id="emptyState" style="display:none">
+      <div class="empty-icon">🛒</div>
+      <p>Себетіңіз бос</p>
+      <a href="/">Тауарларға оралу</a>
+    </div>
+
+    <!-- Cart layout (shown when cart has items) -->
+    <div class="cart-layout" id="cartLayout">
+
+      <!-- LEFT: items list -->
+      <div class="cart-items-list" id="cartItemsList"></div>
+
+      <!-- RIGHT: order panel -->
+      <div class="order-panel">
+        <h3>📋 Тапсырыс</h3>
+
+        <!-- Summary -->
+        <div class="order-summary">
+          <div class="summary-row">
+            <span>Тауарлар саны</span>
+            <span id="itemCount">0</span>
+          </div>
+          <div class="summary-row">
+            <span>Жеткізу</span>
+            <span style="color:#4ade80">Менеджермен келісіледі</span>
+          </div>
+          <div class="summary-row total">
+            <span>Жалпы сома</span>
+            <span id="totalSum">0 ₸</span>
+          </div>
+        </div>
+
+        <!-- Installment preview -->
+        <div id="installmentPreview" style="display:none;background:#111827;border:1px solid #1f2937;border-radius:14px;padding:14px;margin-bottom:16px"></div>
+
+        <!-- GIFT SECTION -->
+        <div class="gift-section" id="giftSection" style="display:none">
+          <div class="gift-header">
+            <span>🎁</span>
+            <div>
+              <strong>Тегін сыйлық!</strong>
+              <p id="giftTierText">Сетке қосымша сыйлық</p>
+            </div>
+            <span id="giftTierBadge" class="gift-tier-badge tier-gold"></span>
+          </div>
+          <div class="gift-list" id="giftList"></div>
+        </div>
+
+        <!-- Payment method — REQUIRED -->
+        <div class="payment-section">
+          <div class="payment-label">💳 Төлем тәсілі *</div>
+          <div class="payment-options" id="paymentOptions">
+
+            <label class="payment-option" onclick="selectPayment(this, 'kaspi')">
+              <input type="radio" name="payment" value="kaspi">
+              <div class="payment-radio"></div>
+              <div class="payment-icon icon-kaspi">K</div>
+              <div class="payment-info">
+                <strong>Kaspi Bank</strong>
+                <span>QR немесе телефон нөмірі</span>
+              </div>
+            </label>
+
+            <label class="payment-option" onclick="selectPayment(this, 'halyk')">
+              <input type="radio" name="payment" value="halyk">
+              <div class="payment-radio"></div>
+              <div class="payment-icon icon-halyk">H</div>
+              <div class="payment-info">
+                <strong>Halyk Bank</strong>
+                <span>Homebank / карта аударымы</span>
+              </div>
+            </label>
+
+            <label class="payment-option" onclick="selectPayment(this, 'cash')">
+              <input type="radio" name="payment" value="cash">
+              <div class="payment-radio"></div>
+              <div class="payment-icon icon-cash">₸</div>
+              <div class="payment-info">
+                <strong>Қолма-қол</strong>
+                <span>Жеткізу кезінде төлем</span>
+              </div>
+            </label>
+
+            <label class="payment-option" onclick="selectPayment(this, 'installment')">
+              <input type="radio" name="payment" value="installment">
+              <div class="payment-radio"></div>
+              <div class="payment-icon icon-install">%</div>
+              <div class="payment-info">
+                <strong>Бөліп төлеу</strong>
+                <span>0% — 3, 6, 12, 24 ай</span>
+              </div>
+            </label>
+
+          </div>
+
+          <!-- Installment months (shown only when installment selected) -->
+          <div class="installment-months" id="installmentMonths">
+            <button class="month-btn" onclick="selectMonths(this, 3)">3 ай</button>
+            <button class="month-btn" onclick="selectMonths(this, 6)">6 ай</button>
+            <button class="month-btn active" onclick="selectMonths(this, 12)">12 ай</button>
+            <button class="month-btn" onclick="selectMonths(this, 24)">24 ай</button>
+          </div>
+        </div>
+
+        <!-- Contact info -->
+        <div class="contact-section">
+          <div class="payment-label">📞 Байланыс мәліметтері *</div>
+          <div class="field-group">
+            <input type="text"  id="orderName"  placeholder="Аты-жөніңіз">
+            <input type="tel"   id="orderPhone" placeholder="Телефон нөміріңіз">
+            <input type="text"  id="orderCity"  placeholder="Қала / Мекенжай">
+          </div>
+        </div>
+
+        <!-- Error message -->
+        <div class="error-msg" id="errorMsg">
+          <span>⚠️</span>
+          <span id="errorText"></span>
+        </div>
+
+        <!-- Order button -->
+        <button class="order-btn" onclick="submitOrder()">
+          ✅ Тапсырыс беру
+        </button>
+
+        <p style="text-align:center; color:#4b5563; font-size:13px; margin-top:14px;">
+          Тапсырыс берілгеннен кейін менеджер 30 минут ішінде хабарласады
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-modal">
+    <div class="success-icon">🎉</div>
+    <h2>Тапсырыс қабылданды!</h2>
+    <p>Менеджер сізге <strong>30 минут ішінде</strong> хабарласады.</p>
+    <div class="order-num" id="orderNum">#000000</div>
+    <p id="paymentConfirmText" style="color:#a78bfa; font-weight:600;"></p>
+    <div id="successGifts"></div>
+    <div id="successInstallment" style="display:none;margin:12px 0;padding:12px 16px;background:rgba(124,58,237,0.12);border:1px solid rgba(168,85,247,0.3);border-radius:14px;text-align:left"></div>
+    <p style="margin-top:8px;">Жеткізу мерзімі: <strong style="color:white">7–15 күн</strong></p>
+    <div style="margin-top:4px;padding:8px 12px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);border-radius:10px;font-size:12px;color:#4ade80">
+      ✅ Төлем күйі: <strong>Растауды күтуде</strong>
+    </div>
+    <button id="redownloadPdf" style="display:none;margin-top:14px;width:100%;padding:12px;border:none;border-radius:14px;background:linear-gradient(90deg,#7c3aed,#c026d3);color:white;font-weight:700;font-size:14px;cursor:pointer">
+      📄 PDF Квитанция жүктеу
+    </button>
+    <a href="/" class="success-back">Басты бетке оралу</a>
+  </div>
+</div>
+
+<script>
+  // ── STATE ──────────────────────────────────────────────────────────────────
+  let cart            = JSON.parse(localStorage.getItem('cart')) || [];
+  let selectedPayment = null;
+  let selectedMonths  = 12;
+
+  // ── RENDER CART ────────────────────────────────────────────────────────────
+  // ── GIFT TIERS ─────────────────────────────────────────────────────────
+  const GIFT_TIERS = [
+    {
+      minPrice: 2_000_000,
+      badge:    '👑 VIP',
+      badgeClass: 'tier-vip',
+      tierText: 'VIP сет — 3 сыйлық!',
+      gifts: [
+        { icon: '🖥',  name: 'Екінші монитор',    desc: '240Hz Gaming Monitor — тегін!',   highlight: true },
+        { icon: '🖱',  name: 'Desk Mat XL',         desc: 'Үлкен gaming коврик — тегін!' },
+        { icon: '📐',  name: 'Monitor Bracket',     desc: 'Монитор кронштейні — тегін!' },
+      ]
+    },
+    {
+      minPrice: 800_000,
+      badge:    '🥇 Gold',
+      badgeClass: 'tier-gold',
+      tierText: 'Gold сет — 2 сыйлық!',
+      gifts: [
+        { icon: '🖱',  name: 'Desk Mat XL',         desc: 'Үлкен gaming коврик — тегін!' },
+        { icon: '📐',  name: 'Monitor Bracket',     desc: 'Монитор кронштейні — тегін!' },
+      ]
+    },
+    {
+      minPrice: 500_000,
+      badge:    '🥈 Silver',
+      badgeClass: 'tier-silver',
+      tierText: 'Сетке қосымша сыйлық!',
+      gifts: [
+        { icon: '🖱',  name: 'Desk Mat',             desc: 'Gaming коврик — тегін!' },
+      ]
+    },
+  ];
+
+  function getGiftTier(total) {
+    for (const tier of GIFT_TIERS) {
+      if (total >= tier.minPrice) return tier;
+    }
+    return null;
+  }
+
+  function renderGifts(total) {
+    const section = document.getElementById('giftSection');
+    const list    = document.getElementById('giftList');
+    const tierText  = document.getElementById('giftTierText');
+    const tierBadge = document.getElementById('giftTierBadge');
+
+    const tier = getGiftTier(total);
+    if (!tier) { section.style.display = 'none'; return; }
+
+    section.style.display = 'block';
+    tierText.textContent  = tier.tierText;
+    tierBadge.textContent = tier.badge;
+    tierBadge.className   = 'gift-tier-badge ' + tier.badgeClass;
+
+    list.innerHTML = tier.gifts.map(g => `
+      <div class="gift-item">
+        <div class="gift-item-icon">${g.icon}</div>
+        <div class="gift-item-info">
+          <strong>${g.name} ${g.highlight ? '🔥' : ''}</strong>
+          <span>${g.desc}</span>
+        </div>
+        <span class="gift-free">ТЕГІН</span>
+      </div>`).join('');
+  }
+
+  function renderCart() {
+    const list      = document.getElementById('cartItemsList');
+    const empty     = document.getElementById('emptyState');
+    const layout    = document.getElementById('cartLayout');
+    const itemCount = document.getElementById('itemCount');
+    const totalSum  = document.getElementById('totalSum');
+
+    if (cart.length === 0) {
+      empty.style.display  = 'block';
+      layout.style.display = 'none';
+      renderGifts(0);
+      updateInstallmentPreview(0);
+      return;
+    }
+
+    empty.style.display  = 'none';
+    layout.style.display = 'grid';
+
+    // Group items by name to show quantity
+    const grouped = {};
+    cart.forEach(item => {
+      const key = item.name;
+      if (grouped[key]) { grouped[key].qty++; grouped[key].subtotal += item.price; }
+      else grouped[key] = { ...item, qty: 1, subtotal: item.price };
+    });
+
+    let total = 0;
+    list.innerHTML = Object.values(grouped).map((item, i) => {
+      total += item.subtotal;
+      return `
+        <div class="cart-item-row">
+          <div style="flex:1">
+            <div class="cart-item-name">${item.name}</div>
+            <div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+              <div class="cart-item-price">${item.price.toLocaleString()} ₸</div>
+              ${item.qty > 1 ? `<span style="color:#a855f7;font-size:12px;font-weight:700">× ${item.qty} = ${item.subtotal.toLocaleString()} ₸</span>` : ''}
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            ${item.qty > 1 ? `<span style="color:#6b7280;font-size:12px">${item.qty} дана</span>` : ''}
+            <button class="cart-remove" onclick="removeByName('${item.name.replace(/'/g,"\'")}', ${i})" title="Өшіру">×</button>
+          </div>
+        </div>`;
+    }).join('');
+
+    itemCount.textContent = cart.length + ' дана';
+    totalSum.textContent  = total.toLocaleString() + ' ₸';
+    renderGifts(total);
+    updateInstallmentPreview(total);
+  }
+
+  function removeByName(name, idx) {
+    const i = cart.findIndex(item => item.name === name);
+    if (i !== -1) { cart.splice(i, 1); localStorage.setItem('cart', JSON.stringify(cart)); renderCart(); }
+  }
+
+  function updateInstallmentPreview(total) {
+    const box = document.getElementById('installmentPreview');
+    if (!box) return;
+    if (total <= 0) { box.style.display = 'none'; return; }
+    const m3  = Math.round(total / 3).toLocaleString();
+    const m6  = Math.round(total / 6).toLocaleString();
+    const m12 = Math.round(total / 12).toLocaleString();
+    const m24 = Math.round(total / 24).toLocaleString();
+    box.style.display = 'block';
+    box.innerHTML = `
+      <div style="color:#9ca3af;font-size:11px;font-weight:700;margin-bottom:8px;letter-spacing:0.5px">💳 БӨЛІП ТӨЛЕУ (0%)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <div class="inst-pill"><span class="inst-months">3 ай</span><span class="inst-amount">${m3} ₸/ай</span></div>
+        <div class="inst-pill"><span class="inst-months">6 ай</span><span class="inst-amount">${m6} ₸/ай</span></div>
+        <div class="inst-pill"><span class="inst-months">12 ай</span><span class="inst-amount">${m12} ₸/ай</span></div>
+        <div class="inst-pill"><span class="inst-months">24 ай</span><span class="inst-amount">${m24} ₸/ай</span></div>
+      </div>
+      <div style="color:#4b5563;font-size:10px;margin-top:6px;text-align:center">Kaspi / Halyk / Freedom Bank арқылы</div>`;
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  // ── PAYMENT SELECTION ──────────────────────────────────────────────────────
+  function selectPayment(label, method) {
+    document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
+    label.classList.add('selected');
+    selectedPayment = method;
+
+    // Show installment months only for bөліп төлеу
+    const months = document.getElementById('installmentMonths');
+    months.classList.toggle('visible', method === 'installment');
+
+    hideError();
+  }
+
+  function selectMonths(btn, months) {
+    document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedMonths = months;
+  }
+
+  // ── VALIDATION & SUBMIT ────────────────────────────────────────────────────
+  function showError(msg) {
+    const box  = document.getElementById('errorMsg');
+    const text = document.getElementById('errorText');
+    text.textContent = msg;
+    box.classList.add('visible');
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function hideError() {
+    document.getElementById('errorMsg').classList.remove('visible');
+    document.querySelectorAll('.field-group input').forEach(i => i.classList.remove('error'));
+  }
+
+  async function submitOrder() {
+    hideError();
+
+    const name  = document.getElementById('orderName').value.trim();
+    const phone = document.getElementById('orderPhone').value.trim();
+    const city  = document.getElementById('orderCity').value.trim();
+
+    // 1. Check payment method selected
+    if (!selectedPayment) {
+      showError('Төлем тәсілін таңдаңыз');
+      return;
+    }
+
+    // 2. Check name
+    if (!name) {
+      document.getElementById('orderName').classList.add('error');
+      showError('Аты-жөніңізді енгізіңіз');
+      return;
+    }
+
+    // 3. Check phone
+    if (!phone) {
+      document.getElementById('orderPhone').classList.add('error');
+      showError('Телефон нөміріңізді енгізіңіз');
+      return;
+    }
+
+    // 4. Check city
+    if (!city) {
+      document.getElementById('orderCity').classList.add('error');
+      showError('Қала / мекенжайды енгізіңіз');
+      return;
+    }
+
+    // ── All good — send order to server ─────────────────────────────────────
+    const orderNum = '#' + Math.floor(100000 + Math.random() * 900000);
+
+    const paymentLabels = {
+      kaspi:       'Kaspi Bank арқылы төлем',
+      halyk:       'Halyk Bank арқылы төлем',
+      cash:        'Жеткізу кезінде қолма-қол төлем',
+      installment: `Бөліп төлеу — ${selectedMonths} ай (0%)`
+    };
+    const paymentLabel = paymentLabels[selectedPayment];
+
+    const total = cart.reduce((s, i) => s + i.price, 0);
+
+    // Disable button while sending
+    const btn = document.querySelector('.order-btn');
+    btn.disabled    = true;
+    btn.textContent = '⏳ Жіберілуде...';
+
+    try {
+      await fetch('/order', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          order_num: orderNum,
+          name,
+          phone,
+          city,
+          payment: paymentLabel,
+          items:   cart,
+          total,
+          gifts: (() => {
+            const tier = getGiftTier(total);
+            return tier ? tier.gifts.map(g => g.name) : [];
+          })()
+        })
+      });
+    } catch (e) {
+      // Email failure is non-blocking — order still goes through
+      console.warn('Email send failed:', e);
+    }
+
+    // Build enriched items list with quantity
+    const groupedForPdf = {};
+    cart.forEach(item => {
+      if (groupedForPdf[item.name]) { groupedForPdf[item.name].qty++; }
+      else groupedForPdf[item.name] = { ...item, qty: 1 };
+    });
+    const pdfItems = Object.values(groupedForPdf).map(item => ({
+      name:        item.qty > 1 ? `${item.name} (× ${item.qty})` : item.name,
+      price:       item.subtotal || item.price * item.qty,
+      description: item.description || '',
+      warranty:    item.warranty || '12 ай',
+    }));
+
+    const installmentInfo = selectedPayment === 'installment'
+      ? `
+Айлық төлем: ${Math.round(total / selectedMonths).toLocaleString()} ₸ × ${selectedMonths} ай (0%)`
+      : '';
+
+    const pdfPayload = {
+      order_num: orderNum,
+      name, phone, city,
+      payment:   paymentLabel + installmentInfo,
+      items:     pdfItems,
+      total,
+      gifts: (() => { const tier = getGiftTier(total); return tier ? tier.gifts.map(g => g.name) : []; })(),
+      order_date: new Date().toLocaleString('kk-KZ', { year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' }),
+      payment_status: 'Растауды күтуде',
+    };
+
+    // Generate and download PDF receipt
+    try {
+      const pdfRes = await fetch('/order/pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(pdfPayload)
+      });
+      if (pdfRes.ok) {
+        const blob = await pdfRes.blob();
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement('a');
+        a.href     = url;
+        a.download = `CyberQazaq-${orderNum.replace('#','')}.pdf`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    } catch(e) { console.warn('PDF generation failed:', e); }
+
+    // Show success regardless of email result
+    document.getElementById('orderNum').textContent = orderNum;
+    document.getElementById('paymentConfirmText').textContent = '💳 ' + paymentLabel;
+
+    // Clear cart
+    localStorage.removeItem('cart');
+    cart = [];
+
+    btn.disabled    = false;
+    btn.textContent = '✅ Тапсырыс беру';
+
+    // Show gifts in modal
+    const successTier = getGiftTier(total);
+    const giftsEl = document.getElementById('successGifts');
+    if (successTier && giftsEl) {
+      giftsEl.innerHTML = `<div style="margin:16px 0;padding:14px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);border-radius:16px">
+        <p style="color:#fbbf24;font-weight:800;margin-bottom:8px">🎁 Сіздің сыйлықтарыңыз:</p>
+        ${successTier.gifts.map(g => `<p style="color:#d1d5db;margin:4px 0">${g.icon} ${g.name}</p>`).join('')}
+      </div>`;
+    } else if (giftsEl) {
+      giftsEl.innerHTML = '';
+    }
+
+    // Show installment breakdown in success modal if applicable
+    const successInstEl = document.getElementById('successInstallment');
+    if (successInstEl) {
+      if (selectedPayment === 'installment') {
+        const monthly = Math.round(total / selectedMonths).toLocaleString();
+        successInstEl.style.display = 'block';
+        successInstEl.innerHTML = `
+          <div style="color:#a855f7;font-weight:700;font-size:12px;margin-bottom:6px">💳 БӨЛІП ТӨЛЕУ АҚПАРАТЫ</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px">
+            <div><span style="color:#6b7280">Жалпы сома:</span><br><strong style="color:white">${total.toLocaleString()} ₸</strong></div>
+            <div><span style="color:#6b7280">Мерзім:</span><br><strong style="color:white">${selectedMonths} ай (0%)</strong></div>
+            <div><span style="color:#6b7280">Ай сайын:</span><br><strong style="color:#d8b4fe;font-size:16px">${monthly} ₸</strong></div>
+            <div><span style="color:#6b7280">Төлем күйі:</span><br><strong style="color:#4ade80">Растауды күтуде</strong></div>
+          </div>`;
+      } else {
+        successInstEl.style.display = 'none';
+      }
+    }
+
+    // Store PDF payload for re-download
+    const redownBtn = document.getElementById('redownloadPdf');
+    if (redownBtn) {
+      redownBtn.style.display = 'block';
+      redownBtn.onclick = async () => {
+        try {
+          const res = await fetch('/order/pdf', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(pdfPayload) });
+          if (res.ok) { const b = await res.blob(); const u = URL.createObjectURL(b); const a = document.createElement('a'); a.href=u; a.download=`CyberQazaq-${orderNum.replace('#','')}.pdf`; a.click(); URL.revokeObjectURL(u); }
+        } catch(e) { console.warn('PDF re-download failed:', e); }
+      };
+    }
+
+    document.getElementById('successOverlay').classList.add('visible');
+  }
+
+  // ── INIT ───────────────────────────────────────────────────────────────────
+  renderCart();
+</script>
+  <!-- Mobile WhatsApp sticky button -->
+  <a class="mobile-wa-btn" href="https://wa.me/77765007502" target="_blank">💬</a>
+</body>
+</html>

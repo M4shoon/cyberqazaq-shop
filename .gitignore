@@ -1,0 +1,13 @@
+# Құпия деректер — ешқашан GitHub-қа жүктемеңіз
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQazaq — Тауарлар</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    .trust-banner {
+      background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(217,70,239,0.08));
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 28px;
+      padding: 36px 40px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .trust-item { display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; }
+    .trust-icon { font-size:36px; }
+    .trust-item h4 { font-size:16px; font-weight:800; }
+    .trust-item p { color:#9ca3af; font-size:13px; line-height:1.5; }
+
+    .section-heading {
+      font-size:30px; font-weight:900; margin-bottom:8px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .section-heading::after {
+      content:""; flex:1; height:1px;
+      background:linear-gradient(90deg,rgba(168,85,247,0.4),transparent);
+    }
+    .section-sub { color:#6b7280; font-size:15px; margin-bottom:28px; }
+
+    .suppliers-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+      gap:20px;
+      margin-bottom:56px;
+    }
+    .supplier-card {
+      background:rgba(17,24,39,0.72);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:22px; padding:26px;
+      position:relative; overflow:hidden; transition:0.3s;
+    }
+    .supplier-card::before {
+      content:""; position:absolute; top:0; left:0;
+      width:100%; height:3px;
+      background:var(--c, linear-gradient(90deg,#7c3aed,#d946ef));
+    }
+    .supplier-card:hover { transform:translateY(-4px); border-color:rgba(168,85,247,0.3); box-shadow:0 0 32px rgba(168,85,247,0.12); }
+    .supplier-logo { font-size:22px; font-weight:900; margin-bottom:12px; display:flex; align-items:center; gap:10px; }
+    .supplier-card h3 { font-size:18px; font-weight:800; margin-bottom:8px; }
+    .supplier-card p { color:#9ca3af; font-size:14px; line-height:1.6; margin-bottom:14px; }
+    .supplier-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .supplier-tag { padding:4px 12px; border-radius:999px; font-size:12px; font-weight:700; background:rgba(168,85,247,0.12); border:1px solid rgba(168,85,247,0.25); color:#c084fc; }
+    .verified-badge { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.25); border-radius:999px; color:#4ade80; font-size:13px; font-weight:700; margin-top:14px; }
+
+    .cat-tabs { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px; }
+    .cat-tab { padding:10px 20px; border:1px solid rgba(255,255,255,0.08); border-radius:14px; background:rgba(255,255,255,0.04); color:#9ca3af; font-weight:600; cursor:pointer; transition:0.25s; font-size:14px; }
+    .cat-tab:hover { border-color:rgba(168,85,247,0.4); color:white; }
+    .cat-tab.active { background:linear-gradient(90deg,#7c3aed,#d946ef); border-color:transparent; color:white; box-shadow:0 0 16px rgba(168,85,247,0.3); }
+
+    .cat-section { display:none; }
+    .cat-section.active { display:block; }
+    .cat-section-title { font-size:26px; font-weight:900; margin-bottom:24px; }
+
+    @media (max-width:768px) { .trust-banner { grid-template-columns:1fr 1fr; } }
+    @media (max-width:480px) { .trust-banner { grid-template-columns:1fr; } }
+  
+    .sb-installment-block { display:flex; flex-direction:column; gap:2px; margin-top:4px; }
+    .sb-inst-row { font-size:12px; color:#9ca3af; }
+    .sb-inst-row strong { color:#d8b4fe; font-size:13px; }
+    .sb-inst-m { color:#6b7280; min-width:38px; display:inline-block; }
+  </style>
+<style>
+.products-gaming-banner {
+  display:flex; align-items:center; gap:20px;
+  padding:20px 28px; margin-bottom:28px;
+  background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(217,70,239,0.06));
+  border:1px solid rgba(168,85,247,0.15); border-radius:20px;
+  position:relative; overflow:hidden;
+}
+.products-gaming-banner::before {
+  content:""; position:absolute; right:-30px; top:-30px;
+  width:120px; height:120px; background:#7c3aed; opacity:0.06;
+  filter:blur(40px); border-radius:50%;
+}
+.pgb-icons { display:flex; gap:14px; align-items:center; opacity:0.65; }
+.pgb-icons svg { filter:drop-shadow(0 0 6px rgba(168,85,247,0.4)); }
+.pgb-text h3 { font-size:16px; font-weight:800; color:white; margin-bottom:4px; }
+.pgb-text p  { font-size:13px; color:#6b7280; }
+@media(max-width:768px){.products-gaming-banner{flex-direction:column;text-align:center}.pgb-icons{justify-content:center}}
+</style>
+<style>
+/* ── REVIEWS SECTION ─────────────────────────────────────────── */
+.reviews-section {
+  margin-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 12px;
+}
+.reviews-toggle {
+  background: none; border: none;
+  color: #a78bfa; font-size: 12px; font-weight: 700;
+  cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px;
+  transition: color 0.2s;
+}
+.reviews-toggle:hover { color: #c084fc; }
+.reviews-toggle .arrow { transition: transform 0.25s; display: inline-block; }
+.reviews-toggle.open .arrow { transform: rotate(180deg); }
+.reviews-list {
+  display: none; margin-top: 10px; display: flex; flex-direction: column; gap: 10px;
+}
+.reviews-list.visible { display: flex; }
+.review-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(168,85,247,0.1);
+  border-radius: 12px; padding: 10px 12px;
+}
+.review-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+.review-author { font-size: 12px; font-weight: 700; color: #e9d5ff; }
+.review-date   { font-size: 11px; color: #4b5563; }
+.review-stars  { color: #f59e0b; font-size: 12px; margin-bottom: 5px; }
+.review-text   { font-size: 12px; color: #9ca3af; line-height: 1.5; }
+
+/* ── AI QUALITY BADGE ────────────────────────────────────────── */
+.ai-quality-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 12px; margin-top: 10px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(217,70,239,0.1));
+  border: 1px solid rgba(168,85,247,0.3);
+  border-radius: 10px; cursor: pointer;
+  color: #c084fc; font-size: 12px; font-weight: 700;
+  width: 100%; justify-content: center; transition: 0.25s;
+}
+.ai-quality-btn:hover { background: rgba(124,58,237,0.25); border-color: #a855f7; transform: translateY(-1px); }
+.ai-quality-btn .ai-icon { font-size: 14px; }
+
+.ai-quality-panel {
+  display: none; margin-top: 10px;
+  background: rgba(17,24,39,0.95);
+  border: 1px solid rgba(168,85,247,0.25);
+  border-radius: 14px; padding: 14px;
+}
+.ai-quality-panel.visible { display: block; }
+.ai-quality-panel .ai-loading {
+  display: flex; align-items: center; gap: 8px;
+  color: #a78bfa; font-size: 13px; font-weight: 600;
+}
+.ai-quality-panel .ai-loading::before {
+  content: ''; width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid rgba(168,85,247,0.3); border-top-color: #a855f7;
+  animation: spin 0.8s linear infinite; flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.ai-quality-panel .ai-content { font-size: 13px; color: #d1d5db; line-height: 1.6; }
+.ai-quality-panel .ai-content strong { color: #c084fc; }
+.ai-score-bar { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+.ai-score-label { font-size: 11px; color: #6b7280; width: 90px; flex-shrink: 0; }
+.ai-score-track { flex: 1; height: 5px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
+.ai-score-fill  { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #7c3aed, #d946ef); transition: width 0.6s ease; }
+.ai-verdict { margin-top: 10px; padding: 8px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; }
+.ai-verdict.good  { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); color: #4ade80; }
+.ai-verdict.great { background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.25); color: #c084fc; }
+.ai-verdict.ok    { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #fbbf24; }
+
+/* ── REVIEWS UI ──────────────────────────────────────────────── */
+.reviews-section { margin-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; }
+.reviews-toggle { background: none; border: none; color: #a78bfa; font-size: 12px; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; transition: color 0.2s; width: 100%; }
+.reviews-toggle:hover { color: #c084fc; }
+.reviews-toggle .arrow { margin-left: auto; transition: transform 0.25s; }
+.reviews-toggle.open .arrow { transform: rotate(180deg); }
+.reviews-list { display: none; margin-top: 10px; flex-direction: column; gap: 8px; }
+.reviews-list.visible { display: flex; }
+.review-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(168,85,247,0.1); border-radius: 12px; padding: 10px 12px; }
+.review-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.review-author { font-size: 12px; font-weight: 700; color: #e9d5ff; }
+.review-date   { font-size: 11px; color: #4b5563; }
+.review-stars  { color: #f59e0b; font-size: 12px; margin-bottom: 4px; }
+.review-text   { font-size: 12px; color: #9ca3af; line-height: 1.5; margin: 0; }
+
+/* ── SETUP BUNDLE CARDS ──────────────────────────────────────── */
+.setups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+.setup-bundle-card { background: rgba(20,14,40,0.9); border: 1px solid rgba(168,85,247,0.18); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s; }
+.setup-bundle-card:hover { transform: translateY(-4px); box-shadow: 0 8px 40px rgba(124,58,237,0.2); }
+.sb-header { padding: 22px 22px 16px; background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(217,70,239,0.06)); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.sb-badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: #c084fc; margin-bottom: 10px; }
+.sb-name { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+.sb-price-row { display: flex; align-items: baseline; gap: 10px; }
+.sb-price { font-size: 26px; font-weight: 800; color: #d8b4fe; }
+.sb-installment { font-size: 13px; color: #6b7280; }
+.sb-specs { padding: 16px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.sb-spec { display: flex; align-items: flex-start; gap: 10px; }
+.sb-spec-icon { font-size: 15px; width: 22px; flex-shrink: 0; margin-top: 1px; }
+.sb-spec-label { display: block; font-size: 10px; color: #4b5563; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.sb-spec-val { display: block; font-size: 13px; font-weight: 600; color: #e5e7eb; }
+.sb-perks { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 22px 14px; }
+.sb-perks span { padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); color: #6b7280; }
+.sb-actions { display: flex; gap: 8px; padding: 14px 22px 20px; margin-top: auto; }
+.sb-wa-btn { width: 44px; height: 44px; border-radius: 12px; background: rgba(37,211,102,0.12); border: 1px solid rgba(37,211,102,0.25); color: #4ade80; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; flex-shrink: 0; transition: background 0.2s; }
+.sb-wa-btn:hover { background: rgba(37,211,102,0.22); }
+.sb-actions .cart-btn { height: 44px; border-radius: 12px; }
+.setup-bundle-card .reviews-section { padding: 0 22px 4px; border-top: 1px solid rgba(255,255,255,0.05); }
+@media(max-width:640px){ .setups-grid { grid-template-columns: 1fr; } }
+
+/* ── PRICE RANGE FILTER ──────────────────────────────────────── */
+.price-filter-bar {
+  background: rgba(20,14,40,0.85);
+  border: 1px solid rgba(168,85,247,0.18);
+  border-radius: 20px;
+  padding: 18px 24px 14px;
+  margin-bottom: 28px;
+}
+.pf-inputs {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+}
+.pf-field { display: flex; flex-direction: column; gap: 4px; }
+.pf-label {
+  font-size: 11px; font-weight: 700; color: #4b5563;
+  letter-spacing: 0.07em; text-transform: uppercase;
+}
+.pf-input {
+  width: 130px; padding: 9px 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(168,85,247,0.2);
+  border-radius: 10px; color: white;
+  font-size: 14px; font-weight: 600;
+  outline: none; transition: border-color 0.2s;
+  -moz-appearance: textfield;
+}
+.pf-input::-webkit-outer-spin-button,
+.pf-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.pf-input:focus { border-color: rgba(168,85,247,0.55); }
+.pf-sep { color: #4b5563; font-size: 18px; font-weight: 300; padding-top: 18px; }
+.pf-reset {
+  margin-left: auto; margin-top: 14px;
+  width: 34px; height: 34px; border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #6b7280; font-size: 13px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.pf-reset:hover { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: #f87171; }
+
+/* slider track */
+.pf-slider-wrap { position: relative; padding: 0 0 6px; }
+.pf-track {
+  position: relative; height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 99px; margin-bottom: 8px;
+}
+.pf-range-fill {
+  position: absolute; top: 0; height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #d946ef);
+  border-radius: 99px; pointer-events: none;
+}
+/* thumb base — same for both */
+.pf-thumb {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 100%; height: 100%;
+  -webkit-appearance: none; appearance: none;
+  background: transparent; pointer-events: none;
+  margin: 0; padding: 0;
+}
+.pf-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: white;
+  border: 3px solid #7c3aed;
+  box-shadow: 0 0 8px rgba(124,58,237,0.5);
+  cursor: pointer; pointer-events: all;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.pf-thumb::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 16px rgba(217,70,239,0.7);
+}
+.pf-thumb::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: white; border: 3px solid #7c3aed;
+  cursor: pointer; pointer-events: all;
+}
+
+/* tick marks */
+.pf-tick-row {
+  display: flex; justify-content: space-between;
+  padding: 0 2px; margin-top: 4px;
+}
+.pf-tick {
+  font-size: 11px; color: #4b5563;
+  white-space: nowrap; user-select: none;
+}
+.pf-tick.active { color: #a78bfa; font-weight: 700; }
+
+/* count badge */
+.pf-count {
+  font-size: 12px; color: #6b7280; margin-top: 6px;
+  min-height: 16px;
+}
+.pf-count span { color: #a78bfa; font-weight: 700; }
+
+/* hidden cards */
+.product-card.pf-hidden,
+.setup-bundle-card.pf-hidden { display: none !important; }
+
+@media(max-width:600px){
+  .pf-inputs { flex-wrap: wrap; }
+  .pf-input { width: 100px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="site-header">
+    <div class="brand">
+      <a class="city" href="https://2gis.kz/zhezkazgan/geo/70030076462480403" target="_blank">📍 Сатпаев</a>
+      <div class="logo">CyberQazaq</div>
+    </div>
+    <nav class="top-nav">
+      <a href="/">Басты бет</a>
+      <a href="/products">Тауарлар</a>
+      <a href="/about">Біз туралы</a>
+      <a href="/contact">Байланыс</a>
+      <a href="/cart">Себет</a>
+      <a href="/admin/direct" style="color:#a78bfa;font-weight:700;">⚙️ Админ</a>
+    </nav>
+    <div class="header-actions">
+      <a class="contact-btn" href="https://wa.me/77765007502" target="_blank">💬 Бізге жазу</a>
+      <a class="phone-link" href="tel:+77765007502">+7 (776) 500-75-02</a>
+      <div class="header-icons">
+        <a href="/favorites" class="fav-header-btn">❤<span id="favCount">0</span></a>
+        <button class="header-icon" type="button" onclick="toggleCart()">🛒<span id="cartCount">0</span></button>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="mobile-nav" id="mobileNav">
+      <input class="mobile-search" type="text" placeholder="🔍 Тауар іздеу...">
+      <a href="/">🏠 Басты бет</a>
+      <a href="/products">🛒 Тауарлар</a>
+      <a href="/about">🏢 Біз туралы</a>
+      <a href="/contact">📞 Байланыс</a>
+      <a href="/cart">🛒 Себет</a>
+      <a href="https://wa.me/77765007502" target="_blank" style="color:#c084fc;">💬 WhatsApp жазу</a>
+      <a href="tel:+77765007502" style="color:#9ca3af;">📞 +7 (776) 500-75-02</a>
+    </nav>
+  </header>
+
+  <!-- Gaming banner -->
+  <div class="products-gaming-banner">
+    <div class="pgb-icons">
+      <svg width="60" height="34" viewBox="0 0 80 44" fill="none"><rect x="1" y="6" width="70" height="32" rx="5" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/><rect x="6" y="11" width="22" height="22" rx="11" fill="#1e1b4b" stroke="#a855f7" stroke-width="1"/><circle cx="17" cy="22" r="7" fill="#2d1b6e" stroke="#d946ef" stroke-width="1"/><circle cx="17" cy="22" r="3" fill="#7c3aed"/><rect x="33" y="14" width="32" height="4" rx="2" fill="#7c3aed" opacity="0.6"/><rect x="33" y="21" width="26" height="3" rx="1.5" fill="#a855f7" opacity="0.5"/></svg>
+      <svg width="64" height="40" viewBox="0 0 64 40" fill="none"><rect x="1" y="1" width="62" height="38" rx="6" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/><rect x="5" y="6" width="7" height="6" rx="1.5" fill="#7c3aed"/><rect x="14" y="6" width="7" height="6" rx="1.5" fill="#a855f7"/><rect x="23" y="6" width="7" height="6" rx="1.5" fill="#d946ef"/><rect x="32" y="6" width="7" height="6" rx="1.5" fill="#7c3aed"/><rect x="16" y="33" width="32" height="4" rx="2" fill="#d946ef" opacity="0.6"/></svg>
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><path d="M8 28 C8 14 44 14 44 28" stroke="#a855f7" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="4" y="27" width="10" height="16" rx="5" fill="#7c3aed" stroke="#d946ef" stroke-width="1"/><rect x="38" y="27" width="10" height="16" rx="5" fill="#7c3aed" stroke="#d946ef" stroke-width="1"/><line x1="44" y1="35" x2="50" y2="42" stroke="#a855f7" stroke-width="1.5"/><circle cx="50" cy="43" r="3" fill="#d946ef"/></svg>
+      <svg width="44" height="32" viewBox="0 0 60 44" fill="none"><path d="M6 22 C4 14 10 6 18 6 L22 6 L24 14 L36 14 L38 6 L42 6 C50 6 56 14 54 22 C52 32 46 40 40 40 L36 38 C33 40 27 40 24 38 L20 40 C14 40 8 32 6 22Z" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/><rect x="12" y="17" width="4" height="12" rx="2" fill="#a855f7"/><rect x="9" y="20" width="10" height="4" rx="2" fill="#a855f7"/><circle cx="42" cy="18" r="3.5" fill="#d946ef"/><circle cx="48" cy="22" r="3.5" fill="#7c3aed"/><circle cx="42" cy="26" r="3.5" fill="#4ade80"/><circle cx="36" cy="22" r="3.5" fill="#fbbf24"/></svg>
+    </div>
+    <div class="pgb-text">
+      <h3>🎮 Premium Gaming Техника</h3>
+      <p>GPU, CPU, RAM, SSD, Мониторлар, Тышқандар, Пернетақталар және тағы басқа</p>
+    </div>
+  </div>
+
+  <div style="padding:40px 0 32px">
+    <h1 style="font-size:48px;font-weight:900;background:linear-gradient(90deg,#fff,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px">🛒 Барлық тауарлар</h1>
+    <p style="color:#6b7280;font-size:17px">Оригинал өнімдер · Ресми жеткізушілер · Кепілдік</p>
+  </div>
+
+  <!-- TRUST BANNER -->
+  <div class="trust-banner">
+    <div class="trust-item"><div class="trust-icon">✅</div><h4>100% Оригинал</h4><p>Тек ресми өндірушілерден тікелей жеткізілген тауарлар</p></div>
+    <div class="trust-item"><div class="trust-icon">🛡</div><h4>12 ай кепілдік</h4><p>Барлық тауарларға ресми гарантия талоны беріледі</p></div>
+    <div class="trust-item"><div class="trust-icon">📦</div><h4>Өндірушіден тікелей</h4><p>NVIDIA, AMD, Intel, ASUS, MSI брендтерінен</p></div>
+    <div class="trust-item"><div class="trust-icon">🔄</div><h4>14 күн қайтару</h4><p>Сипаттамаға сәйкес келмесе — толық ақша қайтарамыз</p></div>
+  </div>
+
+  <!-- SUPPLIERS -->
+  <div class="section-heading">🏢 Біздің жеткізушілер</div>
+  <p class="section-sub">Барлық тауарлар тек осы ресми дистрибьюторлар арқылы жеткізіледі</p>
+  <div class="suppliers-grid">
+
+    <div class="supplier-card" style="--c:linear-gradient(90deg,#76b900,#a3d200)">
+      <div class="supplier-logo">🟢 NVIDIA / Palit / Gainward</div>
+      <h3>Бейнекарталар — GPU</h3>
+      <p>RTX 3060–5090 сериялары Қазақстандағы ресми NVIDIA дистрибьюторы арқылы жеткізіледі. Әрбір карта жеке қорапта, серийлық нөмірмен және кепілдік картасымен келеді.</p>
+      <div class="supplier-tags"><span class="supplier-tag">RTX 3000</span><span class="supplier-tag">RTX 4000</span><span class="supplier-tag">RTX 5000</span></div>
+      <div class="verified-badge">✓ Ресми дистрибьютор</div>
+    </div>
+
+    <div class="supplier-card" style="--c:linear-gradient(90deg,#0071c5,#00a2ff)">
+      <div class="supplier-logo">🔵 Intel Kazakhstan</div>
+      <h3>Процессорлар — Intel</h3>
+      <p>Intel Core i5 / i7 / i9 12–14 поколения. Қазақстанға ресми Intel дистрибьюторы арқылы жеткізіледі. Боксталған нұсқалар — толық кепілдікпен.</p>
+      <div class="supplier-tags"><span class="supplier-tag">Core i5</span><span class="supplier-tag">Core i7</span><span class="supplier-tag">Core i9</span></div>
+      <div class="verified-badge">✓ BOX нұсқасы</div>
+    </div>
+
+    <div class="supplier-card" style="--c:linear-gradient(90deg,#ed1c24,#ff6b6b)">
+      <div class="supplier-logo">🔴 AMD / MSI</div>
+      <h3>Процессорлар — AMD Ryzen</h3>
+      <p>AMD Ryzen 5 / 7 / 9 7000–9000 сериялары. MSI және ASUS арқылы жеткізілетін ресми BOX нұсқалары. Серийлық нөмір AMD сайтында тексерілуі мүмкін.</p>
+      <div class="supplier-tags"><span class="supplier-tag">Ryzen 5</span><span class="supplier-tag">Ryzen 7</span><span class="supplier-tag">Ryzen 9</span><span class="supplier-tag">X3D</span></div>
+      <div class="verified-badge">✓ BOX нұсқасы</div>
+    </div>
+
+    <div class="supplier-card" style="--c:linear-gradient(90deg,#f5a623,#f7c948)">
+      <div class="supplier-logo">🟡 Kingston / Samsung</div>
+      <h3>RAM және SSD</h3>
+      <p>DDR4 / DDR5 жедел жады Kingston, Samsung брендтерінен. NVMe SSD — Samsung 980/990 Pro. Барлығы ресми KZ дистрибьюторы арқылы, чекпен жеткізіледі.</p>
+      <div class="supplier-tags"><span class="supplier-tag">DDR4</span><span class="supplier-tag">DDR5</span><span class="supplier-tag">NVMe SSD</span></div>
+      <div class="verified-badge">✓ Ресми импорт</div>
+    </div>
+
+    <div class="supplier-card" style="--c:linear-gradient(90deg,#00b4d8,#0077b6)">
+      <div class="supplier-logo">🖥 LG / AOC / MSI</div>
+      <h3>Мониторлар</h3>
+      <p>144Hz–360Hz gaming мониторлар. LG, AOC, MSI брендтері Алматыдағы ресми дилерлерден алынып, тест жасалып жеткізіледі.</p>
+      <div class="supplier-tags"><span class="supplier-tag">144Hz</span><span class="supplier-tag">240Hz</span><span class="supplier-tag">360Hz</span><span class="supplier-tag">IPS / VA</span></div>
+      <div class="verified-badge">✓ Ресми дилер</div>
+    </div>
+
+    <div class="supplier-card" style="--c:linear-gradient(90deg,#9333ea,#d946ef)">
+      <div class="supplier-logo">🎮 Logitech / Razer / Ajazz</div>
+      <h3>Периферия</h3>
+      <p>Gaming тышқан, пернетақта, құлаққап. Logitech және Razer — ресми KZ дистрибьюторы арқылы. Ajazz, MCHOSE — тікелей өндірушіден.</p>
+      <div class="supplier-tags"><span class="supplier-tag">Тышқан</span><span class="supplier-tag">Пернетақта</span><span class="supplier-tag">Құлаққап</span></div>
+      <div class="verified-badge">✓ Ресми импорт</div>
+    </div>
+
+  </div>
+
+  <!-- CATEGORY TABS -->
+  <div class="section-heading">📦 Тауарлар каталогы</div>
+  <div class="cat-tabs">
+    <button class="cat-tab active"  onclick="showCat('gpus',this)">🎮 Видеокарталар</button>
+    <button class="cat-tab"         onclick="showCat('cpus',this)">💻 Процессорлар</button>
+    <button class="cat-tab"         onclick="showCat('ram',this)">🧠 RAM</button>
+    <button class="cat-tab"         onclick="showCat('ssd',this)">💾 SSD</button>
+    <button class="cat-tab"         onclick="showCat('monitors',this)">🖥 Мониторлар</button>
+    <button class="cat-tab"         onclick="showCat('mice',this)">🖱 Тышқандар</button>
+    <button class="cat-tab"         onclick="showCat('keyboards',this)">⌨️ Пернетақталар</button>
+    <button class="cat-tab"         onclick="showCat('headsets',this)">🎧 Құлаққаптар</button>
+    <button class="cat-tab"         onclick="showCat('setups',this)">🔥 Дайын сеттер</button>
+  </div>
+
+  <!-- PRICE RANGE FILTER -->
+  <div class="price-filter-bar">
+    <div class="pf-inputs">
+      <div class="pf-field">
+        <label class="pf-label">От</label>
+        <input class="pf-input" type="number" id="priceMin" placeholder="0" oninput="onInputChange()">
+      </div>
+      <div class="pf-sep">—</div>
+      <div class="pf-field">
+        <label class="pf-label">До</label>
+        <input class="pf-input" type="number" id="priceMax" placeholder="0" oninput="onInputChange()">
+      </div>
+      <button class="pf-reset" onclick="resetFilter()" title="Қалпына келтіру">✕</button>
+    </div>
+    <div class="pf-slider-wrap">
+      <div class="pf-track">
+        <div class="pf-range-fill" id="pfFill"></div>
+        <input class="pf-thumb pf-thumb-min" type="range" id="thumbMin" min="0" max="100" value="0"  oninput="onThumbChange()">
+        <input class="pf-thumb pf-thumb-max" type="range" id="thumbMax" min="0" max="100" value="100" oninput="onThumbChange()">
+      </div>
+      <div class="pf-tick-row" id="pfTicks"></div>
+    </div>
+    <div class="pf-count" id="pfCount"></div>
+  </div>
+
+  <div class="cat-section active" id="cat-gpus">
+    <div class="cat-section-title">🎮 Видеокарталар</div>
+    <div class="grid">
+      {% for gpu in data.gpus %}
+      <div class="product-card" data-name="{{ gpu.name }}" data-price="{{ gpu.price }}">
+        <button class="fav-btn">❤</button>
+        {% if gpu.image %}<img src="{{ "/static/products/" + gpu.image if not gpu.image.startswith("http") and not gpu.image.startswith("data:") else gpu.image }}" class="product-image">{% endif %}
+        <h3>{{ gpu.name }}</h3>
+        <div class="stars">
+          {% if gpu.reviews %}
+            {% set avg = (gpu.reviews | map(attribute='rating') | sum) / (gpu.reviews | length) %}
+            {% for i in range(5) %}{% if i < avg | round(0, 'floor') | int %}★{% else %}☆{% endif %}{% endfor %}
+            <span style="color:#6b7280;font-size:11px;margin-left:4px">({{ gpu.reviews | length }})</span>
+          {% else %}★★★★★{% endif %}
+        </div>
+        {% if gpu.vram %}<p style="color:#c084fc;font-size:13px;margin-bottom:8px">VRAM: {{ gpu.vram }}</p>{% endif %}
+        <p class="desc">{{ gpu.description }}</p>
+
+        <!-- AI Quality Button -->
+        <button class="ai-quality-btn" onclick="toggleAiQuality(this, '{{ gpu.name }}', '{{ gpu.vram }}', {{ gpu.price }}, 'gpu')">
+          <span class="ai-icon">🤖</span> AI сапа талдауы
+        </button>
+        <div class="ai-quality-panel">
+          <div class="ai-loading">Талдау жүргізілуде...</div>
+        </div>
+
+        {% if gpu.reviews %}
+        <div class="reviews-section">
+          <button class="reviews-toggle" onclick="toggleReviews(this)">
+            💬 Пікірлер ({{ gpu.reviews | length }}) <span class="arrow">▼</span>
+          </button>
+          <div class="reviews-list">
+            {% for r in gpu.reviews %}
+            <div class="review-item">
+              <div class="review-header">
+                <span class="review-author">{{ r.author }}</span>
+                <span class="review-date">{{ r.date }}</span>
+              </div>
+              <div class="review-stars">{% for i in range(r.rating) %}★{% endfor %}{% for i in range(5 - r.rating) %}☆{% endfor %}</div>
+              <p class="review-text">{{ r.text }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="product-bottom"><div><p class="price">{{ gpu.price }} ₸</p><p style="color:#6b7280;font-size:11px;margin-top:2px">{{ (gpu.price // 12) | int | string }} ₸/ай × 12 · {{ (gpu.price // 24) | int | string }} ₸/ай × 24</p></div><button class="cart-btn">Себетке қосу</button></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- CPU -->
+  <div class="cat-section" id="cat-cpus">
+    <div class="cat-section-title">💻 Процессорлар</div>
+    <div class="grid">
+      {% for cpu in data.cpus %}
+      <div class="product-card" data-name="{{ cpu.name }}" data-price="{{ cpu.price }}">
+        <button class="fav-btn">❤</button>
+        {% if cpu.image %}<img src="{{ "/static/products/" + cpu.image if not cpu.image.startswith("http") and not cpu.image.startswith("data:") else cpu.image }}" class="product-image">{% endif %}
+        <h3>{{ cpu.name }}</h3>
+        <div class="stars">
+          {% if cpu.reviews %}{% set avg = (cpu.reviews|map(attribute='rating')|sum) / cpu.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ cpu.reviews|length }})</span>{% else %}★★★★★{% endif %}
+        </div>
+        <p class="desc">{{ cpu.description }}</p>
+        {% if cpu.reviews %}
+        <div class="reviews-section">
+          <button class="reviews-toggle" onclick="toggleReviews(this)">💬 Пікірлер ({{ cpu.reviews|length }}) <span class="arrow">▼</span></button>
+          <div class="reviews-list">{% for r in cpu.reviews %}<div class="review-item"><div class="review-header"><span class="review-author">{{ r.author }}</span><span class="review-date">{{ r.date }}</span></div><div class="review-stars">{% for i in range(r.rating) %}★{% endfor %}{% for i in range(5-r.rating) %}☆{% endfor %}</div><p class="review-text">{{ r.text }}</p></div>{% endfor %}</div>
+        </div>{% endif %}
+        <div class="product-bottom"><div><p class="price">{{ cpu.price }} ₸</p><p style="color:#6b7280;font-size:11px;margin-top:2px">{{ (cpu.price // 12) | int | string }} ₸/ай × 12 · {{ (cpu.price // 24) | int | string }} ₸/ай × 24</p></div><button class="cart-btn">Себетке қосу</button></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- RAM -->
+  <div class="cat-section" id="cat-ram">
+    <div class="cat-section-title">🧠 Жедел жады RAM</div>
+    <div class="grid">
+      {% for r in data.ram %}
+      <div class="product-card" data-name="{{ r.name }}" data-price="{{ r.price }}">
+        <button class="fav-btn">❤</button>
+        {% if r.image %}<img src="{{ "/static/products/" + r.image if not r.image.startswith("http") and not r.image.startswith("data:") else r.image }}" class="product-image">{% endif %}
+        <h3>{{ r.name }}</h3>
+        <div class="stars">
+          {% if r.reviews %}{% set avg = (r.reviews|map(attribute='rating')|sum) / r.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ r.reviews|length }})</span>{% else %}★★★★★{% endif %}
+        </div>
+        <p class="desc">{{ r.description }}</p>
+        {% if r.reviews %}
+        <div class="reviews-section">
+          <button class="reviews-toggle" onclick="toggleReviews(this)">💬 Пікірлер ({{ r.reviews|length }}) <span class="arrow">▼</span></button>
+          <div class="reviews-list">{% for rv in r.reviews %}<div class="review-item"><div class="review-header"><span class="review-author">{{ rv.author }}</span><span class="review-date">{{ rv.date }}</span></div><div class="review-stars">{% for i in range(rv.rating) %}★{% endfor %}{% for i in range(5-rv.rating) %}☆{% endfor %}</div><p class="review-text">{{ rv.text }}</p></div>{% endfor %}</div>
+        </div>{% endif %}
+        <div class="product-bottom"><div><p class="price">{{ r.price }} ₸</p><p style="color:#6b7280;font-size:11px;margin-top:2px">{{ (r.price // 12) | int | string }} ₸/ай × 12 · {{ (r.price // 24) | int | string }} ₸/ай × 24</p></div><button class="cart-btn">Себетке қосу</button></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- SSD -->
+  <div class="cat-section" id="cat-ssd">
+    <div class="cat-section-title">💾 SSD жинақтауыштар</div>
+    <div class="grid">
+      {% for ssd in data.ssd %}
+      <div class="product-card" data-name="{{ ssd.name }}" data-price="{{ ssd.price }}">
+        <button class="fav-btn">❤</button>
+        {% if ssd.image %}<img src="{{ "/static/products/" + ssd.image if not ssd.image.startswith("http") and not ssd.image.startswith("data:") else ssd.image }}" class="product-image">{% endif %}
+        <h3>{{ ssd.name }}</h3>
+        <div class="stars">
+          {% if ssd.reviews %}{% set avg = (ssd.reviews|map(attribute='rating')|sum) / ssd.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ ssd.reviews|length }})</span>{% else %}★★★★★{% endif %}
+        </div>
+        <p class="desc">{{ ssd.description }}</p>
+        {% if ssd.reviews %}
+        <div class="reviews-section">
+          <button class="reviews-toggle" onclick="toggleReviews(this)">💬 Пікірлер ({{ ssd.reviews|length }}) <span class="arrow">▼</span></button>
+          <div class="reviews-list">{% for rv in ssd.reviews %}<div class="review-item"><div class="review-header"><span class="review-author">{{ rv.author }}</span><span class="review-date">{{ rv.date }}</span></div><div class="review-stars">{% for i in range(rv.rating) %}★{% endfor %}{% for i in range(5-rv.rating) %}☆{% endfor %}</div><p class="review-text">{{ rv.text }}</p></div>{% endfor %}</div>
+        </div>{% endif %}
+        <div class="product-bottom"><div><p class="price">{{ ssd.price }} ₸</p><p style="color:#6b7280;font-size:11px;margin-top:2px">{{ (ssd.price // 12) | int | string }} ₸/ай × 12 · {{ (ssd.price // 24) | int | string }} ₸/ай × 24</p></div><button class="cart-btn">Себетке қосу</button></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- MONITORS -->
+  <div class="cat-section" id="cat-monitors">
+    <div class="cat-section-title">🖥 Мониторлар</div>
+    <div class="grid">
+      {% for m in data.monitors %}
+      <div class="product-card" data-name="{{ m.name }}" data-price="{{ m.price }}">
+        <button class="fav-btn">❤</button>
+        {% if m.image %}<img src="{{ "/static/products/" + m.image if not m.image.startswith("http") and not m.image.startswith("data:") else m.image }}" class="product-image">{% else %}<div class="product-icon">🖥</div>{% endif %}
+        <h3>{{ m.name }}</h3>
+        <div class="stars">
+          {% if m.reviews %}{% set avg = (m.reviews|map(attribute='rating')|sum) / m.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ m.reviews|length }})</span>{% else %}★★★★★{% endif %}
+        </div>
+        {% if m.hz %}<p style="color:#c084fc;font-size:13px;margin-bottom:8px">{{ m.hz }}Hz</p>{% endif %}
+        <p class="desc">{{ m.description }}</p>
+        {% if m.reviews %}
+        <div class="reviews-section">
+          <button class="reviews-toggle" onclick="toggleReviews(this)">💬 Пікірлер ({{ m.reviews|length }}) <span class="arrow">▼</span></button>
+          <div class="reviews-list">{% for rv in m.reviews %}<div class="review-item"><div class="review-header"><span class="review-author">{{ rv.author }}</span><span class="review-date">{{ rv.date }}</span></div><div class="review-stars">{% for i in range(rv.rating) %}★{% endfor %}{% for i in range(5-rv.rating) %}☆{% endfor %}</div><p class="review-text">{{ rv.text }}</p></div>{% endfor %}</div>
+        </div>{% endif %}
+        <div class="product-bottom"><div><p class="price">{{ m.price }} ₸</p><p style="color:#6b7280;font-size:11px;margin-top:2px">{{ (m.price // 12) | int | string }} ₸/ай × 12 · {{ (m.price // 24) | int | string }} ₸/ай × 24</p></div><button class="cart-btn">Себетке қосу</button></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- MICE -->
+  <div class="cat-section" id="cat-mice">
+    <div class="cat-section-title">🖱 Тышқандар</div>
+    <div class="grid">
+      {% for mouse in data.mice %}
+      <div class="product-card" data-name="{{ mouse.name }}" data-price="{{ mouse.price }}">
+        <button class="fav-btn">❤</button>
+        {% if mouse.image %}<img src="{{ "/static/products/" + mouse.image if not mouse.image.startswith("http") and not mouse.image.startswith("data:") else mouse.image }}" class="product-image">{% else %}<div class="product-icon">🖱</div>{% endif %}
+        <h3>{{ mouse.name }}</h3>
+        <div class="stars">
+          {% if mouse.reviews %}{% set avg = (mouse.reviews|map(attribute='rating')|sum) / mouse.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ mouse.reviews|length }})</span>{% else %}★★★★★{% endif %}
+        </div>
+        <p class="desc">{{ mouse.description }}</p>
+        {% if mouse.reviews %}
+        <div class="reviews-section">
+          <button class="reviews-toggle" onclick="toggleReviews(this)">💬 Пікірлер ({{ mouse.reviews|length }}) <span class="arrow">▼</span></button>
+          <div class="reviews-list">{% for rv in mouse.reviews %}<div class="review-item"><div class="review-header"><span class="review-author">{{ rv.author }}</span><span class="review-date">{{ rv.date }}</span></div><div class="review-stars">{% for i in range(rv.rating) %}★{% endfor %}{% for i in range(5-rv.rating) %}☆{% endfor %}</div><p class="review-text">{{ rv.text }}</p></div>{% endfor %}</div>
+        </div>{% endif %}
+        <div class="product-bottom"><div><p class="price">{{ mouse.price }} ₸</p><p style="color:#6b7280;font-size:11px;margin-top:2px">{{ (mouse.price // 12) | int | string }} ₸/ай × 12 · {{ (mouse.price // 24) | int | string }} ₸/ай × 24</p></div><button class="cart-btn">Себетке қосу</button></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- KEYBOARDS -->
+  <div class="cat-section" id="cat-keyboards">
+    <div class="cat-section-title">⌨️ Пернетақталар</div>
+    <div class="grid">
+      {% for kb in data.keyboards %}
+      <div class="product-card" data-name="{{ kb.name }}" data-price="{{ kb.price }}">
+        <button class="fav-btn">❤</button>
+        {% if kb.image %}<img src="{{ "/static/products/" + kb.image if not kb.image.startswith("http") and not kb.image.startswith("data:") else kb.image }}" class="product-image">{% else %}<div class="product-icon">⌨️</div>{% endif %}
+        <h3>{{ kb.name }}</h3>
+        <div class="stars">
+          {% if kb.reviews %}{% set avg = (kb.reviews|map(attribute='rating')|sum) / kb.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ kb.reviews|length }})</span>{% else %}★★★★★{% endif %}
+        </div>
+        <p class="desc">{{ kb.description }}</p>
+        {% if kb.reviews %}
+        <div class="reviews-section">
+          <button class="reviews-toggle" onclick="toggleReviews(this)">💬 Пікірлер ({{ kb.reviews|length }}) <span class="arrow">▼</span></button>
+          <div class="reviews-list">{% for rv in kb.reviews %}<div class="review-item"><div class="review-header"><span class="review-author">{{ rv.author }}</span><span class="review-date">{{ rv.date }}</span></div><div class="review-stars">{% for i in range(rv.rating) %}★{% endfor %}{% for i in range(5-rv.rating) %}☆{% endfor %}</div><p class="review-text">{{ rv.text }}</p></div>{% endfor %}</div>
+        </div>{% endif %}
+        <div class="product-bottom"><div><p class="price">{{ kb.price }} ₸</p><p style="color:#6b7280;font-size:11px;margin-top:2px">{{ (kb.price // 12) | int | string }} ₸/ай × 12 · {{ (kb.price // 24) | int | string }} ₸/ай × 24</p></div><button class="cart-btn">Себетке қосу</button></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- HEADSETS -->
+  <div class="cat-section" id="cat-headsets">
+    <div class="cat-section-title">🎧 Құлаққаптар</div>
+    <div class="grid">
+      {% for h in data.headsets %}
+      <div class="product-card" data-name="{{ h.name }}" data-price="{{ h.price }}">
+        <button class="fav-btn">❤</button>
+        {% if h.image %}<img src="{{ "/static/products/" + h.image if not h.image.startswith("http") and not h.image.startswith("data:") else h.image }}" class="product-image">{% else %}<div class="product-icon">🎧</div>{% endif %}
+        <h3>{{ h.name }}</h3>
+        <div class="stars">
+          {% if h.reviews %}{% set avg = (h.reviews|map(attribute='rating')|sum) / h.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ h.reviews|length }})</span>{% else %}★★★★★{% endif %}
+        </div>
+        <p class="desc">{{ h.description }}</p>
+        {% if h.reviews %}
+        <div class="reviews-section">
+          <button class="reviews-toggle" onclick="toggleReviews(this)">💬 Пікірлер ({{ h.reviews|length }}) <span class="arrow">▼</span></button>
+          <div class="reviews-list">{% for rv in h.reviews %}<div class="review-item"><div class="review-header"><span class="review-author">{{ rv.author }}</span><span class="review-date">{{ rv.date }}</span></div><div class="review-stars">{% for i in range(rv.rating) %}★{% endfor %}{% for i in range(5-rv.rating) %}☆{% endfor %}</div><p class="review-text">{{ rv.text }}</p></div>{% endfor %}</div>
+        </div>{% endif %}
+        <div class="product-bottom"><div><p class="price">{{ h.price }} ₸</p><p style="color:#6b7280;font-size:11px;margin-top:2px">{{ (h.price // 12) | int | string }} ₸/ай × 12 · {{ (h.price // 24) | int | string }} ₸/ай × 24</p></div><button class="cart-btn">Себетке қосу</button></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- SETUPS / BUNDLES -->
+  <div class="cat-section" id="cat-setups">
+    <div class="cat-section-title">🔥 Дайын Gaming Сеттер</div>
+    <p style="text-align:center;color:#6b7280;font-size:14px;margin:-12px 0 28px">Барлығы жиналған, бапталған және кепілдікпен берілген</p>
+
+    <div class="setups-grid">
+      {% for s in data.setups %}
+      <div class="setup-bundle-card" data-name="{{ s.name }}" data-price="{{ s.price }}">
+
+        <!-- header -->
+        <div class="sb-header">
+          <div class="sb-badge">
+            {% if s.price >= 2000000 %}👑 Флагман
+            {% elif s.price >= 1000000 %}⚡ Pro
+            {% elif s.price >= 700000 %}🔥 Popular
+            {% else %}💰 Бюджет{% endif %}
+          </div>
+          <h3 class="sb-name">{{ s.name }}</h3>
+          <div class="sb-price-row">
+            <span class="sb-price">{{ "{:,}".format(s.price).replace(","," ") }} ₸</span>
+            <div class="sb-installment-block"><span class="sb-inst-row"><span class="sb-inst-m">12 ай:</span> <strong>{{ ("{:,}".format((s.price//12)|int)).replace(",","\u00a0") }} ₸/ай</strong></span><span class="sb-inst-row"><span class="sb-inst-m">24 ай:</span> <strong>{{ ("{:,}".format((s.price//24)|int)).replace(",","\u00a0") }} ₸/ай</strong></span></div>
+          </div>
+        </div>
+
+        <!-- components -->
+        <div class="sb-specs">
+          <div class="sb-spec"><span class="sb-spec-icon">🎮</span><div><span class="sb-spec-label">GPU</span><b class="sb-spec-val">{% for g in data.gpus %}{% if g.id == s.components.gpu %}{{ g.name }}{% endif %}{% endfor %}</b></div></div>
+          <div class="sb-spec"><span class="sb-spec-icon">💻</span><div><span class="sb-spec-label">CPU</span><b class="sb-spec-val">{% for c in data.cpus %}{% if c.id == s.components.cpu %}{{ c.name }}{% endif %}{% endfor %}</b></div></div>
+          <div class="sb-spec"><span class="sb-spec-icon">🧠</span><div><span class="sb-spec-label">RAM</span><b class="sb-spec-val">{% for r in data.ram %}{% if r.id == s.components.ram %}{{ r.name }}{% endif %}{% endfor %}</b></div></div>
+          <div class="sb-spec"><span class="sb-spec-icon">💾</span><div><span class="sb-spec-label">SSD</span><b class="sb-spec-val">{% for sv in data.ssd %}{% if sv.id == s.components.ssd %}{{ sv.name }}{% endif %}{% endfor %}</b></div></div>
+          <div class="sb-spec"><span class="sb-spec-icon">🖥</span><div><span class="sb-spec-label">Монитор</span><b class="sb-spec-val">{% for m in data.monitors %}{% if m.id == s.components.monitor %}{{ m.name }}{% endif %}{% endfor %}</b></div></div>
+          <div class="sb-spec"><span class="sb-spec-icon">🖱</span><div><span class="sb-spec-label">Тышқан</span><b class="sb-spec-val">{% for mo in data.mice %}{% if mo.id == s.components.mouse %}{{ mo.name }}{% endif %}{% endfor %}</b></div></div>
+          <div class="sb-spec"><span class="sb-spec-icon">⌨️</span><div><span class="sb-spec-label">Пернетақта</span><b class="sb-spec-val">{% for k in data.keyboards %}{% if k.id == s.components.keyboard %}{{ k.name }}{% endif %}{% endfor %}</b></div></div>
+          <div class="sb-spec"><span class="sb-spec-icon">🎧</span><div><span class="sb-spec-label">Құлаққап</span><b class="sb-spec-val">{% for h in data.headsets %}{% if h.id == s.components.headset %}{{ h.name }}{% endif %}{% endfor %}</b></div></div>
+        </div>
+
+        <!-- perks -->
+        <div class="sb-perks">
+          <span>🚚 Жеткізу</span>
+          <span>🛡 1 жыл кепілдік</span>
+          <span>🔧 Жинап беріледі</span>
+          <span>📄 Құжаттар</span>
+        </div>
+
+        <!-- reviews -->
+        {% if s.reviews %}
+        <div class="reviews-section">
+          <button class="reviews-toggle" onclick="toggleReviews(this)">
+            💬 Пікірлер ({{ s.reviews|length }})
+            {% set avg = (s.reviews|map(attribute='rating')|sum) / s.reviews|length %}
+            <span style="color:#f59e0b;margin-left:4px">{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="reviews-list">
+            {% for r in s.reviews %}
+            <div class="review-item">
+              <div class="review-header">
+                <span class="review-author">{{ r.author }}</span>
+                <span class="review-date">{{ r.date }}</span>
+              </div>
+              <div class="review-stars">{% for i in range(r.rating) %}★{% endfor %}{% for i in range(5-r.rating) %}☆{% endfor %}</div>
+              <p class="review-text">{{ r.text }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="sb-actions">
+          <button class="cart-btn" style="flex:1">🛒 Себетке қосу</button>
+          <a href="https://wa.me/77765007502" class="sb-wa-btn" target="_blank">💬</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-contact">
+      <a class="contact-btn" href="https://wa.me/77765007502" target="_blank">💬 Бізге жазу</a>
+    </div>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>🛒 Тауарлар</h4>
+        <a href="/products">Барлық тауарлар</a>
+        <a href="/#setups">Дайын сеттер</a>
+        <a href="/ai-builder">AI конфигуратор</a>
+      </div>
+      <div class="footer-col">
+        <h4>💳 Төлем және жеткізу</h4>
+        <a href="/payment">Kaspi / Halyk</a>
+        <a href="/payment">Бөліп төлеу</a>
+        <a href="/delivery">Жеткізу шарттары</a>
+        <a href="/warranty">Кепілдік</a>
+      </div>
+      <div class="footer-col">
+        <h4>🏢 Компания</h4>
+        <a href="/about">Біз туралы</a>
+        <a href="/contact">Байланыс</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div id="cartPanel" class="cart-panel">
+  <div class="cart-panel-header">
+    <h3>🛒 Себет</h3>
+    <button type="button" onclick="toggleCart()" class="cart-close">×</button>
+  </div>
+  <div id="cartItems" class="cart-items"><p class="empty-cart">Себет бос</p></div>
+  <div class="cart-total">Жалпы: <span id="cartTotal">0</span> ₸</div>
+</div>
+<div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+<script src="/static/app.js"></script>
+<script>
+  function showCat(cat, btn) {
+    document.querySelectorAll('.cat-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById('cat-' + cat).classList.add('active');
+    btn.classList.add('active');
+    applyFilter(); // re-apply filter on tab switch
+  }
+
+  function toggleReviews(btn) {
+    btn.classList.toggle('open');
+    const list = btn.nextElementSibling;
+    list.classList.toggle('visible');
+  }
+
+  // ── PRICE FILTER ────────────────────────────────────────────────────────────
+  const thumbMin = document.getElementById('thumbMin');
+  const thumbMax = document.getElementById('thumbMax');
+  const inMin    = document.getElementById('priceMin');
+  const inMax    = document.getElementById('priceMax');
+  const fill     = document.getElementById('pfFill');
+  const tickRow  = document.getElementById('pfTicks');
+  const countEl  = document.getElementById('pfCount');
+
+  // Collect all product prices across the page
+  const allCards = () => document.querySelectorAll('.product-card[data-price], .setup-bundle-card[data-price]');
+
+  let GLOBAL_MIN = 0, GLOBAL_MAX = 0;
+
+  function initFilter() {
+    let prices = [];
+    allCards().forEach(c => {
+      const p = parseInt(c.dataset.price);
+      if (!isNaN(p)) prices.push(p);
+    });
+    if (!prices.length) return;
+    GLOBAL_MIN = Math.min(...prices);
+    GLOBAL_MAX = Math.max(...prices);
+
+    inMin.value = GLOBAL_MIN;
+    inMax.value = GLOBAL_MAX;
+    inMin.min   = GLOBAL_MIN; inMin.max = GLOBAL_MAX;
+    inMax.min   = GLOBAL_MIN; inMax.max = GLOBAL_MAX;
+
+    buildTicks();
+    updateSliderUI();
+    applyFilter();
+  }
+
+  function buildTicks() {
+    tickRow.innerHTML = '';
+    const ticks = 5;
+    for (let i = 0; i <= ticks; i++) {
+      const val = Math.round(GLOBAL_MIN + (GLOBAL_MAX - GLOBAL_MIN) * i / ticks);
+      const el = document.createElement('span');
+      el.className = 'pf-tick';
+      el.textContent = formatPrice(val);
+      el.dataset.val = val;
+      tickRow.appendChild(el);
+    }
+  }
+
+  function formatPrice(v) {
+    if (v >= 1000000) return (v/1000000).toFixed(1).replace('.0','') + ' млн';
+    if (v >= 1000)    return Math.round(v/1000) + 'к';
+    return v;
+  }
+
+  function pctToPrice(pct) {
+    return Math.round(GLOBAL_MIN + (GLOBAL_MAX - GLOBAL_MIN) * pct / 100);
+  }
+  function priceToPercent(p) {
+    return ((p - GLOBAL_MIN) / (GLOBAL_MAX - GLOBAL_MIN)) * 100;
+  }
+
+  function updateSliderUI() {
+    const lo = parseFloat(thumbMin.value);
+    const hi = parseFloat(thumbMax.value);
+    fill.style.left  = lo + '%';
+    fill.style.width = (hi - lo) + '%';
+
+    // highlight active tick
+    const loPrice = pctToPrice(lo);
+    const hiPrice = pctToPrice(hi);
+    tickRow.querySelectorAll('.pf-tick').forEach(t => {
+      const tv = parseInt(t.dataset.val);
+      t.classList.toggle('active', tv >= loPrice && tv <= hiPrice);
+    });
+  }
+
+  function onThumbChange() {
+    let lo = parseFloat(thumbMin.value);
+    let hi = parseFloat(thumbMax.value);
+    if (lo > hi - 2) {
+      if (this === thumbMin) lo = hi - 2;
+      else hi = lo + 2;
+      thumbMin.value = lo; thumbMax.value = hi;
+    }
+    inMin.value = pctToPrice(lo);
+    inMax.value = pctToPrice(hi);
+    updateSliderUI();
+    applyFilter();
+  }
+
+  function onInputChange() {
+    let lo = parseInt(inMin.value) || GLOBAL_MIN;
+    let hi = parseInt(inMax.value) || GLOBAL_MAX;
+    lo = Math.max(GLOBAL_MIN, Math.min(lo, GLOBAL_MAX));
+    hi = Math.max(GLOBAL_MIN, Math.min(hi, GLOBAL_MAX));
+    if (lo > hi) lo = hi;
+    thumbMin.value = priceToPercent(lo);
+    thumbMax.value = priceToPercent(hi);
+    updateSliderUI();
+    applyFilter();
+  }
+
+  function applyFilter() {
+    const lo = parseInt(inMin.value) || GLOBAL_MIN;
+    const hi = parseInt(inMax.value) || GLOBAL_MAX;
+    let visible = 0, total = 0;
+
+    // Only filter cards in the ACTIVE section
+    const activeSection = document.querySelector('.cat-section.active');
+    if (!activeSection) return;
+
+    activeSection.querySelectorAll('.product-card[data-price], .setup-bundle-card[data-price]').forEach(c => {
+      const p = parseInt(c.dataset.price);
+      total++;
+      if (!isNaN(p) && p >= lo && p <= hi) {
+        c.classList.remove('pf-hidden');
+        visible++;
+      } else {
+        c.classList.add('pf-hidden');
+      }
+    });
+
+    const isFiltered = (lo > GLOBAL_MIN || hi < GLOBAL_MAX);
+    countEl.innerHTML = isFiltered
+      ? `<span>${visible}</span> / ${total} тауар көрсетілуде`
+      : '';
+  }
+
+  function resetFilter() {
+    inMin.value = GLOBAL_MIN;
+    inMax.value = GLOBAL_MAX;
+    thumbMin.value = 0;
+    thumbMax.value = 100;
+    updateSliderUI();
+    applyFilter();
+  }
+
+  // Attach thumb events (need proper 'this' context)
+  thumbMin.addEventListener('input', function() {
+    let lo = parseFloat(this.value);
+    let hi = parseFloat(thumbMax.value);
+    if (lo > hi - 2) { lo = hi - 2; this.value = lo; }
+    inMin.value = pctToPrice(lo);
+    updateSliderUI(); applyFilter();
+  });
+  thumbMax.addEventListener('input', function() {
+    let hi = parseFloat(this.value);
+    let lo = parseFloat(thumbMin.value);
+    if (hi < lo + 2) { hi = lo + 2; this.value = hi; }
+    inMax.value = pctToPrice(hi);
+    updateSliderUI(); applyFilter();
+  });
+
+  // Init after DOM ready
+  document.addEventListener('DOMContentLoaded', initFilter);
+</script>
+
+<a class="mobile-wa-btn" href="https://wa.me/77765007502" target="_blank">💬</a>
+<script>
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  var nav = document.getElementById('mobileNav');
+  var btn = document.getElementById('hamburger');
+  if (nav && !nav.contains(e.target) && btn && !btn.contains(e.target)) {
+    nav.classList.remove('open'); btn.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>

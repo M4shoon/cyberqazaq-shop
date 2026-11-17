@@ -1,0 +1,4181 @@
+{
+  "categories": [
+    {
+      "key": "cpus",
+      "title": "CPU",
+      "image": "https://placehold.co/300x200/0a0a1a/3b82f6?text=CPU"
+    },
+    {
+      "key": "gpus",
+      "title": "GPU",
+      "image": "https://placehold.co/300x200/0a0a1a/00ff88?text=GPU"
+    },
+    {
+      "key": "ram",
+      "title": "RAM",
+      "image": "https://placehold.co/300x200/0a0a1a/a78bfa?text=RAM"
+    },
+    {
+      "key": "ssd",
+      "title": "SSD",
+      "image": "https://placehold.co/300x200/0a0a1a/f59e0b?text=SSD"
+    },
+    {
+      "key": "motherboards",
+      "title": "Motherboard",
+      "image": "https://placehold.co/300x200/0a0a1a/3b82f6?text=Motherboard"
+    },
+    {
+      "key": "cases",
+      "title": "Case",
+      "image": "https://placehold.co/300x200/0a0a1a/00ff88?text=Case"
+    },
+    {
+      "key": "monitors",
+      "title": "Monitor",
+      "image": "https://placehold.co/300x200/0a0a1a/60a5fa?text=Monitor"
+    },
+    {
+      "key": "mice",
+      "title": "Mouse",
+      "image": "https://placehold.co/300x200/0a0a1a/a78bfa?text=Mouse"
+    },
+    {
+      "key": "keyboards",
+      "title": "Keyboard",
+      "image": "https://placehold.co/300x200/0a0a1a/ef4444?text=Keyboard"
+    },
+    {
+      "key": "headsets",
+      "title": "Headset",
+      "image": "https://placehold.co/300x200/0a0a1a/e879f9?text=Headset"
+    },
+    {
+      "key": "setups",
+      "title": "Setups",
+      "image": "https://placehold.co/300x200/0a0a1a/fbbf24?text=Setups"
+    }
+  ],
+  "cpus": [
+    {
+      "id": "cpu_i5_12400f",
+      "name": "Intel i5-12400F",
+      "price": 90000,
+      "description": "Intel Core i5-12400F — 6 ядро / 12 тред, Alder Lake архитектурасы, 2.5GHz / 4.4GHz. Бюджет gaming жинағының ең танымал таңдайы. DDR4 платформасы, B660/H670 аналық платасымен үйлеседі. CS2 240Hz монитормен, Valorant 300+ FPS береді. RTX 3060/3070-пен тамаша жұп.",
+      "image": "Intel I5-12400F.jpg",
+      "reviews": [
+        {
+          "author": "Азамат Ж.",
+          "rating": 4,
+          "text": "Бюджет gaming үшін тамаша процессор. RTX 3060 жұбымен CS2-де 200+ fps.",
+          "date": "2025-01-15"
+        },
+        {
+          "author": "Темірлан А.",
+          "rating": 5,
+          "text": "Баға-өнімділік балансы керемет. Overclocking қажет емес — жылдамдық жетеді.",
+          "date": "2025-02-08"
+        }
+      ],
+      "specs": {
+        "cores": "6C/12T",
+        "base_clock": "2.5GHz",
+        "boost_clock": "4.4GHz",
+        "tdp": "65W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": false
+      },
+      "best_for": [
+        "Бюджет Gaming",
+        "Esports",
+        "Күнделікті жұмыс"
+      ],
+      "not_for": [
+        "Ауыр стриминг",
+        "3D рендеринг",
+        "Overclocking"
+      ]
+    },
+    {
+      "id": "cpu_i5_13400f",
+      "name": "Intel i5-13400F",
+      "price": 120000,
+      "description": "Intel Core i5-13400F — 10 ядро (6P+4E) / 16 тред, Raptor Lake, 2.5GHz / 4.6GHz. i5-12400F-тен 15% жылдамырақ. Multitasking пен стриминг кезінде E-Core-лар артықшылық береді. DDR4/DDR5 қолдауы. Орта бюджет gaming жинағына тамаша.",
+      "image": "Intel I5-13400F.jpg",
+      "reviews": [
+        {
+          "author": "Аслан Ч.",
+          "rating": 5,
+          "text": "Жаңа буын i5, gaming-те i7-мен бәсекелесе алады. Тамаша таңдау.",
+          "date": "2025-02-10"
+        },
+        {
+          "author": "Руслан Н.",
+          "rating": 4,
+          "text": "10 ядро бар — multitasking-те де жақсы. Бағасына лайықты процессор.",
+          "date": "2025-03-05"
+        }
+      ],
+      "specs": {
+        "cores": "10C/16T",
+        "base_clock": "2.5GHz",
+        "boost_clock": "4.6GHz",
+        "tdp": "65W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": false
+      },
+      "best_for": [
+        "Gaming + Стриминг",
+        "Multitasking",
+        "Орта бюджет"
+      ],
+      "not_for": [
+        "Overclocking",
+        "Ауыр рендеринг"
+      ]
+    },
+    {
+      "id": "cpu_i5_13600kf",
+      "name": "Intel i5-13600KF",
+      "price": 170000,
+      "description": "Intel Core i5-13600KF — 14 ядро (6P+8E) / 20 тред, Raptor Lake, 3.5GHz / 5.1GHz. Gaming-те Ryzen 7-мен бәсекелесетін i5. Overclocking мүмкіндігі бар (K-серия). Стриминг + gaming бір уақытта. Z690/Z790 аналық платасымен ең жоғары өнімділік береді.",
+      "image": "Intel I5-13600KF.jpg",
+      "reviews": [
+        {
+          "author": "Дәурен Б.",
+          "rating": 5,
+          "text": "Gaming-те Ryzen 7-мен бәсекелесе алады. 14 ядро — стримге де жетеді.",
+          "date": "2025-03-12"
+        },
+        {
+          "author": "Қайрат Н.",
+          "rating": 5,
+          "text": "Ең жақсы i5! CS2-де RTX 4070 жұбымен 300+ fps береді.",
+          "date": "2025-04-02"
+        },
+        {
+          "author": "Мадина С.",
+          "rating": 4,
+          "text": "Жылдамдық жоғары, бірақ қыздыру сәл жоғары. Жақсы кулер керек.",
+          "date": "2025-04-20"
+        }
+      ],
+      "specs": {
+        "cores": "14C/20T",
+        "base_clock": "3.5GHz",
+        "boost_clock": "5.1GHz",
+        "tdp": "125W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": true
+      },
+      "best_for": [
+        "Gaming + Стриминг",
+        "Overclocking",
+        "Жоғары FPS"
+      ],
+      "not_for": [
+        "Бюджет жинақ"
+      ]
+    },
+    {
+      "id": "cpu_i5_14600kf",
+      "name": "Intel i5-14600KF",
+      "price": 190000,
+      "description": "Intel Core i5-14600KF — 14 ядро (6P+8E) / 20 тред, Raptor Lake Refresh, 3.5GHz / 5.3GHz. i5-13600KF-тен 5-10% жылдамырақ. Overclocking мүмкіндігі бар. Gaming-те i7-ге тиімді балама. Z790 аналық платасымен максималды өнімділік.",
+      "image": "Intel i5-14600kf.jpg",
+      "reviews": [
+        {
+          "author": "Нұрлан А.",
+          "rating": 5,
+          "text": "14600KF gaming-те i7-13700F-тен жылдамырақ. Керемет баға-өнімділік!",
+          "date": "2025-04-08"
+        },
+        {
+          "author": "Жансая Т.",
+          "rating": 5,
+          "text": "Стриминг + gaming комбинациясы үшін тамаша. 14 ядро — OBS-пен де fps түспейді.",
+          "date": "2025-04-25"
+        }
+      ],
+      "specs": {
+        "cores": "14C/20T",
+        "base_clock": "3.5GHz",
+        "boost_clock": "5.3GHz",
+        "tdp": "125W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": true
+      },
+      "best_for": [
+        "Gaming",
+        "Overclocking",
+        "Стриминг"
+      ],
+      "not_for": [
+        "Бюджет жинақ"
+      ]
+    },
+    {
+      "id": "cpu_i7_12700f",
+      "name": "Intel i7-12700F",
+      "price": 180000,
+      "description": "Intel Core i7-12700F — 12 ядро (8P+4E) / 20 тред, Alder Lake, 2.1GHz / 4.9GHz. Стриминг + gaming бір уақытта, ауыр multitasking үшін жақсы. DDR4 платформасы. Бюджет тиімді жоғары ядролы жинаққа тамаша.",
+      "image": "Intel i7-12700F.jpg",
+      "reviews": [
+        {
+          "author": "Серік М.",
+          "rating": 4,
+          "text": "12 ядролы i7 — multitasking-те тамаша. Стриминг бен gaming-ті бір мезгілде жеңіл тартады.",
+          "date": "2025-02-20"
+        },
+        {
+          "author": "Айбек О.",
+          "rating": 5,
+          "text": "Сенімді және тиімді процессор. DDR4 платформасы — жинақ арзанырақ шығады.",
+          "date": "2025-03-15"
+        }
+      ],
+      "specs": {
+        "cores": "12C/20T",
+        "base_clock": "2.1GHz",
+        "boost_clock": "4.9GHz",
+        "tdp": "65W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": false
+      },
+      "best_for": [
+        "Стриминг + Gaming",
+        "Multitasking",
+        "Контент жасау"
+      ],
+      "not_for": [
+        "Overclocking",
+        "4K Gaming (GPU тежейді)"
+      ]
+    },
+    {
+      "id": "cpu_i7_13700f",
+      "name": "Intel i7-13700F",
+      "price": 220000,
+      "description": "Intel Core i7-13700F — 16 ядро (8P+8E) / 24 тред, Raptor Lake, 2.1GHz / 5.2GHz. Стриминг, контент жасау және gaming-ті бір уақытта жеңіл өңдейді. DDR4/DDR5 қолдауы. Ауыр жұмыс пен gaming жинағына тамаша таңдай.",
+      "image": "Intel I7-13700f.jpg",
+      "reviews": [
+        {
+          "author": "Ержан К.",
+          "rating": 5,
+          "text": "20 ядро бар! Стриминг, монтаж, gaming — бәрін бір мезгілде тартады.",
+          "date": "2025-03-22"
+        },
+        {
+          "author": "Болат С.",
+          "rating": 4,
+          "text": "Gaming-те i9-мен бәсекелесе алады. Өте жақсы баға-өнімділік балансы.",
+          "date": "2025-04-10"
+        }
+      ],
+      "specs": {
+        "cores": "16C/24T",
+        "base_clock": "2.1GHz",
+        "boost_clock": "5.2GHz",
+        "tdp": "65W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": false
+      },
+      "best_for": [
+        "Стриминг + Gaming",
+        "Контент жасау",
+        "Ауыр multitasking"
+      ],
+      "not_for": [
+        "Overclocking",
+        "Бюджет жинақ"
+      ]
+    },
+    {
+      "id": "cpu_i7_14700f",
+      "name": "Intel i7-14700F",
+      "price": 260000,
+      "description": "Intel Core i7-14700F — 20 ядро (8P+12E) / 28 тред, Raptor Lake Refresh, 2.1GHz / 5.3GHz. Стриминг + AAA gaming бір уақытта. OBS, Discord, Chrome + ауыр ойын — барлығы бір уақытта жеңіл жүреді. DDR4/DDR5 қолдауы. Жоғары өнімді жинақтың ең тиімді таңдайы.",
+      "image": "Intel I7-14700f.jpg",
+      "reviews": [
+        {
+          "author": "Тимур А.",
+          "rating": 5,
+          "text": "Жаңа буын i7 — 20 ядро + жоғары clock speed. Кез-келген жұмысты тартады.",
+          "date": "2025-04-15"
+        },
+        {
+          "author": "Арман Д.",
+          "rating": 5,
+          "text": "RTX 5070 жұбымен 1440p-да тамаша. Ботлнек жоқ.",
+          "date": "2025-05-02"
+        }
+      ],
+      "specs": {
+        "cores": "20C/28T",
+        "base_clock": "2.1GHz",
+        "boost_clock": "5.3GHz",
+        "tdp": "65W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": false
+      },
+      "best_for": [
+        "Стриминг + Gaming",
+        "Ауыр multitasking",
+        "Контент жасау"
+      ],
+      "not_for": [
+        "Overclocking",
+        "Бюджет жинақ"
+      ]
+    },
+    {
+      "id": "cpu_i9_12900k",
+      "name": "Intel i9-12900K",
+      "price": 320000,
+      "description": "Intel Core i9-12900K — 16 ядро (8P+8E) / 24 тред, Alder Lake, 3.2–5.2 GHz",
+      "image": "Intel I9-12900F.jpg",
+      "reviews": [
+        {
+          "author": "Санжар Е.",
+          "rating": 5,
+          "text": "16 ядро — студия деңгейіндегі өнімділік. 3D рендеринг пен gaming бір мезгілде.",
+          "date": "2025-03-10"
+        },
+        {
+          "author": "Алима Б.",
+          "rating": 4,
+          "text": "Жоғары өнімді процессор, бірақ қыздыру жоғары. Сапалы су салқындатқыш керек.",
+          "date": "2025-03-28"
+        }
+      ],
+      "specs": {
+        "cores": "16C/24T",
+        "base_clock": "3.2GHz",
+        "boost_clock": "5.2GHz",
+        "tdp": "125W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": true
+      },
+      "best_for": [
+        "Рендеринг",
+        "Стриминг",
+        "Overclocking"
+      ],
+      "not_for": [
+        "Бюджет жинақ",
+        "Стандартты салқындату"
+      ]
+    },
+    {
+      "id": "cpu_i9_13900k",
+      "name": "Intel i9-13900K",
+      "price": 380000,
+      "description": "Intel Core i9-13900K — 24 ядро (8P+16E) / 32 тред, Raptor Lake, 3.0GHz / 5.8GHz, overclockable. Максималды gaming + ауыр жұмыс өнімділігі. CS2 500+ FPS, 4K gaming, 3D рендеринг — барлығын шектеусіз деңгейде өңдейді. Z790 аналық платасымен тамаша жұп.",
+      "image": "Intel I9-13900F.jpg",
+      "reviews": [
+        {
+          "author": "Нариман Ж.",
+          "rating": 5,
+          "text": "24 ядро (8P+16E) — бұл монстр процессор. Blender рендерингі 2 есе жылдам.",
+          "date": "2025-04-05"
+        },
+        {
+          "author": "Зарина Т.",
+          "rating": 5,
+          "text": "Gaming-те де, жұмыста да ең жоғары деңгей. Ешқандай ботлнек болмайды.",
+          "date": "2025-04-22"
+        }
+      ],
+      "specs": {
+        "cores": "24C/32T",
+        "base_clock": "3.0GHz",
+        "boost_clock": "5.8GHz",
+        "tdp": "125W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": true
+      },
+      "best_for": [
+        "Максималды Gaming",
+        "Рендеринг",
+        "Стриминг",
+        "Overclocking"
+      ],
+      "not_for": [
+        "Бюджет жинақ",
+        "Шағын корпус"
+      ]
+    },
+    {
+      "id": "cpu_i9_14900k",
+      "name": "Intel i9-14900K",
+      "price": 420000,
+      "description": "Intel Core i9-14900K — 24 ядро (8P+16E) / 32 тред, Raptor Lake Refresh, 3.2GHz / 6.0GHz, overclockable. 6.0GHz boost clock — Intel-дің ең жоғары жылдамдық рекорды. Кез-келген ойын мен ауыр жұмысты максималды деңгейде өңдейді. Premium жинаққа арналған флагман процессор.",
+      "image": "Intel I9-14900f.jpg",
+      "reviews": [
+        {
+          "author": "Дамир С.",
+          "rating": 5,
+          "text": "Максималды өнімділік! Intel-дің ең жоғары деңгейлі процессоры. Ешнәрсе тоқтата алмайды.",
+          "date": "2025-05-01"
+        },
+        {
+          "author": "Нұрлан Б.",
+          "rating": 5,
+          "text": "RTX 5090 жұбымен 4K/Ultra-да тамаша. Ботлнек мүмкін емес.",
+          "date": "2025-05-10"
+        }
+      ],
+      "specs": {
+        "cores": "24C/32T",
+        "base_clock": "3.2GHz",
+        "boost_clock": "6.0GHz",
+        "tdp": "125W",
+        "platform": "LGA1700",
+        "ram_support": "DDR4/DDR5",
+        "overclockable": true
+      },
+      "best_for": [
+        "Максималды Gaming + Жұмыс",
+        "Overclocking",
+        "Pro стриминг"
+      ],
+      "not_for": [
+        "Бюджет жинақ"
+      ]
+    },
+    {
+      "id": "cpu_R5_7500",
+      "name": "Ryzen 5 7500",
+      "price": 90000,
+      "description": "AMD Ryzen 5 7500 — 6 ядро / 12 тред, Zen 4 архитектурасы, 3.7–5.0 GHz, AM5 сокет",
+      "image": "Ryzen 5 7500F.jpg",
+      "reviews": [
+        {
+          "author": "Аяна М.",
+          "rating": 4,
+          "text": "AM5 платформасы + DDR5 — болашаққа дайын. Бюджет gaming үшін жақсы таңдау.",
+          "date": "2025-02-15"
+        },
+        {
+          "author": "Қайрат Б.",
+          "rating": 5,
+          "text": "Ryzen 5 7500 — жаңа платформаның ең тиімді бастапқы процессоры.",
+          "date": "2025-03-08"
+        }
+      ]
+    },
+    {
+      "id": "cpu_R5_7500x3d",
+      "name": "Ryzen 5 7500X3D",
+      "price": 160000,
+      "description": "AMD Ryzen 5 7500X3D — 6 ядро / 12 тред, 96MB 3D V-Cache, ойын өнімділігі жоғары",
+      "image": "Ryzen 5 7500X3D.jpg",
+      "reviews": [
+        {
+          "author": "Ержан О.",
+          "rating": 5,
+          "text": "3D V-Cache технологиясы gaming-те бірден байқалады. CS2-де 350+ fps береді!",
+          "date": "2025-03-18"
+        },
+        {
+          "author": "Болат М.",
+          "rating": 5,
+          "text": "Ең қолжетімді 3D Cache процессор. i5-13600KF-тен gaming-те жылдамырақ.",
+          "date": "2025-04-12"
+        }
+      ]
+    },
+    {
+      "id": "cpu_R5_7600",
+      "name": "Ryzen 5 7600",
+      "price": 110000,
+      "description": "AMD Ryzen 5 7600 — 6 ядро / 12 тред, Zen 4, 3.8–5.1 GHz, тамаша баға-сапа",
+      "image": "Ryzen 5 7600.jpg",
+      "reviews": [
+        {
+          "author": "Тимур Д.",
+          "rating": 5,
+          "text": "AM5 платформасының ең тиімді бастапқы нүктесі. CS2, Valorant — 300+ fps.",
+          "date": "2025-03-25"
+        },
+        {
+          "author": "Алима Н.",
+          "rating": 4,
+          "text": "6 ядро жеткілікті gaming үшін. DDR5 жылдамдығы плюс.",
+          "date": "2025-04-18"
+        }
+      ]
+    },
+    {
+      "id": "cpu_R7_7700x",
+      "name": "Ryzen 7 7700X",
+      "price": 180000,
+      "description": "AMD Ryzen 7 7700X — 8 ядро / 16 тред, Zen 4, 4.5–5.4 GHz, жоғары өнімділік",
+      "image": "Ryzen 7 7700X.jpg",
+      "reviews": [
+        {
+          "author": "Нариман А.",
+          "rating": 5,
+          "text": "8 ядро, жоғары clock speed — gaming + стриминг тамаша жұмыс істейді.",
+          "date": "2025-04-08"
+        },
+        {
+          "author": "Болат К.",
+          "rating": 4,
+          "text": "Жақсы процессор, бірақ 7800X3D gaming-те алда. Жалпы жұмыс үшін тамаша.",
+          "date": "2025-04-28"
+        }
+      ]
+    },
+    {
+      "id": "cpu_R7_7800x3d",
+      "name": "Ryzen 7 7800X3D",
+      "price": 230000,
+      "description": "AMD Ryzen 7 7800X3D — 8 ядро / 16 тред, 96MB 3D V-Cache, gaming үшін №1 таңдау",
+      "image": "Ryzen 7 7800X3D.jpg",
+      "reviews": [
+        {
+          "author": "Дәурен Б.",
+          "rating": 5,
+          "text": "Gaming-тің абсолютті патшасы! CS2-де 400+ fps, RDR2-де i9-14900K-дан алда.",
+          "date": "2025-04-20"
+        },
+        {
+          "author": "Нұрлан А.",
+          "rating": 5,
+          "text": "3D V-Cache — бұл технология gaming-ті өзгертті. Ешбір Intel процессоры жете алмайды.",
+          "date": "2025-05-05"
+        },
+        {
+          "author": "Жансая Т.",
+          "rating": 5,
+          "text": "Сатып алғанымда өкінбедім. CyberQazaq-тан тез жеткізілді, орамы мінсіз.",
+          "date": "2025-05-12"
+        }
+      ]
+    },
+    {
+      "id": "cpu_R7_9700x",
+      "name": "Ryzen 7 9700X",
+      "price": 270000,
+      "description": "AMD Ryzen 7 9700X — 8 ядро / 16 тред, Zen 5 архитектурасы, 3.8–5.5 GHz",
+      "image": "Ryzen 7 9700X.jpg",
+      "reviews": [
+        {
+          "author": "Серік А.",
+          "rating": 5,
+          "text": "Zen 5 архитектурасы — IPC өсімі бірден сезіледі. Жаңа буын процессор.",
+          "date": "2025-05-08"
+        },
+        {
+          "author": "Айбек М.",
+          "rating": 5,
+          "text": "Жұмыс пен ойын үшін тамаша. 8 ядро жоғары clock speed — бәрін тартады.",
+          "date": "2025-05-15"
+        }
+      ]
+    },
+    {
+      "id": "cpu_R7_9800x3d",
+      "name": "Ryzen 7 9800X3D",
+      "price": 300000,
+      "description": "AMD Ryzen 7 9800X3D — 8 ядро / 16 тред, Zen 5 + 3D V-Cache, максималды FPS",
+      "image": "Ryzen 7 9800X3D.jpg",
+      "reviews": [
+        {
+          "author": "Бауыржан Е.",
+          "rating": 5,
+          "text": "7800X3D-тен 10-15% жылдам gaming-те. Жаңа буын 3D Cache — ең жоғары деңгей.",
+          "date": "2025-05-18"
+        },
+        {
+          "author": "Рустам И.",
+          "rating": 5,
+          "text": "CS2, Valorant, Warzone — барлығында абсолютті FPS рекорд. Тамаша процессор!",
+          "date": "2025-05-22"
+        }
+      ]
+    },
+    {
+      "id": "cpu_r9_7900x",
+      "name": "Ryzen 9 7900X",
+      "price": 280000,
+      "description": "AMD Ryzen 9 7900X — 12 ядро / 24 тред, Zen 4, 4.7–5.6 GHz, streaming + gaming",
+      "image": "Ryzen 9 7900X.jpg",
+      "reviews": [
+        {
+          "author": "Санжар Қ.",
+          "rating": 5,
+          "text": "12 ядро Zen 4 — видео монтаж бен стриминг бір мезгілде тамаша жүреді.",
+          "date": "2025-04-15"
+        },
+        {
+          "author": "Азамат Ж.",
+          "rating": 4,
+          "text": "Gaming-те 7800X3D-тен нашар, бірақ кәсіби жұмыс үшін одан жақсы.",
+          "date": "2025-05-02"
+        }
+      ]
+    },
+    {
+      "id": "cpu_r9_9850x3d",
+      "name": "Ryzen 7 9850X3D",
+      "price": 500000,
+      "description": "AMD Ryzen 9 9850X3D — 16 ядро / 32 тред, Zen 5 + 3D V-Cache, флагман деңгейі",
+      "image": "ryzen7.jpg",
+      "reviews": [
+        {
+          "author": "Темірлан А.",
+          "rating": 5,
+          "text": "Ең жаңа Zen 5 + 3D Cache. Кез-келген ойынды, кез-келген жұмысты тартады. Монстр!",
+          "date": "2025-05-20"
+        },
+        {
+          "author": "Аслан Ч.",
+          "rating": 5,
+          "text": "Баға жоғары, бірақ өнімділік ақтайды. Gaming + кәсіби жұмыс үшін абсолютті топ.",
+          "date": "2025-05-23"
+        }
+      ]
+    }
+  ],
+  "gpus": [
+    {
+      "id": "gpu_rtx_2060",
+      "name": "RTX 2060",
+      "vram": "6GB",
+      "price": 180000,
+      "description": "1080p ойындарға арналған базалық RTX видеокарта",
+      "image": "rtx2060.jpg",
+      "reviews": [
+        {
+          "author": "Нұрлан А.",
+          "rating": 4,
+          "text": "1080p-да Fortnite, Warzone тамаша жүреді. Бюджетке арналған жақсы бастапқы карта.",
+          "date": "2024-11-10"
+        },
+        {
+          "author": "Дәурен Т.",
+          "rating": 4,
+          "text": "RTX функциялары жұмыс істейді, баға өте қолайлы. CS2 200+ fps береді.",
+          "date": "2024-12-03"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_2070",
+      "name": "RTX 2070",
+      "vram": "8GB",
+      "price": 210000,
+      "description": "Орта деңгейлі ойындарға жақсы өнімділік береді",
+      "image": "rtx2070.jpg",
+      "reviews": [
+        {
+          "author": "Серік М.",
+          "rating": 4,
+          "text": "1080p ойындарда өте жақсы. 1440p-да орташа. Бағасына лайықты.",
+          "date": "2024-10-22"
+        },
+        {
+          "author": "Айбек О.",
+          "rating": 5,
+          "text": "Ойынға дайын карта. CyberQazaq-тан тез жеткізілді, орам тамаша.",
+          "date": "2024-11-15"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_2070_super",
+      "name": "RTX 2070 Super",
+      "vram": "8GB",
+      "price": 230000,
+      "description": "RTX 2070-тен күштірек, тұрақты FPS үшін жақсы",
+      "image": "rtx2070super.jpg",
+      "reviews": [
+        {
+          "author": "Ержан К.",
+          "rating": 5,
+          "text": "RTX 2070-тен айтарлықтай жылдам. 1440p-да Cyberpunk орта баптауда жүреді.",
+          "date": "2024-09-30"
+        },
+        {
+          "author": "Болат С.",
+          "rating": 4,
+          "text": "Ескі буын болса да жылдамдығы жеткілікті. VRAM жетпей қалады кейде.",
+          "date": "2024-10-18"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_2080",
+      "name": "RTX 2080",
+      "vram": "8GB",
+      "price": 260000,
+      "description": "Жоғары деңгейлі ескі флагман видеокарта",
+      "image": "RTX 2080 Ti  (3).jpg",
+      "reviews": [
+        {
+          "author": "Рустам Н.",
+          "rating": 4,
+          "text": "2080 деңгейі 1440p-да ойнауға жетеді. RTX өнімділігі жоғары.",
+          "date": "2024-08-14"
+        },
+        {
+          "author": "Тимур А.",
+          "rating": 5,
+          "text": "Баға-өнімділік балансы жақсы. Бұрынғы флагман — бүгінде орта деңгей.",
+          "date": "2024-09-01"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_2080_TI",
+      "name": "RTX 2080 Ti 11GB",
+      "vram": "11GB",
+      "price": 280000,
+      "description": "RTX 2080-дің қуаттырақ нұсқасы",
+      "image": "rtx2080ti.jpg",
+      "reviews": [
+        {
+          "author": "Арман Д.",
+          "rating": 5,
+          "text": "11GB VRAM — кейбір жаңа ойынға дейін жетеді. Тамаша карта бұл бағада.",
+          "date": "2024-07-20"
+        },
+        {
+          "author": "Санжар Е.",
+          "rating": 4,
+          "text": "Ескі флагман, бірақ қуаты әлі де жоғары. CS2-де 200+ fps береді.",
+          "date": "2024-08-05"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_3060",
+      "name": "RTX 3060",
+      "vram": "12GB",
+      "price": 185000,
+      "description": "Full HD gaming үшін тиімді видеокарта",
+      "image": "rtx3060.jpg",
+      "reviews": [
+        {
+          "author": "Алима Б.",
+          "rating": 5,
+          "text": "Алғашқы gaming картам! 1080p-да барлық ойын жақсы жүреді. Жылдам жеткізілді.",
+          "date": "2025-01-10"
+        },
+        {
+          "author": "Нариман Ж.",
+          "rating": 4,
+          "text": "12GB VRAM — бұл деңгейде тамаша. RTX 2060-тан екі есе жылдам.",
+          "date": "2025-02-03"
+        },
+        {
+          "author": "Зарина Т.",
+          "rating": 5,
+          "text": "Бюджет сегменттің ең мықты таңдауы. Valorant 300+ fps береді.",
+          "date": "2025-02-28"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_3060_ti",
+      "name": "RTX 3060 Ti",
+      "vram": "8GB",
+      "price": 220000,
+      "description": "Баға мен өнімділік балансы жақсы",
+      "image": "rtx3060ti.jpg",
+      "reviews": [
+        {
+          "author": "Дамир С.",
+          "rating": 5,
+          "text": "RTX 3070-ке жақын өнімділік, арзанырақ баға. 1440p ойынға жарайды.",
+          "date": "2025-01-22"
+        },
+        {
+          "author": "Аяна М.",
+          "rating": 5,
+          "text": "Тамаша карта! 1080p-да барлық ойынды Ultra баптауда жүргіземін.",
+          "date": "2025-03-05"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_3070",
+      "name": "RTX 3070",
+      "vram": "8GB",
+      "price": 250000,
+      "description": "2K gaming үшін танымал видеокарта",
+      "image": "rtx3070.jpg",
+      "reviews": [
+        {
+          "author": "Қайрат Н.",
+          "rating": 5,
+          "text": "1440p gaming стандарты. RDR2, Cyberpunk — бәрі Ultra баптауда жүреді.",
+          "date": "2025-01-08"
+        },
+        {
+          "author": "Мадина С.",
+          "rating": 4,
+          "text": "8GB VRAM кейде тарлық етеді, бірақ жалпы өнімділік жоғары деңгейде.",
+          "date": "2025-02-14"
+        },
+        {
+          "author": "Бекзат О.",
+          "rating": 5,
+          "text": "Баға-сапа балансы өте жақсы. RTX 3060-тан айтарлықтай жылдам.",
+          "date": "2025-03-10"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_3070_ti",
+      "name": "RTX 3070 Ti",
+      "vram": "8GB",
+      "price": 280000,
+      "description": "Жоғары FPS үшін жақсы",
+      "image": "rtx3070ti.jpg",
+      "reviews": [
+        {
+          "author": "Ерлан М.",
+          "rating": 5,
+          "text": "RTX 3070-тен 10-15% жылдам. 1440p-да кез-келген ойынды жеңіл тартады.",
+          "date": "2025-01-30"
+        },
+        {
+          "author": "Диас К.",
+          "rating": 4,
+          "text": "Жақсы карта, бірақ RTX 3080-ға бара беру дұрыс болар еді.",
+          "date": "2025-02-20"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_3080",
+      "name": "RTX 3080",
+      "vram": "10GB",
+      "price": 340000,
+      "description": "2K және 4K gaming үшін",
+      "image": "rtx3080.jpg",
+      "reviews": [
+        {
+          "author": "Аслан Ч.",
+          "rating": 5,
+          "text": "2K-4K ойынға тамаша карта. Cyberpunk 4K-да 60+ fps береді. Өте риза!",
+          "date": "2025-02-05"
+        },
+        {
+          "author": "Руслан Н.",
+          "rating": 5,
+          "text": "Топ деңгейлі өнімділік. Стриминг кезінде де fps түспейді.",
+          "date": "2025-03-01"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_3080_ti",
+      "name": "RTX 3080 Ti",
+      "vram": "12GB",
+      "price": 390000,
+      "description": "Премиум видеокарта",
+      "image": "rtx3080ti.jpg",
+      "reviews": [
+        {
+          "author": "Темірлан А.",
+          "rating": 5,
+          "text": "4K gaming үшін тамаша таңдау. 12GB VRAM — болашаққа дайын.",
+          "date": "2025-02-18"
+        },
+        {
+          "author": "Азамат Ж.",
+          "rating": 4,
+          "text": "Өте қуатты карта. Баға сәл жоғары, бірақ өнімділігі ақтайды.",
+          "date": "2025-03-08"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_4060",
+      "name": "RTX 4060",
+      "vram": "8GB",
+      "price": 210000,
+      "description": "Жаңа буын 1080p gaming видеокартасы",
+      "image": "rtx4060.jpg",
+      "reviews": [
+        {
+          "author": "Нұрлан Б.",
+          "rating": 5,
+          "text": "Жаңа буын 1080p картасы. DLSS 3 технологиясы керемет жұмыс істейді.",
+          "date": "2025-03-12"
+        },
+        {
+          "author": "Жансая Т.",
+          "rating": 4,
+          "text": "Тиімді энергия тұтыну, тыныш жұмыс. 1080p-да барлық ойын Ultra-да.",
+          "date": "2025-03-25"
+        },
+        {
+          "author": "Рустам И.",
+          "rating": 5,
+          "text": "RTX 3060-тан жылдамырақ, VRAM аз. Бірақ DLSS 3 айырмашылықты жабады.",
+          "date": "2025-04-10"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_4060_ti",
+      "name": "RTX 4060 Ti",
+      "vram": "16GB",
+      "price": 260000,
+      "description": "Жеңіл 2K gaming үшін жақсы",
+      "image": "rtx4060ti.jpg",
+      "reviews": [
+        {
+          "author": "Серік А.",
+          "rating": 5,
+          "text": "16GB VRAM нұсқасы — болашаққа дайын. 1440p ойынға тамаша таңдау.",
+          "date": "2025-03-20"
+        },
+        {
+          "author": "Айбек М.",
+          "rating": 4,
+          "text": "Жақсы карта, бірақ RTX 4070 алса одан да жақсы болар еді.",
+          "date": "2025-04-05"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_4070",
+      "name": "RTX 4070",
+      "vram": "12GB",
+      "price": 350000,
+      "description": "2K gaming",
+      "image": "rtx4070.jpg",
+      "reviews": [
+        {
+          "author": "Бауыржан Е.",
+          "rating": 5,
+          "text": "1440p gaming-тің алтын стандарты! DLSS 3 + Frame Generation — керемет.",
+          "date": "2025-03-15"
+        },
+        {
+          "author": "Данияр С.",
+          "rating": 5,
+          "text": "Барлық заманауи ойынды 1440p/Ultra-да жүргіземін. Өте риза!",
+          "date": "2025-04-02"
+        },
+        {
+          "author": "Аяна Б.",
+          "rating": 4,
+          "text": "Тамаша карта, баға сәл жоғары. Бірақ өнімділік ақтайды.",
+          "date": "2025-04-20"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_4070_super",
+      "name": "RTX 4070 Super",
+      "vram": "12GB",
+      "price": 390000,
+      "description": "RTX 4070-тен күштірек",
+      "image": "rtx4070super.jpg",
+      "reviews": [
+        {
+          "author": "Ержан О.",
+          "rating": 5,
+          "text": "RTX 4070-тен 20% жылдам — айырмашылық бірден сезіледі. Өте ұнады!",
+          "date": "2025-03-28"
+        },
+        {
+          "author": "Болат М.",
+          "rating": 5,
+          "text": "2K ойынның ең тиімді таңдауы. Стриминг кезінде де fps 144+ ұстайды.",
+          "date": "2025-04-15"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_4070_ti_super",
+      "name": "RTX 4070 Ti Super",
+      "vram": "16GB",
+      "price": 480000,
+      "description": "16GB VRAM бар жоғары деңгейлі карта",
+      "image": "rtx4070tisuper.jpg",
+      "reviews": [
+        {
+          "author": "Тимур Д.",
+          "rating": 5,
+          "text": "16GB VRAM + жаңа буын архитектура. 4K ойынға да жарайды.",
+          "date": "2025-04-01"
+        },
+        {
+          "author": "Алима Н.",
+          "rating": 5,
+          "text": "Cyberpunk 4K/High баптауда 80+ fps береді. Тамаша карта!",
+          "date": "2025-04-18"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_4080_super",
+      "name": "RTX 4080 Super",
+      "vram": "16GB",
+      "price": 700000,
+      "description": "4K gaming үшін топ карта",
+      "image": "RTX 4080 Super.jpg",
+      "reviews": [
+        {
+          "author": "Нариман К.",
+          "rating": 5,
+          "text": "4K gaming үшін тамаша таңдау. RTX 4090-нан арзанырақ, өнімділік жоғары.",
+          "date": "2025-04-10"
+        },
+        {
+          "author": "Зарина Е.",
+          "rating": 5,
+          "text": "Монтаж бен ойын үшін зор. DLSS 3 жұмысы керемет. Өте риза!",
+          "date": "2025-04-22"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_4090",
+      "name": "RTX 4090",
+      "vram": "24GB",
+      "price": 1500000,
+      "description": "Ең қуатты RTX видеокарта",
+      "image": "RTX 4090.jpg",
+      "reviews": [
+        {
+          "author": "Дәурен Б.",
+          "rating": 5,
+          "text": "4K/Ultra-да 144fps+ — бұл шынайы мүмкіндік. Ең қуатты карта!",
+          "date": "2025-03-05"
+        },
+        {
+          "author": "Қайрат Н.",
+          "rating": 5,
+          "text": "Path Tracing режимінде Cyberpunk — кино сапасы. Ешқандай өкінішім жоқ.",
+          "date": "2025-04-08"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_5060_ti_8gb",
+      "name": "RTX 5060 Ti 8GB",
+      "vram": "8GB",
+      "price": 280000,
+      "description": "RTX 5060 Ti-дің 8GB нұсқасы, орта және жоғары деңгейдегі ойындарға жақсы",
+      "image": "RTX 5060 Ti.jpg",
+      "reviews": [
+        {
+          "author": "Тимур Д.",
+          "rating": 4,
+          "text": "1080p gaming үшін өте жақсы таңдау. 8GB VRAM кейбір жаңа ойынға тарлық етеді.",
+          "date": "2025-05-08"
+        },
+        {
+          "author": "Алима Н.",
+          "rating": 5,
+          "text": "Алғашқы RTX картам! Fortnite, Minecraft шейдерлерімен бәрі керемет.",
+          "date": "2025-05-15"
+        },
+        {
+          "author": "Бекзат О.",
+          "rating": 4,
+          "text": "RTX 3060-тан апгрейд — 2 есе жылдамырақ. 16GB нұсқасын алса одан жақсы болар еді.",
+          "date": "2025-04-22"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_5060",
+      "name": "RTX 5060",
+      "vram": "8GB",
+      "price": 260000,
+      "description": "Жаңа буын, орта сегментке арналған видеокарта",
+      "image": "RTX 5060 .jpg",
+      "reviews": [
+        {
+          "author": "Арман К.",
+          "rating": 5,
+          "text": "CS2 және Valorant-та 300+ fps береді! Баға/сапа арақатынасы өте жақсы.",
+          "date": "2025-05-12"
+        },
+        {
+          "author": "Дамир С.",
+          "rating": 4,
+          "text": "1080p-да барлық ойын тамаша жұмыс істейді. DLSS 4 технологиясы керемет.",
+          "date": "2025-04-28"
+        },
+        {
+          "author": "Нұрлан Б.",
+          "rating": 5,
+          "text": "RTX 3070-тен апгрейд жасадым — айырмашылық бірден сезіледі.",
+          "date": "2025-05-02"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_5060_ti",
+      "name": "RTX 5060 Ti 16GB",
+      "vram": "16GB",
+      "price": 320000,
+      "description": "RTX 5060-тің күштірек нұсқасы, ойынға жақсы",
+      "image": "RTX 5060 Ti 16 gb.jpg",
+      "reviews": [
+        {
+          "author": "Серік А.",
+          "rating": 5,
+          "text": "16GB VRAM — бұл 2025 жылы стандарт болуы керек. 1440p-да Elden Ring, RDR2 — бәрі Ultra-да.",
+          "date": "2025-05-18"
+        },
+        {
+          "author": "Айбек М.",
+          "rating": 5,
+          "text": "Стримге де, ойынға да тамаша. OBS-пен бірге жұмыс жасаса да fps түспейді.",
+          "date": "2025-04-30"
+        },
+        {
+          "author": "Жансая Т.",
+          "rating": 4,
+          "text": "Бағасы биік болса да сатып алғаным дұрыс болды. Жылдамдық пен сапа жоғары деңгейде.",
+          "date": "2025-05-10"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_5070",
+      "name": "RTX 5070",
+      "vram": "16GB",
+      "price": 500000,
+      "description": "Жаңа буын жоғары өнімді видеокарта",
+      "image": "RTX 5070.jpg",
+      "reviews": [
+        {
+          "author": "Ержан М.",
+          "rating": 5,
+          "text": "Жаңа архитектура + DLSS 4 = керемет! 1440p-да барлық ойын 144fps+ береді.",
+          "date": "2025-05-16"
+        },
+        {
+          "author": "Диас Б.",
+          "rating": 5,
+          "text": "RTX 4070 Ti Super-мен бірдей өнімділік, бірақ арзанырақ. Өте тиімді таңдау.",
+          "date": "2025-05-20"
+        },
+        {
+          "author": "Мадина О.",
+          "rating": 4,
+          "text": "Тамаша карта! 2K gaming үшін бұл бағада балама жоқ.",
+          "date": "2025-05-22"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_5070_ti",
+      "name": "RTX 5070 Ti",
+      "vram": "16GB",
+      "price": 600000,
+      "description": "Топ деңгейге жақын жаңа буын видеокарта",
+      "image": "RTX 5070 Ti .jpg",
+      "reviews": [
+        {
+          "author": "Нариман А.",
+          "rating": 5,
+          "text": "4K gaming-ке дайын карта. RTX 5080-ге жуық өнімділік, баға қолайлырақ.",
+          "date": "2025-05-19"
+        },
+        {
+          "author": "Болат К.",
+          "rating": 5,
+          "text": "Cyberpunk 4K/Ultra баптауда 90+ fps береді. Жаңа буын — шынайы секіріс.",
+          "date": "2025-05-21"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_5080",
+      "name": "RTX 5080",
+      "vram": "16GB",
+      "price": 750000,
+      "description": "4K gaming пен ауыр графикалық жүктемеге арналған",
+      "image": "RTX 5080.jpg",
+      "reviews": [
+        {
+          "author": "Ерлан М.",
+          "rating": 5,
+          "text": "4K ойын үшін тамаша баланс. RTX 5090-дан арзанырақ, өнімділік те жоғары.",
+          "date": "2025-05-14"
+        },
+        {
+          "author": "Данияр С.",
+          "rating": 4,
+          "text": "Монтаж бен ойын үшін зор. DLSS 4 жұмысы керемет. Бірде-бір мәселе болмады.",
+          "date": "2025-05-01"
+        }
+      ]
+    },
+    {
+      "id": "gpu_rtx_5090",
+      "name": "RTX 5090",
+      "vram": "32GB",
+      "price": 1200000,
+      "description": "Ең қуатты RTX видеокарта",
+      "image": "RTX 5090.jpg",
+      "reviews": [
+        {
+          "author": "Бауыржан Е.",
+          "rating": 5,
+          "text": "4K Ultra-да 144fps+ — бұл шынайы мүмкіндік емес деп ойлайтынмын. ШЕФ карта!",
+          "date": "2025-05-20"
+        },
+        {
+          "author": "Рустам И.",
+          "rating": 5,
+          "text": "3D рендеринг уақыты 3 есе қысқарды. Blender, DaVinci — бәрі жарқырайды.",
+          "date": "2025-05-05"
+        },
+        {
+          "author": "Санжар Қ.",
+          "rating": 5,
+          "text": "Ең қымбат сатып алу, бірақ ешқандай өкінішім жоқ. Path tracing режимінде Cyberpunk — кино сапасы.",
+          "date": "2025-04-18"
+        }
+      ]
+    }
+  ],
+  "ram": [
+    {
+      "id": "ram_16_ddr4",
+      "name": "16GB DDR4",
+      "price": 40000,
+      "description": "16GB DDR4 RAM — Gaming мен күнделікті жұмысқа оптималды жад. DDR4-3200/3600MHz жылдамдығы. LGA1700 Intel немесе AM4/AM5 DDR4 аналық платаларымен үйлеседі. 1080p gaming үшін жеткілікті, Chrome + ойын + Discord — ешбір тежелусіз.",
+      "reviews": [
+        {
+          "author": "Нұрлан А.",
+          "rating": 4,
+          "text": "Gaming мен күнделікті жұмысқа жеткілікті. DDR4 платформасы үшін оптималды таңдау.",
+          "date": "2025-01-20"
+        },
+        {
+          "author": "Дамир С.",
+          "rating": 5,
+          "text": "Жылдам жеткізілді, жұмыс істейді тамаша. Бюджет жинаққа идеал.",
+          "date": "2025-02-15"
+        }
+      ],
+      "image": "16GB DDR4.jpg",
+      "specs": {
+        "capacity": "16GB",
+        "type": "DDR4",
+        "speed": "3200-3600MHz",
+        "modules": "2x8GB"
+      },
+      "best_for": [
+        "Бюджет gaming",
+        "Күнделікті жұмыс",
+        "1080p ойындар"
+      ],
+      "not_for": [
+        "Ауыр стриминг",
+        "AAA ultra gaming",
+        "Жаңа AM5 платформасы"
+      ]
+    },
+    {
+      "id": "ram_32_ddr4",
+      "name": "32GB DDR4",
+      "price": 85000,
+      "description": "32GB DDR4 RAM — Стриминг, ауыр AAA ойындар және multitasking үшін оптималды жад. DDR4-3200/3600MHz. Intel LGA1700 немесе AM4 платформасымен үйлеседі. Ауыр ойын + OBS стриминг + Discord — барлығы бір уақытта жеңіл жүреді.",
+      "reviews": [
+        {
+          "author": "Аяна М.",
+          "rating": 5,
+          "text": "32GB — стриминг, ауыр ойындар, Chrome-да 50 tab — бәрі жеңіл. Өте риза!",
+          "date": "2025-03-10"
+        },
+        {
+          "author": "Ержан К.",
+          "rating": 4,
+          "text": "DDR4 платформасы үшін оптималды. Жылдамдық жеткілікті, баға қолайлы.",
+          "date": "2025-04-05"
+        }
+      ],
+      "image": "32 GB DDR4.jpg",
+      "specs": {
+        "capacity": "32GB",
+        "type": "DDR4",
+        "speed": "3200-3600MHz",
+        "modules": "2x16GB"
+      },
+      "best_for": [
+        "Стриминг + Gaming",
+        "Ауыр multitasking",
+        "Future-proof"
+      ],
+      "not_for": [
+        "Жаңа AM5 DDR5 платформасы"
+      ]
+    },
+    {
+      "id": "ram_16_ddr5",
+      "name": "16GB DDR5",
+      "price": 75000,
+      "description": "16GB DDR5 RAM — Жаңа буын жад стандарты. DDR5-5200/6000MHz жылдамдығы — DDR4-тен 50% жоғары bandwidth. AM5 (Ryzen 7000/9000) немесе Intel LGA1700 (12th/13th/14th gen) платформасымен үйлеседі. Gaming-та жаңа буын артықшылығы.",
+      "reviews": [
+        {
+          "author": "Болат С.",
+          "rating": 5,
+          "text": "DDR5 жылдамдығы бірден сезіледі. AM5 платформасы үшін тамаша стартовый RAM.",
+          "date": "2025-03-22"
+        },
+        {
+          "author": "Тимур А.",
+          "rating": 4,
+          "text": "Жаңа буын стандарт. Gaming-те DDR4-тен жоғары bandwidth береді.",
+          "date": "2025-04-18"
+        }
+      ],
+      "image": "16GB DDR5.jpg",
+      "specs": {
+        "capacity": "16GB",
+        "type": "DDR5",
+        "speed": "5200-6000MHz",
+        "modules": "2x8GB"
+      },
+      "best_for": [
+        "AM5 платформасы",
+        "Жаңа буын жинақ",
+        "Gaming"
+      ],
+      "not_for": [
+        "DDR4 аналық платалары",
+        "Ауыр стриминг (32GB жақсы)"
+      ]
+    },
+    {
+      "id": "ram_32_ddr5",
+      "name": "32GB DDR5",
+      "price": 150000,
+      "description": "32GB DDR5 RAM — Жоғары өнімді gaming + жұмыс жинағына идеал. DDR5-5600/6000MHz. Ryzen 7000/9000 немесе Intel 12-14gen платформасымен үйлеседі. Стриминг + AAA gaming + ауыр multitasking — барлығы максималды деңгейде. Болашаққа дайын жинаққа міндетті таңдай.",
+      "image": "32 gb ddr5.jpg",
+      "reviews": [
+        {
+          "author": "Арман Д.",
+          "rating": 5,
+          "text": "32GB DDR5 — стриминг + gaming + монтаж бір мезгілде. Ешбір мәселе жоқ.",
+          "date": "2025-04-12"
+        },
+        {
+          "author": "Санжар Е.",
+          "rating": 5,
+          "text": "RTX 5080 + Ryzen 9800X3D жұбымен тамаша жұмыс. Bandwidth өте жоғары.",
+          "date": "2025-05-08"
+        }
+      ],
+      "specs": {
+        "capacity": "32GB",
+        "type": "DDR5",
+        "speed": "5600-6000MHz",
+        "modules": "2x16GB"
+      },
+      "best_for": [
+        "Стриминг + Gaming",
+        "Ауыр жұмыс",
+        "AM5 Future-proof"
+      ],
+      "not_for": [
+        "DDR4 платформалары",
+        "Бюджет жинақ"
+      ]
+    },
+    {
+      "id": "ram_64_ddr5",
+      "name": "64GB DDR5",
+      "price": 320000,
+      "description": "64GB DDR5 RAM — Видео монтаж, 3D рендеринг, AI жұмысы және максималды ауыр жүктеме үшін арналған. DDR5-5600/6000MHz. Ryzen 9 7900X/9000-серия немесе Intel i9 платформасымен үйлеседі. Мазмұн жасаушылар мен кәсіби жинақтарға арналған.",
+      "reviews": [
+        {
+          "author": "Алима Б.",
+          "rating": 5,
+          "text": "64GB — 3D рендеринг, видео монтаж, виртуал машиналар — барлығы жеңіл.",
+          "date": "2025-05-10"
+        },
+        {
+          "author": "Нариман Ж.",
+          "rating": 5,
+          "text": "Кәсіби деңгейдегі RAM. Blender сахналары 2 есе жылдам рендерленеді.",
+          "date": "2025-05-18"
+        }
+      ],
+      "image": "64GB DDR5.jpg",
+      "specs": {
+        "capacity": "64GB",
+        "type": "DDR5",
+        "speed": "5600-6000MHz",
+        "modules": "2x32GB"
+      },
+      "best_for": [
+        "Видео монтаж",
+        "3D рендеринг",
+        "AI/ML жұмысы",
+        "Pro жинақ"
+      ],
+      "not_for": [
+        "Gaming тек (артық)",
+        "Бюджет жинақ"
+      ]
+    }
+  ],
+  "ssd": [
+    {
+      "id": "ssd_512",
+      "name": "512GB NVMe",
+      "price": 35000,
+      "description": "512GB NVMe SSD — Windows + 5-8 ауыр ойын сақтауға жеткілікті. PCIe Gen3/Gen4, оқу жылдамдығы 3500-7000 MB/s. HDD-ге қарағанда 10 есе жылдам жүктелу уақыты. Бастапқы жинаққа тиімді таңдай — кейін 1TB немесе 2TB-пен кеңейтуге болады.",
+      "reviews": [
+        {
+          "author": "Зарина Т.",
+          "rating": 4,
+          "text": "Windows + негізгі ойындарға жеткілікті. Жүктелу уақыты тамаша жылдам.",
+          "date": "2025-02-10"
+        },
+        {
+          "author": "Дәурен Б.",
+          "rating": 4,
+          "text": "Тиімді баға, жылдам NVMe. Бастапқы жинаққа жарайды.",
+          "date": "2025-03-05"
+        }
+      ],
+      "image": "512_GB.jpg",
+      "specs": {
+        "capacity": "512GB",
+        "interface": "NVMe PCIe Gen3/Gen4",
+        "read_speed": "3500-7000MB/s",
+        "write_speed": "2500-6500MB/s",
+        "form_factor": "M.2 2280"
+      },
+      "best_for": [
+        "Жүйе дискі",
+        "Бастапқы жинақ",
+        "Бюджет нұсқа"
+      ],
+      "not_for": [
+        "Көп ойын сақтау",
+        "Game library"
+      ]
+    },
+    {
+      "id": "ssd_1tb",
+      "name": "1TB NVMe",
+      "price": 75000,
+      "description": "1TB NVMe SSD — Windows + 15-20 ауыр ойын сақтауға жеткілікті. PCIe Gen3/Gen4, оқу жылдамдығы 3500-7000 MB/s. Ең танымал gaming SSD көлемі. Cyberpunk, RDR2, GTA V — барлық ауыр ойынды жеңіл сақтайды. Жылдам жүктелу уақыты — 30 секундтан 5 секундқа дейін.",
+      "image": "SSD_1TB.jpg",
+      "reviews": [
+        {
+          "author": "Қайрат Н.",
+          "rating": 5,
+          "text": "1TB — Windows + 15-20 ойын сыяды. NVMe жылдамдығы HDD-мен салыстыруға болмайды.",
+          "date": "2025-03-15"
+        },
+        {
+          "author": "Мадина С.",
+          "rating": 5,
+          "text": "Жылдам жеткізілді. Ойын жүктелу уақыты 3 есе қысқарды. Өте риза!",
+          "date": "2025-04-08"
+        },
+        {
+          "author": "Нұрлан Б.",
+          "rating": 5,
+          "text": "Оптималды таңдау. 1TB NVMe — gaming жинақтың стандарты.",
+          "date": "2025-04-25"
+        }
+      ],
+      "specs": {
+        "capacity": "1TB",
+        "interface": "NVMe PCIe Gen3/Gen4",
+        "read_speed": "3500-7000MB/s",
+        "write_speed": "3000-6500MB/s",
+        "form_factor": "M.2 2280"
+      },
+      "best_for": [
+        "Gaming жинақ",
+        "Барлық категория",
+        "Оптималды таңдай"
+      ],
+      "not_for": [
+        "Үлкен game library (2TB жақсы)"
+      ]
+    },
+    {
+      "id": "ssd_2tb",
+      "name": "2TB NVMe",
+      "price": 90000,
+      "description": "2TB NVMe SSD — 30+ ауыр ойын сақтауға жеткілікті, бастапқы disk бөлу қажет емес. PCIe Gen4 жылдамдығы. Game library үшін идеал — барлық ойындар бір дискте. Видео редактор, рендеринг жобалары үшін де жеткілікті орын. Жоғары деңгейлі жинаққа тамаша.",
+      "reviews": [
+        {
+          "author": "Ержан О.",
+          "rating": 5,
+          "text": "2TB — барлық ойын жинағым сыйды! Жылдамдық тамаша, орын мол.",
+          "date": "2025-04-18"
+        },
+        {
+          "author": "Болат М.",
+          "rating": 5,
+          "text": "Контент жасаушыларға идеал. Видео файлдар, жобалар — бәрі тез ашылады.",
+          "date": "2025-05-05"
+        }
+      ],
+      "image": "SSD_2TB.jpg",
+      "specs": {
+        "capacity": "2TB",
+        "interface": "NVMe PCIe Gen4",
+        "read_speed": "7000MB/s",
+        "write_speed": "6500MB/s",
+        "form_factor": "M.2 2280"
+      },
+      "best_for": [
+        "Үлкен game library",
+        "Контент жасаушылар",
+        "Premium жинақ"
+      ],
+      "not_for": [
+        "Бюджет жинақ"
+      ]
+    }
+  ],
+  "motherboards": [
+    {
+      "id": "mb_b660",
+      "name": "B660 (Intel)",
+      "price": 70000,
+      "description": "Intel B660 Аналық плата — Intel i5/i7 LGA1700 процессорлары үшін оптималды орта бюджет шешімі. DDR4/DDR5 қолдауы, PCIe 5.0, M.2 NVMe слоттары. Overclocking мүмкіндігі жоқ, бірақ XMP/EXPO RAM профильдерін қолдайды. Бюджет-орта деңгейлі Intel жинағына тамаша.",
+      "reviews": [
+        {
+          "author": "Арман Т.",
+          "rating": 5,
+          "text": "B660 Intel платасы — i5/i7 процессорларға тамаша жұп. Баға арзан, бірақ сапа жоғары.",
+          "date": "2025-03-10"
+        },
+        {
+          "author": "Серік Н.",
+          "rating": 4,
+          "text": "Тұрақты жұмыс, overclocking жоқ, бірақ бюджет сегментіне сай. Ешқандай мәселе болмады.",
+          "date": "2025-04-02"
+        }
+      ],
+      "specs": {
+        "socket": "LGA1700",
+        "chipset": "B660",
+        "ram_type": "DDR4/DDR5",
+        "max_ram": "128GB",
+        "pcie": "PCIe 5.0",
+        "overclocking": false
+      },
+      "best_for": [
+        "i5-12400F/13400F жинағы",
+        "Бюджет Intel жинақ",
+        "DDR4/DDR5"
+      ],
+      "not_for": [
+        "Overclocking",
+        "i9 максималды өнімділік"
+      ],
+      "image": "https://placehold.co/400x300/0a0a1a/3b82f6?text=B660+Intel+Motherboard"
+    },
+    {
+      "id": "mb_b760",
+      "name": "B760 (Intel)",
+      "price": 90000,
+      "description": "Intel B760 Аналық плата — 12-13-14gen Intel процессорларына арналған жаңа буын орта бюджет аналық платасы. DDR4/DDR5 қолдауы, PCIe 5.0, жылдам M.2 слоттар. USB 3.2 Gen 2. Overclocking мүмкіндігі жоқ, бірақ XMP қолдайды. i5-13400F ден i7-14700F дейінгі жинаққа тамаша.",
+      "reviews": [
+        {
+          "author": "Дамир А.",
+          "rating": 5,
+          "text": "B760 — қазіргі ең тиімді Intel платасы. DDR5 қолдайды, M.2 слоттары жеткілікті.",
+          "date": "2025-04-15"
+        },
+        {
+          "author": "Нұрлан К.",
+          "rating": 5,
+          "text": "12-ші, 13-ші, 14-ші буын Intel CPU-мен жұмыс істейді. Универсал плата!",
+          "date": "2025-05-01"
+        },
+        {
+          "author": "Айгерім С.",
+          "rating": 4,
+          "text": "Жақсы плата, BIOS интерфейсі қарапайым. Жаңа ойыншыларға ұсынамын.",
+          "date": "2025-05-12"
+        }
+      ],
+      "specs": {
+        "socket": "LGA1700",
+        "chipset": "B760",
+        "ram_type": "DDR4/DDR5",
+        "max_ram": "192GB",
+        "pcie": "PCIe 5.0",
+        "overclocking": false
+      },
+      "best_for": [
+        "i5-13400F/14600KF жинағы",
+        "Орта бюджет Intel жинақ"
+      ],
+      "not_for": [
+        "Overclocking"
+      ],
+      "image": "https://placehold.co/400x300/0a0a1a/3b82f6?text=B760+Intel+Motherboard"
+    },
+    {
+      "id": "mb_z790",
+      "name": "Z790 (Intel)",
+      "price": 150000,
+      "description": "Intel Z790 Аналық плата — Intel i7/i9 жинақтарына арналған флагман аналық плата. Толық overclocking мүмкіндігі, PCIe 5.0 x16, жылдам M.2 NVMe слоттар, Thunderbolt 4, WiFi 6E. i9-14900K/i7-14700F-пен максималды өнімділік береді. Premium Intel жинағына міндетті.",
+      "reviews": [
+        {
+          "author": "Тимур Б.",
+          "rating": 5,
+          "text": "Z790 — оверклокинг үшін ең жақсы Intel платасы. i9-14900K-мен тамаша жұп. Барлық бекіткіштер металл.",
+          "date": "2025-04-08"
+        },
+        {
+          "author": "Ерлан М.",
+          "rating": 5,
+          "text": "Ultra Set-ке осы плата қойылған — мінсіз жұмыс. Power delivery өте күшті.",
+          "date": "2025-05-05"
+        },
+        {
+          "author": "Руслан О.",
+          "rating": 5,
+          "text": "Кәсіби деңгейдегі плата. Барлық жоғары класс жинақтарға сай.",
+          "date": "2025-05-18"
+        }
+      ],
+      "specs": {
+        "socket": "LGA1700",
+        "chipset": "Z790",
+        "ram_type": "DDR4/DDR5",
+        "max_ram": "192GB",
+        "pcie": "PCIe 5.0",
+        "overclocking": true
+      },
+      "best_for": [
+        "i9-13900K/14900K жинағы",
+        "Overclocking",
+        "Maximum Intel өнімділік"
+      ],
+      "not_for": [
+        "Бюджет жинақ",
+        "i5 процессорлар (артық)"
+      ],
+      "image": "https://placehold.co/400x300/0a0a1a/f59e0b?text=Z790+Intel+Motherboard"
+    },
+    {
+      "id": "mb_b650",
+      "name": "B650 (AMD)",
+      "price": 100000,
+      "description": "AMD B650 Аналық плата — Ryzen 5/7 7000/9000-серия AM5 процессорларына арналған тиімді аналық плата. DDR5 қолдауы, PCIe 5.0 M.2, USB 3.2. AMD EXPO RAM профильдерін қолдайды. Overclocking мүмкіндігі шектеулі. Ryzen 5 7600 ден Ryzen 7 9700X дейінгі жинаққа тамаша.",
+      "reviews": [
+        {
+          "author": "Бекзат Ж.",
+          "rating": 5,
+          "text": "AMD B650 — Ryzen 5/7 серияларына ең тиімді таңдау. DDR5, PCIe 5.0 қолдайды.",
+          "date": "2025-04-20"
+        },
+        {
+          "author": "Қайрат А.",
+          "rating": 4,
+          "text": "Ryzen 7500F-пен бірге жұмыс тамаша. Баға-сапа арақатынасы жоғары.",
+          "date": "2025-05-08"
+        }
+      ],
+      "specs": {
+        "socket": "AM5",
+        "chipset": "B650",
+        "ram_type": "DDR5",
+        "max_ram": "192GB",
+        "pcie": "PCIe 5.0",
+        "overclocking": false
+      },
+      "best_for": [
+        "Ryzen 5/7 7000/9000 жинағы",
+        "AM5 бюджет платформасы"
+      ],
+      "not_for": [
+        "Overclocking",
+        "Ryzen 9 максималды өнімділік"
+      ],
+      "image": "https://placehold.co/400x300/1a0a0a/ef4444?text=B650+AMD+Motherboard"
+    },
+    {
+      "id": "mb_x670",
+      "name": "X670 (AMD)",
+      "price": 180000,
+      "description": "AMD X670 Аналық плата — Ryzen 7/9 AM5 жинақтарына арналған флагман аналық плата. Толық overclocking, DDR5, PCIe 5.0 x16 (GPU + M.2), WiFi 6E, USB 4.0. Ryzen 9 7900X немесе Ryzen 7 9800X3D-пен максималды өнімділік. AMD EXPO қолдайды.",
+      "reviews": [
+        {
+          "author": "Санжар Е.",
+          "rating": 5,
+          "text": "X670 — AMD флагман платасы. Ryzen 9 9850X3D-мен тамаша жұмыс. Шейх сетінде осы тұр!",
+          "date": "2025-05-02"
+        },
+        {
+          "author": "Нариман Б.",
+          "rating": 5,
+          "text": "Оверклокинг мүмкіндіктері кең. PCIe 5.0 NVMe жылдамдығы таңқаларлық.",
+          "date": "2025-05-16"
+        },
+        {
+          "author": "Аяна Т.",
+          "rating": 5,
+          "text": "Топ деңгейлі AMD плата. Барлық қосымша функциялар жұмыс істейді.",
+          "date": "2025-05-20"
+        }
+      ],
+      "specs": {
+        "socket": "AM5",
+        "chipset": "X670",
+        "ram_type": "DDR5",
+        "max_ram": "192GB",
+        "pcie": "PCIe 5.0",
+        "overclocking": true
+      },
+      "best_for": [
+        "Ryzen 9 жинағы",
+        "Overclocking",
+        "Premium AMD платформа"
+      ],
+      "not_for": [
+        "Бюджет жинақ",
+        "Ryzen 5 (артық)"
+      ],
+      "image": "https://placehold.co/400x300/1a0a0a/f97316?text=X670+AMD+Motherboard"
+    }
+  ],
+  "cases": [
+    {
+      "id": "case_rgb",
+      "name": "Gaming RGB Case",
+      "price": 40000,
+      "description": "Gaming RGB Case — Шыны панель + ARGB желдеткіштер, стильді gaming дизайн. ATX, M-ATX аналық платаларға қолайлы. Cable management орындалған, airflow жақсы. RGB контроллер арқылы жарықты реттеуге болады. White немесе black нұсқалары бар. Стильді gaming жинаққа тамаша.",
+      "reviews": [
+        {
+          "author": "Диас С.",
+          "rating": 5,
+          "text": "RGB корпус бөлмені мүлде өзгертті! Шыны панель арқылы барлық компонент көрінеді. Тамаша!",
+          "date": "2025-04-10"
+        },
+        {
+          "author": "Алима Н.",
+          "rating": 5,
+          "text": "Airflow жақсы, RGB желдеткіштері тыныш жұмыс істейді. White Aesthetic сетіне кіреді.",
+          "date": "2025-05-03"
+        },
+        {
+          "author": "Болат К.",
+          "rating": 4,
+          "text": "Монтаж оңай, кабель менеджмент ойластырылған. 4 жұлдыз — қосымша желдеткіш алса жақсы болар.",
+          "date": "2025-05-15"
+        }
+      ],
+      "specs": {
+        "form_factor": "ATX/M-ATX",
+        "fans": "3x ARGB fans",
+        "glass_panel": true,
+        "rgb": true,
+        "max_gpu_length": "380mm"
+      },
+      "best_for": [
+        "Стильді gaming жинақ",
+        "RGB тәжірибесі",
+        "Стриминг setup"
+      ],
+      "not_for": [
+        "Silent build (RGB желдеткіш шуыл береді)",
+        "SFF build"
+      ],
+      "image": "https://placehold.co/400x300/050510/00ff88?text=Gaming+RGB+Case"
+    },
+    {
+      "id": "case_mini",
+      "name": "Mini Tower",
+      "price": 25000,
+      "description": "Mini Tower — Ықшам Mini-ITX/M-ATX форм-фактор корпус. Аз орын алады, бірақ толық ATX компоненттерді сыйғызады. Ыңғайлы тасымалдауға жарамды. GPU ұзындығы шектеулі — RTX 4090 сияқты ірі карталармен үйлеспеуі мүмкін. Кеңседе немесе шағын бөлмеде идеал.",
+      "reviews": [
+        {
+          "author": "Айбек М.",
+          "rating": 5,
+          "text": "Кіші корпус, бірақ ITX платаға барлық компонент сиып кетеді. Үстел үстіне тамаша.",
+          "date": "2025-03-28"
+        },
+        {
+          "author": "Зарина Е.",
+          "rating": 4,
+          "text": "Mini Tower — аз орын алады, бірақ салқындату жақсырақ болса дұрыс болар еді.",
+          "date": "2025-04-22"
+        }
+      ],
+      "specs": {
+        "form_factor": "M-ITX/M-ATX",
+        "fans": "2x fans included",
+        "glass_panel": false,
+        "rgb": false,
+        "max_gpu_length": "300mm"
+      },
+      "best_for": [
+        "Шағын кеңсе/бөлме",
+        "Ықшам жинақ",
+        "Тасымалдауға ыңғайлы"
+      ],
+      "not_for": [
+        "Ірі GPU (RTX 4090/5090)",
+        "Ауыр стриминг жинақ"
+      ],
+      "image": "https://placehold.co/400x300/111827/60a5fa?text=Mini+Tower+Case"
+    },
+    {
+      "id": "case_mid",
+      "name": "Mid Tower",
+      "price": 35000,
+      "description": "Mid Tower — Ең кең таралған gaming корпус форм-факторы. ATX аналық платаларға қолайлы. Жақсы airflow, кабель менеджмент. Барлық GPU-ларды сыйғызады. Бюджет нұсқасынан premium-ға дейін кең таңдау. Кез-келген gaming жинаққа универсалды шешім.",
+      "reviews": [
+        {
+          "author": "Ержан О.",
+          "rating": 5,
+          "text": "Mid Tower — стандарт ATX платаға тамаша. Airflow жақсы, монтаж оңай. Студент сетінде осы.",
+          "date": "2025-04-05"
+        },
+        {
+          "author": "Тимур Д.",
+          "rating": 5,
+          "text": "Функционал корпус, артық RGB жоқ, бірақ сапалы. Budget Killer сетіне кіреді.",
+          "date": "2025-05-10"
+        },
+        {
+          "author": "Мадина Р.",
+          "rating": 4,
+          "text": "Жақсы корпус, бағасына сай. Тек алдыңғы панель USB-C болса жетілген болар еді.",
+          "date": "2025-05-18"
+        }
+      ],
+      "specs": {
+        "form_factor": "ATX/M-ATX/E-ATX",
+        "fans": "2-3 fans slots",
+        "glass_panel": true,
+        "rgb": false,
+        "max_gpu_length": "420mm"
+      },
+      "best_for": [
+        "Кез-келген жинақ",
+        "Универсалды",
+        "Жақсы airflow"
+      ],
+      "not_for": [
+        "Шағын орын",
+        "Mini build"
+      ],
+      "image": "https://placehold.co/400x300/0a0a0f/a78bfa?text=Mid+Tower+Case"
+    },
+    {
+      "id": "case_full",
+      "name": "Full Tower",
+      "price": 60000,
+      "description": "Full Tower — Ең үлкен корпус форм-факторы. E-ATX аналық платаларға қолайлы. Максималды airflow, ең ірі GPU-лар мен кулерлер сыяды. Dual AIO немесе custom water cooling жобалары үшін тамаша. i9/Ryzen 9 + RTX 5090 сияқты максималды жинақтарға арналған.",
+      "reviews": [
+        {
+          "author": "Рустам К.",
+          "rating": 5,
+          "text": "Full Tower — Ultra Set үшін жасалған! Барлық E-ATX платаға, RTX 5090-ға орын жетеді.",
+          "date": "2025-05-06"
+        },
+        {
+          "author": "Бауыржан С.",
+          "rating": 5,
+          "text": "Ірі корпус, airflow тамаша, кабель менеджмент нұсқаулары бар. Кәсіби деңгей.",
+          "date": "2025-05-20"
+        }
+      ],
+      "specs": {
+        "form_factor": "E-ATX/ATX/M-ATX",
+        "fans": "6+ fans slots",
+        "glass_panel": true,
+        "rgb": false,
+        "max_gpu_length": "500mm+"
+      },
+      "best_for": [
+        "Максималды жинақ",
+        "Custom water cooling",
+        "E-ATX аналық плата"
+      ],
+      "not_for": [
+        "Шағын орын",
+        "Бюджет жинақ"
+      ],
+      "image": "https://placehold.co/400x300/050510/fbbf24?text=Full+Tower+Case"
+    }
+  ],
+  "monitors": [
+    {
+      "id": "monitor_asus_rog_xg259qns",
+      "name": "Monitor 24.5\" ASUS ROG Strix XG259QNS",
+      "hz": "380",
+      "price": 220000,
+      "description": "ASUS ROG Strix XG259QNS 24.5\" — 380Hz IPS, 1920x1080, G-Sync Compatible, ELMB Sync, 1ms GTG. Pro esports мониторы. CS2 мен Valorant-та 300+ FPS-пен максималды тегіс ойын тәжірибесі. IPS матрица — жарқын түстер мен кең қарау бұрышы. G-Sync Compatible — RTX картасымен тамаша жұп.",
+      "size": "24.5\"",
+      "color": "black",
+      "image": "monitor_asus_rog_xg259qns.jpg",
+      "reviews": [
+        {
+          "author": "Азамат Ж.",
+          "rating": 5,
+          "text": "380Hz CS2-де айырмашылықты бірден сезесіз. IPS матрица, түс дәл. Esports үшін идеал!",
+          "date": "2025-05-11"
+        },
+        {
+          "author": "Дәурен Б.",
+          "rating": 5,
+          "text": "G-Sync Compatible жақсы жұмыс істейді. Экран жарқын, бояу дәл.",
+          "date": "2025-04-25"
+        },
+        {
+          "author": "Сабина Р.",
+          "rating": 4,
+          "text": "Valorant-та 300+ fps-пен ойнаймын — k/d арттым. Подставка жұқалау ғана.",
+          "date": "2025-05-03"
+        }
+      ],
+      "specs": {
+        "size": "24.5\"",
+        "resolution": "1920x1080 FHD",
+        "panel": "IPS",
+        "hz": 380,
+        "response": "1ms GTG",
+        "gsync": true,
+        "hdr": false
+      },
+      "best_for": [
+        "Esports (CS2/Valorant)",
+        "Pro Gaming",
+        "High FPS ойыншылар"
+      ],
+      "not_for": [
+        "1440p/4K контент",
+        "Кино/фильм"
+      ]
+    },
+    {
+      "id": "monitor_asus_tuf_vg27aqm5a",
+      "name": "Monitor 27\" ASUS TUF Gaming VG27AQM5A",
+      "hz": "300",
+      "price": 230000,
+      "description": "ASUS TUF Gaming VG27AQM5A 27\" — 300Hz Fast IPS, 2560x1440 QHD, ELMB Sync, G-Sync Compatible, HDR400. Esports + AAA gaming балансы. 1440p QHD — шарпнесс пен деталь жоғары. 300Hz — FPS ойындарда айтарлықтай артықшылық. HDR400 — жоғары контраст. Жоғары деңгейлі универсал монитор.",
+      "size": "27\"",
+      "color": "black",
+      "image": "monitor_asus_tuf_vg27aqm5a.jpg",
+      "reviews": [
+        {
+          "author": "Нариман К.",
+          "rating": 5,
+          "text": "1440p QHD 300Hz — бұл комбинация тамаша! ELMB Sync motion blur-ды жояды.",
+          "date": "2025-05-16"
+        },
+        {
+          "author": "Айгерім Т.",
+          "rating": 5,
+          "text": "RDR2 және The Witcher 1440p-да кино сияқты. Ойынға да, жұмысқа да жарайды.",
+          "date": "2025-05-07"
+        },
+        {
+          "author": "Ержан О.",
+          "rating": 4,
+          "text": "HDR функциясы шынайы HDR емес. Бірақ ойынға арналса — керемет.",
+          "date": "2025-04-20"
+        }
+      ],
+      "specs": {
+        "size": "27\"",
+        "resolution": "2560x1440 QHD",
+        "panel": "Fast IPS",
+        "hz": 300,
+        "response": "1ms GTG",
+        "gsync": true,
+        "hdr": "HDR400"
+      },
+      "best_for": [
+        "1440p Gaming",
+        "Esports + AAA баланс",
+        "High refresh rate"
+      ],
+      "not_for": [
+        "4K контент",
+        "Бюджет жинақ"
+      ]
+    },
+    {
+      "id": "monitor_asus_tuf_vg279qm",
+      "name": "Monitor 27\" ASUS TUF Gaming VG279QM",
+      "hz": "280",
+      "price": 185000,
+      "description": "ASUS TUF Gaming VG279QM 27\" — 280Hz Fast IPS, 1920x1080, ELMB Sync, G-Sync Compatible, HDR400. Жылдам 280Hz 27\" IPS монитор. 1080p мазмұн + жоғары refresh rate комбинациясы. Gaming + стриминг тамашасы. Орта деңгейлі gaming жинағына тамаша баға-өнімділік.",
+      "size": "27\"",
+      "color": "black",
+      "image": "monitor_asus_tuf_vg279qm.jpg",
+      "reviews": [
+        {
+          "author": "Болат М.",
+          "rating": 5,
+          "text": "280Hz бюджетте — таңқаларлық! Ойынға бірден байқалады.",
+          "date": "2025-05-09"
+        },
+        {
+          "author": "Зарина Е.",
+          "rating": 4,
+          "text": "ELMB Sync motion blur-ды жоғалтады. 1080p жеткілікті ойынға.",
+          "date": "2025-05-04"
+        }
+      ],
+      "specs": {
+        "size": "27\"",
+        "resolution": "1920x1080 FHD",
+        "panel": "Fast IPS",
+        "hz": 280,
+        "response": "1ms GTG",
+        "gsync": true,
+        "hdr": "HDR400"
+      },
+      "best_for": [
+        "Gaming",
+        "Esports",
+        "Орта деңгейлі жинақ"
+      ],
+      "not_for": [
+        "1440p/4K",
+        "4K контент"
+      ]
+    },
+    {
+      "id": "monitor_msi_mag275qpf",
+      "name": "Monitor 27\" MSI MAG 275QPF X30",
+      "hz": "300",
+      "price": 210000,
+      "description": "300Hz, IPS, 1440p QHD, Rapid IPS панель",
+      "size": "27\"",
+      "color": "black",
+      "image": "monitor_msi_mag275qpf.jpg",
+      "reviews": [
+        {
+          "author": "Аслан Ч.",
+          "rating": 5,
+          "text": "Rapid IPS панель — түс дәлдігі IPS-тен жоғары, жылдамдық TN-ге жақын. Тамаша!",
+          "date": "2025-04-30"
+        },
+        {
+          "author": "Руслан Н.",
+          "rating": 4,
+          "text": "1440p 300Hz — gaming мен дизайн үшін тамаша баланс.",
+          "date": "2025-05-10"
+        }
+      ]
+    },
+    {
+      "id": "monitor_asus_vg32vqm5b",
+      "name": "Monitor 31.5\" ASUS VG32VQM5B",
+      "hz": "250",
+      "price": 260000,
+      "description": "ASUS VG32VQM5B 31.5\" — 250Hz VA, 2560x1440 QHD, HDR400, FreeSync Premium Pro. Ірі 31.5\" экран — immersive gaming тәжірибесі. VA панелі жоғары контраст береді. 250Hz — жылдам жауап беру. 1440p QHD — шарпнесс жоғары. Ойын мен жұмыс балансы үшін тамаша.",
+      "size": "31.5\"",
+      "color": "black",
+      "image": "31.5_ASUS.jpg",
+      "reviews": [
+        {
+          "author": "Аслан Ч.",
+          "rating": 5,
+          "text": "31.5 дюйм, 250Hz VA — кино мен ойынның тамаша үйлесімі. Контраст тамаша.",
+          "date": "2025-05-13"
+        },
+        {
+          "author": "Руслан Н.",
+          "rating": 4,
+          "text": "VA панель тамаша контраст береді. Ірі экран ойынды басқаша сезінтеді.",
+          "date": "2025-04-29"
+        }
+      ],
+      "specs": {
+        "size": "31.5\"",
+        "resolution": "2560x1440 QHD",
+        "panel": "VA",
+        "hz": 250,
+        "response": "1ms MPRT",
+        "gsync": false,
+        "hdr": "HDR400"
+      },
+      "best_for": [
+        "Ірі экран gaming",
+        "1440p",
+        "Immersive experience"
+      ],
+      "not_for": [
+        "Pro esports (27\" жақсы)",
+        "Кіші стол"
+      ]
+    },
+    {
+      "id": "monitor_asus_tuf_vg249qm1a",
+      "name": "Monitor 23.8\" ASUS TUF Gaming VG249QM1A",
+      "hz": "270",
+      "price": 155000,
+      "description": "270Hz, IPS, 1080p, ELMB Sync, бюджетті gaming монитор",
+      "size": "23.8\"",
+      "color": "gray",
+      "image": "monitor_asus_tuf_vg249qm1a.jpg",
+      "reviews": [
+        {
+          "author": "Аяна Б.",
+          "rating": 4,
+          "text": "270Hz бюджетте — жақсы таңдау. CS2-де жылдамдық сезіледі.",
+          "date": "2025-04-22"
+        },
+        {
+          "author": "Диас К.",
+          "rating": 5,
+          "text": "Ең қолайлы gaming монитор. Жас ойыншыларға идеал бастапқы таңдау.",
+          "date": "2025-05-06"
+        }
+      ]
+    },
+    {
+      "id": "monitor_asus_rog_xg27wq",
+      "name": "Monitor 27\" ASUS ROG Strix XG27WQ",
+      "hz": "165",
+      "price": 195000,
+      "description": "ASUS ROG Strix XG27WQ 27\" — 165Hz VA, 2560x1440 QHD, HDR400, G-Sync Compatible, Quantum-dot. 1440p VA панелі — өте жоғары контраст пен қара деңгейі. HDR мазмұн үшін тамаша. Quantum-dot технологиясы — кең түс диапазоны. AAA ойындар мен фильм/кино қарауға идеал. Esports үшін 165Hz жеткілікті.",
+      "size": "27\"",
+      "color": "black",
+      "image": "monitor_asus_rog_xg27wq.jpg",
+      "reviews": [
+        {
+          "author": "Аяна Б.",
+          "rating": 5,
+          "text": "165Hz VA HDR — кешкі жарықта керемет. ROG дизайны да бөлмеге жарасады.",
+          "date": "2025-05-06"
+        },
+        {
+          "author": "Диас К.",
+          "rating": 4,
+          "text": "Бағасына дұрыс монитор. HDR шынайы, контраст жоғары.",
+          "date": "2025-04-26"
+        }
+      ],
+      "specs": {
+        "size": "27\"",
+        "resolution": "2560x1440 QHD",
+        "panel": "VA Quantum-dot",
+        "hz": 165,
+        "response": "1ms MPRT",
+        "gsync": true,
+        "hdr": "HDR400"
+      },
+      "best_for": [
+        "AAA Gaming",
+        "Кино/фильм",
+        "HDR контент",
+        "1440p"
+      ],
+      "not_for": [
+        "Pro esports (165Hz аз)",
+        "Ең жылдам FPS"
+      ]
+    },
+    {
+      "id": "monitor_zowie_xl2586x",
+      "name": "Monitor 24.1\" ZOWIE XL2586X+",
+      "hz": "540",
+      "price": 620000,
+      "description": "BenQ ZOWIE XL2586X+ 24.1\" — 540Hz TN, 1920x1080, DyAc 2, XL Setting to Share. Дүние жүзіндегі ең жылдам esports мониторларының бірі. 540Hz + DyAc 2 motion blur reduction — CS2 про-деңгейлі тәжірибе. TN панелі — ең жылдам response time. ZOWIE — ESL, BLAST Pro Series ресми мониторы.",
+      "size": "24.1\"",
+      "color": "black",
+      "image": "monitor_zowie_xl2586x_v2.jpg",
+      "reviews": [
+        {
+          "author": "Қайрат Н.",
+          "rating": 5,
+          "text": "540Hz TN panel — ультра реакция. CS2 про деңгейде ойнаймын. Кез-келген жарысқа лайық.",
+          "date": "2025-05-19"
+        },
+        {
+          "author": "Темірлан А.",
+          "rating": 5,
+          "text": "Чемпиондар таңдауы — бұл жай сөз емес. Монитор шынында жылдамырақ реакция береді.",
+          "date": "2025-05-02"
+        },
+        {
+          "author": "Мадина С.",
+          "rating": 4,
+          "text": "TN панель болғандықтан түс IPS-тен нашар. Жылдамдыққа басымдық берсеңіз — алыңыз.",
+          "date": "2025-04-28"
+        }
+      ],
+      "specs": {
+        "size": "24.1\"",
+        "resolution": "1920x1080 FHD",
+        "panel": "TN",
+        "hz": 540,
+        "response": "0.5ms GTG",
+        "gsync": false,
+        "hdr": false
+      },
+      "best_for": [
+        "Pro Esports",
+        "CS2 Максималды FPS",
+        "Tournament level gaming"
+      ],
+      "not_for": [
+        "AAA ойындар (TN түс нашар)",
+        "Кино/фильм"
+      ]
+    },
+    {
+      "id": "monitor_zowie_400",
+      "name": "BenQ ZOWIE XL2566X+ 24.1\" 400Hz",
+      "hz": "400",
+      "price": 350000,
+      "description": "400Hz esports монитор",
+      "image": "monitor_zowie_xl2566x_plus.jpg",
+      "reviews": [
+        {
+          "author": "Нұрлан Б.",
+          "rating": 5,
+          "text": "400Hz — есports турнирлары деңгейінде. Reaction time минималды. Керемет!",
+          "date": "2025-05-12"
+        },
+        {
+          "author": "Ержан М.",
+          "rating": 4,
+          "text": "TN панель, бірақ жылдамдық үшін барлығын кешіруге болады.",
+          "date": "2025-05-08"
+        }
+      ]
+    },
+    {
+      "id": "monitor_zowie_600",
+      "name": "ZOWIE XL2586X+ 24.1\" 600Hz",
+      "hz": "540",
+      "price": 600000,
+      "description": "540Hz ultra esports монитор",
+      "image": "monitor_zowie_xl2586x_v3.jpg",
+      "reviews": [
+        {
+          "author": "Қайрат Н.",
+          "rating": 5,
+          "text": "600Hz ZOWIE — бұл реакция жылдамдығы басқа деңгей! CS2 про деңгейінде ойнаймын.",
+          "date": "2025-05-10"
+        },
+        {
+          "author": "Темірлан С.",
+          "rating": 5,
+          "text": "ZOWIE 600Hz pro монитор. Motion clarity мінсіз, input lag жоқ.",
+          "date": "2025-05-18"
+        }
+      ]
+    },
+    {
+      "id": "monitor_asus_strix",
+      "name": "ASUS ROG Strix XG27ACS 27\" 240Hz",
+      "hz": "240",
+      "price": 220000,
+      "description": "240Hz gaming монитор",
+      "image": "31.5_ASUS.jpg",
+      "reviews": [
+        {
+          "author": "Айбек Т.",
+          "rating": 5,
+          "text": "ASUS ROG Strix 27\" 240Hz IPS — gaming мен кино үшін тамаша баланс. Түс дәл!",
+          "date": "2025-04-25"
+        },
+        {
+          "author": "Зарина М.",
+          "rating": 4,
+          "text": "ROG дизайны бөлмеге жарасады. 1440p мазмұнды тамаша береді.",
+          "date": "2025-05-08"
+        }
+      ]
+    },
+    {
+      "id": "monitor_asus_oled",
+      "name": "ASUS ROG Swift OLED PG27AQWP-W 26.5\" 240Hz",
+      "hz": "240",
+      "price": 500000,
+      "description": "OLED, 240Hz, топ деңгей",
+      "image": "31.5_ASUS.jpg",
+      "reviews": [
+        {
+          "author": "Санжар Қ.",
+          "rating": 5,
+          "text": "OLED сапасы — контраст, түс, қараңғы сахналар. Кез-келген IPS-тен жоғары деңгейде.",
+          "date": "2025-05-14"
+        },
+        {
+          "author": "Бауыржан Е.",
+          "rating": 5,
+          "text": "Gaming мен фильм үшін абсолютті топ монитор. OLED-ті бір рет көрсең, оған өтіп кетесің.",
+          "date": "2025-05-20"
+        }
+      ]
+    },
+    {
+      "id": "monitor_asus_vg259",
+      "name": "ASUS VG259QMR5A 24.5\" 240Hz",
+      "hz": "240",
+      "price": 150000,
+      "description": "240Hz қолжетімді gaming монитор",
+      "image": "31.5_ASUS.jpg",
+      "reviews": [
+        {
+          "author": "Дамир К.",
+          "rating": 5,
+          "text": "ASUS VG259QMR5A 24.5\" 240Hz — esports өлшемі, esports жылдамдығы. Ұсынамын!",
+          "date": "2025-04-18"
+        },
+        {
+          "author": "Аяна Е.",
+          "rating": 4,
+          "text": "Жылдам монитор, баға қолжетімді. Жаңа ойыншыларға тамаша таңдау.",
+          "date": "2025-05-02"
+        }
+      ]
+    },
+    {
+      "id": "monitor_msi_275",
+      "name": "MSI MAG 275QPF X30 27\" 180Hz",
+      "hz": "180",
+      "price": 160000,
+      "description": "180Hz, жақсы баланс",
+      "image": "monitor_msi_mag275qpf.jpg",
+      "reviews": [
+        {
+          "author": "Ерлан Б.",
+          "rating": 5,
+          "text": "MSI MAG 275QPF X30 — 27\" QHD 180Hz. Жұмыс пен ойынның тамаша үйлесімі.",
+          "date": "2025-05-05"
+        },
+        {
+          "author": "Нариман А.",
+          "rating": 4,
+          "text": "QHD + 180Hz комбинациясы жоғары деңгей. MSI сапасына сенемін.",
+          "date": "2025-05-14"
+        }
+      ]
+    },
+    {
+      "id": "monitor_msi_244f",
+      "name": "MSI MAG 244F 24\" 170Hz",
+      "hz": "170",
+      "price": 130000,
+      "description": "170Hz қолжетімді монитор",
+      "image": "monitor_msi_mag275qpf.jpg",
+      "reviews": [
+        {
+          "author": "Болат Ж.",
+          "rating": 5,
+          "text": "MSI MAG 244F — 24\" 170Hz IPS. Budget Killer сетіне кіреді, бағасына тамаша!",
+          "date": "2025-04-22"
+        },
+        {
+          "author": "Серік Т.",
+          "rating": 5,
+          "text": "Баға/сапа тамаша. IPS панель бояуы дәл, жарқын. Ұсынамын.",
+          "date": "2025-05-08"
+        }
+      ]
+    },
+    {
+      "id": "monitor_xtreon_2563",
+      "name": "XTREON XT2563VH 24.5\" 240Hz",
+      "hz": "240",
+      "price": 120000,
+      "description": "240Hz бюджетке жақын нұсқа",
+      "image": "monitor_asus_tuf_vg279qm.jpg",
+      "reviews": [
+        {
+          "author": "Руслан Н.",
+          "rating": 4,
+          "text": "XTREON 24.5\" 240Hz — баға қолжетімді. Алғаш рет алдым, жұмысы жақсы.",
+          "date": "2025-05-01"
+        },
+        {
+          "author": "Алима С.",
+          "rating": 4,
+          "text": "Функционал монитор esports үшін. Жеткілікті жылдамдық.",
+          "date": "2025-05-12"
+        }
+      ]
+    },
+    {
+      "id": "monitor_sanc_300",
+      "name": "Sanc M2563VTB 24.5\" 300Hz",
+      "hz": "300",
+      "price": 180000,
+      "description": "300Hz жылдам монитор",
+      "image": "monitor_asus_rog_xg259qns.jpg",
+      "reviews": [
+        {
+          "author": "Тимур О.",
+          "rating": 5,
+          "text": "Sanc 300Hz — CS2-де айырмашылық бірден байқалады. Баға/жылдамдық арақатынасы тамаша.",
+          "date": "2025-04-28"
+        },
+        {
+          "author": "Дәурен К.",
+          "rating": 4,
+          "text": "300Hz IPS — бұрын қолжетімді емес болатын. Бағасына тамаша.",
+          "date": "2025-05-10"
+        }
+      ]
+    },
+    {
+      "id": "monitor_asus_720hz",
+      "name": "ASUS ROG Swift 24.5\" 720Hz",
+      "hz": "720",
+      "price": 850000,
+      "description": "ASUS топ деңгейлі 720Hz монитор, кәсіби киберспортшыларға арналған",
+      "image": "31.5_ASUS.jpg",
+      "reviews": [
+        {
+          "author": "Темірлан А.",
+          "rating": 5,
+          "text": "720Hz — бұл жай монитор емес, реакция уақытының жаңа деңгейі. Pro ойыншылар үшін.",
+          "date": "2025-05-21"
+        },
+        {
+          "author": "Қайрат Б.",
+          "rating": 5,
+          "text": "Кәсіби киберспортта мұндай артықшылық қажет. Ешбір балама жоқ.",
+          "date": "2025-05-23"
+        }
+      ]
+    },
+    {
+      "id": "monitor_zowie_400hz",
+      "name": "BenQ ZOWIE XL2566X+ 24.1\" 400Hz",
+      "hz": "400",
+      "price": 450000,
+      "description": "Esports үшін арналған 400Hz монитор, өте жылдам реакция және motion clarity",
+      "image": "monitor_zowie_xl2566x_plus.jpg",
+      "reviews": [
+        {
+          "author": "Бекзат А.",
+          "rating": 5,
+          "text": "BenQ ZOWIE XL2566X+ 400Hz — DyAc+ технологиясы motion blur-ды жояды. Турнир деңгейі!",
+          "date": "2025-04-15"
+        },
+        {
+          "author": "Санжар Т.",
+          "rating": 5,
+          "text": "Про ойыншылардың таңдауы. CS2-де input lag сезілмейді мүлдем.",
+          "date": "2025-05-06"
+        }
+      ]
+    },
+    {
+      "id": "monitor_zowie_360hz",
+      "name": "BenQ ZOWIE XL2566K 24.5\" 360Hz",
+      "hz": "360",
+      "price": 350000,
+      "description": "Киберспортқа арналған 360Hz монитор, motion clarity өте жоғары",
+      "image": "monitor_zowie_xl2566k.jpg",
+      "reviews": [
+        {
+          "author": "Арман Б.",
+          "rating": 5,
+          "text": "BenQ ZOWIE XL2566K 360Hz TN — жылдамдық максималды. FPS ойынға ең лайық.",
+          "date": "2025-04-30"
+        },
+        {
+          "author": "Нұрлан Е.",
+          "rating": 4,
+          "text": "TN панель болса да жылдамдық маңызды болса — осы монитор. Турнирге барамын.",
+          "date": "2025-05-15"
+        }
+      ]
+    },
+    {
+      "id": "monitor_600hz_ultra",
+      "name": "ZOWIE XL2586X+ 24.1\" 600Hz",
+      "hz": "540",
+      "price": 600000,
+      "description": "540Hz ultra esports монитор, максималды жылдамдық пен реакция",
+      "image": "monitor_zowie_xl2586x_v2.jpg",
+      "reviews": [
+        {
+          "author": "Диас М.",
+          "rating": 5,
+          "text": "600Hz — реакция жылдамдығы мүлде басқа деңгейде. Esports максималды нұсқасы!",
+          "date": "2025-05-18"
+        },
+        {
+          "author": "Мадина О.",
+          "rating": 5,
+          "text": "Топ-топ монитор. CS2 про деңгейде ойнайтындарға міндетті.",
+          "date": "2025-05-22"
+        }
+      ]
+    },
+    {
+      "id": "monitor_310hz",
+      "name": "280Hz Gaming Monitor",
+      "hz": "280",
+      "price": 250000,
+      "description": "Өте жылдам монитор",
+      "image": "monitor_zowie_xl2540k.jpg",
+      "reviews": [
+        {
+          "author": "Ерлан С.",
+          "rating": 5,
+          "text": "310Hz gaming монитор — Молодой сетімен тамаша жұп. FPS ойындарда айырмашылық бар.",
+          "date": "2025-04-12"
+        },
+        {
+          "author": "Зарина А.",
+          "rating": 4,
+          "text": "Жылдам жауап беру уақыты. Ойын мен жұмысқа жарайды.",
+          "date": "2025-05-03"
+        }
+      ]
+    },
+    {
+      "id": "monitor_240hz",
+      "name": "240Hz Gaming Monitor",
+      "hz": "240",
+      "price": 150000,
+      "description": "240Hz gaming монитор",
+      "image": "monitor_zowie_xl_prosetting.jpg",
+      "reviews": [
+        {
+          "author": "Айгерім Б.",
+          "rating": 5,
+          "text": "240Hz монитор — Студент сетіне кіреді. CS2-де 200fps-пен ойнаймын, тамаша!",
+          "date": "2025-03-25"
+        },
+        {
+          "author": "Қайрат Т.",
+          "rating": 4,
+          "text": "Бюджет деңгейіндегі ең жақсы 240Hz монитор. Ұсынамын!",
+          "date": "2025-04-18"
+        }
+      ]
+    },
+    {
+      "id": "monitor_360hz",
+      "name": "360Hz Gaming Monitor",
+      "hz": "360",
+      "price": 350000,
+      "description": "360Hz esports монитор",
+      "image": "monitor_zowie_xl2586x.jpg",
+      "reviews": [
+        {
+          "author": "Темірлан Б.",
+          "rating": 5,
+          "text": "360Hz — Про Игрок сетіне лайық монитор. CS2 деп арнайы таңдалған.",
+          "date": "2025-04-20"
+        },
+        {
+          "author": "Болат Н.",
+          "rating": 5,
+          "text": "Жылдам, дәл, тамаша бояу. 360Hz-ті бір рет көрсеңіз — артқа қайтпайсыз.",
+          "date": "2025-05-08"
+        }
+      ]
+    },
+    {
+      "id": "monitor_400hz",
+      "name": "400Hz Gaming Monitor",
+      "hz": "400",
+      "price": 450000,
+      "description": "400Hz жоғары деңгейлі монитор",
+      "image": "monitor_zowie_xl2586x.jpg",
+      "reviews": [
+        {
+          "author": "Аслан Д.",
+          "rating": 5,
+          "text": "400Hz монитор — турнир деңгейіндегі жылдамдық. Input lag мүлдем жоқ.",
+          "date": "2025-05-05"
+        },
+        {
+          "author": "Руслан Е.",
+          "rating": 5,
+          "text": "Pro ойыншыларға ғана емес, жоғары жылдамдықты сүйетіндерге де ұсынамын.",
+          "date": "2025-05-16"
+        }
+      ]
+    }
+  ],
+  "mice": [
+    {
+      "id": "mouse_superlight2",
+      "name": "Logitech G Pro X Superlight 2",
+      "price": 80000,
+      "description": "Logitech G Pro X Superlight 2 — 60г, PixArt PAW3395 сенсор, 25600 DPI, LIGHTSPEED wireless, 70+ сағат батарея. Дүние жүзіндегі ең танымал pro esports mouse-ы. Valorant, CS2 турнирлерінің 60%+ ойыншылары қолданады. LIGHTSPEED wireless — сымнан да жылдам кешігу. 60г жеңіл корпус — ұзақ ойын сессиясында қолды шаршатпайды.",
+      "reviews": [
+        {
+          "author": "Азамат Ж.",
+          "rating": 5,
+          "text": "60г жеңіл корпус + PixArt 3395 сенсор. Valorant-та aim айтарлықтай жақсарды!",
+          "date": "2025-04-10"
+        },
+        {
+          "author": "Дәурен Б.",
+          "rating": 5,
+          "text": "Logitech-тің ең жоғары деңгейлі mouse-ы. Батарея 70+ сағат. Тамаша!",
+          "date": "2025-04-28"
+        },
+        {
+          "author": "Сабина Р.",
+          "rating": 4,
+          "text": "Wireless болса да кешігу жоқ. LIGHTSPEED технологиясы шынымен жұмыс істейді.",
+          "date": "2025-05-10"
+        }
+      ],
+      "specs": {
+        "weight": "60g",
+        "sensor": "PixArt PAW3395",
+        "dpi": "100-25600",
+        "polling_rate": "2000Hz",
+        "wireless": true,
+        "battery": "70h"
+      },
+      "best_for": [
+        "Pro Esports",
+        "CS2/Valorant",
+        "Wireless Gaming"
+      ],
+      "not_for": [
+        "Бюджет жинақ",
+        "Ірі қол (symmetric тар)"
+      ],
+      "image": "Logitech G Pro X Superlight 2.jpg"
+    },
+    {
+      "id": "mouse_superstrike",
+      "name": "Logitech G Pro X2 Superstrike",
+      "price": 100000,
+      "description": "Жылдам жауап беретін премиум gaming mouse",
+      "reviews": [
+        {
+          "author": "Нариман К.",
+          "rating": 5,
+          "text": "G Pro X2 линиясының жаңа нұсқасы. Клик жауабы мінсіз, aim дәлдігі жоғары.",
+          "date": "2025-05-08"
+        },
+        {
+          "author": "Айгерім Т.",
+          "rating": 5,
+          "text": "CS2-де рейтинг арттым — mouse та рөл атқарады! Тамаша сенсор.",
+          "date": "2025-05-15"
+        }
+      ],
+      "image": "Logitech_PRO_X2_SUPERSTRIKE.jpg"
+    },
+    {
+      "id": "mouse_zowie_ec2cw",
+      "name": "ZOWIE EC2-CW",
+      "price": 90000,
+      "description": "ZOWIE EC2-CW Wireless — ergonomic форма, PixArt PAW3370 сенсор, 3200 DPI, polling rate 1000Hz, wireless. ZOWIE-дің классикалық EC форм-факторы — оң қолға арналған ergonomic дизайн. Plug-and-play — driver жоқ, турнир режимі. Орта-ірі қол ойыншыларына тамаша.",
+      "reviews": [
+        {
+          "author": "Ержан О.",
+          "rating": 5,
+          "text": "ZOWIE EC2-CW — дравер жоқ, plug-and-play. Pro ойыншылар таңдауы, себебі жай.",
+          "date": "2025-04-18"
+        },
+        {
+          "author": "Болат М.",
+          "rating": 5,
+          "text": "Ergonomic форма — ұзақ сессияларда қолды шаршатпайды. Тамаша mouse!",
+          "date": "2025-05-02"
+        }
+      ],
+      "specs": {
+        "weight": "73g",
+        "sensor": "PixArt PAW3370",
+        "dpi": "400-3200",
+        "polling_rate": "1000Hz",
+        "wireless": true,
+        "battery": "40h"
+      },
+      "best_for": [
+        "Ergonomic Gaming",
+        "CS2/Valorant",
+        "Оң қол ойыншылар"
+      ],
+      "not_for": [
+        "Кіші қол",
+        "Left-handed"
+      ],
+      "image": "mouse_zowie_ec2dw.jpg"
+    },
+    {
+      "id": "mouse_zowie_u2",
+      "name": "ZOWIE U2",
+      "price": 95000,
+      "description": "ZOWIE U2 — Ultra-light honeycomb корпус, PixArt PAW3395 сенсор, 3200 DPI, 1000Hz polling rate, wired. Жаңа буын ZOWIE — honeycomb дизайн, ең жеңіл корпустардың бірі. PAW3395 — индустрияның ең жоғары деңгейлі сенсоры. ZOWIE plug-and-play — driver жоқ, турнир стандарты.",
+      "reviews": [
+        {
+          "author": "Тимур Д.",
+          "rating": 5,
+          "text": "Wireless ZOWIE — бұл тіркесім esports-та жаңа стандарт. Кешігу жоқ!",
+          "date": "2025-05-12"
+        },
+        {
+          "author": "Алима Н.",
+          "rating": 4,
+          "text": "Жеңіл корпус + сенімді wireless. Батарея ұзаққа шыдайды.",
+          "date": "2025-05-18"
+        }
+      ],
+      "specs": {
+        "weight": "52g",
+        "sensor": "PixArt PAW3395",
+        "dpi": "400-3200",
+        "polling_rate": "1000Hz",
+        "wireless": false,
+        "battery": "N/A"
+      },
+      "best_for": [
+        "Ultra-light Gaming",
+        "CS2/Valorant Pro",
+        "ZOWIE фанаттары"
+      ],
+      "not_for": [
+        "Wireless керек ойыншылар"
+      ],
+      "image": "ZOWIE_U2_DW.jpg"
+    },
+    {
+      "id": "mouse_lamzu_atlantis",
+      "name": "Lamzu Atlantis",
+      "price": 50000,
+      "description": "Lamzu Atlantis — 48г honeycomb корпус, PixArt PAW3395 сенсор, 26000 DPI, 1000Hz polling rate, wireless. Дүние жүзіндегі ең жеңіл wireless gaming mouse-тарының бірі. Symmetric форма — кез-келген grip style-ға жарамды. Lamzu — pro ойыншылар арасында жылдам танымал болған сенімді бренд.",
+      "reviews": [
+        {
+          "author": "Нариман А.",
+          "rating": 5,
+          "text": "Ультра жеңіл honeycomb корпус. CS2-де flick shot айтарлықтай жақсарды!",
+          "date": "2025-04-25"
+        },
+        {
+          "author": "Болат К.",
+          "rating": 4,
+          "text": "Баға-сапа балансы өте жоғары. Logitech-тен 2 есе арзан, бірақ сенсор бірдей.",
+          "date": "2025-05-05"
+        }
+      ],
+      "specs": {
+        "weight": "48g",
+        "sensor": "PixArt PAW3395",
+        "dpi": "100-26000",
+        "polling_rate": "1000Hz",
+        "wireless": true,
+        "battery": "80h"
+      },
+      "best_for": [
+        "Ultra-light Gaming",
+        "Esports",
+        "Wireless"
+      ],
+      "not_for": [
+        "Ірі қол (кіші корпус)"
+      ],
+      "image": "Lamzu_Atlantis.jpg"
+    },
+    {
+      "id": "mouse_lamzu_thorn",
+      "name": "Lamzu Thorn",
+      "price": 55000,
+      "description": "Ergonomic формадағы lightweight mouse",
+      "reviews": [
+        {
+          "author": "Дәурен Б.",
+          "rating": 5,
+          "text": "Lamzu Thorn — ergonomic форма, lightweight. CS2-де бірден жайлылық сезіледі.",
+          "date": "2025-05-08"
+        },
+        {
+          "author": "Нұрлан А.",
+          "rating": 4,
+          "text": "Жақсы mouse, бірақ Atlantis-тен сәл ауыр. Ergonomic форма ұнады.",
+          "date": "2025-05-15"
+        }
+      ],
+      "image": "Lamzu_Thorn.jpg"
+    },
+    {
+      "id": "mouse_vgn_f1pro",
+      "name": "VGN Dragonfly F1 Pro Max",
+      "price": 35000,
+      "description": "Баға мен сапа бойынша тиімді lightweight mouse",
+      "reviews": [
+        {
+          "author": "Ержан М.",
+          "rating": 5,
+          "text": "Бюджет сегменттің ең мықты mouse-ы. PixArt 3395 сенсор — топ деңгей.",
+          "date": "2025-04-20"
+        },
+        {
+          "author": "Диас Б.",
+          "rating": 5,
+          "text": "VGN Dragonfly — 35 мыңға бұл сапа? Таң қалдым! Valorant-та aim жақсарды.",
+          "date": "2025-05-05"
+        }
+      ],
+      "image": "VGN_Dragonfly_F1_Pro_Max.jpg"
+    },
+    {
+      "id": "mouse_ajazz_aj159",
+      "name": "Ajazz AJ159 APEX",
+      "price": 20000,
+      "description": "Бюджет сегменттегі gaming mouse",
+      "reviews": [
+        {
+          "author": "Аяна Б.",
+          "rating": 4,
+          "text": "20 мыңға тамаша бастапқы gaming mouse. Студентке идеал.",
+          "date": "2025-04-15"
+        },
+        {
+          "author": "Диас К.",
+          "rating": 5,
+          "text": "Бюджет шампионы. CS2-де бірден жылдамдық сезіледі.",
+          "date": "2025-05-01"
+        }
+      ],
+      "image": "AULA_F159.jpg"
+    },
+    {
+      "id": "mouse_mchose_k7",
+      "name": "MCHOSE K7 Ultra (Black)",
+      "price": 45000,
+      "description": "Жеңіл және wireless, PixArt сенсорлы mouse",
+      "reviews": [
+        {
+          "author": "Айбек С.",
+          "rating": 5,
+          "text": "MCHOSE K7 Ultra — жеңіл, дәл, батарея ұзаққа шыдайды. PAW3395 sensor нүктесіз tracking.",
+          "date": "2025-04-18"
+        },
+        {
+          "author": "Нариман Т.",
+          "rating": 5,
+          "text": "MCHOSE флагманы. Esports үшін тамаша тышқан, кнопкалар дәл.",
+          "date": "2025-05-08"
+        }
+      ],
+      "image": "MCHOSE_K7_Ultra_Black_.jpg"
+    },
+    {
+      "id": "mouse_mchose_a7_white",
+      "name": "MCHOSE A7 V2 Pro (White)",
+      "price": 40000,
+      "description": "Ақ түсті lightweight gaming mouse",
+      "reviews": [
+        {
+          "author": "Аяна К.",
+          "rating": 5,
+          "text": "MCHOSE A7 V2 Pro ақ — White Aesthetic сетіне мінсіз қосымша. Ойнауы да жеңіл.",
+          "date": "2025-04-25"
+        },
+        {
+          "author": "Алима Е.",
+          "rating": 5,
+          "text": "Ақ дизайны тамаша, grip комфортты. Оңай және ауыр ойыншыларға да жарайды.",
+          "date": "2025-05-10"
+        }
+      ],
+      "image": "MCHOSE_A7_V2_Pro_White_.jpg"
+    },
+    {
+      "id": "mouse_mchose_a7_pink",
+      "name": "MCHOSE A7 V2 Pro (Pink)",
+      "price": 40000,
+      "description": "Қызғылт түсті стильді gaming mouse",
+      "reviews": [
+        {
+          "author": "Зарина Б.",
+          "rating": 5,
+          "text": "Қызғылт тышқан — бөлмеге жарасады! Жеңіл, дәл, батарея ұзаққа шыдайды.",
+          "date": "2025-05-05"
+        },
+        {
+          "author": "Мадина Н.",
+          "rating": 5,
+          "text": "Қыздарға арналған дизайн, бірақ өнімділік про деңгейде. Ұнады!",
+          "date": "2025-05-14"
+        }
+      ],
+      "image": "MCHOSE_A7_V2_Pro_Pink_.jpg"
+    },
+    {
+      "id": "mouse_logitech_superlight2_pink",
+      "name": "Logitech G Pro X Superlight 2 DEX Pink",
+      "price": 95000,
+      "description": "Pink түсті премиум esports mouse, өте жеңіл",
+      "reviews": [
+        {
+          "author": "Айгерім А.",
+          "rating": 5,
+          "text": "G Pro X DEX Pink — ең жеңіл wireless тышқандардың бірі. Valorant-та k/d өсті!",
+          "date": "2025-04-30"
+        },
+        {
+          "author": "Сабина Т.",
+          "rating": 5,
+          "text": "Hero 25K sensor + 60г салмақ + қызғылт дизайн = тамаша combo. Ұнады!",
+          "date": "2025-05-15"
+        }
+      ],
+      "image": "Logitech_G_Pro_X_Superlight_2_DEX_Pink.jpg"
+    },
+    {
+      "id": "mouse_mchose",
+      "name": "MCHOSE A7V2 Ultra+ PAW3950",
+      "price": 40000,
+      "description": "Wireless gaming mouse, PAW3950 сенсор, 26000 DPI, 80г жеңіл корпус, 2.4GHz + BT",
+      "reviews": [
+        {
+          "author": "Серік А.",
+          "rating": 4,
+          "text": "MCHOSE стандарт тышқан — студент сетіне кіреді. Бағасына лайықты, tracking жақсы.",
+          "date": "2025-04-10"
+        },
+        {
+          "author": "Дамир О.",
+          "rating": 4,
+          "text": "Бюджет тышқан ретінде өте жақсы. Кнопкалар дәл, scroll тегіс.",
+          "date": "2025-05-02"
+        }
+      ],
+      "image": "MCHOSE_Mouse.jpg"
+    },
+    {
+      "id": "mouse_lamzu_paro_black",
+      "name": "Lamzu Paro – Black",
+      "price": 60000,
+      "description": "Lamzu Paro (Black) — symmetric форм-фактор, PixArt PAW3395 сенсор, 26000 DPI, 4000Hz polling rate, wireless. Ультра жеңіл 48г симметриялық дизайн — кез-келген grip style-ға жарамды. Claw, palm, fingertip grip — барлығына тамаша. Pro esports ойыншылары арасында танымал.",
+      "reviews": [
+        {
+          "author": "Қайрат Н.",
+          "rating": 5,
+          "text": "Lamzu Paro — симметриялық форма, ультра жеңіл. FPS-те тамаша дәлдік береді.",
+          "date": "2025-05-10"
+        },
+        {
+          "author": "Темірлан А.",
+          "rating": 5,
+          "text": "PixArt 3395 + жеңіл корпус = aim machine. Тамаша mouse!",
+          "date": "2025-05-18"
+        }
+      ],
+      "specs": {
+        "weight": "48g",
+        "sensor": "PixArt PAW3395",
+        "dpi": "100-26000",
+        "polling_rate": "4000Hz",
+        "wireless": true,
+        "battery": "80h"
+      },
+      "best_for": [
+        "Ultra-light Esports",
+        "Any Grip Style",
+        "Pro Gaming"
+      ],
+      "not_for": [
+        "Ірі қол (кіші symmetric корпус)"
+      ],
+      "image": "Lamzu_ParoBlack.jpg"
+    },
+    {
+      "id": "mouse_lamzu_thorn_black",
+      "name": "Lamzu Thorn – Black",
+      "price": 55000,
+      "description": "Lamzu Thorn (Black) — ergonomic форм-фактор, PixArt PAW3395 сенсор, 26000 DPI, 4000Hz polling rate, wireless. Ergonomic дизайн — оң қолға арналған. 4000Hz polling rate — ultra-low latency. Pro aim үшін арналған корпус пішіні. Қара түс — классикалық gaming дизайн.",
+      "reviews": [
+        {
+          "author": "Арман К.",
+          "rating": 5,
+          "text": "Lamzu Thorn қара — superlight категориясындағы дерлік ең жеңіл тышқан. PAW3395 sensor.",
+          "date": "2025-05-12"
+        },
+        {
+          "author": "Тимур Е.",
+          "rating": 5,
+          "text": "Сенімді Click, honeycomb дизайн, 60г шамасында — esports үшін идеал.",
+          "date": "2025-05-20"
+        }
+      ],
+      "specs": {
+        "weight": "55g",
+        "sensor": "PixArt PAW3395",
+        "dpi": "100-26000",
+        "polling_rate": "4000Hz",
+        "wireless": true,
+        "battery": "70h"
+      },
+      "best_for": [
+        "Pro Aim Gaming",
+        "Ergonomic",
+        "FPS Esports"
+      ],
+      "not_for": [
+        "Кіші қол",
+        "Left-handed"
+      ],
+      "image": "Lamzu_Thorn.jpg"
+    },
+    {
+      "id": "mouse_lamzu_thorn_white",
+      "name": "Lamzu Thorn – White",
+      "price": 55000,
+      "description": "Lamzu Thorn (White) — ergonomic форм-фактор, PixArt PAW3395 сенсор, 26000 DPI, 4000Hz polling rate, wireless. Ақ түс — white build setтерге тамаша үйлеседі. 4000Hz polling rate — ultra-low latency. Ergonomic дизайн — оң қолға арналған. Стильді white setup-тің айрықша бөлігі.",
+      "reviews": [
+        {
+          "author": "Мадина О.",
+          "rating": 5,
+          "text": "Ақ түс white build setіме тамаша үйлесті. Сенсор жоғары деңгейде.",
+          "date": "2025-05-12"
+        },
+        {
+          "author": "Сабина Р.",
+          "rating": 4,
+          "text": "Стильді және функционал. Lamzu сапасы сенімді.",
+          "date": "2025-05-20"
+        }
+      ],
+      "specs": {
+        "weight": "55g",
+        "sensor": "PixArt PAW3395",
+        "dpi": "100-26000",
+        "polling_rate": "4000Hz",
+        "wireless": true,
+        "battery": "70h"
+      },
+      "best_for": [
+        "White Build Setup",
+        "Pro Aim Gaming",
+        "Ergonomic FPS"
+      ],
+      "not_for": [
+        "Кіші қол",
+        "Left-handed"
+      ],
+      "image": "Lamzu_Thorn_White.jpg"
+    },
+    {
+      "id": "mouse_lamzu_thorn_orange",
+      "name": "Lamzu Thorn – Orange",
+      "price": 55000,
+      "description": "Lamzu Thorn (Orange) — ergonomic форм-фактор, PixArt PAW3395 сенсор, 26000 DPI, 4000Hz polling rate, wireless. Қызғылт сары түс — бірегей стиль, ерекше setup дизайны. 4000Hz polling rate — ultra-low latency. Ergonomic дизайн — оң қолға арналған. Бірегей түс — streaming setup-те ерекше шығады.",
+      "reviews": [
+        {
+          "author": "Нариман К.",
+          "rating": 5,
+          "text": "Қызғылт сары түс — ерекше стиль! Сенсор мен клик — топ деңгей.",
+          "date": "2025-05-16"
+        },
+        {
+          "author": "Болат К.",
+          "rating": 4,
+          "text": "Ерекше дизайн, жақсы өнімділік. Lamzu бренді сенімді.",
+          "date": "2025-05-22"
+        }
+      ],
+      "specs": {
+        "weight": "55g",
+        "sensor": "PixArt PAW3395",
+        "dpi": "100-26000",
+        "polling_rate": "4000Hz",
+        "wireless": true,
+        "battery": "70h"
+      },
+      "best_for": [
+        "Бірегей Style Setup",
+        "Pro Aim Gaming",
+        "Ergonomic FPS"
+      ],
+      "not_for": [
+        "Кіші қол",
+        "Left-handed"
+      ],
+      "image": "Lamzu_Thorn_Orange.jpg"
+    }
+  ],
+  "keyboards": [
+    {
+      "id": "keyboard_wooting_60he",
+      "name": "Wooting 60HE",
+      "price": 150000,
+      "description": "Wooting 60HE — 60% форм-фактор, Lekker Hall Effect switch, Rapid Trigger технологиясы, 0.1mm actuation point реттеу. Pro esports клавиатурасының абсолютті чемпионы. Rapid Trigger — CS2 пен Valorant-та W/A/S/D-дің ең жылдам жауап беруін қамтамасыз етеді. Dünie жүзіндегі pro ойыншылардың 1-таңдауы.",
+      "reviews": [
+        {
+          "author": "Азамат Ж.",
+          "rating": 5,
+          "text": "Rapid Trigger технологиясы CS2-де ОГРОМНЫЙ айырмашылық береді. Pro ойыншылардың таңдауы!",
+          "date": "2025-04-22"
+        },
+        {
+          "author": "Темірлан А.",
+          "rating": 5,
+          "text": "Analog Hall Effect switch — жоғары деңгейлі esports клавиатура. Ешбір балама жоқ.",
+          "date": "2025-05-08"
+        },
+        {
+          "author": "Аслан Ч.",
+          "rating": 4,
+          "text": "Compact 60% форм-фактор. Rapid Trigger жұмысы тамаша.",
+          "date": "2025-05-15"
+        }
+      ],
+      "specs": {
+        "form_factor": "60%",
+        "switch": "Lekker Hall Effect (Analog)",
+        "rapid_trigger": true,
+        "wireless": false,
+        "rgb": true,
+        "actuation": "0.1-4.0mm adjustable"
+      },
+      "best_for": [
+        "CS2/Valorant Pro Level",
+        "Rapid Trigger",
+        "Esports максималды"
+      ],
+      "not_for": [
+        "Numpad қажет",
+        "Бюджет жинақ"
+      ],
+      "image": "Wooting_60HE.jpg"
+    },
+    {
+      "id": "keyboard_wooting_80he",
+      "name": "Wooting 80HE",
+      "price": 170000,
+      "description": "Wooting 80HE — 75/80% форм-фактор, Lekker Hall Effect switch, Rapid Trigger, F-key row бар. 60HE-дің ірірек нұсқасы. F-клавиштері бар — PTT, scoreboard, macro үшін ыңғайлы. Wooting-тің ең жаңа Rapid Trigger технологиясы. Pro esports + күнделікті ыңғайлылық балансы.",
+      "reviews": [
+        {
+          "author": "Руслан Н.",
+          "rating": 5,
+          "text": "80% форм-фактор + Rapid Trigger. F-keys бар, compact. Ойыншыларға идеал.",
+          "date": "2025-04-28"
+        },
+        {
+          "author": "Дәурен Б.",
+          "rating": 5,
+          "text": "60HE-ден жақсырақ — F-keys ыңғайлы. Тамаша клавиатура!",
+          "date": "2025-05-12"
+        }
+      ],
+      "specs": {
+        "form_factor": "75%/80%",
+        "switch": "Lekker Hall Effect (Analog)",
+        "rapid_trigger": true,
+        "wireless": false,
+        "rgb": true,
+        "actuation": "0.1-4.0mm adjustable"
+      },
+      "best_for": [
+        "CS2/Valorant Pro",
+        "Rapid Trigger + F-keys",
+        "Толық keyboard"
+      ],
+      "not_for": [
+        "Бюджет жинақ",
+        "Numpad қажет"
+      ],
+      "image": "Wooting_80HE_.jpg"
+    },
+    {
+      "id": "keyboard_apex_pro",
+      "name": "SteelSeries Apex Pro",
+      "price": 120000,
+      "description": "OmniPoint switch, өте жылдам pro клавиатура",
+      "reviews": [
+        {
+          "author": "Қайрат Н.",
+          "rating": 5,
+          "text": "OmniPoint switch — 0.1mm актуация. CS2-де реакция уақыты минималды.",
+          "date": "2025-04-15"
+        },
+        {
+          "author": "Мадина С.",
+          "rating": 4,
+          "text": "OLED дисплей қызықты фича. Актуация нүктесін өзгерту — ойынды өзгертеді.",
+          "date": "2025-05-01"
+        }
+      ],
+      "image": "SteelSeries_Apex_Pro.jpg"
+    },
+    {
+      "id": "keyboard_apex_pro_tkl",
+      "name": "SteelSeries Apex Pro TKL",
+      "price": 110000,
+      "description": "TKL форматтағы esports клавиатура",
+      "reviews": [
+        {
+          "author": "Нұрлан А.",
+          "rating": 5,
+          "text": "TKL форматы + OmniPoint switch = идеал gaming клавиатура. Compact ыңғайлы.",
+          "date": "2025-04-20"
+        },
+        {
+          "author": "Ержан К.",
+          "rating": 4,
+          "text": "Ең жақсы TKL gaming клавиатура. Баға жоғары, бірақ сапа ақтайды.",
+          "date": "2025-05-06"
+        }
+      ],
+      "image": "SteelSeries_Apex_Pro_TKL.jpg"
+    },
+    {
+      "id": "keyboard_logitech_gpro",
+      "name": "Logitech G Pro X Keyboard",
+      "price": 100000,
+      "description": "Pro ойыншыларға арналған сапалы клавиатура",
+      "reviews": [
+        {
+          "author": "Болат С.",
+          "rating": 5,
+          "text": "Logitech G Pro X — pro ойыншылар стандарты. GX Blue switch — ыңғайлы.",
+          "date": "2025-03-28"
+        },
+        {
+          "author": "Тимур А.",
+          "rating": 4,
+          "text": "Miqty Pro Gaming сапасы. Алмалы-салмалы switch — ыңғайлы.",
+          "date": "2025-04-15"
+        }
+      ],
+      "image": "Logitech_G_Pro_X_Keyboard.jpg"
+    },
+    {
+      "id": "keyboard_logitech_pro_tkl",
+      "name": "Logitech G Pro X TKL Lightspeed",
+      "price": 140000,
+      "description": "Wireless TKL esports клавиатура",
+      "reviews": [
+        {
+          "author": "Болат С.",
+          "rating": 5,
+          "text": "Logitech G Pro X TKL — wireless, GX switch, LIGHTSPEED. Про ойыншылардың пернетақтасы.",
+          "date": "2025-04-22"
+        },
+        {
+          "author": "Ержан Т.",
+          "rating": 5,
+          "text": "Lag жоқ, switch-тер дәл, дыбыс деңгейі реттеледі. Про Игрок сетіне лайық.",
+          "date": "2025-05-10"
+        },
+        {
+          "author": "Нұрлан Д.",
+          "rating": 4,
+          "text": "Тамаша пернетақта, бірақ баға биік. Сапасы сол бағаға лайықты.",
+          "date": "2025-05-18"
+        }
+      ],
+      "image": "Logitech_G_Pro_X_TKL_Lightspeed.jpg"
+    },
+    {
+      "id": "keyboard_razer_huntsman",
+      "name": "Razer Huntsman V3 Pro",
+      "price": 140000,
+      "description": "Optical switch-тері  жылдам клавиатура",
+      "reviews": [
+        {
+          "author": "Арман Д.",
+          "rating": 5,
+          "text": "Razer Analog Optical switch — жарық жылдамдығында актуация. CS2-де тамаша.",
+          "date": "2025-04-25"
+        },
+        {
+          "author": "Санжар Е.",
+          "rating": 4,
+          "text": "Optical switch ұзаққа шыдайды. Rapid Trigger функциясы бар.",
+          "date": "2025-05-10"
+        }
+      ],
+      "image": "Razer_Huntsman_V3_Pro.jpg"
+    },
+    {
+      "id": "keyboard_hyperx_alloy",
+      "name": "HyperX Alloy Origins",
+      "price": 60000,
+      "description": "HyperX Alloy Origins — Full-size, HyperX Red/Blue/Aqua linear switch, болат корпус, компактты дизайн. Ойыншылар арасындағы ең танымал entry-level механикалық клавиатура. HyperX Red switch — linear, жеңіл басу, gaming үшін оптималды. Сенімді болат frame — ұзақ қызмет мерзімі.",
+      "reviews": [
+        {
+          "author": "Алима Б.",
+          "rating": 4,
+          "text": "Болат корпус — мықты және берік. Бюджет gaming клавиатурасының ең жақсысы.",
+          "date": "2025-03-20"
+        },
+        {
+          "author": "Нариман Ж.",
+          "rating": 5,
+          "text": "HyperX Cherry MX switch — сенімді және ыңғайлы. Баға қолайлы.",
+          "date": "2025-04-08"
+        }
+      ],
+      "specs": {
+        "form_factor": "Full-size",
+        "switch": "HyperX Red/Blue/Aqua",
+        "rapid_trigger": false,
+        "wireless": false,
+        "rgb": true,
+        "actuation": "1.8mm"
+      },
+      "best_for": [
+        "Entry-level Mechanical",
+        "Gaming",
+        "Сенімді корпус"
+      ],
+      "not_for": [
+        "Rapid Trigger",
+        "Wireless",
+        "Ықшам форм-фактор"
+      ],
+      "image": "HyperX_Alloy_Origins.jpg"
+    },
+    {
+      "id": "keyboard_aula_f75",
+      "name": "Aula F75",
+      "price": 20000,
+      "description": "Aula F75 — 75% форм-фактор, gasket mount, TTC/Gateron switch нұсқалары, RGB, hot-swap. Бюджет сегменттегі ең тиімді механикалық клавиатура. Gasket mount — soft typing feel, ыңғайлы дыбыс. Hot-swap — switch алмастыру мүмкіндігі. 75% форм-фактор — F-key бар, compact дизайн.",
+      "reviews": [
+        {
+          "author": "Аяна Б.",
+          "rating": 4,
+          "text": "20 мыңға механикалық клавиатура — таңқаларлық. Студент бюджетіне идеал.",
+          "date": "2025-04-10"
+        },
+        {
+          "author": "Диас К.",
+          "rating": 4,
+          "text": "Бастапқы механикалық клавиатура ретінде жақсы. Switch жауабы ыңғайлы.",
+          "date": "2025-05-02"
+        }
+      ],
+      "specs": {
+        "form_factor": "75%",
+        "switch": "TTC/Gateron (hot-swap)",
+        "rapid_trigger": false,
+        "wireless": false,
+        "rgb": true,
+        "actuation": "2.0mm"
+      },
+      "best_for": [
+        "Бюджет Mechanical",
+        "Gasket mount",
+        "Hot-swap"
+      ],
+      "not_for": [
+        "Rapid Trigger",
+        "Wireless"
+      ],
+      "image": "Aula_F75.jpg"
+    },
+    {
+      "id": "keyboard_ajazz",
+      "name": "Ajazz Mechanical Keyboard",
+      "price": 32000,
+      "description": "Баға мен сапа балансы жақсы клавиатура",
+      "reviews": [
+        {
+          "author": "Қайрат Б.",
+          "rating": 4,
+          "text": "Ajazz механикалық пернетақта — Студент сетіне кіреді. Баға/сапа жақсы.",
+          "date": "2025-04-05"
+        },
+        {
+          "author": "Мадина А.",
+          "rating": 5,
+          "text": "Алғашқы мех пернетақтам! Кнопкалар ыңғайлы, дыбысы жақсы.",
+          "date": "2025-04-25"
+        }
+      ],
+      "image": "Ajazz Mechanical Keyboard.jpg"
+    },
+    {
+      "id": "keyboard_mchose",
+      "name": " MCHOSE G75 Pro черный Keyboard",
+      "price": 35000,
+      "description": "Бюджет сегментке арналған gaming клавиатура",
+      "reviews": [
+        {
+          "author": "Аслан Е.",
+          "rating": 5,
+          "text": "MCHOSE G75 Pro — 75% layout, hot-swap switch. Аз орын, тиімді. Дыбысы тыныш.",
+          "date": "2025-05-08"
+        },
+        {
+          "author": "Руслан С.",
+          "rating": 4,
+          "text": "G75 Pro қара — switch кнопкалары тегіс, сапалы пернетақта. Ұсынамын.",
+          "date": "2025-05-16"
+        }
+      ],
+      "image": "MCHOSE_G75_Pro_Keyboard.jpg"
+    },
+    {
+      "id": "keyboard_mchose_mix87_red",
+      "name": "MCHOSE MIX 87 – Red",
+      "price": 45000,
+      "description": "MCHOSE MIX 87 Red — TKL форм-фактор, алюминий frame, gasket mount, Red linear switch, RGB. Бюджет TKL сегментінің ең тиімді механикалық клавиатурасы. Алюминий frame — premium feel, бюджет бағасымен. Red linear switch — жеңіл, тегіс gaming. Gasket mount — жұмсақ typing тәжірибесі.",
+      "reviews": [
+        {
+          "author": "Зарина Т.",
+          "rating": 5,
+          "text": "TKL форматы + aluminum frame. Бюджет сегменттің ең тиімді механикалық клавиатурасы!",
+          "date": "2025-04-18"
+        },
+        {
+          "author": "Дәурен Б.",
+          "rating": 4,
+          "text": "Қызыл түс setup-қа жарасады. Механикалық switch жауабы тамаша.",
+          "date": "2025-05-05"
+        }
+      ],
+      "specs": {
+        "form_factor": "TKL",
+        "switch": "Red Linear (hot-swap)",
+        "rapid_trigger": false,
+        "wireless": false,
+        "rgb": true,
+        "frame": "Aluminum"
+      },
+      "best_for": [
+        "Бюджет TKL",
+        "Aluminum frame",
+        "Gaming"
+      ],
+      "not_for": [
+        "Rapid Trigger",
+        "Wireless"
+      ],
+      "image": "MCHOSE_MIX_87_Red.jpg"
+    },
+    {
+      "id": "keyboard_mchose_mix87_black",
+      "name": "MCHOSE MIX 87 – Black",
+      "price": 45000,
+      "description": "MCHOSE MIX 87 Black — TKL форм-фактор, алюминий frame, gasket mount, Brown tactile switch, RGB, қара дизайн. Классикалық қара дизайн — кез-келген gaming setup-ке үйлеседі. Brown tactile switch — тактильді feedback, gaming + typing баланс. Алюминий frame — сенімді, бюджетке тиімді.",
+      "reviews": [
+        {
+          "author": "Қайрат Б.",
+          "rating": 5,
+          "text": "Қара дизайн — классикалық стиль. Aluminum frame мықты сезіледі.",
+          "date": "2025-04-25"
+        },
+        {
+          "author": "Нариман А.",
+          "rating": 5,
+          "text": "Бюджетке арналған ең жақсы механикалық клавиатура. Тамаша таңдау!",
+          "date": "2025-05-12"
+        }
+      ],
+      "specs": {
+        "form_factor": "TKL",
+        "switch": "Brown Tactile (hot-swap)",
+        "rapid_trigger": false,
+        "wireless": false,
+        "rgb": true,
+        "frame": "Aluminum"
+      },
+      "best_for": [
+        "Бюджет TKL",
+        "Gaming + Typing",
+        "Қара дизайн"
+      ],
+      "not_for": [
+        "Rapid Trigger",
+        "Wireless"
+      ],
+      "image": "MCHOSE_MIX_87_Black.jpg"
+    },
+    {
+      "id": "keyboard_mchose_g75_black",
+      "name": "MCHOSE G75 Pro – Black",
+      "price": 35000,
+      "description": "75% форматты gaming клавиатура, қара түс. Бюджет сегменттегі сапалы механикалық клавиатура.",
+      "reviews": [
+        {
+          "author": "Аслан Е.",
+          "rating": 5,
+          "text": "MCHOSE G75 Pro — 75% layout, hot-swap switch. Стол үстінде аз орын алады, тиімді.",
+          "date": "2025-05-08"
+        },
+        {
+          "author": "Руслан С.",
+          "rating": 4,
+          "text": "G75 Pro қара — дыбысы тыныш, switch кнопкалары тегіс. Ұсынамын.",
+          "date": "2025-05-16"
+        }
+      ],
+      "image": "MCHOSE_G75_Pro_Black.jpg"
+    }
+  ],
+  "headsets": [
+    {
+      "id": "headset_logitech_prox",
+      "name": "Logitech G Pro X",
+      "price": 90000,
+      "description": "Logitech G Pro X — 50mm driver, Blue VO!CE микрофон технологиясы, DTS Headphone:X 2.0, wired. Pro ойыншылар арасындағы ең танымал wired headset. Blue VO!CE — студия сапалы микрофон дыбысы, эфирдегі professional sound. DTS Headphone:X 2.0 — 7.1 virtual surround. Ыңғайлы амбушюр.",
+      "reviews": [
+        {
+          "author": "Азамат Ж.",
+          "rating": 5,
+          "text": "Logitech G Pro X — ойыншылар арасындағы ең танымал headset. Дыбыс сапасы жоғары.",
+          "date": "2025-04-15"
+        },
+        {
+          "author": "Дәурен Б.",
+          "rating": 4,
+          "text": "Ыңғайлы амбушюр, жақсы микрофон. DTS Spatial Audio жұмыс істейді.",
+          "date": "2025-05-01"
+        }
+      ],
+      "specs": {
+        "driver": "50mm",
+        "microphone": "Blue VO!CE беamforming",
+        "surround": "DTS:X 7.1",
+        "wireless": false,
+        "battery": "N/A",
+        "frequency": "20Hz-20kHz"
+      },
+      "best_for": [
+        "Pro Gaming",
+        "Стриминг",
+        "Сапалы микрофон"
+      ],
+      "not_for": [
+        "Wireless",
+        "Ұзақ сессия (ауыр)"
+      ],
+      "image": "Logitech_G_Pro_X_.jpg"
+    },
+    {
+      "id": "headset_logitech_prox_wireless",
+      "name": "Logitech G Pro X Wireless",
+      "price": 140000,
+      "description": "Logitech G Pro X Wireless — 50mm driver, Blue VO!CE микрофон, DTS Headphone:X 2.0, LIGHTSPEED wireless, 20 сағат батарея. Wired G Pro X-тің сымсыз нұсқасы. LIGHTSPEED — 1ms wireless latency, ешбір кешігусіз. 20 сағат батарея — ұзақ gaming сессияларына жетеді. Pro стриминг үшін тамаша.",
+      "reviews": [
+        {
+          "author": "Сабина Р.",
+          "rating": 5,
+          "text": "Wireless болса да latency жоқ. LIGHTSPEED технологиясы тамаша жұмыс істейді.",
+          "date": "2025-04-25"
+        },
+        {
+          "author": "Нариман К.",
+          "rating": 5,
+          "text": "20+ сағат батарея. Дыбыс сапасы проводтан кем емес. Өте риза!",
+          "date": "2025-05-10"
+        }
+      ],
+      "specs": {
+        "driver": "50mm",
+        "microphone": "Blue VO!CE",
+        "surround": "DTS:X 7.1",
+        "wireless": true,
+        "battery": "20h"
+      },
+      "best_for": [
+        "Wireless Pro Gaming",
+        "Стриминг",
+        "Cable-free Setup"
+      ],
+      "not_for": [
+        "Бюджет жинақ"
+      ],
+      "image": "Logitech_G_Pro_X_Wireless.jpg"
+    },
+    {
+      "id": "headset_logitech_prox2",
+      "name": "Logitech G Pro X 2",
+      "price": 160000,
+      "description": "Logitech G Pro X 2 — жаңа буын 50mm GRAPHENE driver, Blue VO!CE 2, DTS:X 2.0, wired. GRAPHENE driver — жаңа материал, бай баяу жиілік пен таза жоғары жиілік. Жаңа Blue VO!CE 2 — алдыңғы нұсқадан жақсырақ микрофон сапасы. Logitech-тің ең жоғары wired headset-і.",
+      "reviews": [
+        {
+          "author": "Айгерім Т.",
+          "rating": 5,
+          "text": "G Pro X 2 — жаңа буын, дыбыс сапасы айтарлықтай жақсарды. Тамаша!",
+          "date": "2025-05-08"
+        },
+        {
+          "author": "Ержан О.",
+          "rating": 5,
+          "text": "Pro ойыншылар таңдауы. Турнирларда қолданылады — сапасы мінсіз.",
+          "date": "2025-05-15"
+        }
+      ],
+      "specs": {
+        "driver": "50mm GRAPHENE",
+        "microphone": "Blue VO!CE 2",
+        "surround": "DTS:X 7.1",
+        "wireless": false,
+        "battery": "N/A"
+      },
+      "best_for": [
+        "Premium Wired Gaming",
+        "Pro Стриминг",
+        "Жоғары аудио сапа"
+      ],
+      "not_for": [
+        "Wireless",
+        "Бюджет жинақ"
+      ],
+      "image": "Logitech_G_Pro_X_2.jpg"
+    },
+    {
+      "id": "headset_cloud2",
+      "name": "HyperX Cloud II",
+      "price": 60000,
+      "description": "Ойынға ыңғайлы, өте танымал gaming headset",
+      "reviews": [
+        {
+          "author": "Болат М.",
+          "rating": 4,
+          "text": "HyperX Cloud II — бюджет сегменттің классигі. 7.1 Surround Sound жұмыс істейді.",
+          "date": "2025-03-15"
+        },
+        {
+          "author": "Тимур Д.",
+          "rating": 5,
+          "text": "Ыңғайлы, жақсы дыбыс, микрофон анық. Gaming-ке бастапқы таңдау ретінде тамаша.",
+          "date": "2025-04-02"
+        }
+      ],
+      "image": "HyperX_Cloud_II.jpg"
+    },
+    {
+      "id": "headset_cloud3",
+      "name": "HyperX Cloud III",
+      "price": 80000,
+      "description": "Жаңа буын HyperX headset, сапалы дыбыс пен микрофон",
+      "reviews": [
+        {
+          "author": "Алима Н.",
+          "rating": 5,
+          "text": "Cloud II-ден жақсырақ дыбыс сапасы. Жаңа амбушюр ыңғайлылықты арттырды.",
+          "date": "2025-04-20"
+        },
+        {
+          "author": "Нариман А.",
+          "rating": 4,
+          "text": "Бюджет сегменттің жоғары деңгейлі таңдауы. Микрофон анық сөйлейді.",
+          "date": "2025-05-06"
+        }
+      ],
+      "image": "HyperX_Cloud_III.jpg"
+    },
+    {
+      "id": "headset_nova_pro",
+      "name": "SteelSeries Arctis Nova Pro",
+      "price": 150000,
+      "description": "SteelSeries Arctis Nova Pro — Hi-Res сертификат, 40mm neodymium driver, активті шу азайту (ANC), горячая замена батарей, Infinity battery жүйесі, multi-system ресивер. Дүние жүзіндегі ең озық gaming headset-терінің бірі. ANC — ортаның шуын толық блоктайды. Infinity battery — үзіліссіз ойнауға мүмкіндік береді.",
+      "reviews": [
+        {
+          "author": "Болат К.",
+          "rating": 5,
+          "text": "SteelSeries Nova Pro — Hi-Res Audio, ең жоғары дыбыс сапасы. Premium деңгей!",
+          "date": "2025-04-28"
+        },
+        {
+          "author": "Дәурен Б.",
+          "rating": 5,
+          "text": "Мюзыкаға да, ойынға да тамаша. Dac/Amp кірістірілген — дыбыс ерекше.",
+          "date": "2025-05-12"
+        }
+      ],
+      "specs": {
+        "driver": "40mm neodymium Hi-Res",
+        "microphone": "ClearCast Gen 2",
+        "surround": "360° Spatial Audio",
+        "wireless": true,
+        "anc": true,
+        "battery": "Infinity (hot-swap)"
+      },
+      "best_for": [
+        "Premium Gaming",
+        "ANC",
+        "Hi-Res аудио",
+        "Pro Стриминг"
+      ],
+      "not_for": [
+        "Бюджет жинақ"
+      ],
+      "image": "SteelSeries Arctis Nova Pro.jpg"
+    },
+    {
+      "id": "headset_razer_blackshark",
+      "name": "Razer BlackShark V2",
+      "price": 80000,
+      "description": "Киберспортқа арналған ыңғайлы headset",
+      "reviews": [
+        {
+          "author": "Аяна Б.",
+          "rating": 5,
+          "text": "TriForce Titanium 50mm драйвер — дыбыс анық және терең. Microphone де тамаша.",
+          "date": "2025-04-10"
+        },
+        {
+          "author": "Диас К.",
+          "rating": 4,
+          "text": "Razer сапасы сенімді. THX Spatial Audio — FPS-те дыбыс бағытын дәл анықтайды.",
+          "date": "2025-04-28"
+        }
+      ],
+      "image": "Razer_BlackShark_V2.jpg"
+    },
+    {
+      "id": "headset_logitech",
+      "name": "Logitech G Pro X",
+      "price": 90000,
+      "description": "Сапалы дыбыс пен микрофон",
+      "reviews": [
+        {
+          "author": "Санжар К.",
+          "rating": 5,
+          "text": "Logitech G Pro X — Blue VO!CE микрофон студия деңгейінде. Командамен байланыс мінсіз.",
+          "date": "2025-04-15"
+        },
+        {
+          "author": "Бауыржан Т.",
+          "rating": 5,
+          "text": "Про Игрок сетінде осы тұр! Дыбыс мінсіз, ұзақ отырғанда да ауырмайды.",
+          "date": "2025-05-05"
+        },
+        {
+          "author": "Айбек Н.",
+          "rating": 4,
+          "text": "Сапалы дыбыс, ыңғайлы. 4 жұлдыз — wireless болса толық 5 берер едім.",
+          "date": "2025-05-14"
+        }
+      ],
+      "image": "Logitech_G_Pro_X_.jpg"
+    },
+    {
+      "id": "headset_mchose_v9_black",
+      "name": "MCHOSE V9 Pro – Black",
+      "price": 55000,
+      "description": "Gaming headset, қара түс. Сапалы дыбыс пен микрофон, ыңғайлы design.",
+      "reviews": [
+        {
+          "author": "Қайрат Н.",
+          "rating": 4,
+          "text": "Бюджет headset-тің ең жақсысы. 55 мыңға бұл дыбыс сапасы таңқаларлық!",
+          "date": "2025-04-22"
+        },
+        {
+          "author": "Темірлан А.",
+          "rating": 5,
+          "text": "Gaming үшін жеткілікті дыбыс. Микрофон анық. Баға-сапа балансы жоғары.",
+          "date": "2025-05-08"
+        }
+      ],
+      "image": "MCHOSE_V9_Pro_Black.jpg"
+    },
+    {
+      "id": "headset_mchose_x9_pink",
+      "name": "MCHOSE X9 – Pink",
+      "price": 48000,
+      "description": "MCHOSE X9 (Pink) — 50mm driver, микрофон, 3.5mm, wired, қызғылт дизайн. Стильді gaming headset. Қызғылт түс — pink setup-ке тамаша. Сапалы стерео дыбыс, анық микрофон. Бюджет сегментінде жақсы баға-сапа балансы. Ыңғайлы амбушюр.",
+      "reviews": [
+        {
+          "author": "Мадина О.",
+          "rating": 5,
+          "text": "Қызғылт дизайн ұнады! Дыбыс сапасы жақсы, амбушюр жұмсақ. Өте риза!",
+          "date": "2025-05-10"
+        },
+        {
+          "author": "Сабина Р.",
+          "rating": 4,
+          "text": "Стильді және функционал headset. Микрофон анық сөйлейді.",
+          "date": "2025-05-18"
+        }
+      ],
+      "specs": {
+        "driver": "50mm",
+        "microphone": "Noise-cancelling",
+        "surround": "Stereo",
+        "wireless": false,
+        "battery": "N/A"
+      },
+      "best_for": [
+        "Pink Setup",
+        "Бюджет Gaming",
+        "Стиль"
+      ],
+      "not_for": [
+        "Premium аудио",
+        "Wireless"
+      ],
+      "image": "MCHOSE_X9_Pink.jpg"
+    },
+    {
+      "id": "headset_mchose_x9_white",
+      "name": "MCHOSE X9 – White",
+      "price": 48000,
+      "description": "MCHOSE X9 (White) — 50mm driver, микрофон, 3.5mm, wired, ақ дизайн. Ақ white build setup-ке тамаша үйлесетін бюджет headset. Сапалы стерео дыбыс, анық микрофон. Таза ақ дизайн — white gaming setup-тің барлық компоненттерімен үйлеседі. Тиімді баға.",
+      "reviews": [
+        {
+          "author": "Аяна М.",
+          "rating": 5,
+          "text": "Ақ түс — white setup-қа тамаша! Дыбыс жақсы, ыңғайлы.",
+          "date": "2025-05-12"
+        },
+        {
+          "author": "Зарина Т.",
+          "rating": 4,
+          "text": "MCHOSE X9 — бюджет сегменттің стильді таңдауы.",
+          "date": "2025-05-20"
+        }
+      ],
+      "specs": {
+        "driver": "50mm",
+        "microphone": "Noise-cancelling",
+        "surround": "Stereo",
+        "wireless": false,
+        "battery": "N/A"
+      },
+      "best_for": [
+        "White Setup",
+        "Бюджет Gaming"
+      ],
+      "not_for": [
+        "Premium аудио",
+        "Wireless"
+      ],
+      "image": "MCHOSE_X9_White.jpg"
+    },
+    {
+      "id": "headset_razer_blackshark_v2_pro_white",
+      "name": "Razer BlackShark V2 Pro 2023 – White",
+      "price": 130000,
+      "description": "Razer BlackShark V2 Pro 2023 (White) — 50mm TriForce Titanium driver, HyperClear Super Wideband микрофон, THX Spatial Audio, RAZER HYPERSPEED wireless, 70 сағат батарея. Razer-дің флагман wireless gaming headset-і. Super Wideband микрофон — студия сапасы. Ақ түс — white build setup-ке тамаша. HYPERSPEED wireless — 2.4GHz ultra-low latency.",
+      "reviews": [
+        {
+          "author": "Нұрлан А.",
+          "rating": 5,
+          "text": "White BlackShark V2 Pro — premium дизайн + premium дыбыс. Wireless 2023 нұсқасы тамаша!",
+          "date": "2025-05-05"
+        },
+        {
+          "author": "Ержан М.",
+          "rating": 5,
+          "text": "THX Spatial Audio + wireless = ойынды жаңаша сезіну. Тамаша headset!",
+          "date": "2025-05-15"
+        }
+      ],
+      "specs": {
+        "driver": "50mm TriForce Titanium",
+        "microphone": "HyperClear Super Wideband",
+        "surround": "THX Spatial 7.1",
+        "wireless": true,
+        "battery": "70h"
+      },
+      "best_for": [
+        "Premium Wireless Gaming",
+        "White Setup",
+        "Стриминг"
+      ],
+      "not_for": [
+        "Бюджет жинақ"
+      ],
+      "image": "Razer_BlackShark_V2.jpg"
+    },
+    {
+      "id": "headset_logitech_prox2_pink",
+      "name": "Logitech G Pro X2 Lightspeed – Pink",
+      "price": 170000,
+      "description": "Pro деңгейлі wireless headset, қызғылт түс. LIGHTSPEED wireless, 50 сағат батарея.",
+      "reviews": [
+        {
+          "author": "Айгерім Т.",
+          "rating": 5,
+          "text": "Pink Lightspeed — стиль мен сапа бір уақытта. 50 сағат батарея — бұл нақты!",
+          "date": "2025-05-14"
+        },
+        {
+          "author": "Мадина О.",
+          "rating": 5,
+          "text": "DTS Headphone:X 2.0 + жеңіл корпус + ұзақ батарея. Ең жақсы wireless headset!",
+          "date": "2025-05-22"
+        }
+      ],
+      "image": "Logitech G Pro X2 Lightspeed Pink.jpg"
+    },
+    {
+      "id": "headset_logitech_prox2_white",
+      "name": "Logitech G Pro X2 Lightspeed – White",
+      "price": 170000,
+      "description": "Pro деңгейлі wireless headset, ақ түс. LIGHTSPEED wireless, DTS Headphone:X 2.0 surround.",
+      "reviews": [
+        {
+          "author": "Сабина Р.",
+          "rating": 5,
+          "text": "White PRO X2 Lightspeed — premium деңгейдегі wireless headset. Батарея 50+ сағат.",
+          "date": "2025-05-16"
+        },
+        {
+          "author": "Аяна Б.",
+          "rating": 5,
+          "text": "Logitech-тің ең жоғары деңгейлі headset-і. Дыбыс сапасы мінсіз.",
+          "date": "2025-05-22"
+        }
+      ],
+      "image": "Logitech G Pro X2 Lightspeed White.jpg"
+    }
+  ],
+  "setups": [
+    {
+      "id": "setup_student",
+      "name": "Сет Студент",
+      "price": 550000,
+      "components": {
+        "cpu": "cpu_i5_12400f",
+        "gpu": "gpu_rtx_3060",
+        "ram": "ram_16_ddr4",
+        "ssd": "ssd_1tb",
+        "motherboard": "mb_b760",
+        "mouse": "mouse_mchose",
+        "keyboard": "keyboard_ajazz",
+        "headset": "headset_cloud2",
+        "case": "case_mid",
+        "monitor": "monitor_240hz"
+      },
+      "reviews": [
+        {
+          "author": "Нұрлан А.",
+          "rating": 5,
+          "text": "Студент сеті — ойын мен оқу үшін тамаша! RTX 3060 + i5 жұбы CS2-де 200+ fps береді.",
+          "date": "2025-03-15"
+        },
+        {
+          "author": "Дамир С.",
+          "rating": 5,
+          "text": "Баға-сапа балансы керемет. CyberQazaq бәрін жинап, кепілдікпен берді.",
+          "date": "2025-04-02"
+        },
+        {
+          "author": "Аяна М.",
+          "rating": 4,
+          "text": "Бюджет сегменттің ең жақсы сеті. RAM-ды 32GB-қа апгрейд жасасам болды.",
+          "date": "2025-04-20"
+        }
+      ],
+      "image": "https://placehold.co/400x300/0a0a1a/60a5fa?text=Студент+Сеті"
+    },
+    {
+      "id": "setup_young",
+      "name": "Сет Молодой",
+      "price": 650000,
+      "components": {
+        "cpu": "cpu_R5_7500",
+        "gpu": "gpu_rtx_3070_ti",
+        "ram": "ram_16_ddr5",
+        "ssd": "ssd_1tb",
+        "motherboard": "mb_b760",
+        "mouse": "mouse_ajazz_aj159",
+        "keyboard": "keyboard_mchose",
+        "headset": "headset_cloud2",
+        "case": "case_rgb",
+        "monitor": "monitor_310hz"
+      },
+      "reviews": [
+        {
+          "author": "Ержан К.",
+          "rating": 5,
+          "text": "Молодой сет — есімде жоқ мұндай жылдам компьютер! RTX 3070 Ti тамаша жұмыс.",
+          "date": "2025-03-28"
+        },
+        {
+          "author": "Болат С.",
+          "rating": 5,
+          "text": "Жинауға уақыт жоқ еді — CyberQazaq бәрін жасады. Өте риза!",
+          "date": "2025-04-15"
+        }
+      ],
+      "image": "youngsetup.jpg"
+    },
+    {
+      "id": "setup_pro",
+      "name": "Сет Про Игрок",
+      "price": 1100000,
+      "components": {
+        "cpu": "cpu_R7_7800x3d",
+        "gpu": "gpu_rtx_4070_ti_super",
+        "ram": "ram_32_ddr5",
+        "ssd": "ssd_1tb",
+        "motherboard": "mb_b760",
+        "mouse": "mouse_superlight2",
+        "keyboard": "keyboard_logitech_pro_tkl",
+        "headset": "headset_logitech_prox",
+        "case": "case_rgb",
+        "monitor": "monitor_360hz"
+      },
+      "reviews": [
+        {
+          "author": "Тимур А.",
+          "rating": 5,
+          "text": "Про сет — RTX 4070 Ti Super + 7800X3D = gaming монстры! CS2-де 400+ fps!",
+          "date": "2025-04-10"
+        },
+        {
+          "author": "Арман Д.",
+          "rating": 5,
+          "text": "Кәсіби деңгейдегі сет. Стриминг, ойын, монтаж — бәрі бір уақытта.",
+          "date": "2025-04-28"
+        },
+        {
+          "author": "Санжар Е.",
+          "rating": 5,
+          "text": "CyberQazaq сервисі тамаша — жылдам жинап, конфигурациялап берді.",
+          "date": "2025-05-10"
+        }
+      ],
+      "image": "prosetup.jpg"
+    },
+    {
+      "id": "setup_sheikh",
+      "name": "Сет Шейх",
+      "price": 2500000,
+      "components": {
+        "cpu": "cpu_r9_9850x3d",
+        "gpu": "gpu_rtx_5090",
+        "ram": "ram_64_ddr5",
+        "ssd": "ssd_2tb",
+        "motherboard": "mb_x670",
+        "mouse": "mouse_superstrike",
+        "keyboard": "keyboard_logitech_pro_tkl",
+        "headset": "headset_logitech_prox2",
+        "case": "case_rgb",
+        "monitor": "monitor_asus_720hz"
+      },
+      "reviews": [
+        {
+          "author": "Алима Б.",
+          "rating": 5,
+          "text": "Шейх сеті — бұл ең жоғары деңгей! 4K/Ultra-да кез-келген ойын тамаша жүреді.",
+          "date": "2025-04-22"
+        },
+        {
+          "author": "Нариман Ж.",
+          "rating": 5,
+          "text": "Ақшаны аямадым — өкінбедім. CyberQazaq premium деңгейде жинады.",
+          "date": "2025-05-08"
+        }
+      ],
+      "image": "sheikhsetup.jpg"
+    },
+    {
+      "id": "setup_ultra",
+      "name": "Ultra Set",
+      "price": 3500000,
+      "components": {
+        "cpu": "cpu_i9_14900k",
+        "gpu": "gpu_rtx_5090",
+        "ram": "ram_64_ddr5",
+        "ssd": "ssd_2tb",
+        "motherboard": "mb_z790",
+        "mouse": "mouse_superstrike",
+        "keyboard": "keyboard_wooting_80he",
+        "headset": "headset_logitech_prox2",
+        "case": "case_full",
+        "monitor": "monitor_asus_720hz"
+      },
+      "reviews": [
+        {
+          "author": "Зарина Т.",
+          "rating": 5,
+          "text": "Ultra сет — бұл компьютер емес, ғарыш кемесі! RTX 5090 + i9 = жер бетіндегі ең қуатты.",
+          "date": "2025-05-12"
+        },
+        {
+          "author": "Дәурен Б.",
+          "rating": 5,
+          "text": "3.5 млн — өмірімдегі ең жақсы инвестиция. 4K/8K баптауда кез-келген ойын тамаша.",
+          "date": "2025-05-20"
+        }
+      ],
+      "image": "https://placehold.co/400x300/050510/e879f9?text=Ultra+Set"
+    },
+    {
+      "id": "setup_budget_killer",
+      "name": "Budget Killer",
+      "price": 600000,
+      "components": {
+        "cpu": "cpu_R5_7500",
+        "gpu": "gpu_rtx_5060_ti",
+        "ram": "ram_16_ddr5",
+        "ssd": "ssd_1tb",
+        "motherboard": "mb_b650",
+        "mouse": "mouse_vgn_f1pro",
+        "keyboard": "keyboard_aula_f75",
+        "headset": "headset_cloud2",
+        "case": "case_mid",
+        "monitor": "monitor_msi_244f"
+      },
+      "reviews": [
+        {
+          "author": "Қайрат Н.",
+          "rating": 5,
+          "text": "600 мыңға осындай сет — таңқаларлық! RTX 3070 Ti баға-сапа балансы тамаша.",
+          "date": "2025-04-18"
+        },
+        {
+          "author": "Мадина С.",
+          "rating": 5,
+          "text": "Budget Killer деп бекер атамапты! Esports ойындарда 200+ fps бар.",
+          "date": "2025-05-05"
+        }
+      ],
+      "image": "https://placehold.co/400x300/0a0a0f/00ff88?text=Budget+Killer"
+    },
+    {
+      "id": "setup_white",
+      "name": "White Aesthetic",
+      "price": 800000,
+      "components": {
+        "cpu": "cpu_i5_14600kf",
+        "gpu": "gpu_rtx_5060_ti",
+        "ram": "ram_32_ddr5",
+        "ssd": "ssd_1tb",
+        "motherboard": "mb_b760",
+        "mouse": "mouse_mchose_a7_white",
+        "keyboard": "keyboard_ajazz",
+        "headset": "headset_cloud3",
+        "case": "case_rgb",
+        "monitor": "monitor_asus_strix"
+      },
+      "reviews": [
+        {
+          "author": "Аяна Б.",
+          "rating": 5,
+          "text": "White Aesthetic — бөлмемді мүлде өзгертті! Ақ компьютер, ақ монитор, ақ mouse. Арман!",
+          "date": "2025-04-25"
+        },
+        {
+          "author": "Диас К.",
+          "rating": 5,
+          "text": "Дизайн мен өнімділік бір жерде. CyberQazaq компоненттерді мұқият таңдаған.",
+          "date": "2025-05-14"
+        }
+      ],
+      "image": "https://placehold.co/400x300/f8fafc/7c3aed?text=White+Aesthetic"
+    }
+  ]
+}

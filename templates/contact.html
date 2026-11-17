@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQazaq — Байланыс</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    .contact-hero {
+      border-radius: 28px;
+      padding: 52px 56px;
+      margin-bottom: 36px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(217,70,239,0.10));
+      border: 1px solid rgba(168,85,247,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content:"";
+      position:absolute; top:-60px; right:-60px;
+      width:260px; height:260px;
+      background:#d946ef; opacity:0.1;
+      filter:blur(70px); border-radius:50%;
+    }
+    .contact-hero-badge {
+      display:inline-block;
+      padding:8px 16px; border-radius:999px;
+      background:rgba(168,85,247,0.15);
+      border:1px solid rgba(168,85,247,0.35);
+      color:#d8b4fe; font-size:13px; font-weight:600;
+      margin-bottom:18px;
+    }
+    .contact-hero h1 {
+      font-size:48px; font-weight:900; line-height:1.1; margin-bottom:14px;
+      background:linear-gradient(90deg,#fff,#c084fc);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .contact-hero p { color:#9ca3af; font-size:17px; max-width:520px; line-height:1.7; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    /* Info cards column */
+    .contact-info { display:flex; flex-direction:column; gap:16px; }
+
+    .contact-info-card {
+      background: rgba(17,24,39,0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding: 26px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .contact-info-card:hover {
+      border-color: rgba(168,85,247,0.3);
+      transform: translateX(6px);
+      box-shadow: 0 0 28px rgba(168,85,247,0.12);
+    }
+    .info-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
+      border-radius: 16px;
+      background: rgba(168,85,247,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+    .info-text h3 { font-size:16px; font-weight:700; margin-bottom:4px; color:white; }
+    .info-text p  { color:#9ca3af; font-size:14px; line-height:1.5; }
+    .info-text a  { color:#c084fc; text-decoration:none; font-weight:600; }
+    .info-text a:hover { color:#d8b4fe; }
+
+    /* Form card */
+    .contact-form-card {
+      background: rgba(17,24,39,0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 36px;
+    }
+    .contact-form-card h2 {
+      font-size: 22px; font-weight: 800; margin-bottom: 24px;
+    }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 13px; color: #9ca3af;
+      font-weight: 500; margin-bottom: 7px;
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      color: white;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: 0.25s;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: #a855f7;
+      box-shadow: 0 0 14px rgba(168,85,247,0.2);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: #4b5563; }
+    .form-textarea { height: 120px; resize: vertical; line-height: 1.6; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(90deg, #7c3aed, #c026d3);
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 18px rgba(168,85,247,0.22);
+      position: relative;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 28px rgba(217,70,239,0.4);
+    }
+    .submit-btn:active { transform: translateY(0); }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 24px;
+      border-radius: 16px;
+      background: rgba(74,222,128,0.08);
+      border: 1px solid rgba(74,222,128,0.2);
+      color: #4ade80;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+
+    /* Quick channels */
+    .quick-channels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .channel-card {
+      background: rgba(17,24,39,0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      text-decoration: none;
+      transition: 0.35s;
+    }
+    .channel-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(168,85,247,0.3);
+      box-shadow: 0 0 28px rgba(168,85,247,0.15);
+    }
+    .channel-icon { font-size: 36px; margin-bottom: 12px; }
+    .channel-card h3 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px; }
+    .channel-card p  { font-size: 13px; color: #9ca3af; }
+
+    /* Map placeholder */
+    .map-section { margin-bottom: 36px; }
+    .map-section h2 { font-size:26px; font-weight:800; margin-bottom:18px; }
+    .map-box {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      height: 340px;
+      background: rgba(17,24,39,0.72);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      position: relative;
+    }
+    .map-box iframe {
+      width: 100%; height: 100%; border: none;
+    }
+
+    /* FAQ */
+    .faq-section { margin-bottom: 40px; }
+    .faq-section h2 { font-size:26px; font-weight:800; margin-bottom:20px; }
+    .faq-item {
+      background: rgba(17,24,39,0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .faq-item:hover { border-color: rgba(168,85,247,0.2); }
+    .faq-q {
+      padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; font-weight: 600; font-size: 15px;
+    }
+    .faq-arrow { color: #c084fc; font-size: 18px; transition: 0.3s; }
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px;
+      color: #9ca3af; font-size: 14px; line-height: 1.7;
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-item.open { border-color: rgba(168,85,247,0.3); }
+
+    @media (max-width:900px) {
+      .contact-grid { grid-template-columns:1fr; }
+      .quick-channels { grid-template-columns:1fr 1fr; }
+      .form-row { grid-template-columns:1fr; }
+      .contact-hero h1 { font-size:34px; }
+      .contact-hero { padding:36px 24px; }
+    }
+    @media (max-width:600px) {
+      .quick-channels { grid-template-columns:1fr; }
+    }
+  </style>
+<style>
+.gaming-deco-strip {
+  display: flex; align-items: center; justify-content: center;
+  gap: 32px; padding: 24px; margin: 32px 0;
+  background: rgba(17,24,39,0.5);
+  border: 1px solid rgba(168,85,247,0.12);
+  border-radius: 20px; flex-wrap: wrap;
+}
+.gaming-deco-strip svg { opacity: 0.55; transition: 0.3s; filter: drop-shadow(0 0 8px rgba(168,85,247,0.3)); }
+.gaming-deco-strip svg:hover { opacity: 1; transform: scale(1.15) translateY(-4px); filter: drop-shadow(0 0 16px rgba(168,85,247,0.6)); }
+.page-hero-icons { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.page-hero-icon { position:absolute; opacity:0.12; animation: floatPage 7s ease-in-out infinite; filter: drop-shadow(0 0 10px rgba(168,85,247,0.5)); }
+.page-hero-icon:nth-child(2){animation-delay:-2s}
+.page-hero-icon:nth-child(3){animation-delay:-4.5s}
+.page-hero-icon:nth-child(4){animation-delay:-1.5s}
+@keyframes floatPage { 0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-16px) rotate(3deg)} }
+@media(max-width:768px){.gaming-deco-strip{gap:16px}.page-hero-icons{display:none}}
+</style></head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand">
+      <a class="city" href="https://2gis.kz/zhezkazgan/geo/70030076462480403?m=67.521113%2C47.914935%2F16" target="_blank">📍 Сатпаев</a>
+      <div class="logo">CyberQazaq</div>
+    </div>
+    <nav class="top-nav">
+      <a href="/">Басты бет</a>
+      <a href="/products">Тауарлар</a>
+      <a href="/about">Біз туралы</a>
+      <a href="/contact" style="color:#c084fc;">Байланыс</a>
+      <a href="/cart">Себет</a>
+      <a href="/admin/direct" style="color:#a78bfa;font-weight:700;">⚙️ Админ</a>
+    </nav>
+    <div class="header-actions">
+      <a class="contact-btn" href="https://wa.me/77765007502" target="_blank">💬 Бізге жазу</a>
+      <a class="phone-link" href="tel:+77765007502">+7 (776) 500-75-02</a>
+      <div class="header-icons">
+        <a href="/favorites" class="fav-header-btn">❤<span id="favCount">0</span></a>
+        <button class="header-icon cart-header-icon" type="button" onclick="toggleCart()">🛒<span id="cartCount">0</span></button>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="mobile-nav" id="mobileNav">
+      <input class="mobile-search" type="text" placeholder="🔍 Тауар іздеу...">
+      <a href="/">🏠 Басты бет</a>
+      <a href="/products">🛒 Тауарлар</a>
+      <a href="/about">🏢 Біз туралы</a>
+      <a href="/contact">📞 Байланыс</a>
+      <a href="/cart">🛒 Себет</a>
+      <a href="/favorites">❤️ Таңдаулылар</a>
+      <a href="/ai-builder">🤖 AI конфигуратор</a>
+      <a href="https://wa.me/77765007502" target="_blank" style="color:#c084fc;">💬 WhatsApp жазу</a>
+      <a href="tel:+77765007502" style="color:#9ca3af;">📞 +7 (776) 500-75-02</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="contact-hero">
+    <div class="contact-hero-badge">📞 Байланыс</div>
+    <h1>Бізге хабарласыңыз</h1>
+    <p>Кез-келген сұрағыңызға жауап беруге дайынбыз. WhatsApp арқылы жылдам жауап аласыз немесе форманы толтырыңыз.</p>
+  </div>
+
+  <!-- QUICK CHANNELS -->
+  <div class="quick-channels">
+    <a class="channel-card" href="https://wa.me/77765007502" target="_blank">
+      <div class="channel-icon">💬</div>
+      <h3>WhatsApp</h3>
+      <p>Жылдам жауап. Тәулік бойы қолжетімді.</p>
+    </a>
+    <a class="channel-card" href="tel:+77765007502">
+      <div class="channel-icon">📞</div>
+      <h3>Телефон</h3>
+      <p>+7 776 500 75 02<br>09:00 – 21:00</p>
+    </a>
+    <a class="channel-card" href="https://2gis.kz/zhezkazgan/geo/70030076462480403" target="_blank">
+      <div class="channel-icon">📍</div>
+      <h3>Мекенжай</h3>
+      <p>Сатпаев қаласы,<br>Қазақстан</p>
+    </a>
+  </div>
+
+  <!-- MAIN GRID: INFO + FORM -->
+  <div class="contact-grid">
+
+    <!-- LEFT: Contact info cards -->
+    <div class="contact-info">
+
+      <a class="contact-info-card" href="tel:+77765007502">
+        <div class="info-icon">📞</div>
+        <div class="info-text">
+          <h3>Телефон</h3>
+          <p><a href="tel:+77765007502">+7 776 500 75 02</a></p>
+          <p>Дүйсенбі – Жексенбі, 09:00 – 21:00</p>
+        </div>
+      </a>
+
+      <a class="contact-info-card" href="https://wa.me/77765007502" target="_blank">
+        <div class="info-icon">💬</div>
+        <div class="info-text">
+          <h3>WhatsApp</h3>
+          <p><a href="https://wa.me/77765007502">wa.me/77765007502</a></p>
+          <p>24/7 онлайн. Орташа жауап уақыты — 5 минут.</p>
+        </div>
+      </a>
+
+      <div class="contact-info-card">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <h3>Мекенжай</h3>
+          <p>Сатпаев қаласы, Ұлытау облысы</p>
+          <p>Қазақстан Республикасы</p>
+        </div>
+      </div>
+
+      <div class="contact-info-card">
+        <div class="info-icon">🕐</div>
+        <div class="info-text">
+          <h3>Жұмыс уақыты</h3>
+          <p>Дүйсенбі – Жұма: 09:00 – 21:00</p>
+          <p>Сенбі – Жексенбі: 10:00 – 20:00</p>
+        </div>
+      </div>
+
+      <div class="contact-info-card">
+        <div class="info-icon">🚀</div>
+        <div class="info-text">
+          <h3>Жеткізу</h3>
+          <p>Қазақстанның барлық қаласына</p>
+          <p>1–3 жұмыс күні ішінде</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="contact-form-card">
+      <h2>✉️ Хабарлама жіберу</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Атыңыз *</label>
+          <input class="form-input" id="c-name" type="text" placeholder="мыс. Ахмет">
+        </div>
+        <div class="form-group">
+          <label>Телефон *</label>
+          <input class="form-input" id="c-phone" type="tel" placeholder="+7 7XX XXX XX XX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Сұрақ тақырыбы</label>
+        <select class="form-select" id="c-topic">
+          <option value="">Тақырыпты таңдаңыз</option>
+          <option>Тауарға тапсырыс беру</option>
+          <option>Баға туралы сұрақ</option>
+          <option>Жеткізу туралы сұрақ</option>
+          <option>Кепілдік және қайтару</option>
+          <option>Техникалық кеңес</option>
+          <option>Басқа сұрақ</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Хабарлама *</label>
+        <textarea class="form-textarea" id="c-message" placeholder="Сұрағыңызды жазыңыз..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">
+        📨 Жіберу
+      </button>
+      <div class="success-msg" id="success-msg">
+        ✅ Хабарламаңыз жіберілді! Жақын арада хабарласамыз.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <h2>🗺️ Бізді картадан табыңыз</h2>
+    <div class="map-box">
+      <iframe
+        src="https://maps.google.com/maps?q=Satpaev,Kazakhstan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>❓ Жиі қойылатын сұрақтар</h2>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        Жеткізу қанша уақыт алады?
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">Қазақстан бойынша жеткізу 1–3 жұмыс күні ішінде жүзеге асырылады. Сатпаев ішінде — сол күні немесе ертесіне жеткіземіз. Тапсырыс беріп, мекенжайыңызды жіберіңіз.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        Қандай төлем тәсілдері бар?
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">Kaspi Bank, Halyk Bank картасымен, бөліп төлеу (0%, 3-12 ай), аударым арқылы төлей аласыздар. Тапсырыс беру кезінде ыңғайлы тәсілді таңдаңыз.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        Кепілдік мерзімі қандай?
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">Барлық тауарлар 12 айдан 36 айға дейін кепілдікпен жеткізіледі. Тауарда ақау шықса, ауыстырамыз немесе ақшасын қайтарамыз.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        Тауарды қайтаруға бола ма?
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">Тауарды алған күннен бастап 14 күн ішінде қайтаруға болады. Тауар бүлінбеген, ораламасы сақталған жағдайда ақша толық қайтарылады.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        Компьютер жинау қызметі бар ма?
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">Иә! Біздің AI конфигуратор арқылы бюджетіңізге сай сет жасап, барлық бөлшектерді бірге тапсырыс бере аласыз. Техник жинауға да көмектеседі.</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-contact">
+      <a class="contact-btn" href="https://wa.me/77765007502" target="_blank">💬 Бізге жазу</a>
+    </div>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>🛒 Тауарлар</h4>
+        <a href="/#cpus">Процессорлар</a>
+        <a href="/#gpus">Видеокарталар</a>
+        <a href="/#ram">Жедел жады</a>
+        <a href="/#ssd">SSD</a>
+        <a href="/#monitors">Мониторлар</a>
+        <a href="/#mice">Тышқандар</a>
+        <a href="/#keyboards">Пернетақталар</a>
+        <a href="/#headsets">Құлаққаптар</a>
+        <a href="/#setups">Дайын сеттер</a>
+      </div>
+      <div class="footer-col">
+        <h4>💳 Төлем және жеткізу</h4>
+        <a href="/payment">Kaspi Bank</a>
+        <a href="/payment">Halyk Bank</a>
+        <a href="/payment">Бөліп төлеу</a>
+        <a href="/delivery">Жеткізу шарттары</a>
+        <a href="/warranty">Кепілдік</a>
+      </div>
+      <div class="footer-col">
+        <h4>🏢 Компания</h4>
+        <a href="/about">Біз туралы</a>
+        <a href="/contact">Байланыс</a>
+        <a href="/ai-builder">AI конфигуратор</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div id="cartPanel" class="cart-panel">
+  <div class="cart-panel-header">
+    <h3>🛒 Себет</h3>
+    <button type="button" onclick="toggleCart()" class="cart-close">×</button>
+  </div>
+  <div id="cartItems" class="cart-items"><p class="empty-cart">Себет бос</p></div>
+  <div class="cart-total">Жалпы: <span id="cartTotal">0</span> ₸</div>
+</div>
+<div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+<script src="/static/app.js"></script>
+<script>
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+
+function submitForm() {
+  const name    = document.getElementById('c-name').value.trim();
+  const phone   = document.getElementById('c-phone').value.trim();
+  const message = document.getElementById('c-message').value.trim();
+  if (!name || !phone) {
+    alert('Атыңыз бен телефонды енгізіңіз!');
+    return;
+  }
+  // Build WhatsApp message
+  const topic = document.getElementById('c-topic').value || 'Жалпы сұрақ';
+  const text  = `Сәлем! Менің атым: ${name}\nТелефон: ${phone}\nТақырып: ${topic}\n${message ? 'Хабарлама: ' + message : ''}`;
+  const url   = 'https://wa.me/77765007502?text=' + encodeURIComponent(text);
+  window.open(url, '_blank');
+  document.getElementById('success-msg').style.display = 'block';
+  document.getElementById('c-name').value    = '';
+  document.getElementById('c-phone').value   = '';
+  document.getElementById('c-message').value = '';
+  document.getElementById('c-topic').value   = '';
+}
+</script>
+
+<a class="mobile-wa-btn" href="https://wa.me/77765007502" target="_blank" title="WhatsApp">💬</a>
+<script>
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  var nav = document.getElementById('mobileNav');
+  var btn = document.getElementById('hamburger');
+  if (nav && !nav.contains(e.target) && btn && !btn.contains(e.target)) {
+    nav.classList.remove('open'); btn.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Таңдаулылар — CyberQazaq</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+
+  <header class="site-header">
+    <div class="brand">
+      <a class="city" href="https://2gis.kz/zhezkazgan/geo/70030076462480403" target="_blank">📍 Сатпаев</a>
+      <div class="logo">CyberQazaq</div>
+    </div>
+    <nav class="top-nav">
+      <a href="/">Басты бет</a>
+      <a href="/products">Тауарлар</a>
+      <a href="/about">Біз туралы</a>
+      <a href="/contact">Байланыс</a>
+      <a href="/cart">Себет</a>
+    </nav>
+    <div class="header-actions">
+      <a class="contact-btn" href="https://wa.me/77765007502" target="_blank">💬 Бізге жазу</a>
+      <a class="phone-link" href="tel:+77765007502">+7 (776) 500-75-02</a>
+    </div>
+    <!-- Hamburger (mobile only) -->
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Mobile nav drawer -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="/">🏠 Басты бет</a>
+      <a href="/products">🛒 Тауарлар</a>
+      <a href="/about">🏢 Біз туралы</a>
+      <a href="/contact">📞 Байланыс</a>
+      <a href="/cart">🛒 Себет</a>
+      <a href="/favorites">❤️ Таңдаулылар</a>
+      <a href="/ai-builder">🤖 AI конфигуратор</a>
+      <a href="https://wa.me/77765007502" target="_blank" style="color:#c084fc;">💬 WhatsApp жазу</a>
+      <a href="tel:+77765007502" style="color:#9ca3af;">📞 +7 (776) 500-75-02</a>
+    </nav>
+  </header>
+
+  <h1 style="font-size:clamp(28px,6vw,42px);font-weight:900;background:linear-gradient(90deg,#fff,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:32px 0 24px;">❤️ Таңдаулы тауарлар</h1>
+
+  <div id="favoritesGrid" class="grid"></div>
+
+</div>
+
+<!-- Mobile WhatsApp sticky button -->
+<a class="mobile-wa-btn" href="https://wa.me/77765007502" target="_blank">💬</a>
+
+<script>
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+const grid = document.getElementById("favoritesGrid");
+
+if (favorites.length === 0) {
+  grid.innerHTML = `<p style="color:#9ca3af;font-size:16px;padding:40px 0;">Таңдаулы тауар жоқ</p>`;
+} else {
+  grid.innerHTML = favorites.map(item => `
+    <div class="product-card">
+      <button class="fav-btn active">❤️</button>
+      <h3>${item.name}</h3>
+      <p class="price">${item.price} ₸</p>
+    </div>
+  `).join("");
+}
+</script>
+</body>
+</html>

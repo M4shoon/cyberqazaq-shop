@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQazaq — Төлем</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    /* ── PAGE-SPECIFIC STYLES ── */
+    .pay-hero {
+      text-align: center;
+      padding: 60px 0 40px;
+    }
+    .pay-hero h1 {
+      font-size: 52px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .pay-hero p {
+      color: #9ca3af;
+      font-size: 18px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(168,85,247,0.4), transparent);
+    }
+
+    /* ── PAYMENT METHODS GRID ── */
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .method-card {
+      background: rgba(17, 24, 39, 0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 28px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.35s cubic-bezier(.4,0,.2,1);
+    }
+    .method-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: var(--accent, linear-gradient(90deg,#7c3aed,#d946ef));
+    }
+    .method-card:hover {
+      transform: translateY(-6px);
+      border-color: #a855f7;
+      box-shadow: 0 0 40px rgba(168,85,247,0.18);
+    }
+
+    .method-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .method-logo-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      flex-shrink: 0;
+    }
+    .kaspi-icon  { background: #ef4444; color: white; font-size: 22px; }
+    .halyk-icon  { background: #16a34a; color: white; font-size: 22px; }
+    .cash-icon   { background: #ca8a04; color: white; }
+    .installment-icon { background: linear-gradient(135deg,#7c3aed,#d946ef); color: white; }
+
+    .method-logo-name h3 { font-size: 22px; font-weight: 800; }
+    .method-logo-name span { color: #9ca3af; font-size: 14px; }
+
+    .method-desc {
+      color: #d1d5db;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .method-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .method-steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #d1d5db;
+      font-size: 15px;
+    }
+    .method-steps li .step-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(168,85,247,0.2);
+      border: 1px solid rgba(168,85,247,0.4);
+      color: #c084fc;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .method-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+    .badge-free    { background: rgba(34,197,94,0.15);  color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+    .badge-instant { background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+    .badge-popular { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+
+    /* ── INSTALLMENT TABLE ── */
+    .installment-section {
+      margin-bottom: 60px;
+    }
+    .installment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .inst-card {
+      background: rgba(17,24,39,0.72);
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .inst-card:hover {
+      border-color: #a855f7;
+      transform: translateY(-4px);
+      box-shadow: 0 0 28px rgba(168,85,247,0.18);
+    }
+    .inst-months {
+      font-size: 42px;
+      font-weight: 900;
+      color: #d8b4fe;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .inst-label {
+      color: #9ca3af;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+    .inst-example {
+      background: rgba(168,85,247,0.1);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .inst-example p {
+      color: #d1d5db;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .inst-example strong {
+      color: #c084fc;
+      font-size: 15px;
+    }
+    .inst-bank-logos {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .inst-bank-tag {
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .tag-kaspi { background: rgba(239,68,68,0.2); color: #f87171; }
+    .tag-halyk { background: rgba(22,163,74,0.2);  color: #4ade80; }
+
+    /* ── DELIVERY SECTION ── */
+    .delivery-section {
+      margin-bottom: 60px;
+    }
+    .delivery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .delivery-card {
+      background: rgba(17,24,39,0.72);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 30px;
+      transition: 0.3s;
+    }
+    .delivery-card:hover {
+      border-color: #a855f7;
+      transform: translateY(-4px);
+    }
+    .delivery-card h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .delivery-card p, .delivery-card li {
+      color: #d1d5db;
+      line-height: 1.8;
+    }
+    .delivery-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0;
+    }
+    .delivery-card ul li::before {
+      content: "✓ ";
+      color: #a855f7;
+      font-weight: 700;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      padding-left: 32px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, #7c3aed, #d946ef, rgba(168,85,247,0.1));
+    }
+    .timeline-item {
+      position: relative;
+      padding: 14px 0;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -26px;
+      top: 18px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: #a855f7;
+      border: 2px solid #0b1020;
+      box-shadow: 0 0 10px rgba(168,85,247,0.6);
+    }
+    .timeline-day {
+      font-size: 13px;
+      color: #c084fc;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .timeline-text {
+      color: #d1d5db;
+      font-size: 15px;
+    }
+
+    /* ── ORDER PROTECTION BOX ── */
+    .protection-box {
+      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(217,70,239,0.1));
+      border: 1px solid rgba(168,85,247,0.35);
+      border-radius: 28px;
+      padding: 40px;
+      margin-bottom: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+    }
+    .protect-item {
+      text-align: center;
+    }
+    .protect-icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+    }
+    .protect-item h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .protect-item p {
+      color: #9ca3af;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── CTA ── */
+    .pay-cta {
+      text-align: center;
+      padding: 60px 0;
+    }
+    .pay-cta h2 { font-size: 38px; margin-bottom: 16px; }
+    .pay-cta p  { color: #9ca3af; margin-bottom: 30px; font-size: 17px; }
+    .cta-btns   { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary {
+      padding: 18px 36px;
+      background: linear-gradient(90deg, #7c3aed, #d946ef);
+      border: none; border-radius: 16px;
+      color: white; font-weight: 700; font-size: 16px;
+      cursor: pointer; text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 24px rgba(168,85,247,0.3);
+    }
+    .cta-btn-primary:hover { transform: translateY(-4px); box-shadow: 0 0 36px rgba(217,70,239,0.4); }
+    .cta-btn-secondary {
+      padding: 18px 36px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      color: white; font-weight: 700; font-size: 16px;
+      cursor: pointer; text-decoration: none;
+      transition: 0.3s;
+    }
+    .cta-btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+
+    @media (max-width: 768px) {
+      .delivery-grid   { grid-template-columns: 1fr; }
+      .protection-box  { grid-template-columns: 1fr; }
+      .pay-hero h1     { font-size: 36px; }
+      .pay-hero        { padding: 36px 0 24px; }
+      .pay-hero p      { font-size: 15px; }
+      .methods-grid    { grid-template-columns: 1fr; }
+      .section-title   { font-size: 22px; }
+    }
+    @media (max-width: 480px) {
+      .pay-hero h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand">
+      <a class="city" href="https://2gis.kz/zhezkazgan/geo/70030076462480403" target="_blank">📍 Сатпаев</a>
+      <div class="logo">CyberQazaq</div>
+    </div>
+    <nav class="top-nav">
+      <a href="/">Басты бет</a>
+      <a href="/products">Тауарлар</a>
+      <a href="/about">Біз туралы</a>
+      <a href="/contact">Байланыс</a>
+      <a href="/cart">Себет</a>
+      <a href="/admin/direct" style="color:#a78bfa;font-weight:700;">⚙️ Админ</a>
+    </nav>
+    <div class="header-actions">
+      <a class="contact-btn" href="https://wa.me/77765007502" target="_blank">💬 Бізге жазу</a>
+      <a class="phone-link" href="tel:+77765007502">+7 (776) 500-75-02</a>
+    </div>
+    <!-- Hamburger (mobile only) -->
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Mobile nav drawer -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="/">🏠 Басты бет</a>
+      <a href="/products">🛒 Тауарлар</a>
+      <a href="/about">🏢 Біз туралы</a>
+      <a href="/contact">📞 Байланыс</a>
+      <a href="/cart">🛒 Себет</a>
+      <a href="/favorites">❤️ Таңдаулылар</a>
+      <a href="/ai-builder">🤖 AI конфигуратор</a>
+      <a href="https://wa.me/77765007502" target="_blank" style="color:#c084fc;">💬 WhatsApp жазу</a>
+      <a href="tel:+77765007502" style="color:#9ca3af;">📞 +7 (776) 500-75-02</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="pay-hero">
+    <h1>💳 Төлем және жеткізу</h1>
+    <p>Ыңғайлы төлем тәсілдері, бөліп төлеу және қауіпсіз жеткізу</p>
+  </div>
+
+  <!-- ══════════════════════════ PAYMENT METHODS ══════════════════════════ -->
+  <div class="section-title">💳 Төлем тәсілдері</div>
+
+  <div class="methods-grid">
+
+    <!-- KASPI -->
+    <div class="method-card" style="--accent: linear-gradient(90deg,#ef4444,#f97316)">
+      <div class="method-logo">
+        <div class="method-logo-icon kaspi-icon">K</div>
+        <div class="method-logo-name">
+          <h3>Kaspi Bank</h3>
+          <span>Kaspi.kz арқылы төлем</span>
+        </div>
+      </div>
+      <p class="method-desc">
+        Kaspi Gold картасы немесе Kaspi QR арқылы жылдам төлем.
+        Комиссиясыз, лезде өтеді.
+      </p>
+      <ul class="method-steps">
+        <li><span class="step-num">1</span> Тапсырыс беріңіз — менеджер хабарласады</li>
+        <li><span class="step-num">2</span> Kaspi QR немесе телефон нөмірі жіберіледі</li>
+        <li><span class="step-num">3</span> Kaspi app арқылы бір рет басып төлейсіз</li>
+        <li><span class="step-num">4</span> Төлем расталған соң жинақтауға кіріседі</li>
+      </ul>
+      <span class="method-badge badge-instant">⚡ Лезде өтеді</span>
+      <span class="method-badge badge-free">0% комиссия</span>
+    </div>
+
+    <!-- HALYK -->
+    <div class="method-card" style="--accent: linear-gradient(90deg,#16a34a,#22c55e)">
+      <div class="method-logo">
+        <div class="method-logo-icon halyk-icon">H</div>
+        <div class="method-logo-name">
+          <h3>Halyk Bank</h3>
+          <span>Homebank / Halyk карта</span>
+        </div>
+      </div>
+      <p class="method-desc">
+        Halyk Bank картасы немесе Homebank app арқылы аударым.
+        Барлық Halyk карталары қабылданады.
+      </p>
+      <ul class="method-steps">
+        <li><span class="step-num">1</span> Тапсырыс беріңіз — менеджер хабарласады</li>
+        <li><span class="step-num">2</span> Halyk карта нөмірі немесе IBAN жіберіледі</li>
+        <li><span class="step-num">3</span> Homebank немесе банк терминалы арқылы аударасыз</li>
+        <li><span class="step-num">4</span> Скриншот жібересіз — тапсырыс расталады</li>
+      </ul>
+      <span class="method-badge badge-instant">⚡ Тез өтеді</span>
+      <span class="method-badge badge-free">0% комиссия</span>
+    </div>
+
+    <!-- CASH -->
+    <div class="method-card" style="--accent: linear-gradient(90deg,#ca8a04,#eab308)">
+      <div class="method-logo">
+        <div class="method-logo-icon cash-icon">₸</div>
+        <div class="method-logo-name">
+          <h3>Қолма-қол ақша</h3>
+          <span>Жеткізу кезінде</span>
+        </div>
+      </div>
+      <p class="method-desc">
+        Тауар жеткізілген кезде қолма-қол төлейсіз.
+        Алдын ала ешқандай аванс талап етілмейді.
+      </p>
+      <ul class="method-steps">
+        <li><span class="step-num">1</span> Тапсырыс беріңіз</li>
+        <li><span class="step-num">2</span> 7–15 күн ішінде тауар жеткізіледі</li>
+        <li><span class="step-num">3</span> Тауарды тексеріп, жай жеткізушіге төлейсіз</li>
+        <li><span class="step-num">4</span> Чек аласыз</li>
+      </ul>
+      <span class="method-badge badge-popular">🔥 Ең танымал</span>
+    </div>
+
+    <!-- INSTALLMENT -->
+    <div class="method-card" style="--accent: linear-gradient(90deg,#7c3aed,#d946ef)">
+      <div class="method-logo">
+        <div class="method-logo-icon installment-icon">%</div>
+        <div class="method-logo-name">
+          <h3>Бөліп төлеу</h3>
+          <span>Kaspi / Halyk рассрочка</span>
+        </div>
+      </div>
+      <p class="method-desc">
+        0% пайызбен 3-тен 24 айға дейін бөліп төлеу.
+        Kaspi Рассрочка немесе Halyk бөліп төлеу арқылы ресімделеді.
+      </p>
+      <ul class="method-steps">
+        <li><span class="step-num">1</span> Тапсырыс беріңіз, менеджер хабарласады</li>
+        <li><span class="step-num">2</span> Бөліп төлеу айын таңдайсыз (3 / 6 / 12 / 24)</li>
+        <li><span class="step-num">3</span> Kaspi немесе Halyk арқылы онлайн ресімделеді</li>
+        <li><span class="step-num">4</span> Тауар жеткізіліп, келісімшарт беріледі</li>
+      </ul>
+      <span class="method-badge badge-free">0% пайыз</span>
+      <span class="method-badge badge-popular">24 айға дейін</span>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════ INSTALLMENT TABLE ══════════════════════════ -->
+  <div class="installment-section">
+    <div class="section-title">📅 Бөліп төлеу жоспары</div>
+    <p style="color:#9ca3af; margin-bottom:28px;">Мысалы: 500 000 ₸ тұратын setup үшін</p>
+
+    <div class="installment-grid">
+
+      <div class="inst-card">
+        <div class="inst-months">3</div>
+        <div class="inst-label">ай</div>
+        <div class="inst-example">
+          <p>Ай сайын</p>
+          <strong>166 667 ₸</strong>
+          <p style="margin-top:8px; font-size:12px; color:#6b7280">Барлығы: 500 000 ₸</p>
+        </div>
+        <div class="inst-bank-logos">
+          <span class="inst-bank-tag tag-kaspi">Kaspi</span>
+          <span class="inst-bank-tag tag-halyk">Halyk</span>
+        </div>
+      </div>
+
+      <div class="inst-card">
+        <div class="inst-months">6</div>
+        <div class="inst-label">ай</div>
+        <div class="inst-example">
+          <p>Ай сайын</p>
+          <strong>83 333 ₸</strong>
+          <p style="margin-top:8px; font-size:12px; color:#6b7280">Барлығы: 500 000 ₸</p>
+        </div>
+        <div class="inst-bank-logos">
+          <span class="inst-bank-tag tag-kaspi">Kaspi</span>
+          <span class="inst-bank-tag tag-halyk">Halyk</span>
+        </div>
+      </div>
+
+      <div class="inst-card" style="border-color: rgba(168,85,247,0.5); box-shadow: 0 0 24px rgba(168,85,247,0.12);">
+        <div class="inst-months" style="color:#f0abfc">12</div>
+        <div class="inst-label">ай 🔥 Танымал</div>
+        <div class="inst-example">
+          <p>Ай сайын</p>
+          <strong>41 667 ₸</strong>
+          <p style="margin-top:8px; font-size:12px; color:#6b7280">Барлығы: 500 000 ₸</p>
+        </div>
+        <div class="inst-bank-logos">
+          <span class="inst-bank-tag tag-kaspi">Kaspi</span>
+          <span class="inst-bank-tag tag-halyk">Halyk</span>
+        </div>
+      </div>
+
+      <div class="inst-card">
+        <div class="inst-months">24</div>
+        <div class="inst-label">ай</div>
+        <div class="inst-example">
+          <p>Ай сайын</p>
+          <strong>20 833 ₸</strong>
+          <p style="margin-top:8px; font-size:12px; color:#6b7280">Барлығы: 500 000 ₸</p>
+        </div>
+        <div class="inst-bank-logos">
+          <span class="inst-bank-tag tag-kaspi">Kaspi</span>
+          <span class="inst-bank-tag tag-halyk">Halyk</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════ DELIVERY ══════════════════════════════════ -->
+  <div class="delivery-section">
+    <div class="section-title">🚚 Жеткізу шарттары</div>
+
+    <div class="delivery-grid">
+
+      <!-- Timeline -->
+      <div class="delivery-card">
+        <h3>📦 Жеткізу мерзімі</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-day">1-күн</div>
+            <div class="timeline-text">Тапсырыс қабылданады, менеджер хабарласады</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-day">1–3 күн</div>
+            <div class="timeline-text">Тауар жинақталып, тексеруден өтеді</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-day">3–7 күн</div>
+            <div class="timeline-text">Курьер қызметіне тапсырылады, трекинг нөмірі жіберіледі</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-day">7–15 күн</div>
+            <div class="timeline-text">Тауар сізге жеткізіледі. Тексеріп, қабылдайсыз</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:#4ade80; box-shadow: 0 0 10px rgba(74,222,128,0.6)"></div>
+            <div class="timeline-day" style="color:#4ade80">✓ Дайын</div>
+            <div class="timeline-text">Тауарды алып, гарантия талонын аласыз</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery rules -->
+      <div class="delivery-card">
+        <h3>📋 Маңызды ережелер</h3>
+        <ul>
+          <li>Жеткізу бүкіл Қазақстан бойынша жүзеге асырылады</li>
+          <li>Тауар жеткізілгенде толық тексеруге болады</li>
+          <li>Ақаулық анықталса — қайтарып беруге болады</li>
+          <li>Барлық тауарлар қорапта және буылып жіберіледі</li>
+          <li>Жеткізу барысында трекинг нөмірі беріледі</li>
+          <li>Мекенжайды дәл және толық жазу міндетті</li>
+        </ul>
+
+        <div style="margin-top: 24px; padding: 20px; background: rgba(168,85,247,0.08); border-radius: 16px; border: 1px solid rgba(168,85,247,0.2);">
+          <p style="color:#c084fc; font-weight:700; margin-bottom:8px;">🛡 Жеткізу кепілдігі</p>
+          <p style="color:#d1d5db; font-size:14px; line-height:1.7;">
+            Тасымалдау кезінде зақымданса — тауар тегін ауыстырылады.
+            Жеткізу сапасына толық кепілдік береміз.
+          </p>
+        </div>
+
+        <div style="margin-top: 16px; padding: 20px; background: rgba(234,179,8,0.08); border-radius: 16px; border: 1px solid rgba(234,179,8,0.2);">
+          <p style="color:#fbbf24; font-weight:700; margin-bottom:8px;">💰 Жеткізу бағасы</p>
+          <p style="color:#d1d5db; font-size:14px; line-height:1.7;">
+            Жеткізу құны менеджермен келісіледі. 
+            Сатпаев қаласы бойынша — <strong style="color:#fbbf24">ТЕГІН жеткізу.</strong>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════ ORDER PROTECTION ══════════════════════════ -->
+  <div class="protection-box">
+    <div class="protect-item">
+      <div class="protect-icon">🔒</div>
+      <h4>Қауіпсіз төлем</h4>
+      <p>Барлық төлемдер ресми банктер арқылы жүреді. Алаяқтық мүмкін емес.</p>
+    </div>
+    <div class="protect-item">
+      <div class="protect-icon">📦</div>
+      <h4>Жеткізуден кейін ғана</h4>
+      <p>Қолма-қол төлемде тауарды алғаннан кейін ғана төлейсіз. Ешқандай тәуекел жоқ.</p>
+    </div>
+    <div class="protect-item">
+      <div class="protect-icon">🔄</div>
+      <h4>Қайтару мүмкіндігі</h4>
+      <p>Тауар сипаттамаға сәйкес келмесе — 14 күн ішінде қайтаруға болады.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════ CTA ══════════════════════════════════════ -->
+  <div class="pay-cta">
+    <h2>Тапсырыс берейік? 🚀</h2>
+    <p>Менеджер сізге ыңғайлы төлем тәсілін таңдауға көмектеседі</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/77765007502" class="cta-btn-primary" target="_blank">💬 WhatsApp арқылы тапсырыс</a>
+      <a href="/" class="cta-btn-secondary">🛍 Тауарларға оралу</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>💳 Төлем</h4>
+        <a href="/payment">Kaspi Bank</a>
+        <a href="/payment">Halyk Bank</a>
+        <a href="/payment">Бөліп төлеу</a>
+        <a href="/payment">Қолма-қол</a>
+      </div>
+      <div class="footer-col">
+        <h4>🚚 Жеткізу</h4>
+        <a href="/delivery">Жеткізу мерзімі</a>
+        <a href="/delivery">Шарттар</a>
+        <a href="/warranty">Кепілдік</a>
+      </div>
+      <div class="footer-col">
+        <h4>🏢 Компания</h4>
+        <a href="/about">Біз туралы</a>
+        <a href="/contact">Байланыс</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+  <!-- Mobile WhatsApp sticky button -->
+  <a class="mobile-wa-btn" href="https://wa.me/77765007502" target="_blank">💬</a>
+</body>
+</html>

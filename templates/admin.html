@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQazaq — Әкімші панелі</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/admin.css">
+
+  <style>
+    .sidebar-gaming-icons {
+      display: flex; gap: 10px; justify-content: center;
+      padding: 12px 0 4px; opacity: 0.5;
+    }
+    .sidebar-gaming-icons svg { transition: 0.3s; }
+    .sidebar-gaming-icons svg:hover { opacity: 1; transform: scale(1.2); filter: drop-shadow(0 0 8px rgba(168,85,247,0.7)); }
+    .topbar-gaming-icon { opacity: 0.3; transition: 0.3s; }
+    .topbar-gaming-icon:hover { opacity: 0.8; }
+  </style>
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="admin-sidebar">
+
+    <div class="sidebar-brand">
+      <div>
+        <div class="logo">CyberQazaq</div>
+        <div class="subtitle">Әкімші панелі</div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-gaming-icons">
+      <svg width="60" height="34" viewBox="0 0 80 44" fill="none"><rect x="1" y="6" width="70" height="32" rx="5" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/><rect x="6" y="11" width="22" height="22" rx="11" fill="#1e1b4b" stroke="#a855f7" stroke-width="1"/><circle cx="17" cy="22" r="7" fill="#2d1b6e" stroke="#d946ef" stroke-width="1"/><circle cx="17" cy="22" r="3" fill="#7c3aed"/><rect x="33" y="14" width="32" height="4" rx="2" fill="#7c3aed" opacity="0.6"/><rect x="33" y="21" width="26" height="3" rx="1.5" fill="#a855f7" opacity="0.5"/></svg>
+      <svg width="32" height="42" viewBox="0 0 52 52" fill="none"><rect x="14" y="18" width="24" height="30" rx="12" fill="#1e1b4b" stroke="#a855f7" stroke-width="1.5"/><rect x="14" y="18" width="24" height="14" rx="12" fill="#2d1b6e"/><line x1="26" y1="18" x2="26" y2="32" stroke="#7c3aed" stroke-width="1.2"/><rect x="22" y="21" width="8" height="7" rx="3" fill="#d946ef" opacity="0.8"/></svg>
+      <svg width="44" height="32" viewBox="0 0 60 44" fill="none"><path d="M6 22 C4 14 10 6 18 6 L22 6 L24 14 L36 14 L38 6 L42 6 C50 6 56 14 54 22 C52 32 46 40 40 40 L36 38 C33 40 27 40 24 38 L20 40 C14 40 8 32 6 22Z" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/><rect x="12" y="17" width="4" height="12" rx="2" fill="#a855f7"/><rect x="9" y="20" width="10" height="4" rx="2" fill="#a855f7"/><circle cx="42" cy="18" r="3.5" fill="#d946ef"/><circle cx="48" cy="22" r="3.5" fill="#7c3aed"/><circle cx="42" cy="26" r="3.5" fill="#4ade80"/><circle cx="36" cy="22" r="3.5" fill="#fbbf24"/></svg>
+    </div>
+    <div class="sidebar-divider"></div>
+    <span class="nav-section-title">Негізгі</span>
+
+    <button class="nav-link active" onclick="showSection('dashboard', this)">
+      <span class="nav-icon">📊</span> Басқару тақтасы
+    </button>
+
+    <button class="nav-link" onclick="showSection('products', this)">
+      <span class="nav-icon">🖥️</span> Тауарлар
+      <span class="nav-badge" id="badge-products">0</span>
+    </button>
+
+    <button class="nav-link" onclick="showSection('orders', this)">
+      <span class="nav-icon">📦</span> Тапсырыстар
+      <span class="nav-badge" id="badge-orders">0</span>
+    </button>
+
+    <span class="nav-section-title">Аналитика</span>
+
+    <button class="nav-link" onclick="showSection('analytics', this)">
+      <span class="nav-icon">📈</span> Статистика
+    </button>
+
+    <div class="sidebar-divider"></div>
+
+    <span class="nav-section-title">Басқа</span>
+
+    <a class="nav-link" href="/">
+      <span class="nav-icon">🏠</span> Сайтқа өту
+    </a>
+
+    <a class="nav-link" href="/products">
+      <span class="nav-icon">🛒</span> Дүкен
+    </a>
+
+    <div class="sidebar-divider"></div>
+    <a class="nav-link" href="/admin/logout" style="color:#f87171;">
+      <span class="nav-icon">🚪</span> Шығу
+    </a>
+
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="admin-main">
+
+    <!-- TOP BAR -->
+    <div class="admin-topbar">
+      <div class="topbar-left">
+        <h1 id="page-title">Басқару тақтасы</h1>
+        <p id="page-sub">CyberQazaq — компьютер техникасы дүкені</p>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-time" id="clock"></span>
+        <div class="admin-avatar">АД</div>
+      </div>
+    </div>
+
+    <!-- ==================== DASHBOARD ==================== -->
+    <section class="admin-section active" id="section-dashboard">
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">🖥️</div>
+          <div class="stat-value" id="stat-products">0</div>
+          <div class="stat-label">Барлық тауарлар</div>
+          <div class="stat-change up">↑ 8 санат</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div class="stat-value" id="stat-orders">0</div>
+          <div class="stat-label">Тапсырыстар</div>
+          <div class="stat-change up">↑ +12% осы айда</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💰</div>
+          <div class="stat-value" id="stat-revenue">0 ₸</div>
+          <div class="stat-label">Жалпы кіріс</div>
+          <div class="stat-change up">↑ +18% өткен айға</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-value" id="stat-customers">0</div>
+          <div class="stat-label">Тұтынушылар</div>
+          <div class="stat-change up">↑ +5 жаңа</div>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3>📊 Айлық сату динамикасы (₸)</h3>
+          <canvas id="revenueChart" height="200"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>🥧 Санаттар бойынша</h3>
+          <canvas id="categoryChart" height="200"></canvas>
+          <div class="donut-legend" id="donut-legend"></div>
+        </div>
+      </div>
+
+      <!-- Recent orders -->
+      <div class="table-card">
+        <div class="table-header">
+          <h3>🕐 Соңғы тапсырыстар</h3>
+          <button class="btn btn-secondary btn-sm" onclick="showSection('orders', document.querySelector('[onclick*=orders]'))">
+            Барлығын көру →
+          </button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Тапсырыс №</th>
+              <th>Клиент</th>
+              <th>Тауар</th>
+              <th>Сома</th>
+              <th>Мәртебесі</th>
+              <th>Күні</th>
+            </tr>
+          </thead>
+          <tbody id="recent-orders-body"></tbody>
+        </table>
+      </div>
+
+      <!-- Top products -->
+      <div class="table-card">
+        <div class="table-header">
+          <h3>🔥 Үздік тауарлар</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Тауар</th>
+              <th>Санат</th>
+              <th>Баға</th>
+              <th>Сатылым</th>
+              <th>Кіріс</th>
+            </tr>
+          </thead>
+          <tbody id="top-products-body"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- ==================== PRODUCTS ==================== -->
+    <section class="admin-section" id="section-products">
+
+      <div class="table-card">
+        <div class="table-header">
+          <h3>🖥️ Тауарлар тізімі</h3>
+          <div class="table-actions">
+            <input class="search-input" type="text" id="product-search"
+                   placeholder="🔍 Іздеу..." oninput="filterProducts()">
+            <select class="select-filter" id="product-cat" onchange="filterProducts()">
+              <option value="">Барлық санаттар</option>
+              <option value="gpu">GPU — Видеокарта</option>
+              <option value="cpu">CPU — Процессор</option>
+              <option value="ram">RAM — Жедел жад</option>
+              <option value="ssd">SSD — Жинақтауыш</option>
+              <option value="monitor">Монитор</option>
+              <option value="mouse">Тышқан</option>
+              <option value="keyboard">Пернетақта</option>
+              <option value="headset">Құлаққап</option>
+              <option value="motherboard">Аналық плата</option>
+              <option value="case">Корпус</option>
+            </select>
+            <button class="btn btn-primary btn-sm" onclick="openAddModal()">
+              ＋ Тауар қосу
+            </button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Тауар</th>
+              <th>Санат</th>
+              <th>Баға</th>
+              <th>Қор</th>
+              <th>Мәртебесі</th>
+              <th>Әрекеттер</th>
+            </tr>
+          </thead>
+          <tbody id="products-table-body"></tbody>
+        </table>
+        <div class="pagination" id="products-pagination"></div>
+      </div>
+
+    </section>
+
+    <!-- ==================== ORDERS ==================== -->
+    <section class="admin-section" id="section-orders">
+
+      <div class="table-card">
+        <div class="table-header">
+          <h3>📦 Тапсырыстар</h3>
+          <div class="table-actions">
+            <input class="search-input" type="text" id="order-search"
+                   placeholder="🔍 Тапсырыс немесе клиент..." oninput="filterOrders()">
+            <select class="select-filter" id="order-status" onchange="filterOrders()">
+              <option value="">Барлық мәртебелер</option>
+              <option value="Жаңа">Жаңа</option>
+              <option value="Өңделуде">Өңделуде</option>
+              <option value="Жіберілді">Жіберілді</option>
+              <option value="Жеткізілді">Жеткізілді</option>
+              <option value="Бас тартылды">Бас тартылды</option>
+            </select>
+            <button class="btn btn-secondary btn-sm" onclick="exportOrders()">
+              ⬇ Экспорт
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="openAddOrderModal()">
+              ＋ Тапсырыс қосу
+            </button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Тапсырыс №</th>
+              <th>Клиент</th>
+              <th>Тауар</th>
+              <th>Сома</th>
+              <th>Мәртебесі</th>
+              <th>Күні</th>
+              <th>Әрекеттер</th>
+            </tr>
+          </thead>
+          <tbody id="orders-table-body"></tbody>
+        </table>
+        <div class="pagination" id="orders-pagination"></div>
+      </div>
+
+    </section>
+
+    <!-- ==================== ANALYTICS ==================== -->
+    <section class="admin-section" id="section-analytics">
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">💹</div>
+          <div class="stat-value" id="an-revenue">0 ₸</div>
+          <div class="stat-label">Жылдық кіріс</div>
+          <div class="stat-change up">↑ +23% өткен жылға</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🛒</div>
+          <div class="stat-value" id="an-orders">0</div>
+          <div class="stat-label">Орындалған тапсырыстар</div>
+          <div class="stat-change up">↑ +15%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div class="stat-value" id="an-avg">0 ₸</div>
+          <div class="stat-label">Орташа тапсырыс сомасы</div>
+          <div class="stat-change up">↑ +6%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔄</div>
+          <div class="stat-value" id="an-return">94%</div>
+          <div class="stat-label">Тұтынушы қанағаты</div>
+          <div class="stat-change up">↑ +2%</div>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3>📊 Санаттар бойынша сату (₸)</h3>
+          <canvas id="barChart" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>📋 Тапсырыс мәртебелері</h3>
+          <canvas id="statusChart" height="220"></canvas>
+          <div class="donut-legend" id="status-legend"></div>
+        </div>
+      </div>
+
+      <div class="charts-row" style="grid-template-columns:1fr;">
+        <div class="chart-card">
+          <h3>📈 Апталық сату (соңғы 8 апта)</h3>
+          <canvas id="weeklyChart" height="120"></canvas>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<!-- ===== MODALS ===== -->
+
+<!-- Add/Edit Product Modal -->
+<div class="modal-overlay" id="product-modal">
+  <div class="modal">
+    <h3 id="modal-title">➕ Жаңа тауар қосу</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Тауар атауы *</label>
+        <input class="form-input" id="f-name" type="text" placeholder="мыс. RTX 4070">
+      </div>
+      <div class="form-group">
+        <label>Санат *</label>
+        <select class="form-select" id="f-cat">
+          <option value="gpu">GPU — Видеокарта</option>
+          <option value="cpu">CPU — Процессор</option>
+          <option value="ram">RAM — Жедел жад</option>
+          <option value="ssd">SSD — Жинақтауыш</option>
+          <option value="monitor">Монитор</option>
+          <option value="mouse">Тышқан</option>
+          <option value="keyboard">Пернетақта</option>
+          <option value="headset">Құлаққап</option>
+          <option value="motherboard">Аналық плата</option>
+          <option value="case">Корпус</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Баға (₸) *</label>
+        <input class="form-input" id="f-price" type="number" placeholder="мыс. 250000">
+      </div>
+      <div class="form-group">
+        <label>Қор саны</label>
+        <input class="form-input" id="f-stock" type="number" placeholder="мыс. 10" value="10">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Сипаттама</label>
+      <input class="form-input" id="f-desc" type="text" placeholder="Қысқаша сипаттама">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Мәртебесі</label>
+        <select class="form-select" id="f-status">
+          <option value="active">Белсенді</option>
+          <option value="draft">Жобалама</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('product-modal')">Болдырмау</button>
+      <button class="btn btn-primary" onclick="saveProduct()">💾 Сақтау</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Order Modal -->
+<div class="modal-overlay" id="order-modal">
+  <div class="modal">
+    <h3>➕ Жаңа тапсырыс қосу</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Клиент аты *</label>
+        <input class="form-input" id="o-customer" type="text" placeholder="мыс. Ахмет Сейткали">
+      </div>
+      <div class="form-group">
+        <label>Телефон</label>
+        <input class="form-input" id="o-phone" type="text" placeholder="+7 7XX XXX XX XX">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Тауар *</label>
+        <input class="form-input" id="o-product" type="text" placeholder="мыс. RTX 4070">
+      </div>
+      <div class="form-group">
+        <label>Сома (₸) *</label>
+        <input class="form-input" id="o-amount" type="number" placeholder="мыс. 250000">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Қала</label>
+        <input class="form-input" id="o-city" type="text" placeholder="мыс. Сатпаев">
+      </div>
+      <div class="form-group">
+        <label>Мәртебесі</label>
+        <select class="form-select" id="o-status">
+          <option value="Жаңа">Жаңа</option>
+          <option value="Өңделуде">Өңделуде</option>
+          <option value="Жіберілді">Жіберілді</option>
+          <option value="Жеткізілді">Жеткізілді</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('order-modal')">Болдырмау</button>
+      <button class="btn btn-primary" onclick="saveOrder()">💾 Сақтау</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+// ===== STATE =====
+let products = [];
+let orders   = [];
+let editingProductIdx = null;
+
+const CAT_LABELS = {
+  gpu: 'GPU', cpu: 'CPU', ram: 'RAM', ssd: 'SSD',
+  monitor: 'Монитор', mouse: 'Тышқан',
+  keyboard: 'Пернетақта', headset: 'Құлаққап',
+  motherboard: 'Аналық плата', case: 'Корпус'
+};
+
+const STATUS_BADGE = {
+  'Жаңа':        'badge-blue',
+  'Өңделуде':    'badge-yellow',
+  'Жіберілді':   'badge-purple',
+  'Жеткізілді':  'badge-green',
+  'Бас тартылды':'badge-red',
+};
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+  updateClock();
+  setInterval(updateClock, 1000);
+});
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent =
+    now.toLocaleDateString('kk-KZ') + ' ' +
+    now.toLocaleTimeString('kk-KZ', {hour:'2-digit', minute:'2-digit'});
+}
+
+// ===== LOAD DATA FROM FLASK =====
+async function loadData() {
+  try {
+    const res = await fetch('/api/admin-data');
+    if (!res.ok) throw new Error('no api');
+    const json = await res.json();
+    buildProductsFromData(json);
+  } catch(e) {
+    buildProductsFromData(null);
+  }
+  generateOrders();
+  renderAll();
+}
+
+function buildProductsFromData(data) {
+  if (!data) {
+    // Fallback demo products
+    products = [
+      { name:'RTX 5090',         cat:'gpu',      price:1200000, stock:5,  status:'active', desc:'Флагман видеокарта' },
+      { name:'RTX 5080',         cat:'gpu',      price:850000,  stock:8,  status:'active', desc:'Жоғары деңгей' },
+      { name:'RTX 5070 Ti',      cat:'gpu',      price:620000,  stock:12, status:'active', desc:'Жаңа буын' },
+      { name:'RTX 4090',         cat:'gpu',      price:900000,  stock:3,  status:'active', desc:'Алдыңғы флагман' },
+      { name:'RTX 4070 Ti Super',cat:'gpu',      price:420000,  stock:15, status:'active', desc:'2K-4K gaming' },
+      { name:'RTX 4070 Super',   cat:'gpu',      price:310000,  stock:20, status:'active', desc:'2K gaming' },
+      { name:'RTX 4060 Ti',      cat:'gpu',      price:220000,  stock:25, status:'active', desc:'1080p-1440p' },
+      { name:'RTX 3080 Ti',      cat:'gpu',      price:280000,  stock:7,  status:'active', desc:'Өткен флагман' },
+      { name:'Ryzen 7 9800X3D',  cat:'cpu',      price:280000,  stock:10, status:'active', desc:'Gaming чемпионы' },
+      { name:'Ryzen 7 7800X3D',  cat:'cpu',      price:220000,  stock:15, status:'active', desc:'3D Cache технологиясы' },
+      { name:'Intel i9-14900K',  cat:'cpu',      price:260000,  stock:8,  status:'active', desc:'Максималды өнімділік' },
+      { name:'Intel i7-14700F',  cat:'cpu',      price:180000,  stock:18, status:'active', desc:'Стриминг + gaming' },
+      { name:'Intel i5-14600KF', cat:'cpu',      price:130000,  stock:22, status:'active', desc:'Тиімді gaming' },
+      { name:'32GB DDR5',        cat:'ram',      price:65000,   stock:30, status:'active', desc:'Жоғары жылдамдық' },
+      { name:'16GB DDR5',        cat:'ram',      price:38000,   stock:40, status:'active', desc:'Gaming стандарт' },
+      { name:'64GB DDR5',        cat:'ram',      price:120000,  stock:12, status:'active', desc:'Кәсіби жұмыс' },
+      { name:'1TB NVMe SSD',     cat:'ssd',      price:45000,   stock:35, status:'active', desc:'Жылдам жинақтауыш' },
+      { name:'2TB NVMe SSD',     cat:'ssd',      price:75000,   stock:20, status:'active', desc:'Үлкен жад' },
+      { name:'512GB NVMe SSD',   cat:'ssd',      price:28000,   stock:45, status:'active', desc:'Базалық SSD' },
+      { name:'BenQ ZOWIE 400Hz', cat:'monitor',  price:350000,  stock:6,  status:'active', desc:'Pro esports монитор' },
+      { name:'Monitor 240Hz IPS',cat:'monitor',  price:180000,  stock:10, status:'active', desc:'Gaming монитор' },
+      { name:'Logitech G Pro X2', cat:'mouse',   price:80000,   stock:15, status:'active', desc:'Pro wireless mouse' },
+      { name:'Lamzu Paro',       cat:'mouse',    price:45000,   stock:20, status:'active', desc:'Ультра жеңіл' },
+      { name:'Wooting 60HE',     cat:'keyboard', price:150000,  stock:8,  status:'active', desc:'Rapid Trigger' },
+      { name:'Logitech G Pro X2 Headset', cat:'headset', price:110000, stock:10, status:'active', desc:'Pro wireless' },
+      { name:'B760 (Intel)',     cat:'motherboard', price:85000, stock:12, status:'active', desc:'AM5 платформасы' },
+      { name:'Gaming RGB Case',  cat:'case',     price:40000,   stock:18, status:'active', desc:'RGB корпус' },
+    ];
+  } else {
+    products = [];
+    const catMap = {
+      gpus:'gpu', cpus:'cpu', ram:'ram', ssd:'ssd',
+      monitors:'monitor', mice:'mouse', keyboards:'keyboard',
+      headsets:'headset', motherboards:'motherboard', cases:'case'
+    };
+    for (const [key, cat] of Object.entries(catMap)) {
+      if (data[key]) {
+        for (const item of data[key]) {
+          products.push({
+            name:   item.name,
+            cat:    cat,
+            price:  item.price || 0,
+            stock:  Math.floor(Math.random()*30)+5,
+            status: 'active',
+            desc:   item.description || ''
+          });
+        }
+      }
+    }
+  }
+}
+
+function generateOrders() {
+  const customers = [
+    'Ахмет Сейткали','Айгерім Нұрланова','Дамир Жақсыбеков',
+    'Нұргүл Бекова','Арман Тасыбеков','Сания Мұсаева',
+    'Темірлан Қасымов','Зарина Абенова','Бекзат Ержанов',
+    'Малика Сейтқали','Ерлан Досмаханов','Айдана Нұрмағамбетова'
+  ];
+  const cities = ['Сатпаев','Жезқазған','Алматы','Астана','Қарағанды','Шымкент'];
+  const statuses = ['Жаңа','Жаңа','Өңделуде','Жіберілді','Жеткізілді','Жеткізілді','Жеткізілді'];
+
+  orders = [];
+  for (let i = 1; i <= 24; i++) {
+    const prod = products[Math.floor(Math.random()*products.length)];
+    const days = Math.floor(Math.random()*90);
+    const d = new Date(2026,4,24);
+    d.setDate(d.getDate()-days);
+    orders.push({
+      id:       'ORD-2026-' + String(i).padStart(3,'0'),
+      customer: customers[Math.floor(Math.random()*customers.length)],
+      product:  prod ? prod.name : 'Тауар',
+      amount:   prod ? prod.price : 100000,
+      status:   statuses[Math.floor(Math.random()*statuses.length)],
+      city:     cities[Math.floor(Math.random()*cities.length)],
+      phone:    '+7 7' + Math.floor(10+Math.random()*89) + ' ' +
+                Math.floor(100+Math.random()*900) + ' ' +
+                Math.floor(10+Math.random()*90) + ' ' +
+                Math.floor(10+Math.random()*90),
+      date:     d.toLocaleDateString('ru-RU')
+    });
+  }
+  orders.sort((a,b)=> new Date(b.date.split('.').reverse().join('-')) - new Date(a.date.split('.').reverse().join('-')));
+}
+
+// ===== RENDER ALL =====
+function renderAll() {
+  updateStats();
+  renderProductsTable();
+  renderOrdersTable();
+  renderRecentOrders();
+  renderTopProducts();
+  buildCharts();
+}
+
+function updateStats() {
+  const totalRevenue = orders.filter(o=>o.status==='Жеткізілді').reduce((s,o)=>s+o.amount,0);
+  document.getElementById('stat-products').textContent  = products.length;
+  document.getElementById('stat-orders').textContent    = orders.length;
+  document.getElementById('stat-revenue').textContent   = formatPrice(totalRevenue);
+  document.getElementById('stat-customers').textContent = new Set(orders.map(o=>o.customer)).size;
+  document.getElementById('badge-products').textContent = products.length;
+  document.getElementById('badge-orders').textContent   = orders.filter(o=>o.status==='Жаңа').length;
+
+  document.getElementById('an-revenue').textContent = formatPrice(totalRevenue);
+  document.getElementById('an-orders').textContent  = orders.filter(o=>o.status==='Жеткізілді').length;
+  const delivered = orders.filter(o=>o.status==='Жеткізілді');
+  const avg = delivered.length ? Math.round(delivered.reduce((s,o)=>s+o.amount,0)/delivered.length) : 0;
+  document.getElementById('an-avg').textContent = formatPrice(avg);
+}
+
+function formatPrice(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(1) + ' млн ₸';
+  if (n >= 1000)    return Math.round(n/1000) + ' мың ₸';
+  return n + ' ₸';
+}
+
+// ===== PRODUCTS TABLE =====
+let productPage = 1;
+const PAGE_SIZE = 8;
+let filteredProducts = [];
+
+function filterProducts() {
+  const q   = document.getElementById('product-search').value.toLowerCase();
+  const cat = document.getElementById('product-cat').value;
+  filteredProducts = products.filter(p =>
+    (!q   || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)) &&
+    (!cat || p.cat === cat)
+  );
+  productPage = 1;
+  renderProductsTable();
+}
+
+function renderProductsTable() {
+  filteredProducts = filteredProducts.length || document.getElementById('product-search').value || document.getElementById('product-cat').value
+    ? filteredProducts : [...products];
+  if (!document.getElementById('product-search').value && !document.getElementById('product-cat').value) {
+    filteredProducts = [...products];
+  }
+
+  const tbody = document.getElementById('products-table-body');
+  const start = (productPage-1)*PAGE_SIZE;
+  const page  = filteredProducts.slice(start, start+PAGE_SIZE);
+
+  if (!page.length) {
+    tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><div class="empty-icon">🔍</div><p>Тауар табылмады</p></div></td></tr>`;
+    document.getElementById('products-pagination').innerHTML='';
+    return;
+  }
+
+  tbody.innerHTML = page.map((p, i) => `
+    <tr>
+      <td>
+        <div class="product-cell">
+          <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(217,70,239,0.1));
+            display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">
+            ${catEmoji(p.cat)}
+          </div>
+          <div class="product-cell-info">
+            <div class="name">${p.name}</div>
+            <div class="cat">${p.desc || ''}</div>
+          </div>
+        </div>
+      </td>
+      <td><span class="badge badge-purple">${CAT_LABELS[p.cat]||p.cat}</span></td>
+      <td class="td-bold">${p.price.toLocaleString()} ₸</td>
+      <td>
+        <span class="${p.stock<=5?'badge badge-red':p.stock<=15?'badge badge-yellow':'badge badge-green'}">
+          ${p.stock} дана
+        </span>
+      </td>
+      <td><span class="${p.status==='active'?'badge badge-green':'badge badge-gray'}">${p.status==='active'?'Белсенді':'Жобалама'}</span></td>
+      <td>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-secondary btn-sm" onclick="editProduct(${start+i})">✏️</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteProduct(${start+i})">🗑️</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+
+  renderPagination('products-pagination', filteredProducts.length, productPage, (p)=>{ productPage=p; renderProductsTable(); });
+}
+
+function catEmoji(cat) {
+  const m = {gpu:'🎮',cpu:'⚡',ram:'💾',ssd:'💿',monitor:'🖥️',mouse:'🖱️',keyboard:'⌨️',headset:'🎧',motherboard:'🔧',case:'📦'};
+  return m[cat]||'📦';
+}
+
+// ===== ORDERS TABLE =====
+let orderPage = 1;
+let filteredOrders = [];
+
+function filterOrders() {
+  const q  = document.getElementById('order-search').value.toLowerCase();
+  const st = document.getElementById('order-status').value;
+  filteredOrders = orders.filter(o=>
+    (!q  || o.id.toLowerCase().includes(q) || o.customer.toLowerCase().includes(q) || o.product.toLowerCase().includes(q)) &&
+    (!st || o.status===st)
+  );
+  orderPage = 1;
+  renderOrdersTable();
+}
+
+function renderOrdersTable() {
+  if (!document.getElementById('order-search').value && !document.getElementById('order-status').value) {
+    filteredOrders = [...orders];
+  }
+
+  const tbody = document.getElementById('orders-table-body');
+  const start = (orderPage-1)*PAGE_SIZE;
+  const page  = filteredOrders.slice(start, start+PAGE_SIZE);
+
+  if (!page.length) {
+    tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><div class="empty-icon">📦</div><p>Тапсырыс табылмады</p></div></td></tr>`;
+    document.getElementById('orders-pagination').innerHTML='';
+    return;
+  }
+
+  tbody.innerHTML = page.map((o,i) => `
+    <tr>
+      <td class="td-bold">${o.id}</td>
+      <td>
+        <div>${o.customer}</div>
+        <div style="font-size:12px;color:#6b7280;">${o.city} · ${o.phone}</div>
+      </td>
+      <td>${o.product}</td>
+      <td class="td-bold">${o.amount.toLocaleString()} ₸</td>
+      <td><span class="badge ${STATUS_BADGE[o.status]||'badge-gray'}">${o.status}</span></td>
+      <td style="color:#6b7280;">${o.date}</td>
+      <td>
+        <select class="select-filter" style="height:32px;font-size:12px;padding:0 8px;"
+          onchange="changeOrderStatus(${start+i}, this.value)">
+          <option value="Жаңа"         ${o.status==='Жаңа'?'selected':''}>Жаңа</option>
+          <option value="Өңделуде"     ${o.status==='Өңделуде'?'selected':''}>Өңделуде</option>
+          <option value="Жіберілді"    ${o.status==='Жіберілді'?'selected':''}>Жіберілді</option>
+          <option value="Жеткізілді"   ${o.status==='Жеткізілді'?'selected':''}>Жеткізілді</option>
+          <option value="Бас тартылды" ${o.status==='Бас тартылды'?'selected':''}>Бас тартылды</option>
+        </select>
+      </td>
+    </tr>
+  `).join('');
+
+  renderPagination('orders-pagination', filteredOrders.length, orderPage, (p)=>{ orderPage=p; renderOrdersTable(); });
+}
+
+function changeOrderStatus(idx, newStatus) {
+  const realIdx = orders.indexOf(filteredOrders[idx]);
+  if (realIdx >= 0) {
+    orders[realIdx].status = newStatus;
+    filteredOrders[idx].status = newStatus;
+  }
+  updateStats();
+  renderOrdersTable();
+  toast('✅ Тапсырыс мәртебесі жаңартылды', 'success');
+}
+
+// ===== RECENT ORDERS =====
+function renderRecentOrders() {
+  const tbody = document.getElementById('recent-orders-body');
+  tbody.innerHTML = orders.slice(0,6).map(o=>`
+    <tr>
+      <td class="td-bold">${o.id}</td>
+      <td>${o.customer}</td>
+      <td>${o.product}</td>
+      <td class="td-bold">${o.amount.toLocaleString()} ₸</td>
+      <td><span class="badge ${STATUS_BADGE[o.status]||'badge-gray'}">${o.status}</span></td>
+      <td style="color:#6b7280;">${o.date}</td>
+    </tr>
+  `).join('');
+}
+
+// ===== TOP PRODUCTS =====
+function renderTopProducts() {
+  const counts = {};
+  orders.forEach(o=>{ counts[o.product]=(counts[o.product]||0)+1; });
+  const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  const tbody = document.getElementById('top-products-body');
+  tbody.innerHTML = top.map(([name,cnt])=>{
+    const p = products.find(x=>x.name===name)||{price:0,cat:'gpu'};
+    return `
+      <tr>
+        <td>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:22px;">${catEmoji(p.cat)}</span>
+            <span class="td-bold">${name}</span>
+          </div>
+        </td>
+        <td><span class="badge badge-purple">${CAT_LABELS[p.cat]||p.cat}</span></td>
+        <td>${p.price.toLocaleString()} ₸</td>
+        <td><span class="badge badge-blue">${cnt} сатылым</span></td>
+        <td class="td-bold" style="color:#d8b4fe;">${(p.price*cnt).toLocaleString()} ₸</td>
+      </tr>`;
+  }).join('');
+}
+
+// ===== PAGINATION =====
+function renderPagination(containerId, total, current, callback) {
+  const totalPages = Math.ceil(total / PAGE_SIZE);
+  const el = document.getElementById(containerId);
+  if (totalPages<=1) { el.innerHTML=''; return; }
+
+  let html = '';
+  for (let i=1;i<=totalPages;i++) {
+    html += `<button class="page-btn ${i===current?'active':''}" onclick="(${callback.toString()})(${i})">${i}</button>`;
+  }
+  el.innerHTML = html;
+}
+
+// ===== CHARTS =====
+let charts = {};
+
+function buildCharts() {
+  buildRevenueChart();
+  buildCategoryDonut();
+  buildBarChart();
+  buildStatusChart();
+  buildWeeklyChart();
+}
+
+function buildRevenueChart() {
+  const ctx = document.getElementById('revenueChart');
+  if (!ctx) return;
+  if (charts.revenue) charts.revenue.destroy();
+
+  const months = ['Қаң','Ақп','Нау','Сәу','Мам','Мау','Шіл','Там','Қыр','Қаз','Қар','Жел'];
+  const data   = [8200000,9100000,7800000,10200000,11500000,9800000,12100000,10900000,13200000,11800000,14500000,15200000];
+
+  charts.revenue = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [{
+        label: 'Кіріс (₸)',
+        data,
+        borderColor: '#a855f7',
+        backgroundColor: 'rgba(168,85,247,0.1)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#d946ef',
+        pointRadius: 4,
+        tension: 0.4,
+        fill: true,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color:'rgba(255,255,255,0.04)' }, ticks: { color:'#6b7280' } },
+        y: { grid: { color:'rgba(255,255,255,0.04)' }, ticks: { color:'#6b7280',
+          callback: v => v >= 1000000 ? (v/1000000).toFixed(1)+'M' : v/1000+'K' } }
+      }
+    }
+  });
+}
+
+function buildCategoryDonut() {
+  const ctx = document.getElementById('categoryChart');
+  if (!ctx) return;
+  if (charts.category) charts.category.destroy();
+
+  const catCount = {};
+  products.forEach(p=>{ catCount[p.cat]=(catCount[p.cat]||0)+1; });
+  const labels = Object.keys(catCount).map(k=>CAT_LABELS[k]||k);
+  const data   = Object.values(catCount);
+  const colors = ['#7c3aed','#a855f7','#d946ef','#c026d3','#9333ea','#6d28d9','#8b5cf6','#ec4899','#f472b6','#db2777'];
+
+  charts.category = new Chart(ctx, {
+    type: 'doughnut',
+    data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth:0, hoverOffset:6 }] },
+    options: {
+      responsive: true, cutout: '68%',
+      plugins: { legend: { display:false } }
+    }
+  });
+
+  document.getElementById('donut-legend').innerHTML = labels.map((l,i)=>`
+    <div class="legend-item">
+      <div class="legend-dot" style="background:${colors[i]}"></div>
+      <span>${l} — ${data[i]}</span>
+    </div>
+  `).join('');
+}
+
+function buildBarChart() {
+  const ctx = document.getElementById('barChart');
+  if (!ctx) return;
+  if (charts.bar) charts.bar.destroy();
+
+  const catRev = {};
+  orders.forEach(o=>{
+    const p = products.find(x=>x.name===o.product);
+    const cat = p ? CAT_LABELS[p.cat]||p.cat : 'Басқа';
+    catRev[cat] = (catRev[cat]||0) + o.amount;
+  });
+  const labels = Object.keys(catRev);
+  const data   = Object.values(catRev);
+
+  charts.bar = new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels,
+      datasets:[{
+        label:'Кіріс (₸)', data,
+        backgroundColor:'rgba(168,85,247,0.7)',
+        borderRadius:8, borderSkipped:false
+      }]
+    },
+    options:{
+      responsive:true,
+      plugins:{ legend:{display:false} },
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6b7280'}},
+        y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6b7280',
+          callback: v => v>=1000000?(v/1000000).toFixed(1)+'M':v>=1000?v/1000+'K':v}}
+      }
+    }
+  });
+}
+
+function buildStatusChart() {
+  const ctx = document.getElementById('statusChart');
+  if (!ctx) return;
+  if (charts.status) charts.status.destroy();
+
+  const st = {};
+  orders.forEach(o=>{ st[o.status]=(st[o.status]||0)+1; });
+  const labels = Object.keys(st);
+  const data   = Object.values(st);
+  const colors = {'Жаңа':'#60a5fa','Өңделуде':'#fbbf24','Жіберілді':'#c084fc','Жеткізілді':'#4ade80','Бас тартылды':'#f87171'};
+
+  charts.status = new Chart(ctx, {
+    type:'doughnut',
+    data:{ labels, datasets:[{ data, backgroundColor:labels.map(l=>colors[l]||'#6b7280'), borderWidth:0, hoverOffset:6 }] },
+    options:{ responsive:true, cutout:'65%', plugins:{legend:{display:false}} }
+  });
+
+  document.getElementById('status-legend').innerHTML = labels.map((l,i)=>`
+    <div class="legend-item">
+      <div class="legend-dot" style="background:${colors[l]||'#6b7280'}"></div>
+      <span>${l} — ${data[i]}</span>
+    </div>
+  `).join('');
+}
+
+function buildWeeklyChart() {
+  const ctx = document.getElementById('weeklyChart');
+  if (!ctx) return;
+  if (charts.weekly) charts.weekly.destroy();
+
+  const weeks = ['8 апта','7 апта','6 апта','5 апта','4 апта','3 апта','2 апта','Осы апта'];
+  const data  = [18,22,19,27,24,31,28,35];
+
+  charts.weekly = new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels:weeks,
+      datasets:[{
+        label:'Тапсырыс саны', data,
+        backgroundColor: data.map((_,i)=> i===7?'rgba(217,70,239,0.85)':'rgba(168,85,247,0.5)'),
+        borderRadius:8, borderSkipped:false
+      }]
+    },
+    options:{
+      responsive:true,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6b7280'}},
+        y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#6b7280'}}
+      }
+    }
+  });
+}
+
+// ===== NAVIGATION =====
+function showSection(name, btn) {
+  document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById('section-'+name).classList.add('active');
+  if (btn) btn.classList.add('active');
+
+  const titles = {
+    dashboard: ['Басқару тақтасы','CyberQazaq — компьютер техникасы дүкені'],
+    products:  ['Тауарлар','Тауарлар тізімін басқару'],
+    orders:    ['Тапсырыстар','Тапсырыстарды өңдеу'],
+    analytics: ['Статистика мен аналитика','Сату деректері мен есептер'],
+  };
+  const [title, sub] = titles[name]||['Басқару тақтасы',''];
+  document.getElementById('page-title').textContent = title;
+  document.getElementById('page-sub').textContent   = sub;
+
+  // Refresh filtered tables on navigation
+  if (name==='products') { filteredProducts=[...products]; renderProductsTable(); }
+  if (name==='orders')   { filteredOrders=[...orders];   renderOrdersTable(); }
+}
+
+// ===== PRODUCT CRUD =====
+function openAddModal() {
+  editingProductIdx = null;
+  document.getElementById('modal-title').textContent = '➕ Жаңа тауар қосу';
+  ['f-name','f-price','f-stock','f-desc'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-stock').value='10';
+  document.getElementById('f-status').value='active';
+  document.getElementById('product-modal').classList.add('active');
+}
+
+function editProduct(idx) {
+  editingProductIdx = idx;
+  const p = filteredProducts[idx];
+  document.getElementById('modal-title').textContent = '✏️ Тауарды өңдеу';
+  document.getElementById('f-name').value   = p.name;
+  document.getElementById('f-cat').value    = p.cat;
+  document.getElementById('f-price').value  = p.price;
+  document.getElementById('f-stock').value  = p.stock;
+  document.getElementById('f-desc').value   = p.desc||'';
+  document.getElementById('f-status').value = p.status;
+  document.getElementById('product-modal').classList.add('active');
+}
+
+function saveProduct() {
+  const name  = document.getElementById('f-name').value.trim();
+  const price = parseInt(document.getElementById('f-price').value);
+  if (!name || !price) { toast('❌ Атауы мен бағасын енгізіңіз','error'); return; }
+
+  const prod = {
+    name,
+    cat:    document.getElementById('f-cat').value,
+    price,
+    stock:  parseInt(document.getElementById('f-stock').value)||10,
+    desc:   document.getElementById('f-desc').value.trim(),
+    status: document.getElementById('f-status').value,
+  };
+
+  if (editingProductIdx !== null) {
+    const realIdx = products.indexOf(filteredProducts[editingProductIdx]);
+    if (realIdx >= 0) products[realIdx] = prod;
+  } else {
+    products.unshift(prod);
+  }
+
+  closeModal('product-modal');
+  filteredProducts = [...products];
+  renderProductsTable();
+  updateStats();
+  buildCategoryDonut();
+  toast(editingProductIdx!==null ? '✅ Тауар жаңартылды' : '✅ Тауар қосылды', 'success');
+  editingProductIdx = null;
+}
+
+function deleteProduct(idx) {
+  if (!confirm('Тауарды өшіруге сенімдісіз бе?')) return;
+  const realIdx = products.indexOf(filteredProducts[idx]);
+  if (realIdx >= 0) products.splice(realIdx, 1);
+  filteredProducts.splice(idx, 1);
+  renderProductsTable();
+  updateStats();
+  buildCategoryDonut();
+  toast('🗑️ Тауар өшірілді', 'success');
+}
+
+// ===== ORDER CRUD =====
+function openAddOrderModal() {
+  ['o-customer','o-phone','o-product','o-amount','o-city'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('order-modal').classList.add('active');
+}
+
+function saveOrder() {
+  const customer = document.getElementById('o-customer').value.trim();
+  const amount   = parseInt(document.getElementById('o-amount').value);
+  if (!customer || !amount) { toast('❌ Клиент аты мен сомасын енгізіңіз','error'); return; }
+
+  const today = new Date().toLocaleDateString('ru-RU');
+  orders.unshift({
+    id:       'ORD-2026-' + String(orders.length+1).padStart(3,'0'),
+    customer,
+    phone:    document.getElementById('o-phone').value.trim()||'—',
+    product:  document.getElementById('o-product').value.trim()||'Тауар',
+    amount,
+    city:     document.getElementById('o-city').value.trim()||'—',
+    status:   document.getElementById('o-status').value,
+    date:     today
+  });
+  filteredOrders = [...orders];
+  closeModal('order-modal');
+  renderOrdersTable();
+  renderRecentOrders();
+  updateStats();
+  toast('✅ Тапсырыс қосылды', 'success');
+}
+
+function exportOrders() {
+  const rows = [['Тапсырыс №','Клиент','Тауар','Сома (₸)','Мәртебесі','Күні','Қала']];
+  filteredOrders.forEach(o=>{
+    rows.push([o.id, o.customer, o.product, o.amount, o.status, o.date, o.city]);
+  });
+  const csv = rows.map(r=>r.join(',')).join('\n');
+  const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'cyberqazaq-orders.csv';
+  a.click();
+  toast('⬇️ Экспорт аяқталды', 'success');
+}
+
+// ===== MODAL HELPERS =====
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+}
+
+document.addEventListener('click', e=>{
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.remove('active');
+  }
+});
+
+// ===== TOAST =====
+function toast(msg, type='success') {
+  const el = document.createElement('div');
+  el.className = `toast toast-${type}`;
+  el.textContent = msg;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(()=>el.remove(), 3000);
+}
+
+</script>
+</body>
+</html>
