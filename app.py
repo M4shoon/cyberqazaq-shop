@@ -419,8 +419,7 @@ def ai():
         elif k:    budget = int(k.group(1))   * 1_000
         elif number: budget = int(number.group())
 
-    if budget < 350_000:
-        budget = 350_000
+    # (минималды бюджет төменде, intent анықталған соң қойылады)
 
     # ── 2. Detect intent ──────────────────────────────────────────────────────
     intent_map = {
@@ -439,6 +438,11 @@ def ai():
     for cat, keywords in intent_map.items():
         if any(kw in text_lo for kw in keywords):
             detected_cats.append(cat)
+
+    # Минималды бюджет (350k) тек толық жинақ үшін. Жеке тауар сұралса, нақты бюджет сақталады.
+    single_category = len(detected_cats) == 1 and detected_cats[0] != "setup"
+    if budget == 0 or (budget < 350_000 and not single_category):
+        budget = 350_000
 
     # Is user asking to ANALYSE / judge a product quality?
     want_analysis = any(w in text_lo for w in [
@@ -818,6 +822,8 @@ future_proof:   AM5/DDR5/RTX 5000 жоғары, AM4/DDR4/RTX 2000-3000 төме�
     return jsonify({
         "mode":"full_setup", "name":best_setup.get("name"), "price":best_setup.get("price"),
         "reason":reasons.get(use_case, reasons["general"]), "use_case":use_case,
+        "budget_note": (f"Бюджетіңіз {budget:,} ₸. Ең арзан дайын сет {best_setup.get('price', 0):,} ₸ тұрады."
+                        if best_setup.get("price", 0) > budget else None),
         "gpu":gpu_it.get("name") if gpu_it else "-", "gpu_reason":explain_product(gpu_it), "gpu_price":gpu_it.get("price") if gpu_it else 0,
         "cpu":cpu_it.get("name") if cpu_it else "-", "cpu_reason":explain_product(cpu_it), "cpu_price":cpu_it.get("price") if cpu_it else 0,
         "ram":ram_it.get("name") if ram_it else "-", "ram_reason":explain_product(ram_it), "ram_price":ram_it.get("price") if ram_it else 0,
