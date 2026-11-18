@@ -264,11 +264,6 @@
     🔓 Кіру
   </button>
 
-  <div class="divider"><span>немесе</span></div>
-
-  <button class="quick-btn" onclick="quickAccess()">
-    ⚡ Жылдам кіру (сессиясыз)
-  </button>
 </div>
 
 <script>
@@ -303,14 +298,10 @@
         btn.innerHTML = '🔓 Кіру';
       }
     } catch(e) {
-      showError('Сервер қосылмады. /admin/direct сілтемесін қолданыңыз.');
+      showError('Сервер қосылмады. Серверді қайта қосып көріңіз.');
       btn.disabled = false;
       btn.innerHTML = '🔓 Кіру';
     }
-  }
-
-  function quickAccess() {
-    window.location.href = '/admin/direct';
   }
 
   function showError(msg) {
