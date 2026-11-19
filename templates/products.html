@@ -480,7 +480,7 @@
       {% for gpu in data.gpus %}
       <div class="product-card" data-name="{{ gpu.name }}" data-price="{{ gpu.price }}">
         <button class="fav-btn">❤</button>
-        {% if gpu.image %}<img src="{{ "/static/products/" + gpu.image if not gpu.image.startswith("http") and not gpu.image.startswith("data:") else gpu.image }}" class="product-image">{% endif %}
+        {% if gpu.image %}<img src="{{ "/static/products/" + gpu.image if not gpu.image.startswith("http") and not gpu.image.startswith("data:") else gpu.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">{% endif %}
         <h3>{{ gpu.name }}</h3>
         <div class="stars">
           {% if gpu.reviews %}
@@ -533,7 +533,7 @@
       {% for cpu in data.cpus %}
       <div class="product-card" data-name="{{ cpu.name }}" data-price="{{ cpu.price }}">
         <button class="fav-btn">❤</button>
-        {% if cpu.image %}<img src="{{ "/static/products/" + cpu.image if not cpu.image.startswith("http") and not cpu.image.startswith("data:") else cpu.image }}" class="product-image">{% endif %}
+        {% if cpu.image %}<img src="{{ "/static/products/" + cpu.image if not cpu.image.startswith("http") and not cpu.image.startswith("data:") else cpu.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">{% endif %}
         <h3>{{ cpu.name }}</h3>
         <div class="stars">
           {% if cpu.reviews %}{% set avg = (cpu.reviews|map(attribute='rating')|sum) / cpu.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ cpu.reviews|length }})</span>{% else %}★★★★★{% endif %}
@@ -557,7 +557,7 @@
       {% for r in data.ram %}
       <div class="product-card" data-name="{{ r.name }}" data-price="{{ r.price }}">
         <button class="fav-btn">❤</button>
-        {% if r.image %}<img src="{{ "/static/products/" + r.image if not r.image.startswith("http") and not r.image.startswith("data:") else r.image }}" class="product-image">{% endif %}
+        {% if r.image %}<img src="{{ "/static/products/" + r.image if not r.image.startswith("http") and not r.image.startswith("data:") else r.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">{% endif %}
         <h3>{{ r.name }}</h3>
         <div class="stars">
           {% if r.reviews %}{% set avg = (r.reviews|map(attribute='rating')|sum) / r.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ r.reviews|length }})</span>{% else %}★★★★★{% endif %}
@@ -581,7 +581,7 @@
       {% for ssd in data.ssd %}
       <div class="product-card" data-name="{{ ssd.name }}" data-price="{{ ssd.price }}">
         <button class="fav-btn">❤</button>
-        {% if ssd.image %}<img src="{{ "/static/products/" + ssd.image if not ssd.image.startswith("http") and not ssd.image.startswith("data:") else ssd.image }}" class="product-image">{% endif %}
+        {% if ssd.image %}<img src="{{ "/static/products/" + ssd.image if not ssd.image.startswith("http") and not ssd.image.startswith("data:") else ssd.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">{% endif %}
         <h3>{{ ssd.name }}</h3>
         <div class="stars">
           {% if ssd.reviews %}{% set avg = (ssd.reviews|map(attribute='rating')|sum) / ssd.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ ssd.reviews|length }})</span>{% else %}★★★★★{% endif %}
@@ -605,7 +605,7 @@
       {% for m in data.monitors %}
       <div class="product-card" data-name="{{ m.name }}" data-price="{{ m.price }}">
         <button class="fav-btn">❤</button>
-        {% if m.image %}<img src="{{ "/static/products/" + m.image if not m.image.startswith("http") and not m.image.startswith("data:") else m.image }}" class="product-image">{% else %}<div class="product-icon">🖥</div>{% endif %}
+        {% if m.image %}<img src="{{ "/static/products/" + m.image if not m.image.startswith("http") and not m.image.startswith("data:") else m.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">{% else %}<div class="product-icon">🖥</div>{% endif %}
         <h3>{{ m.name }}</h3>
         <div class="stars">
           {% if m.reviews %}{% set avg = (m.reviews|map(attribute='rating')|sum) / m.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ m.reviews|length }})</span>{% else %}★★★★★{% endif %}
@@ -630,7 +630,7 @@
       {% for mouse in data.mice %}
       <div class="product-card" data-name="{{ mouse.name }}" data-price="{{ mouse.price }}">
         <button class="fav-btn">❤</button>
-        {% if mouse.image %}<img src="{{ "/static/products/" + mouse.image if not mouse.image.startswith("http") and not mouse.image.startswith("data:") else mouse.image }}" class="product-image">{% else %}<div class="product-icon">🖱</div>{% endif %}
+        {% if mouse.image %}<img src="{{ "/static/products/" + mouse.image if not mouse.image.startswith("http") and not mouse.image.startswith("data:") else mouse.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">{% else %}<div class="product-icon">🖱</div>{% endif %}
         <h3>{{ mouse.name }}</h3>
         <div class="stars">
           {% if mouse.reviews %}{% set avg = (mouse.reviews|map(attribute='rating')|sum) / mouse.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ mouse.reviews|length }})</span>{% else %}★★★★★{% endif %}
@@ -654,7 +654,7 @@
       {% for kb in data.keyboards %}
       <div class="product-card" data-name="{{ kb.name }}" data-price="{{ kb.price }}">
         <button class="fav-btn">❤</button>
-        {% if kb.image %}<img src="{{ "/static/products/" + kb.image if not kb.image.startswith("http") and not kb.image.startswith("data:") else kb.image }}" class="product-image">{% else %}<div class="product-icon">⌨️</div>{% endif %}
+        {% if kb.image %}<img src="{{ "/static/products/" + kb.image if not kb.image.startswith("http") and not kb.image.startswith("data:") else kb.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">{% else %}<div class="product-icon">⌨️</div>{% endif %}
         <h3>{{ kb.name }}</h3>
         <div class="stars">
           {% if kb.reviews %}{% set avg = (kb.reviews|map(attribute='rating')|sum) / kb.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ kb.reviews|length }})</span>{% else %}★★★★★{% endif %}
@@ -678,7 +678,7 @@
       {% for h in data.headsets %}
       <div class="product-card" data-name="{{ h.name }}" data-price="{{ h.price }}">
         <button class="fav-btn">❤</button>
-        {% if h.image %}<img src="{{ "/static/products/" + h.image if not h.image.startswith("http") and not h.image.startswith("data:") else h.image }}" class="product-image">{% else %}<div class="product-icon">🎧</div>{% endif %}
+        {% if h.image %}<img src="{{ "/static/products/" + h.image if not h.image.startswith("http") and not h.image.startswith("data:") else h.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">{% else %}<div class="product-icon">🎧</div>{% endif %}
         <h3>{{ h.name }}</h3>
         <div class="stars">
           {% if h.reviews %}{% set avg = (h.reviews|map(attribute='rating')|sum) / h.reviews|length %}{% for i in range(avg|round(0,'floor')|int) %}★{% endfor %}{% for i in range(5 - avg|round(0,'floor')|int) %}☆{% endfor %}<span style="color:#6b7280;font-size:11px;margin-left:4px">({{ h.reviews|length }})</span>{% else %}★★★★★{% endif %}

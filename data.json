@@ -3,57 +3,57 @@
     {
       "key": "cpus",
       "title": "CPU",
-      "image": "https://placehold.co/300x200/0a0a1a/3b82f6?text=CPU"
+      "image": "categories_cpu.jpg"
     },
     {
       "key": "gpus",
       "title": "GPU",
-      "image": "https://placehold.co/300x200/0a0a1a/00ff88?text=GPU"
+      "image": "categories_gpu.jpg"
     },
     {
       "key": "ram",
       "title": "RAM",
-      "image": "https://placehold.co/300x200/0a0a1a/a78bfa?text=RAM"
+      "image": "categories_ram.jpg"
     },
     {
       "key": "ssd",
       "title": "SSD",
-      "image": "https://placehold.co/300x200/0a0a1a/f59e0b?text=SSD"
+      "image": "categories_ssd.jpg"
     },
     {
       "key": "motherboards",
       "title": "Motherboard",
-      "image": "https://placehold.co/300x200/0a0a1a/3b82f6?text=Motherboard"
+      "image": "categories_motherboard.jpg"
     },
     {
       "key": "cases",
       "title": "Case",
-      "image": "https://placehold.co/300x200/0a0a1a/00ff88?text=Case"
+      "image": "categories_case.jpg"
     },
     {
       "key": "monitors",
       "title": "Monitor",
-      "image": "https://placehold.co/300x200/0a0a1a/60a5fa?text=Monitor"
+      "image": "categories_monitor.jpg"
     },
     {
       "key": "mice",
       "title": "Mouse",
-      "image": "https://placehold.co/300x200/0a0a1a/a78bfa?text=Mouse"
+      "image": "categories_mouse.jpg"
     },
     {
       "key": "keyboards",
       "title": "Keyboard",
-      "image": "https://placehold.co/300x200/0a0a1a/ef4444?text=Keyboard"
+      "image": "categories_keyboard.jpg"
     },
     {
       "key": "headsets",
       "title": "Headset",
-      "image": "https://placehold.co/300x200/0a0a1a/e879f9?text=Headset"
+      "image": "categories_headset.jpg"
     },
     {
       "key": "setups",
       "title": "Setups",
-      "image": "https://placehold.co/300x200/0a0a1a/fbbf24?text=Setups"
+      "image": "categories_setups.jpg"
     }
   ],
   "cpus": [
@@ -1591,7 +1591,7 @@
         "Overclocking",
         "i9 максималды өнімділік"
       ],
-      "image": "https://placehold.co/400x300/0a0a1a/3b82f6?text=B660+Intel+Motherboard"
+      "image": "motherboards_mb_b660.jpg"
     },
     {
       "id": "mb_b760",
@@ -1633,7 +1633,7 @@
       "not_for": [
         "Overclocking"
       ],
-      "image": "https://placehold.co/400x300/0a0a1a/3b82f6?text=B760+Intel+Motherboard"
+      "image": "motherboards_mb_b760.jpg"
     },
     {
       "id": "mb_z790",
@@ -1677,7 +1677,7 @@
         "Бюджет жинақ",
         "i5 процессорлар (артық)"
       ],
-      "image": "https://placehold.co/400x300/0a0a1a/f59e0b?text=Z790+Intel+Motherboard"
+      "image": "motherboards_mb_z790.jpg"
     },
     {
       "id": "mb_b650",
@@ -1714,7 +1714,7 @@
         "Overclocking",
         "Ryzen 9 максималды өнімділік"
       ],
-      "image": "https://placehold.co/400x300/1a0a0a/ef4444?text=B650+AMD+Motherboard"
+      "image": "motherboards_mb_b650.jpg"
     },
     {
       "id": "mb_x670",
@@ -1758,7 +1758,7 @@
         "Бюджет жинақ",
         "Ryzen 5 (артық)"
       ],
-      "image": "https://placehold.co/400x300/1a0a0a/f97316?text=X670+AMD+Motherboard"
+      "image": "motherboards_mb_x670.jpg"
     }
   ],
   "cases": [
@@ -1803,7 +1803,7 @@
         "Silent build (RGB желдеткіш шуыл береді)",
         "SFF build"
       ],
-      "image": "https://placehold.co/400x300/050510/00ff88?text=Gaming+RGB+Case"
+      "image": "cases_case_rgb.jpg"
     },
     {
       "id": "case_mini",
@@ -1840,7 +1840,7 @@
         "Ірі GPU (RTX 4090/5090)",
         "Ауыр стриминг жинақ"
       ],
-      "image": "https://placehold.co/400x300/111827/60a5fa?text=Mini+Tower+Case"
+      "image": "cases_case_mini.jpg"
     },
     {
       "id": "case_mid",
@@ -1883,7 +1883,7 @@
         "Шағын орын",
         "Mini build"
       ],
-      "image": "https://placehold.co/400x300/0a0a0f/a78bfa?text=Mid+Tower+Case"
+      "image": "cases_case_mid.jpg"
     },
     {
       "id": "case_full",
@@ -1920,7 +1920,7 @@
         "Шағын орын",
         "Бюджет жинақ"
       ],
-      "image": "https://placehold.co/400x300/050510/fbbf24?text=Full+Tower+Case"
+      "image": "cases_case_full.jpg"
     }
   ],
   "monitors": [
@@ -3977,7 +3977,7 @@
           "date": "2025-04-20"
         }
       ],
-      "image": "https://placehold.co/400x300/0a0a1a/60a5fa?text=Студент+Сеті"
+      "image": "setups_setup_student.jpg"
     },
     {
       "id": "setup_young",
@@ -4111,7 +4111,7 @@
           "date": "2025-05-20"
         }
       ],
-      "image": "https://placehold.co/400x300/050510/e879f9?text=Ultra+Set"
+      "image": "setups_setup_ultra.jpg"
     },
     {
       "id": "setup_budget_killer",
@@ -4143,7 +4143,7 @@
           "date": "2025-05-05"
         }
       ],
-      "image": "https://placehold.co/400x300/0a0a0f/00ff88?text=Budget+Killer"
+      "image": "setups_setup_budget_killer.jpg"
     },
     {
       "id": "setup_white",
@@ -4175,7 +4175,7 @@
           "date": "2025-05-14"
         }
       ],
-      "image": "https://placehold.co/400x300/f8fafc/7c3aed?text=White+Aesthetic"
+      "image": "setups_setup_white.jpg"
     }
   ]
 }

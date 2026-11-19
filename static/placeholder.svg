@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Сурет жоқ">
+  <rect width="400" height="300" fill="#1a1d2e"/>
+  <g fill="none" stroke="#6b7280" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="130" y="95" width="140" height="110" rx="14"/>
+    <circle cx="170" cy="130" r="12"/>
+    <path d="M134 195l45-42 32 28 24-20 33 34"/>
+  </g>
+  <text x="200" y="245" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#6b7280">Сурет жақында</text>
+</svg>

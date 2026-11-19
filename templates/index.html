@@ -449,7 +449,7 @@
 
             {% if cpu.image %}
             <div class="product-image-wrap">
-              <img src="{{ "/static/products/" + cpu.image if not cpu.image.startswith("http") and not cpu.image.startswith("data:") else cpu.image }}" class="product-image">
+              <img src="{{ "/static/products/" + cpu.image if not cpu.image.startswith("http") and not cpu.image.startswith("data:") else cpu.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">
               <div class="badge-360">360°</div>
               <div class="drag-hint">⟵ Айналдыру ⟶</div>
             </div>
@@ -478,7 +478,7 @@
 
             {% if gpu.image %}
             <div class="product-image-wrap">
-              <img src="{{ "/static/products/" + gpu.image if not gpu.image.startswith("http") and not gpu.image.startswith("data:") else gpu.image }}" class="product-image">
+              <img src="{{ "/static/products/" + gpu.image if not gpu.image.startswith("http") and not gpu.image.startswith("data:") else gpu.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">
               <div class="badge-360">360°</div>
               <div class="drag-hint">⟵ Айналдыру ⟶</div>
             </div>
@@ -512,7 +512,7 @@
 
             {% if r.image %}
             <div class="product-image-wrap">
-              <img src="{{ "/static/products/" + r.image if not r.image.startswith("http") and not r.image.startswith("data:") else r.image }}" class="product-image">
+              <img src="{{ "/static/products/" + r.image if not r.image.startswith("http") and not r.image.startswith("data:") else r.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">
               <div class="badge-360">360°</div>
               <div class="drag-hint">⟵ Айналдыру ⟶</div>
             </div>
@@ -541,7 +541,7 @@
 
             {% if ssd.image %}
             <div class="product-image-wrap">
-              <img src="{{ "/static/products/" + ssd.image if not ssd.image.startswith("http") and not ssd.image.startswith("data:") else ssd.image }}" class="product-image">
+              <img src="{{ "/static/products/" + ssd.image if not ssd.image.startswith("http") and not ssd.image.startswith("data:") else ssd.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">
               <div class="badge-360">360°</div>
               <div class="drag-hint">⟵ Айналдыру ⟶</div>
             </div>
@@ -569,7 +569,7 @@
             <button class="fav-btn">❤</button>
 
             {% if m.image %}
-            <img src="{{ "/static/products/" + m.image if not m.image.startswith("http") and not m.image.startswith("data:") else m.image }}" class="product-image">
+            <img src="{{ "/static/products/" + m.image if not m.image.startswith("http") and not m.image.startswith("data:") else m.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">
             {% else %}
             <div class="product-icon">🖥</div>
             {% endif %}
@@ -601,7 +601,7 @@
             <button class="fav-btn">❤</button>
 
             {% if mouse.image %}
-            <img src="{{ "/static/products/" + mouse.image if not mouse.image.startswith("http") and not mouse.image.startswith("data:") else mouse.image }}" class="product-image">
+            <img src="{{ "/static/products/" + mouse.image if not mouse.image.startswith("http") and not mouse.image.startswith("data:") else mouse.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">
             {% else %}
             <div class="product-icon">🖱</div>
             {% endif %}
@@ -629,7 +629,7 @@
             <button class="fav-btn">❤</button>
 
             {% if kb.image %}
-            <img src="{{ "/static/products/" + kb.image if not kb.image.startswith("http") and not kb.image.startswith("data:") else kb.image }}" class="product-image">
+            <img src="{{ "/static/products/" + kb.image if not kb.image.startswith("http") and not kb.image.startswith("data:") else kb.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">
             {% else %}
             <div class="product-icon">⌨️</div>
             {% endif %}
@@ -656,7 +656,7 @@
             <button class="fav-btn">❤</button>
 
             {% if h.image %}
-            <img src="{{ "/static/products/" + h.image if not h.image.startswith("http") and not h.image.startswith("data:") else h.image }}" class="product-image">
+            <img src="{{ "/static/products/" + h.image if not h.image.startswith("http") and not h.image.startswith("data:") else h.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">
             {% else %}
             <div class="product-icon">🎧</div>
             {% endif %}
@@ -684,7 +684,7 @@
 
             {% if s.image %}
             <div class="product-image-wrap">
-              <img src="{{ "/static/products/" + s.image if not s.image.startswith("http") and not s.image.startswith("data:") else s.image }}" class="product-image">
+              <img src="{{ "/static/products/" + s.image if not s.image.startswith("http") and not s.image.startswith("data:") else s.image }}" class="product-image" onerror="this.onerror=null;this.src='/static/placeholder.svg'">
               <div class="badge-360">360°</div>
               <div class="drag-hint">⟵ Айналдыру ⟶</div>
             </div>
