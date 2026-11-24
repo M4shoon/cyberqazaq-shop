@@ -413,7 +413,19 @@ def generate_order_pdf(order_data: dict) -> bytes:
     c.setFont(FONT_B, 20)
     c.setFillColor(WHITE)
     c.drawRightString(PAD + CW - 14, y - 27, f"{int(total):,} {CUR}".replace(',', ' '))
-    y -= TOTAL_H + 12
+    y -= TOTAL_H + 4
+
+    # Баға туралы ескерту: жабдық нарығында баға жиі өзгереді
+    note = 'Баға тапсырыс күніне жарамды. Жабдық нарығында баға жиі өзгереді, сондықтан төлем алдында менеджер бағаны растайды.'
+    if order_data.get('price_changed'):
+        note = 'Себеттегі баға жаңартылған: құжатта қазіргі баға көрсетілген. ' + note
+    ensure(24)
+    c.setFont(FONT, 8)
+    c.setFillColor(TEXT_MUTED)
+    for line in wrap_text(note, CW - 4, FONT, 8)[:3]:
+        c.drawString(PAD + 2, y - 8, line)
+        y -= 10
+    y -= 8
 
     # ── MONTHLY PAYMENT (if installment) ───────────────────
     if p_extra:

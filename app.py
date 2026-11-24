@@ -39,6 +39,10 @@ app.secret_key = _require_env("SECRET_KEY")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 ANTHROPIC_MODEL   = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-20250514")
 
+# Gemini API кілті (Google AI Studio, тегін). AI Кеңесші алдымен соны қолданады; жоқ болса, Claude (ақылы), ол да жоқ болса, жергілікті логика.
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
+GEMINI_MODEL   = os.environ.get("GEMINI_MODEL", "gemini-flash-lite-latest").strip()
+
 # ─── EMAIL CONFIG ──────────────────────────────────────────────────────────────
 # All values are read from environment variables — see .env.example
 # Gmail App Password: myaccount.google.com → Security → 2-Step Verification → App passwords
@@ -53,6 +57,136 @@ with open(DATA_PATH, "r", encoding="utf-8") as f:
 
 
 # ─── HELPERS ──────────────────────────────────────────────────────────────────
+
+# ─── БАҒАНЫ СЕРВЕРДЕ ТЕКСЕРУ ───────────────────────────────────────────────────
+# Клиенттен (браузерден) келген баға, сома және сыйлықтарға сенуге болмайды: кез келген адам оларды өзгерте алады.
+# Баға тек data.json-да; тапсырыс пен PDF сол бағамен қайта есептеледі.
+
+CATALOG_KEYS = ("cpus", "gpus", "ram", "ssd", "motherboards", "cases", "monitors",
+                "mice", "keyboards", "headsets", "setups")
+QTY_RE = re.compile(r"\s*\(\s*[×x]\s*(\d+)\s*\)\s*$")
+MAX_ITEMS, MAX_QTY = 50, 20
+
+# Себеттің жалпы сомасына қарай сыйлықтар (cart.html ішіндегі GIFT_TIERS-пен бірдей болуы керек)
+GIFT_TIERS = [
+    (2_000_000, ["Екінші монитор", "Desk Mat XL", "Monitor Bracket"]),
+    (800_000,   ["Desk Mat XL", "Monitor Bracket"]),
+    (500_000,   ["Desk Mat"]),
+]
+
+
+def _norm(text):
+    return " ".join(str(text).split())
+
+
+def _catalog():
+    cat = {}
+    for key in CATALOG_KEYS:
+        for p in DATA.get(key, []):
+            if isinstance(p, dict) and p.get("name") and isinstance(p.get("price"), (int, float)):
+                cat.setdefault(_norm(p["name"]), []).append(p)
+    return cat
+
+
+def _num(v):
+    try:
+        return int(float(v))
+    except (TypeError, ValueError):
+        return 0
+
+
+def verified_items(raw_items):
+    """Клиент жіберген тізімді data.json бойынша тексеріп, қайта құрады.
+    Қайтарады: (тізім, сервер есептеген жалпы сома). Қате болса ValueError."""
+    if not isinstance(raw_items, list) or not raw_items or len(raw_items) > MAX_ITEMS:
+        raise ValueError("Себет бос немесе тым үлкен")
+    catalog = _catalog()
+    out, total = [], 0
+    for it in raw_items:
+        if not isinstance(it, dict):
+            raise ValueError("Тауар форматы қате")
+        name = _norm(it.get("name", ""))
+        qty = _num(it.get("qty"))
+        m = QTY_RE.search(name)
+        if m:
+            name = name[:m.start()].strip()
+            qty = qty or int(m.group(1))
+        qty = max(1, min(qty or 1, MAX_QTY))
+        candidates = catalog.get(name)
+        if not candidates:
+            raise ValueError(f"Тауар каталогта жоқ: {name[:60]}")
+        client_price = _num(it.get("price"))
+        # бірдей атаулы бірнеше тауар болса, клиент көрген бағаға жақынын аламыз (бәрібір нақты баға)
+        prod = min(candidates, key=lambda p: min(abs(p["price"] - client_price), abs(p["price"] * qty - client_price)))
+        line = int(prod["price"]) * qty
+        total += line
+        out.append({"name": name, "qty": qty, "price": line, "unit_price": int(prod["price"]),
+                    "description": str(prod.get("description", ""))[:160],
+                    "warranty": str(prod.get("warranty", "12 ай"))})
+    return out, total
+
+
+def gifts_for(total):
+    for min_price, gifts in GIFT_TIERS:
+        if total >= min_price:
+            return list(gifts)
+    return []
+
+
+def clean_text(value, limit=120):
+    return _norm(value)[:limit]
+
+
+def call_gemini_json(system_prompt, user_text, timeout=45):
+    """Gemini-ді JSON режимінде шақырады. Қайтарады: dict. Қате болса, Exception."""
+    import urllib.request as _u
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
+    payload = json.dumps({
+        "system_instruction": {"parts": [{"text": system_prompt}]},
+        "contents": [{"role": "user", "parts": [{"text": user_text}]}],
+        "generationConfig": {"temperature": 0.3, "maxOutputTokens": 8192, "responseMimeType": "application/json"},
+    }).encode("utf-8")
+    req = _u.Request(url, data=payload, method="POST",
+                     headers={"Content-Type": "application/json", "x-goog-api-key": GEMINI_API_KEY})
+    with _u.urlopen(req, timeout=timeout) as resp:        # кілт қате мәтініне түспесін: сыртта ұсталады
+        raw = json.loads(resp.read().decode("utf-8"))
+    parts = raw["candidates"][0]["content"]["parts"]
+    text = "".join(p.get("text", "") for p in parts if isinstance(p, dict)).strip()
+    text = re.sub(r"^```(?:json)?\s*", "", text)
+    text = re.sub(r"\s*```$", "", text)
+    return json.loads(text)
+
+
+def escape_json(obj):
+    """Модель жауабындағы барлық мәтінді HTML-ге қауіпсіз етеді (беттегі innerHTML-ге түсетіндіктен)."""
+    if isinstance(obj, str):
+        return html.escape(obj, quote=True)
+    if isinstance(obj, list):
+        return [escape_json(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: escape_json(v) for k, v in obj.items()}
+    return obj
+
+
+# Қарапайым шектеу: бір IP минутына ең көбі AI_RATE_LIMIT сұрау (тегін Gemini лимитін біреу таусып қоймауы үшін)
+AI_RATE_LIMIT, AI_RATE_WINDOW = 12, 60
+_ai_hits = {}
+
+
+def ai_rate_limited(ip):
+    import time
+    now = time.time()
+    hits = [t for t in _ai_hits.get(ip, []) if now - t < AI_RATE_WINDOW]
+    if len(hits) >= AI_RATE_LIMIT:
+        _ai_hits[ip] = hits
+        return True
+    hits.append(now)
+    _ai_hits[ip] = hits
+    if len(_ai_hits) > 5000:                 # жад толмауы үшін ескі жазбаларды тазалау
+        for k in [k for k, v in _ai_hits.items() if not v or now - v[-1] > AI_RATE_WINDOW]:
+            _ai_hits.pop(k, None)
+    return False
+
 
 def find_item(items, item_id):
     """Return the first item whose 'id' matches item_id, or None."""
@@ -318,22 +452,27 @@ def order():
 
     esc = lambda v: html.escape(str(v))  # HTML injection-нан қорғау
 
-    order_num   = esc(body.get("order_num", "N/A"))
-    name        = esc(body.get("name", ""))
-    phone       = esc(body.get("phone", ""))
-    city        = esc(body.get("city", ""))
-    payment     = esc(body.get("payment", ""))
-    items       = body.get("items", [])
-    total       = body.get("total", 0)
+    try:
+        items, total = verified_items(body.get("items"))      # баға серверде қайта есептеледі
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    if _num(body.get("total")) != total:
+        print(f"Ескерту: клиент соммасы {body.get('total')} ≠ сервер соммасы {total} (тапсырыс {body.get('order_num')})")
+
+    order_num   = esc(clean_text(body.get("order_num", "N/A"), 40))
+    name        = esc(clean_text(body.get("name", ""), 80))
+    phone       = esc(clean_text(body.get("phone", ""), 30))
+    city        = esc(clean_text(body.get("city", ""), 200))
+    payment     = esc(clean_text(body.get("payment", ""), 80))
 
     # Build item rows for the email
     items_html = "".join(
-        f"<tr><td style=\"padding:8px 12px;border-bottom:1px solid #1f2937\">{esc(i['name'])}</td>"
+        f"<tr><td style=\"padding:8px 12px;border-bottom:1px solid #1f2937\">{esc(i['name'])}" + (f" × {i['qty']}" if i['qty'] > 1 else "") + "</td>"
         f"<td style=\"padding:8px 12px;border-bottom:1px solid #1f2937;text-align:right\">{int(i['price']):,} ₸</td></tr>"
         for i in items
     )
 
-    gifts       = body.get("gifts", [])
+    gifts       = gifts_for(total)      # сыйлықтар да серверде жалпы сомаға қарай анықталады
     gifts_html  = ""
     if gifts:
         gift_rows = "".join(f"<li style=\"margin:4px 0;color:#fbbf24\">🎁 {esc(g)}</li>" for g in gifts)
@@ -401,9 +540,13 @@ def order():
 @app.route("/ai", methods=["POST"])
 def ai():
     import urllib.request as _ureq
-    body    = request.get_json() or {}
-    text    = str(body.get("request", "")).strip()
+    body    = request.get_json(silent=True) or {}
+    text    = str(body.get("request", "")).strip()[:600]
     text_lo = text.lower()
+    if ai_rate_limited(request.remote_addr or "?"):
+        return jsonify({"error": "Сұрау тым жиі. Бір минуттан кейін қайталаңыз."}), 429
+    if not text:
+        return jsonify({"error": "Сұрағыңызды жазыңыз."}), 400
 
     # ── 1. Parse budget ───────────────────────────────────────────────────────
     try:
@@ -419,7 +562,8 @@ def ai():
         elif k:    budget = int(k.group(1))   * 1_000
         elif number: budget = int(number.group())
 
-    # (минималды бюджет төменде, intent анықталған соң қойылады)
+    if budget < 350_000:
+        budget = 350_000
 
     # ── 2. Detect intent ──────────────────────────────────────────────────────
     intent_map = {
@@ -438,11 +582,6 @@ def ai():
     for cat, keywords in intent_map.items():
         if any(kw in text_lo for kw in keywords):
             detected_cats.append(cat)
-
-    # Минималды бюджет (350k) тек толық жинақ үшін. Жеке тауар сұралса, нақты бюджет сақталады.
-    single_category = len(detected_cats) == 1 and detected_cats[0] != "setup"
-    if budget == 0 or (budget < 350_000 and not single_category):
-        budget = 350_000
 
     # Is user asking to ANALYSE / judge a product quality?
     want_analysis = any(w in text_lo for w in [
@@ -540,9 +679,14 @@ def ai():
 2. Бюджетті қатаң сыйла — 10%-тан аспайтын шектен асу ғана рұқсат.
 3. НАҚТЫ БОЛ — жалпы мадақтама жоқ, нақты спецификация + нақты FPS.
 4. Scores реалистикалық болсын (асыра мақтама жоқ).
+5. ШЫНДЫҚ. Каталогта жоқ мәліметті (сенсор моделі, салмақ, бенчмарк, қоймада бар-жоғы) ОЙДАН ҚОСПА. Бұл мәлімет каталогта жоқ болса, соны ашық айт ("каталогта бұл көрсетілмеген"), ал бар мәліметпен барынша пайдалы жауап бер. Клиентті жай ғана "менеджерден сұраңыз" деп жібермe: тауар сипаттамасын, бағасын, кімге қолайлы екенін өзің айт. Менеджерге тек тапсырыс, төлем, жеткізу сұрақтарында жібер.
+6. FPS сандары — шамамен бағалау. "шамамен", "~" деп жаз, нақты бенчмарк деп көрсетпе.
+7. Бағаны каталог бойынша айт және "соңғы баға тапсырыс кезінде расталады" деп қос: жабдық нарығында баға жиі өзгереді.
+8. Үйлесімділік және жалпы техникалық сұрақтарға (қуат блогы, DDR4/DDR5, сокет) шын жалпы білімің бойынша жауап бер. Тауар ұсынғанда тек каталогтан.
+9. Дүкенге қатысы жоқ сұраққа (саясат, ауа райы) "Мен тек компьютер жабдықтары бойынша кеңес беремін" деп қысқа жауап бер (mode: answer).
 
 ═══════════════════════════════════════════════════════
-НАҚТЫ FPS ДЕРЕКТЕРІ (реалистикалық жуықтама)
+ШАМАМЕН FPS БАҒАСЫ (бенчмарк емес, дүкеннің өз жуықтауы)
 ═══════════════════════════════════════════════════════
 
 CS2 1080p (High settings):
@@ -588,6 +732,14 @@ future_proof:   AM5/DDR5/RTX 5000 жоғары, AM4/DDR4/RTX 2000-3000 төме�
 ═══════════════════════════════════════════════════════
 ЖАУАП ФОРМАТЫ — ТЕК JSON
 ═══════════════════════════════════════════════════════
+
+━━━ MODE: answer (қарапайым сұрақ: сипаттама, баға, салмақ, үйлесімділік, "қандай ... ұсынасыз", жалпы сұрақ) ━━━
+{{
+  "mode": "answer",
+  "answer": "2-6 сөйлем. Тікелей жауап: нақты сипаттама, баға. Каталогта жоқ мәліметті ашық айт.",
+  "products": [{{"name": "каталогтағы тауар аты", "price": баға}}]
+}}
+(products — жауапта аталған каталог тауарлары, ең көбі 4; жоқ болса бос тізім)
 
 ━━━ MODE: analysis (тауар бағалау, vs, сапа, review) ━━━
 {{
@@ -696,11 +848,19 @@ future_proof:   AM5/DDR5/RTX 5000 жоғары, AM4/DDR4/RTX 2000-3000 төме�
 - gpu_alternatives ішіндегі барлық тауар атаулары каталогпен дәл сәйкес болуы тиіс
 - Жауапта ```json немесе басқа markdown болмасын — тек таза JSON"""
 
-    if not ANTHROPIC_API_KEY:
-        print("ANTHROPIC_API_KEY жоқ — локалды fallback қолданылады")
+    if GEMINI_API_KEY:
+        try:
+            result = call_gemini_json(SYSTEM_PROMPT, text)
+            if isinstance(result, dict) and result.get("mode") in ("answer", "analysis", "single_product", "full_setup"):
+                return jsonify(escape_json(result))
+            print("Gemini жауабының форматы белгісіз: жергілікті логикаға өтеміз")
+        except Exception as e:
+            print(f"Gemini қатесі: {type(e).__name__}")        # кілт хабарламаға түспесін
+    elif not ANTHROPIC_API_KEY:
+        print("GEMINI_API_KEY де, ANTHROPIC_API_KEY де жоқ: жергілікті логика қолданылады")
     try:
-        if not ANTHROPIC_API_KEY:
-            raise RuntimeError("no api key")
+        if GEMINI_API_KEY or not ANTHROPIC_API_KEY:
+            raise RuntimeError("Claude қолданылмайды")
         import json as _json
         payload = _json.dumps({
             "model": ANTHROPIC_MODEL,
@@ -728,7 +888,7 @@ future_proof:   AM5/DDR5/RTX 5000 жоғары, AM4/DDR4/RTX 2000-3000 төме�
         content = re.sub(r"^```(?:json)?\s*", "", content.strip())
         content = re.sub(r"\s*```$", "", content.strip())
         result = _json.loads(content)
-        return jsonify(result)
+        return jsonify(escape_json(result))
 
     except Exception as e:
         # Graceful fallback to local logic
@@ -822,8 +982,6 @@ future_proof:   AM5/DDR5/RTX 5000 жоғары, AM4/DDR4/RTX 2000-3000 төме�
     return jsonify({
         "mode":"full_setup", "name":best_setup.get("name"), "price":best_setup.get("price"),
         "reason":reasons.get(use_case, reasons["general"]), "use_case":use_case,
-        "budget_note": (f"Бюджетіңіз {budget:,} ₸. Ең арзан дайын сет {best_setup.get('price', 0):,} ₸ тұрады."
-                        if best_setup.get("price", 0) > budget else None),
         "gpu":gpu_it.get("name") if gpu_it else "-", "gpu_reason":explain_product(gpu_it), "gpu_price":gpu_it.get("price") if gpu_it else 0,
         "cpu":cpu_it.get("name") if cpu_it else "-", "cpu_reason":explain_product(cpu_it), "cpu_price":cpu_it.get("price") if cpu_it else 0,
         "ram":ram_it.get("name") if ram_it else "-", "ram_reason":explain_product(ram_it), "ram_price":ram_it.get("price") if ram_it else 0,
@@ -900,17 +1058,50 @@ def admin_data():
 
 @app.route("/order/pdf", methods=["POST"])
 def order_pdf():
-    """Generate and return a PDF receipt for the order."""
+    """PDF квитанция: баға, сома және сыйлықтар серверде data.json бойынша қайта есептеледі."""
     import io
     if not PDF_ENABLED:
         return jsonify({"error": "PDF not available. Run: pip install reportlab"}), 503
-    body = request.get_json() or {}
-    pdf_bytes = generate_order_pdf(body)
+    body = request.get_json(silent=True) or {}
+    try:
+        items, total = verified_items(body.get("items"))
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    # Жалпы сома дұрыс есептелгенін клиент көрген соммамен салыстырамыз (баға жаңарған болуы мүмкін)
+    price_changed = _num(body.get("total")) != total
+
+    # Бөліп төлеу: айлар санын клиент мәтінінен аламыз, ай сайынғы төлемді өзіміз есептейміз
+    payment_raw = str(body.get("payment", ""))
+    method = clean_text(payment_raw.split("\n")[0], 60)
+    m = re.search(r"×\s*(\d+)\s*ай", payment_raw)
+    months = int(m.group(1)) if m else 0
+    if 1 <= months <= 36:
+        monthly = f"{round(total / months):,}".replace(",", " ")
+        payment = f"{method}\nАйлық төлем: {monthly} ₸ × {months} ай (0%)"
+    else:
+        payment = method
+
+    pdf_data = {
+        "order_num": clean_text(body.get("order_num", "N/A"), 40),
+        "name": clean_text(body.get("name", ""), 80),
+        "phone": clean_text(body.get("phone", ""), 30),
+        "city": clean_text(body.get("city", ""), 200),
+        "payment": payment,
+        "items": items,
+        "total": total,
+        "gifts": gifts_for(total),
+        "order_date": clean_text(body.get("order_date", ""), 30),
+        "payment_status": "Растауды күтуде",
+        "price_changed": price_changed,
+    }
+    pdf_bytes = generate_order_pdf(pdf_data)
+    safe_num = re.sub(r"[^A-Za-z0-9_-]", "", pdf_data["order_num"]) or "order"
     return send_file(
         io.BytesIO(pdf_bytes),
         mimetype="application/pdf",
         as_attachment=True,
-        download_name=f"CyberQazaq-{body.get('order_num','order')}.pdf"
+        download_name=f"CyberQazaq-{safe_num}.pdf"
     )
 
 # ─── ENTRY POINT ──────────────────────────────────────────────────────────────

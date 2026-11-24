@@ -567,9 +567,13 @@ async function send() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ budget, request })
     });
-    const data = await res.json();
+    const data = await res.json().catch(() => ({}));
     typing.remove();
-    renderResponse(data);
+    if (!res.ok || data.error || !data.mode) {
+      addError(data.error);          // мысалы: «Сұрау тым жиі», бос сұрау
+    } else {
+      renderResponse(data);
+    }
   } catch(e) {
     typing.remove();
     addError();
@@ -598,10 +602,13 @@ function addTyping() {
   return el;
 }
 
-function addError() {
+function addError(message) {
   const el = document.createElement('div');
   el.className = 'msg-ai';
-  el.innerHTML = `<div class="error-card">⚠️ Қате пайда болды. Қайта көріңіз немесе менеджерге жазыңыз.</div>`;
+  const card = document.createElement('div');
+  card.className = 'error-card';
+  card.textContent = '⚠️ ' + (message || 'Қате пайда болды. Қайта көріңіз немесе менеджерге жазыңыз.');
+  el.appendChild(card);
   chatArea.appendChild(el);
 }
 
@@ -632,7 +639,9 @@ function renderResponse(data) {
   const wrap = document.createElement('div');
   wrap.className = 'msg-ai';
 
-  if (data.mode === 'analysis') {
+  if (data.mode === 'answer') {
+    wrap.innerHTML = renderAnswer(data);
+  } else if (data.mode === 'analysis') {
     wrap.innerHTML = renderAnalysis(data);
   } else if (data.mode === 'single_product') {
     wrap.innerHTML = renderSingleProduct(data);
@@ -649,6 +658,29 @@ function renderResponse(data) {
       bar.style.width = bar.dataset.score + '%';
     });
   }, 100);
+}
+
+// ══ ТІКЕЛЕЙ ЖАУАП (сипаттама, баға, жалпы сұрақ) ═══════════════════════════════
+function renderAnswer(data) {
+  // data ішіндегі мәтін серверде HTML-ден тазаланған (escape)
+  const paragraphs = String(data.answer || '').split(/\n+/).filter(Boolean)
+    .map(p => `<p style="margin-bottom:10px">${p}</p>`).join('');
+  const products = (data.products || []).slice(0, 4).map(p => `<div class="alt-row">
+      <div class="alt-row-info"><div class="alt-row-name">${p.name}</div></div>
+      <div class="alt-row-price">${(Number(p.price) || 0).toLocaleString()} ₸</div>
+    </div>`).join('');
+  return `<div class="ai-card">
+    <div class="ai-card-header">
+      <div class="label">💬 Жауап</div>
+      <div class="sub">Баға каталог бойынша; соңғы баға тапсырыс кезінде расталады</div>
+    </div>
+    <div class="analysis-text" style="padding:4px 2px 12px">${paragraphs}</div>
+    ${products ? `<div class="alts-section"><div class="alts-title">🛒 Каталогтағы тауарлар</div>${products}</div>` : ''}
+    <div class="cta-row">
+      <a href="/products" class="btn-primary">🛒 Тауарларға өту</a>
+      <a href="https://wa.me/77765007502" class="btn-secondary" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>`;
 }
 
 // ══ PRODUCT ANALYSIS ══════════════════════════════════════════════════════════
